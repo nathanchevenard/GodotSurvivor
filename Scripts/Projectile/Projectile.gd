@@ -1,4 +1,5 @@
 extends Node2D
+class_name Projectile
 
 @export var max_speed : float = 400.0
 

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var max_speed : float = 100.0
 @export_range(0.0, 1.0) var position_acceleration : float = 0.1
@@ -16,7 +17,7 @@ func _ready():
 	pass
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move()
 	rotate_toward_mouse()
 
@@ -53,3 +54,6 @@ func fire() -> void:
 	
 	projectile_fired.emit(projectile)
 
+
+func destroy() -> void:
+	queue_free()
