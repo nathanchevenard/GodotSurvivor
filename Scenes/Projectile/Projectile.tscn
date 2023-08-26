@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7bn1br4k035r"]
+[gd_scene load_steps=9 format=3 uid="uid://c7bn1br4k035r"]
 
 [ext_resource type="Texture2D" uid="uid://fjxul6xubiq0" path="res://Sprites/ProjectileSpriteSheet.png" id="1_60qws"]
 [ext_resource type="Script" path="res://Scripts/Projectile/Projectile.gd" id="1_pp786"]
@@ -39,7 +39,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Projectile" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_41pb5"]
+radius = 6.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_pp786")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -47,3 +52,9 @@ position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_av4hx")
 autoplay = "default"
 frame_progress = 0.753468
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_41pb5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

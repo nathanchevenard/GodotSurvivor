@@ -12,6 +12,7 @@ var last_direction : Vector2 = Vector2.ZERO
 var current_speed : float = 0.0
 
 signal projectile_fired(projectile)
+signal destroyed
 
 func _ready():
 	pass
@@ -56,4 +57,5 @@ func fire() -> void:
 
 
 func destroy() -> void:
+	destroyed.emit()
 	queue_free()

@@ -8,3 +8,9 @@ class_name Projectile
 func _physics_process(delta):
 	var velocity : Vector2 = current_direction * max_speed * delta
 	global_position += velocity
+
+
+func _on_area_entered(area):
+	if area is Asteroid:
+		area.destroy()
+		queue_free()
