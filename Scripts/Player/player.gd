@@ -24,13 +24,13 @@ func _physics_process(_delta):
 		
 	if current_direction != Vector2.ZERO:
 		last_direction = current_direction
+		rotate_toward_direction()
 	
 	move()
-	rotate_toward_mouse()
 
 
 func _input(event):
-	if event.is_action_pressed("left_click") && DeviceDetection.is_computer():
+	if event.is_action_pressed("left_click") && DeviceDetection.is_mobile():
 		joystick.global_position = get_global_mouse_position()
 	elif event.is_action_pressed("fire"):
 		fire()
@@ -49,6 +49,12 @@ func move() -> void:
 func rotate_toward_mouse() -> void:
 	var mouse_pos : Vector2 = get_global_mouse_position()
 	var angle : float = global_position.angle_to_point(mouse_pos)
+	rotation = lerp_angle(rotation, angle, rotation_acceleration)
+	
+
+
+func rotate_toward_direction() -> void:
+	var angle : float = global_position.angle_to_point(global_position + current_direction)
 	rotation = lerp_angle(rotation, angle, rotation_acceleration)
 
 

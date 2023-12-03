@@ -18,7 +18,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_8a1yo")
 script = ExtResource("4_61piu")
 maxLength = 500
-deadZone = 0.2
+deadZone = 0.5
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)

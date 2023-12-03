@@ -32,6 +32,8 @@ func calculateVector():
 	parent.posVector.x = (global_position.x - parent.global_position.x) / maxLength
 	parent.posVector.y = (global_position.y - parent.global_position.y) / maxLength
 	
+	print(parent.posVector.length())
+	
 	if parent.posVector.length() < deadZone:
 		parent.posVector = Vector2.ZERO
 
