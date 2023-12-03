@@ -6,7 +6,7 @@ class_name Player
 @export_range(0.0, 1.0) var rotation_acceleration : float = 0.1
 
 @export var projectile_scene : PackedScene
-@onready var joystick = $"../BorderLayer/Joystick"
+@onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
@@ -20,18 +20,19 @@ func _ready():
 
 
 func _physics_process(_delta):
+	current_direction = joystick.posVector.normalized()
+		
+	if current_direction != Vector2.ZERO:
+		last_direction = current_direction
+	
 	move()
 	rotate_toward_mouse()
 
 
 func _input(event):
-	current_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")	
-	current_direction = joystick.posVector.normalized()
-	
-	if current_direction != Vector2.ZERO:
-		last_direction = current_direction
-		
-	if event.is_action_pressed("fire"):
+	if event.is_action_pressed("left_click") && DeviceDetection.is_computer():
+		joystick.global_position = get_global_mouse_position()
+	elif event.is_action_pressed("fire"):
 		fire()
 
 

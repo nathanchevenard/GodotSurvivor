@@ -29,12 +29,8 @@ func _process(delta):
 		parent.posVector = Vector2.ZERO
 
 func calculateVector():
-#	if abs((global_position.x - parent.global_position.x)) >= deadZone:
 	parent.posVector.x = (global_position.x - parent.global_position.x) / maxLength
-#	if abs((global_position.y - parent.global_position.y)) >= deadZone:
 	parent.posVector.y = (global_position.y - parent.global_position.y) / maxLength
-	
-	print (parent.posVector.length())
 	
 	if parent.posVector.length() < deadZone:
 		parent.posVector = Vector2.ZERO
