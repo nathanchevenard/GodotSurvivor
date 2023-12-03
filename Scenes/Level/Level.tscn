@@ -80,11 +80,21 @@ theme_override_font_sizes/font_size = 31
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="RetryButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="RetryButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Retry"
+
+[node name="MenuButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Menu"
 
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
 [connection signal="projectile_fired" from="Player" to="ProjectileFactory" method="spawn_projectile"]
 [connection signal="timeout" from="AsteroidHandler/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

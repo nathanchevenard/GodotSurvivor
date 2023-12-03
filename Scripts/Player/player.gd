@@ -37,9 +37,6 @@ func _physics_process(_delta):
 
 
 func _input(event):
-	if event.is_action_pressed("left_click") && DeviceDetection.is_mobile():
-		joystick.global_position = get_global_mouse_position()		
-		
 	if DeviceDetection.is_computer():
 		current_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 

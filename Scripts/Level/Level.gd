@@ -66,6 +66,8 @@ func on_asteroid_destroy(asteroid: Asteroid) -> void:
 func _on_retry_button_pressed():
 	get_tree().reload_current_scene()
 
+func _on_menu_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")
 
 func _on_player_destroyed():
 	game_over.show()

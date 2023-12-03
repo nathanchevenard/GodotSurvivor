@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://buaoqregprbw6"]
+
+[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Background.png" id="1_miw82"]
+[ext_resource type="Script" path="res://Scripts/UI/SettingsController.gd" id="2_gfdcy"]
+
+[node name="Settings" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(241, 137)
+texture = ExtResource("1_miw82")
+
+[node name="SettingsLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_gfdcy")
+
+[node name="Settings" type="Control" parent="SettingsLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="SettingsLayer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsLayer/Settings/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Floating Joystick" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick"]
+layout_mode = 2
+text = "Floating joystick "
+
+[node name="Floating Joystick CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Display Mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode"]
+layout_mode = 2
+text = "Display mode"
+
+[node name="Display Mode OptionButton" type="OptionButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Landscape"
+popup/item_0/id = 0
+popup/item_1/text = "Portrait"
+popup/item_1/id = 1
+popup/item_2/text = "Dynamic"
+popup/item_2/id = 6
+
+[node name="PlayButton" type="Button" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="ready" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_ready"]
+[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
+[connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
+[connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/PlayButton" to="SettingsLayer" method="_on_play_button_pressed"]
