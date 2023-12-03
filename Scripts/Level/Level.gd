@@ -13,6 +13,7 @@ class_name Level
 @export var spawn_circle_radius : float  = 350.0
 @export_range(0.0, 180.0) var direction_random_variation : float = 40.0
 
+var asteroids : Array[Asteroid]
 
 func spawn_asteroid_on_border() -> void:
 	var screen_center = screen_size / 2.0
@@ -38,6 +39,7 @@ func spawn_asteroid(pos: Vector2, dir: Vector2, size: Asteroid.ASTEROID_SIZE) ->
 	asteroid.position = pos
 	asteroid.direction = dir
 	asteroid.size = size
+	asteroids.append(asteroid)
 	
 	asteroid.destroyed.connect(on_asteroid_destroy.bind(asteroid))
 
@@ -56,6 +58,9 @@ func on_asteroid_destroy(asteroid: Asteroid) -> void:
 			var dir = asteroid.direction.rotated(direction_rotation)
 			
 			spawn_asteroid(asteroid.global_position, dir, asteroid.size - 1)
+	
+	if asteroids.has(asteroid):
+		asteroids.erase(asteroid)
 
 
 func _on_retry_button_pressed():

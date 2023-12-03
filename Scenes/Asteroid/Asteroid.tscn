@@ -30,7 +30,7 @@ script = ExtResource("2_papve")
 texture = ExtResource("1_imrid")
 shape = SubResource("CircleShape2D_10lj8")
 
-[node name="Asteroid" type="Area2D"]
+[node name="Asteroid" type="Area2D" groups=["Adversary"]]
 collision_layer = 2
 script = ExtResource("1_1nkik")
 size = 2
