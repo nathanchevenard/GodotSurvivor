@@ -1,22 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgxyci6epggm8"]
 
-[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_ar7rn"]
-[ext_resource type="Texture2D" uid="uid://d2p0lqiwri1f1" path="res://Sprites/Ship.png" id="1_tc5bx"]
+[ext_resource type="Script" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
 [ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Projectile/Projectile.tscn" id="2_ywvpm"]
+[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
-radius = 6.0
+radius = 11.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_mask = 0
-script = ExtResource("1_ar7rn")
+script = ExtResource("1_xm3y8")
+is_god_mode = true
 attack_speed = 0.5
 projectile_scene = ExtResource("2_ywvpm")
+target_group = "Enemy"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_tc5bx")
+rotation = 1.5708
+texture = ExtResource("3_apoam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_w5q1e")
+
+[node name="Camera2D" type="Camera2D" parent="."]

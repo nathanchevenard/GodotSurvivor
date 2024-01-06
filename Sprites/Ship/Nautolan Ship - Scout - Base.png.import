@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2p0lqiwri1f1"
-path="res://.godot/imported/Ship.png-d6898bd410dcafdd90baf6595b371339.ctex"
+uid="uid://bvvvx43el7hq2"
+path="res://.godot/imported/Nautolan Ship - Scout - Base.png-7453d124143aaf951b317746dd13fb6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ship.png"
-dest_files=["res://.godot/imported/Ship.png-d6898bd410dcafdd90baf6595b371339.ctex"]
+source_file="res://Sprites/Ship/Nautolan Ship - Scout - Base.png"
+dest_files=["res://.godot/imported/Nautolan Ship - Scout - Base.png-7453d124143aaf951b317746dd13fb6d.ctex"]
 
 [params]
 

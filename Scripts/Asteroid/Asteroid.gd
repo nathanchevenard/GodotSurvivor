@@ -1,5 +1,5 @@
 @tool
-extends Area2D
+extends CharacterBody2D
 class_name Asteroid
 
 enum ASTEROID_SIZE
@@ -19,10 +19,15 @@ enum ASTEROID_SIZE
 			size_changed.emit()
 
 @export var direction : Vector2 = Vector2.RIGHT
-@export var speed : float = 200.0
+@export var speed_min : float = 50.0
+@export var speed_max : float = 150.0
 @export var torque : float = 50.0
+@export var size_min : float = 0.3
+@export var size_max : float = 2.5
 
 @export var asteroid_size_array : Array[AsteroidSize]
+
+var speed : float
 
 signal size_changed
 signal destroyed
@@ -33,6 +38,14 @@ func _ready():
 	
 	size_changed.connect(update_size)
 	update_size()
+	
+	var random_angle : float = randf_range(0.0, 2 * PI)
+	direction = Vector2.RIGHT.rotated(random_angle) 
+	
+	var random_size : float = randf_range(size_min, size_max)
+	global_scale = Vector2(random_size, random_size)	
+	
+	speed = randf_range(speed_min, speed_max)
 
 
 func _physics_process(delta):
@@ -40,10 +53,6 @@ func _physics_process(delta):
 	global_position += velocity
 	
 	rotation_degrees += torque * delta
-
-
-func _on_body_entered(body: Player):
-	body.destroy()
 
 
 func destroy() -> void:
@@ -58,3 +67,8 @@ func update_size() -> void:
 	
 	sprite_2d.texture = asteroid_size.texture
 	collision_shape_2d.shape = asteroid_size.shape
+
+
+func _on_area_2d_body_entered(body: Node2D):
+	if body.is_in_group("Player"):
+		body.destroy()

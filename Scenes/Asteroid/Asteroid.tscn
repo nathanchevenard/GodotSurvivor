@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5y64cygox0xe"]
+[gd_scene load_steps=13 format=3 uid="uid://c5y64cygox0xe"]
 
 [ext_resource type="Script" path="res://Scripts/Asteroid/Asteroid.gd" id="1_1nkik"]
 [ext_resource type="Texture2D" uid="uid://2tgmrkbbvvqb" path="res://Sprites/AsteroidBig.png" id="1_imrid"]
@@ -23,24 +23,41 @@ texture = ExtResource("4_nx02k")
 shape = SubResource("CircleShape2D_m2hsr")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10lj8"]
-radius = 14.0
+radius = 13.0
 
 [sub_resource type="Resource" id="Resource_8hw04"]
 script = ExtResource("2_papve")
 texture = ExtResource("1_imrid")
 shape = SubResource("CircleShape2D_10lj8")
 
-[node name="Asteroid" type="Area2D" groups=["Adversary"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xof3b"]
+radius = 15.0333
+
+[node name="Asteroid" type="CharacterBody2D" groups=["Obstacle"]]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_1nkik")
 size = 2
-speed = 100.0
+direction = Vector2(-0.461875, 0.886945)
+size_min = null
+size_max = null
 asteroid_size_array = Array[ExtResource("2_papve")]([SubResource("Resource_ev82s"), SubResource("Resource_v5go4"), SubResource("Resource_8hw04")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_imrid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
 shape = SubResource("CircleShape2D_10lj8")
+debug_color = Color(0.952941, 0, 0.0901961, 0.419608)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 2
+shape = SubResource("CircleShape2D_xof3b")
+debug_color = Color(0.47451, 0.494118, 0.501961, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
