@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var player = get_closest_target(target_group)
+	var player = get_closest_entity(target_groups)
 	
 	if player == null:
 		push_warning("No player found for Enemy.")
@@ -21,6 +21,7 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body: Node2D):
-	if body.is_in_group(target_group):
-		var player : Player = body as Player
-		player.destroy()
+	for target_group in target_groups:
+		if body.is_in_group(target_group):
+			var player : Player = body as Player
+			player.destroy()

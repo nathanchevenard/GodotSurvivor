@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dc43qctv5bvyx" path="res://Sprites/Blue_Nebula_04-1024x1024.png" id="6_3l8n2"]
 [ext_resource type="PackedScene" uid="uid://clvvt6oylh6ou" path="res://Scenes/UI/Joystick.tscn" id="6_o0aqk"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/BlackHole.png" id="7_kfec1"]
-[ext_resource type="PackedScene" uid="uid://bq704mti0ukrl" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
+[ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lh7mg")
@@ -16,18 +16,20 @@ enemy_spawn_range_max = 300.0
 asteroid_scene = ExtResource("2_byko3")
 enemy_scene = ExtResource("8_xwq3q")
 direction_random_variation = 15.0
+enemy_incrementation_threshold = 25
+enemy_spawn_number = 2
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
-is_god_mode = false
 
-[node name="ProjectileFactory" type="Node2D" parent="."]
+[node name="ProjectileHandler" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_nimkm")
 
 [node name="EnemyHandler" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemyHandler"]
-wait_time = 0.45
+wait_time = 0.5
 autostart = true
 
 [node name="ObstacleHandler" type="Node2D" parent="."]
@@ -48,7 +50,7 @@ texture = ExtResource("6_3l8n2")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(256, 256)
 motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(512, 512)
+motion_mirroring = Vector2(1024, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("7_kfec1")
@@ -118,7 +120,6 @@ layout_mode = 2
 text = "Menu"
 
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
-[connection signal="projectile_fired" from="Player" to="ProjectileFactory" method="spawn_projectile"]
 [connection signal="timeout" from="EnemyHandler/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="ObstacleHandler/ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

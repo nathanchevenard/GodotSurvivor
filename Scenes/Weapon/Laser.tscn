@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhmg6xqpe6j5m"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/Laser.gd" id="1_brcov"]
+[ext_resource type="PackedScene" uid="uid://bfy2tbwc7oh76" path="res://Scenes/Projectile/Beam.tscn" id="2_yr7wq"]
+
+[node name="Laser" type="Node"]
+script = ExtResource("1_brcov")
+target_groups = Array[String](["Enemy"])
+projectile = ExtResource("2_yr7wq")
+cooldown = 2.0
+projectile_number = 1

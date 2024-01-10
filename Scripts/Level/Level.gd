@@ -4,6 +4,7 @@ class_name Level
 @onready var border_rect : ReferenceRect = %BorderRect
 @onready var enemy_handler : Node2D = %EnemyHandler
 @onready var obstacle_handler : Node2D = %ObstacleHandler
+@onready var projectile_handler : Node2D = %ProjectileHandler
 @onready var game_over = %GameOver
 
 @onready var screen_width : float = ProjectSettings.get_setting("display/window/size/viewport_width") 
@@ -18,11 +19,25 @@ class_name Level
 @export var spawn_circle_radius : float  = 350.0
 @export_range(0.0, 180.0) var direction_random_variation : float = 40.0
 
+@export var enemy_incrementation_threshold : int = 10
+@export var current_enemy_incrementation : int = 0
+@export var enemy_spawn_number : int = 1
+
 var asteroids : Array[Asteroid]
+
+static var instance : Level = null
+
+func _ready():
+	if instance != null:
+		push_warning("Multiple instances of Level tried to instantiate.")
+		return
+	
+	instance = self
 
 
 func _on_obstacle_spawn_timer_timeout():
 	spawn_asteroid_on_border()
+
 
 func spawn_asteroid_on_border() -> void:
 	var players : Array[Node] = get_tree().get_nodes_in_group("Player")
@@ -46,8 +61,14 @@ func spawn_asteroid(pos: Vector2, dir: Vector2, size: Asteroid.ASTEROID_SIZE) ->
 func _on_enemy_spawn_timer_timeout():
 	var players : Array[Node] = get_tree().get_nodes_in_group("Player")
 	
-	for player : Player in players:
-		spawn_scene_around_position(enemy_scene, player.global_position)
+	for i in range(enemy_spawn_number):
+		for player : Player in players:
+			spawn_scene_around_position(enemy_scene, player.global_position)
+	
+	current_enemy_incrementation += 1
+	if current_enemy_incrementation >= enemy_incrementation_threshold:
+		current_enemy_incrementation -= enemy_incrementation_threshold
+		enemy_spawn_number += 1
 
 
 func spawn_scene_around_position(scene: PackedScene, position: Vector2):

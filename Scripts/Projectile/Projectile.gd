@@ -1,19 +1,29 @@
 extends Node2D
 class_name Projectile
 
-@export var max_speed : float = 400.0
+var speed : float
+var current_direction : Vector2
 
-@onready var current_direction : Vector2 = Vector2.RIGHT.rotated(rotation)
+var weapon : Weapon
 
-var target_group : String
+func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, speed : float):
+	global_position = starting_position
+	self.weapon = weapon
+	
+	if (target != null):
+		current_direction = (target.global_position - global_position).normalized()
+		rotation = global_position.angle_to_point(target.global_position)
+	
+	self.speed = speed
+
 
 func _physics_process(delta):
-	var velocity : Vector2 = current_direction * max_speed * delta
+	var velocity : Vector2 = current_direction * speed * delta
 	global_position += velocity
 
 
 func _on_body_entered(body : Node2D):
-	if body.is_in_group(target_group) == true:
-		body.destroy()
-	
-	queue_free()
+	if weapon != null:
+		for target_group in weapon.target_groups:
+			if body.is_in_group(target_group) == true:
+				body.destroy()

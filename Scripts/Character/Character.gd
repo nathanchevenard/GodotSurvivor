@@ -4,7 +4,7 @@ class_name Character
 @export var max_speed : float = 100.0
 @export_range(0.0, 1.0) var position_acceleration : float = 0.1
 @export_range(0.0, 1.0) var rotation_acceleration : float = 0.1
-@export var target_group : String
+@export var target_groups : Array[String]
 
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
@@ -35,17 +35,26 @@ func move() -> void:
 	move_and_slide()
 
 
-func get_closest_target(group_name : String) -> Node2D:
-	var closest_target : Node2D = null
-	var targets : Array[Node] = get_tree().get_nodes_in_group(group_name)
+func get_closest_entity(group_names : Array[String]) -> Node2D:
+	var closest_entity : Node2D = null
+	var entities = get_sorted_closest_entities(group_names)
 	
-	targets.sort_custom(func(a, b): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
-	
-	for target in targets:
-		closest_target = target
+	for entity in entities:
+		closest_entity = entity
 		break
 	
-	return closest_target
+	return closest_entity
+
+
+func get_sorted_closest_entities(group_names : Array[String]) -> Array[Node]:
+	var entities : Array[Node] = []
+	
+	for group_name in group_names:
+		entities.append_array(get_tree().get_nodes_in_group(group_name))
+		
+	entities.sort_custom(func(a, b): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))	
+	
+	return entities
 
 
 func destroy() -> void:

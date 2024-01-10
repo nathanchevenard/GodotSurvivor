@@ -16,7 +16,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	update_autoattack(_delta)
+	#update_autoattack(_delta)
 	
 	if DeviceDetection.is_mobile():
 		current_direction = joystick.posVector
@@ -33,7 +33,7 @@ func update_autoattack(_delta : float):
 	attack_cooldown += _delta
 	if attack_cooldown >= attack_speed:
 		attack_cooldown = 0.0
-		var closest_target : Node2D = get_closest_target(target_group)
+		var closest_target : Node2D = get_closest_entity(target_groups)
 		
 		if closest_target != null:
 			var angle : float = global_position.angle_to_point(closest_target.global_position)
@@ -52,7 +52,7 @@ func fire(angle : float) -> void:
 	
 	projectile.global_position = global_position
 	projectile.rotation = angle
-	projectile.target_group = target_group
+	projectile.target_groups = target_groups
 	
 	projectile_fired.emit(projectile)
 

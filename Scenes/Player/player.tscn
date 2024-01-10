@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgxyci6epggm8"]
+[gd_scene load_steps=8 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
-[ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Projectile/Projectile.tscn" id="2_ywvpm"]
+[ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Projectile/Blast.tscn" id="2_ywvpm"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
+[ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Blaster.tscn" id="4_vn0rv"]
+[ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Laser.tscn" id="5_m1bf1"]
+[ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/BombLauncher.tscn" id="6_dsrmc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
 radius = 11.0
@@ -11,10 +14,9 @@ radius = 11.0
 z_index = 1
 collision_mask = 0
 script = ExtResource("1_xm3y8")
-is_god_mode = true
 attack_speed = 0.5
 projectile_scene = ExtResource("2_ywvpm")
-target_group = "Enemy"
+target_groups = Array[String](["Enemy"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -24,3 +26,12 @@ texture = ExtResource("3_apoam")
 shape = SubResource("CircleShape2D_w5q1e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
+cooldown = 1.0
+projectile_number = 5
+
+[node name="Laser" parent="." instance=ExtResource("5_m1bf1")]
+projectile_number = 2
+
+[node name="BombLauncher" parent="." instance=ExtResource("6_dsrmc")]

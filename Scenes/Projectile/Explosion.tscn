@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://3lauyq7wythy"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile/Explosion.gd" id="1_lyw2a"]
+[ext_resource type="Texture2D" uid="uid://chi6625dbucsu" path="res://Sprites/Projectiles/Explosion.png" id="2_inpgw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvb8l"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5nim"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7if3"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gripv"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdadp"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cybt"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7e1k"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8s72"]
+atlas = ExtResource("2_inpgw")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3y73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvb8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5nim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7if3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gripv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdadp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7e1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8s72")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ljco"]
+radius = 16.0
+
+[node name="Explosion" type="Area2D"]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_lyw2a")
+lifetime_duration = 0.7
+hitbox_duration = 0.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_n3y73")
+autoplay = "default"
+frame_progress = 0.0582551
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1ljco")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
