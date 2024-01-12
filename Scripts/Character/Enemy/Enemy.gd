@@ -1,11 +1,11 @@
 extends Character
 class_name Enemy
 
+@export var attack : int = 10
+@export var cooldown : float = 1.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+var characters_in_range : Array[Character] = []
+var current_cooldown : float = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -18,10 +18,29 @@ func _physics_process(delta):
 	current_direction = player.global_position - global_position
 	
 	super(delta)
+	
+	update_attack(delta)
+
+
+func update_attack(delta: float):
+	if current_cooldown < cooldown:
+		current_cooldown += delta
+	
+	if current_cooldown >= cooldown && characters_in_range.size() > 0:
+		current_cooldown = 0
+		characters_in_range[0].take_damage(attack)
 
 
 func _on_area_2d_body_entered(body: Node2D):
 	for target_group in target_groups:
 		if body.is_in_group(target_group):
-			var player : Player = body as Player
-			player.destroy()
+			var character : Character = body as Character
+			if character != null:
+				characters_in_range.append(character)
+				update_attack(0)
+
+
+func _on_area_2d_body_exited(body: Node2D):
+	var character : Character = body as Character
+	if character != null && characters_in_range.has(character):
+		characters_in_range.erase(character)

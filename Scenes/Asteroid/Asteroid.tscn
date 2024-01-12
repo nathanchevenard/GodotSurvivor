@@ -34,12 +34,14 @@ shape = SubResource("CircleShape2D_10lj8")
 radius = 15.0333
 
 [node name="Asteroid" type="CharacterBody2D" groups=["Obstacle"]]
-scale = Vector2(2.41123, 2.41123)
-collision_layer = 2
+scale = Vector2(1.89109, 1.89109)
+collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_1nkik")
 size = 2
-direction = Vector2(0.550149, 0.835066)
+direction = Vector2(0.977647, 0.210254)
+attack = null
+cooldown = null
 asteroid_size_array = Array[ExtResource("2_papve")]([SubResource("Resource_ev82s"), SubResource("Resource_v5go4"), SubResource("Resource_8hw04")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -60,3 +62,4 @@ shape = SubResource("CircleShape2D_xof3b")
 debug_color = Color(0.47451, 0.494118, 0.501961, 0.419608)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

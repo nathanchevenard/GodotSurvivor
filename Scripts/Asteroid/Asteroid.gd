@@ -24,8 +24,13 @@ enum ASTEROID_SIZE
 @export var torque : float = 50.0
 @export var size_min : float = 0.3
 @export var size_max : float = 2.5
+@export var attack : int = 10
+@export var cooldown : float = 1.0
 
 @export var asteroid_size_array : Array[AsteroidSize]
+
+var characters_in_range : Array[Character] = []
+var current_cooldown : float = 0.0
 
 var speed : float
 
@@ -53,6 +58,13 @@ func _physics_process(delta):
 	global_position += velocity
 	
 	rotation_degrees += torque * delta
+	
+	if current_cooldown < cooldown:
+		current_cooldown += delta
+	
+	if current_cooldown >= cooldown && characters_in_range.size() > 0:
+		current_cooldown = 0
+		characters_in_range[0].take_damage(attack)
 
 
 func destroy() -> void:
@@ -71,4 +83,14 @@ func update_size() -> void:
 
 func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("Player"):
-		body.destroy()
+		var character : Character = body as Character
+		if character != null:
+			character.take_damage(attack)
+			characters_in_range.append(character)
+			current_cooldown = 0.0
+
+
+func _on_area_2d_body_exited(body: Node2D):
+	var character : Character = body as Character
+	if character != null && characters_in_range.has(character):
+		characters_in_range.erase(character)

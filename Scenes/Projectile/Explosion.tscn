@@ -82,7 +82,7 @@ hitbox_duration = 0.2
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_n3y73")
 autoplay = "default"
-frame_progress = 0.0582551
+frame_progress = 0.301117
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1ljco")

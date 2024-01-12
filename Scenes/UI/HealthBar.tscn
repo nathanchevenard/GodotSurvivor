@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://d23qp5ohiqepc"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HealthBar.gd" id="1_mvdmi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemec"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywuuj"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql4a4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csi8c"]
+bg_color = Color(0, 0.486275, 0, 1)
+
+[node name="HealthBar" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 18.0
+offset_right = 14.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qemec")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ywuuj")
+value = 50.0
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBar" node_paths=PackedStringArray("progress_bar_under", "timer")]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 3.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ql4a4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_csi8c")
+value = 40.0
+show_percentage = false
+script = ExtResource("1_mvdmi")
+progress_bar_under = NodePath("..")
+timer = NodePath("../Timer")
+
+[node name="Timer" type="Timer" parent="ProgressBar"]
+wait_time = 0.4
+
+[connection signal="timeout" from="ProgressBar/Timer" to="ProgressBar/ProgressBar" method="_on_timer_timeout"]

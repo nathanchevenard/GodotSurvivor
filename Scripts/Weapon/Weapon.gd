@@ -11,7 +11,7 @@ class_name Weapon
 
 var character : Character
 
-var time : float = 0.0
+var current_cooldown : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,11 +20,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	time += delta
+	if current_cooldown < cooldown:
+		current_cooldown += delta
 	
-	if time >= cooldown:
+	if current_cooldown >= cooldown:
 		fire()
-		time -= cooldown
+		current_cooldown = 0
 
 
 func acquire_targets() -> Array[Node2D]:

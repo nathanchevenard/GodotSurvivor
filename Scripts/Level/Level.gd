@@ -27,6 +27,8 @@ var asteroids : Array[Asteroid]
 
 static var instance : Level = null
 
+signal game_end
+
 func _ready():
 	if instance != null:
 		push_warning("Multiple instances of Level tried to instantiate.")
@@ -106,3 +108,4 @@ func _on_menu_button_pressed():
 
 func _on_player_destroyed():
 	game_over.show()
+	game_end.emit()

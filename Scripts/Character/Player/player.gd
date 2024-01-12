@@ -11,9 +11,6 @@ var attack_cooldown : float = 0.0
 
 signal projectile_fired(projectile)
 
-func _ready():
-	pass
-
 
 func _physics_process(_delta):
 	#update_autoattack(_delta)

@@ -1,16 +1,34 @@
 extends CharacterBody2D
 class_name Character
 
-@export var max_speed : float = 100.0
+@export var speed_max : float = 100.0
 @export_range(0.0, 1.0) var position_acceleration : float = 0.1
 @export_range(0.0, 1.0) var rotation_acceleration : float = 0.1
 @export var target_groups : Array[String]
+
+@export var health_max : int = 10
+@export var shield_max : int = 0
+@export var shield_regen : float = 0
+
+var health : int = 0
+var shield : int = 0
+var current_shield_regen : float = 0.0
 
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
 var current_speed : float = 0.0
 
 signal destroyed
+signal health_changed(value : float)
+signal shield_changed(value : float)
+
+func _ready():
+	health = health_max
+	emit_health_changed()
+	
+	shield = shield_max
+	emit_shield_changed()
+
 
 func _physics_process(delta):
 	if current_direction != Vector2.ZERO:
@@ -18,6 +36,7 @@ func _physics_process(delta):
 		rotate_toward_direction()
 	
 	move()
+	update_shield(delta)
 
 
 func rotate_toward_direction() -> void:
@@ -29,7 +48,7 @@ func move() -> void:
 	if current_direction == Vector2.ZERO:
 		current_speed = lerp(current_speed, 0.0, position_acceleration)
 	else:
-		current_speed = lerp(current_speed, max_speed, position_acceleration)
+		current_speed = lerp(current_speed, speed_max, position_acceleration)
 	
 	velocity = last_direction * current_speed
 	move_and_slide()
@@ -55,6 +74,51 @@ func get_sorted_closest_entities(group_names : Array[String]) -> Array[Node]:
 	entities.sort_custom(func(a, b): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))	
 	
 	return entities
+
+
+func take_damage(damage : int):
+	if shield > 0:
+		shield -= damage
+		
+		if shield < 0:
+			damage = -shield
+			shield = 0
+		else:
+			damage = 0
+		
+		emit_shield_changed()
+	
+	health -= damage
+	emit_health_changed()
+	
+	if health <= 0:
+		destroy()
+
+
+func update_shield(delta: float):
+	if shield_regen == 0 || shield >= shield_max:
+		return
+	
+	current_shield_regen += delta
+	
+	if current_shield_regen >= shield_regen:
+		current_shield_regen -= shield_regen
+		shield += 1
+		emit_shield_changed()
+
+
+func emit_health_changed():
+	if health_max != 0:
+			health_changed.emit(100 * health / health_max)
+	else:
+		health_changed.emit(0.0)
+
+
+func emit_shield_changed():
+	if shield_max != 0:
+			shield_changed.emit(100 * shield / shield_max)
+	else:
+		shield_changed.emit(0.0)
 
 
 func destroy() -> void:

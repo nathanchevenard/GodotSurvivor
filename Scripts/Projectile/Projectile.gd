@@ -25,5 +25,6 @@ func _physics_process(delta):
 func _on_body_entered(body : Node2D):
 	if weapon != null:
 		for target_group in weapon.target_groups:
-			if body.is_in_group(target_group) == true:
-				body.destroy()
+			if body.is_in_group(target_group) == true && weapon != null:
+				var character : Character = body as Character
+				character.take_damage(weapon.damage)

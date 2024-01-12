@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgxyci6epggm8"]
+[gd_scene load_steps=10 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
 [ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Projectile/Blast.tscn" id="2_ywvpm"]
@@ -6,17 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Blaster.tscn" id="4_vn0rv"]
 [ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Laser.tscn" id="5_m1bf1"]
 [ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/BombLauncher.tscn" id="6_dsrmc"]
+[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/HealthBar.tscn" id="7_0rhm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
 radius = 11.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qshp3"]
+bg_color = Color(0, 0.356863, 0.709804, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("1_xm3y8")
 attack_speed = 0.5
 projectile_scene = ExtResource("2_ywvpm")
 target_groups = Array[String](["Enemy"])
+health_max = 100
+shield_max = 30
+shield_regen = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -28,10 +35,30 @@ shape = SubResource("CircleShape2D_w5q1e")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
+damage = 10.0
 cooldown = 1.0
 projectile_number = 5
 
 [node name="Laser" parent="." instance=ExtResource("5_m1bf1")]
+damage = 10.0
 projectile_number = 2
 
 [node name="BombLauncher" parent="." instance=ExtResource("6_dsrmc")]
+damage = 10.0
+
+[node name="HealthBar" parent="." instance=ExtResource("7_0rhm3")]
+
+[node name="ShieldBar" parent="." instance=ExtResource("7_0rhm3")]
+
+[node name="ProgressBar" parent="ShieldBar" index="0"]
+offset_top = 22.0
+offset_bottom = 25.0
+
+[node name="ProgressBar" parent="ShieldBar/ProgressBar" index="0"]
+theme_override_styles/fill = SubResource("StyleBoxFlat_qshp3")
+
+[connection signal="health_changed" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_value_update"]
+[connection signal="shield_changed" from="." to="ShieldBar/ProgressBar/ProgressBar" method="_on_value_update"]
+
+[editable path="HealthBar"]
+[editable path="ShieldBar"]

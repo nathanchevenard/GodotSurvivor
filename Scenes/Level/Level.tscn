@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=10 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://clvvt6oylh6ou" path="res://Scenes/UI/Joystick.tscn" id="6_o0aqk"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/BlackHole.png" id="7_kfec1"]
 [ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
+[ext_resource type="Script" path="res://Scripts/UI/GameStatistic.gd" id="9_pcfry"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lh7mg")
@@ -75,6 +76,17 @@ layout_mode = 2
 [node name="Joystick" parent="BorderLayer" instance=ExtResource("6_o0aqk")]
 visible = false
 
+[node name="Timer" type="Label" parent="BorderLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.5
+offset_right = 20.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "00:00"
+script = ExtResource("9_pcfry")
+
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOver" type="Control" parent="GameOverLayer"]
@@ -119,6 +131,7 @@ text = "Retry"
 layout_mode = 2
 text = "Menu"
 
+[connection signal="game_end" from="." to="BorderLayer/Timer" method="_on_game_end"]
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
 [connection signal="timeout" from="EnemyHandler/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="ObstacleHandler/ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]
