@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Character/Enemy/Enemy.gd" id="1_q31j1"]
 [ext_resource type="Texture2D" uid="uid://mr1ai7nel24y" path="res://Sprites/Ship/BaseEnemy2.png" id="2_n2anr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ajf76"]
-radius = 8.71428
+[sub_resource type="CircleShape2D" id="CircleShape2D_nkmkb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcmls"]
 radius = 11.5714
@@ -23,7 +22,7 @@ texture = ExtResource("2_n2anr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0)
-shape = SubResource("CircleShape2D_ajf76")
+shape = SubResource("CircleShape2D_nkmkb")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
 [node name="Area2D" type="Area2D" parent="."]

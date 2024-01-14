@@ -71,7 +71,7 @@ func get_sorted_closest_entities(group_names : Array[String]) -> Array[Node]:
 	for group_name in group_names:
 		entities.append_array(get_tree().get_nodes_in_group(group_name))
 		
-	entities.sort_custom(func(a, b): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))	
+	entities.sort_custom(func(a, b): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	
 	return entities
 

@@ -20,10 +20,11 @@ enemy_scene = ExtResource("8_xwq3q")
 direction_random_variation = 15.0
 enemy_incrementation_threshold = 25
 enemy_spawn_number = 2
+enemy_max_number = 250
 
 [node name="DebugOptions" type="Node" parent="."]
 script = ExtResource("10_2qfsf")
-player_immortal = true
+enemies_spawn_number = 2
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
 

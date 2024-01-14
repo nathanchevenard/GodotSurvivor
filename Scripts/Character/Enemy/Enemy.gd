@@ -2,24 +2,34 @@ extends Character
 class_name Enemy
 
 @export var attack : int = 10
-@export var cooldown : float = 1.0
+@export var attack_cooldown : float = 1.0
 
 var characters_in_range : Array[Character] = []
-var current_cooldown : float = 0.0
+var current_attack_cooldown : float = 0.0
+
+var update_closest_player_cooldown : float = 3.0
+var current_update_closest_player_cooldown : float = 0.0
+var closest_player : Player
 
 func _init():
 	Level.instance.enemies.append(self)
+	
+	current_update_closest_player_cooldown = update_closest_player_cooldown
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var player = get_closest_entity(target_groups)
+	current_update_closest_player_cooldown += delta
 	
-	if player == null:
+	if current_update_closest_player_cooldown >= update_closest_player_cooldown:
+		current_update_closest_player_cooldown = 0.0
+		closest_player = get_closest_entity(target_groups) as Player
+	
+	if closest_player == null:
 		push_warning("No player found for Enemy.")
 		return
 	
-	current_direction = player.global_position - global_position
+	current_direction = closest_player.global_position - global_position
 	
 	super(delta)
 	
@@ -27,11 +37,11 @@ func _physics_process(delta):
 
 
 func update_attack(delta: float):
-	if current_cooldown < cooldown:
-		current_cooldown += delta
+	if current_attack_cooldown < attack_cooldown:
+		current_attack_cooldown += delta
 	
-	if current_cooldown >= cooldown && characters_in_range.size() > 0:
-		current_cooldown = 0
+	if current_attack_cooldown >= attack_cooldown && characters_in_range.size() > 0:
+		current_attack_cooldown = 0
 		characters_in_range[0].take_damage(attack)
 
 

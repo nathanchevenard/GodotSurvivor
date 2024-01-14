@@ -22,6 +22,7 @@ class_name Level
 @export var enemy_incrementation_threshold : int = 10
 @export var current_enemy_incrementation : int = 0
 @export var enemy_spawn_number : int = 1
+@export var enemy_max_number : int = 300
 
 var asteroids : Array[Asteroid]
 var enemies : Array[Enemy]
@@ -68,6 +69,8 @@ func _on_enemy_spawn_timer_timeout():
 	
 	for i in range(enemy_spawn_number):
 		for player : Player in players:
+			if enemies.size() >= enemy_max_number:
+				return
 			spawn_scene_around_position(enemy_scene, player.global_position)
 	
 	current_enemy_incrementation += 1
