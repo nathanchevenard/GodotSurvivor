@@ -24,12 +24,16 @@ class_name Level
 @export var enemy_spawn_number : int = 1
 
 var asteroids : Array[Asteroid]
+var enemies : Array[Enemy]
+
+var toggle_asteroids : bool = true
+var toggle_enemies : bool = true
 
 static var instance : Level = null
 
 signal game_end
 
-func _ready():
+func _init():
 	if instance != null:
 		push_warning("Multiple instances of Level tried to instantiate.")
 		return
@@ -37,7 +41,15 @@ func _ready():
 	instance = self
 
 
+func _process(delta):
+	print("enemies: " + str(enemies.size()))
+	print("asteroids: " + str(asteroids.size()))
+
+
 func _on_obstacle_spawn_timer_timeout():
+	if toggle_asteroids == false:
+		return
+	
 	spawn_asteroid_on_border()
 
 
@@ -48,19 +60,10 @@ func spawn_asteroid_on_border() -> void:
 		spawn_scene_around_position(asteroid_scene, player.global_position)
 
 
-func spawn_asteroid(pos: Vector2, dir: Vector2, size: Asteroid.ASTEROID_SIZE) -> void:
-	var asteroid : Asteroid = asteroid_scene.instantiate()
-	enemy_handler.add_child.call_deferred((asteroid))
-	
-	asteroid.position = pos
-	asteroid.direction = dir
-	asteroid.size = size
-	asteroids.append(asteroid)
-	
-	asteroid.destroyed.connect(on_asteroid_destroy.bind(asteroid))
-
-
 func _on_enemy_spawn_timer_timeout():
+	if toggle_enemies == false:
+		return
+	
 	var players : Array[Node] = get_tree().get_nodes_in_group("Player")
 	
 	for i in range(enemy_spawn_number):
@@ -83,21 +86,6 @@ func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 	
 	instance.global_position = position + offset
 	#enemy.destroyed.connect(on_asteroid_destroy.bind(enemy))
-
-
-func on_asteroid_destroy(asteroid: Asteroid) -> void:
-	if asteroid.size > 0:
-		var nb_spawn = randi_range(0, 3)
-		
-		for i in range(nb_spawn):
-			var rotation_variance_rad = deg_to_rad(direction_random_variation)
-			var direction_rotation = 2 * randf_range(-rotation_variance_rad, rotation_variance_rad)
-			var dir = asteroid.direction.rotated(direction_rotation)
-			
-			spawn_asteroid(asteroid.global_position, dir, asteroid.size - 1)
-	
-	if asteroids.has(asteroid):
-		asteroids.erase(asteroid)
 
 
 func _on_retry_button_pressed():

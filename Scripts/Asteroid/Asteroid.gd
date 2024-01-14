@@ -51,6 +51,8 @@ func _ready():
 	global_scale = Vector2(random_size, random_size)	
 	
 	speed = randf_range(speed_min, speed_max)
+	
+	Level.instance.asteroids.append(self)
 
 
 func _physics_process(delta):
@@ -68,6 +70,7 @@ func _physics_process(delta):
 
 
 func destroy() -> void:
+	Level.instance.asteroids.erase(self)
 	destroyed.emit()
 	queue_free()
 

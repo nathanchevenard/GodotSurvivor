@@ -1,7 +1,7 @@
 extends Character
 class_name Player
 
-@export var is_god_mode : bool = false
+@export var is_immortal : bool = false
 @export var attack_speed : float = 1
 
 @export var projectile_scene : PackedScene
@@ -55,7 +55,7 @@ func fire(angle : float) -> void:
 
 
 func destroy() -> void:
-	if is_god_mode == true:
+	if is_immortal == true:
 		return
 	
 	super()

@@ -7,6 +7,10 @@ class_name Enemy
 var characters_in_range : Array[Character] = []
 var current_cooldown : float = 0.0
 
+func _init():
+	Level.instance.enemies.append(self)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var player = get_closest_entity(target_groups)
@@ -44,3 +48,8 @@ func _on_area_2d_body_exited(body: Node2D):
 	var character : Character = body as Character
 	if character != null && characters_in_range.has(character):
 		characters_in_range.erase(character)
+
+
+func destroy():
+	Level.instance.enemies.erase(self)
+	super()
