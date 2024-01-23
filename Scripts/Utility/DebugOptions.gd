@@ -27,5 +27,6 @@ func _ready():
 	if enemies_spawn_number > 0:
 		Level.instance.enemy_spawn_number = enemies_spawn_number
 
+
 func _process(delta):
 	print("FPS: " + str(Engine.get_frames_per_second()))

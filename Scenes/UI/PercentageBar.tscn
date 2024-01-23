@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d23qp5ohiqepc"]
 
-[ext_resource type="Script" path="res://Scripts/UI/HealthBar.gd" id="1_mvdmi"]
+[ext_resource type="Script" path="res://Scripts/UI/HealthBar.gd" id="1_f8ctp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemec"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,7 +17,8 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csi8c"]
 bg_color = Color(0, 0.486275, 0, 1)
 
-[node name="HealthBar" type="CanvasLayer"]
+[node name="HealthBar" type="Node2D"]
+top_level = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = 8
@@ -44,7 +45,7 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_ql4a4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_csi8c")
 value = 40.0
 show_percentage = false
-script = ExtResource("1_mvdmi")
+script = ExtResource("1_f8ctp")
 progress_bar_under = NodePath("..")
 timer = NodePath("../Timer")
 

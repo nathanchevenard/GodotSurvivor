@@ -15,7 +15,7 @@ class_name Level
 @export var enemy_spawn_range_max : float = 40
 
 @export var asteroid_scene : PackedScene
-@export var enemy_scene : PackedScene
+@export var enemy_spawn_infos : Array[EnemySpawnInfo]
 @export var spawn_circle_radius : float  = 350.0
 @export_range(0.0, 180.0) var direction_random_variation : float = 40.0
 
@@ -33,6 +33,7 @@ var toggle_enemies : bool = true
 static var instance : Level = null
 
 signal game_end
+
 
 func _init():
 	if instance != null:
@@ -71,6 +72,8 @@ func _on_enemy_spawn_timer_timeout():
 		for player : Player in players:
 			if enemies.size() >= enemy_max_number:
 				return
+			
+			var enemy_scene : PackedScene = get_random_enemy()
 			spawn_scene_around_position(enemy_scene, player.global_position)
 	
 	current_enemy_incrementation += 1
@@ -78,6 +81,22 @@ func _on_enemy_spawn_timer_timeout():
 		current_enemy_incrementation -= enemy_incrementation_threshold
 		enemy_spawn_number += 1
 
+
+func get_random_enemy() -> PackedScene:
+	var weight_sum : float = 0.0
+	
+	for enemy_spawn_info : EnemySpawnInfo in enemy_spawn_infos:
+		weight_sum += enemy_spawn_info.weight
+	
+	var random_number : float = randf_range(0.0, weight_sum)
+	var current_weight : float = 0.0
+	
+	for enemy_spawn_info : EnemySpawnInfo in enemy_spawn_infos:
+		current_weight += enemy_spawn_info.weight
+		if random_number <= current_weight:
+			return enemy_spawn_info.enemy_scene
+	
+	return null
 
 func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 	var instance : Node2D = scene.instantiate() as Node2D
@@ -92,7 +111,8 @@ func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 
 
 func _on_retry_button_pressed():
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")
 
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")

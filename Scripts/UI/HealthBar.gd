@@ -6,6 +6,9 @@ class_name HealthBar
 
 var last_value : float = 0.0
 
+#func _process(delta):
+	#rotation = 0.0
+
 func _on_value_update(value : float):
 	self.value = value
 	timer.start()

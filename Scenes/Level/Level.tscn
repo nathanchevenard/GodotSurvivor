@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=15 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
 [ext_resource type="PackedScene" uid="uid://c5y64cygox0xe" path="res://Scenes/Asteroid/Asteroid.tscn" id="2_byko3"]
 [ext_resource type="Script" path="res://Scripts/Projectile/ProjectileFactory.gd" id="2_nimkm"]
+[ext_resource type="Script" path="res://Scripts/Character/Enemy/EnemySpawnInfo.gd" id="4_2vapx"]
+[ext_resource type="PackedScene" uid="uid://bskqt7gbyvfh7" path="res://Scenes/Enemy/Ravager.tscn" id="5_65rq2"]
 [ext_resource type="Texture2D" uid="uid://dc43qctv5bvyx" path="res://Sprites/Blue_Nebula_04-1024x1024.png" id="6_3l8n2"]
 [ext_resource type="PackedScene" uid="uid://clvvt6oylh6ou" path="res://Scenes/UI/Joystick.tscn" id="6_o0aqk"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/BlackHole.png" id="7_kfec1"]
@@ -11,12 +13,22 @@
 [ext_resource type="Script" path="res://Scripts/UI/GameStatistic.gd" id="9_pcfry"]
 [ext_resource type="Script" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
 
+[sub_resource type="Resource" id="Resource_6u0nf"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("8_xwq3q")
+weight = 30.0
+
+[sub_resource type="Resource" id="Resource_olx7e"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("5_65rq2")
+weight = 1.0
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lh7mg")
 enemy_spawn_range_min = 300.0
 enemy_spawn_range_max = 300.0
 asteroid_scene = ExtResource("2_byko3")
-enemy_scene = ExtResource("8_xwq3q")
+enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_olx7e")])
 direction_random_variation = 15.0
 enemy_incrementation_threshold = 25
 enemy_spawn_number = 2

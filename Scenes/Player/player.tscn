@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Blaster.tscn" id="4_vn0rv"]
 [ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Laser.tscn" id="5_m1bf1"]
 [ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/BombLauncher.tscn" id="6_dsrmc"]
-[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/HealthBar.tscn" id="7_0rhm3"]
+[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="7_e1xj6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
 radius = 11.0
@@ -46,19 +46,27 @@ projectile_number = 2
 [node name="BombLauncher" parent="." instance=ExtResource("6_dsrmc")]
 damage = 10.0
 
-[node name="HealthBar" parent="." instance=ExtResource("7_0rhm3")]
-
-[node name="ShieldBar" parent="." instance=ExtResource("7_0rhm3")]
-
-[node name="ProgressBar" parent="ShieldBar" index="0"]
-offset_top = 22.0
-offset_bottom = 25.0
+[node name="ShieldBar" parent="." instance=ExtResource("7_e1xj6")]
 
 [node name="ProgressBar" parent="ShieldBar/ProgressBar" index="0"]
 theme_override_styles/fill = SubResource("StyleBoxFlat_qshp3")
 
+[node name="HealthBar" parent="." instance=ExtResource("7_e1xj6")]
+
+[node name="ProgressBar" parent="HealthBar" index="0"]
+offset_top = 22.0
+offset_bottom = 25.0
+
+[node name="RemoteTransformShield" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../ShieldBar")
+update_rotation = false
+
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../HealthBar")
+update_rotation = false
+
 [connection signal="health_changed" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_value_update"]
 [connection signal="shield_changed" from="." to="ShieldBar/ProgressBar/ProgressBar" method="_on_value_update"]
 
-[editable path="HealthBar"]
 [editable path="ShieldBar"]
+[editable path="HealthBar"]
