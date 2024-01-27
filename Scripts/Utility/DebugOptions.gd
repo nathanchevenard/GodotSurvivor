@@ -6,6 +6,7 @@ class_name DebugOptions
 @export var toggle_asteroids : bool = true
 @export var toggle_enemies : bool = true
 @export var enemies_spawn_number : int = -1
+@export var enemies_spawn_timer : float = -1
 
 var players : Array[Player]
 
@@ -18,6 +19,13 @@ func _ready():
 		for player in players:
 			player.is_immortal = true
 	
+	if player_toggle_weapons == false:
+		for player in players:
+			player.init_weapons()
+			
+			for weapon in player.weapons:
+				weapon.queue_free()
+	
 	if toggle_asteroids == false:
 		Level.instance.toggle_asteroids = false
 	
@@ -26,7 +34,12 @@ func _ready():
 	
 	if enemies_spawn_number > 0:
 		Level.instance.enemy_spawn_number = enemies_spawn_number
+	
+	if enemies_spawn_timer > 0:
+		Level.instance.enemy_spawn_timer = enemies_spawn_timer
+		Level.instance.current_enemy_spawn_timer = enemies_spawn_timer
 
 
 func _process(delta):
-	print("FPS: " + str(Engine.get_frames_per_second()))
+	#print("FPS: " + str(Engine.get_frames_per_second()))
+	pass

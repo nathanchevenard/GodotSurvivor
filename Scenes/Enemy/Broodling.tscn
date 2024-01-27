@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8fd3xjj47eai"]
+[gd_scene load_steps=7 format=3 uid="uid://c8fd3xjj47eai"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Enemy/Broodling.gd" id="1_ys715"]
 [ext_resource type="Texture2D" uid="uid://mr1ai7nel24y" path="res://Sprites/Ship/BaseEnemy2.png" id="2_n2anr"]
+[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_x7eaa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nkmkb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcmls"]
 radius = 11.5714
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndmkx"]
+bg_color = Color(0.74902, 0, 0, 1)
 
 [node name="Broodling" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.7, 0.7)
@@ -17,11 +21,12 @@ speed_max = 70.0
 target_groups = Array[String](["Player"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.85714, 0)
 rotation = 1.5708
 texture = ExtResource("2_n2anr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 0)
+position = Vector2(-2.38419e-07, 0)
 shape = SubResource("CircleShape2D_nkmkb")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
@@ -29,9 +34,33 @@ debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-3, 0)
+position = Vector2(-2.38419e-07, 0)
 shape = SubResource("CircleShape2D_gcmls")
 debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
+[node name="HealthBar" parent="." instance=ExtResource("3_x7eaa")]
+scale = Vector2(0.7, 0.7)
+
+[node name="ProgressBar" parent="HealthBar" index="0"]
+visible = false
+offset_left = -11.4286
+offset_top = 20.0
+offset_right = 10.5714
+offset_bottom = 22.0
+
+[node name="ProgressBar" parent="HealthBar/ProgressBar" index="0"]
+offset_right = 22.0
+offset_bottom = 2.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ndmkx")
+
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../HealthBar")
+update_rotation = false
+
+[connection signal="health_changed" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_value_update"]
+[connection signal="on_health_become_full" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_health_become_full"]
+[connection signal="on_health_become_not_full" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_health_become_not_full"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="HealthBar"]

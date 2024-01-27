@@ -16,3 +16,17 @@ func _on_value_update(value : float):
 
 func _on_timer_timeout():
 	progress_bar_under.value = last_value
+
+
+func _on_health_become_not_full():
+	var parent : ProgressBar = get_parent() as ProgressBar
+	
+	if parent != null:
+		parent.show()
+
+
+func _on_health_become_full():
+	var parent : ProgressBar = get_parent() as ProgressBar
+	
+	if parent != null:
+		parent.hide()

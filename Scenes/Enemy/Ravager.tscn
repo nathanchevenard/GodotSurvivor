@@ -20,6 +20,10 @@ bg_color = Color(0.74902, 0, 0, 1)
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_2v341")
+charge_channelling_duration = 0.2
+charge_duration = 0.7
+charge_speed = 300.0
+charge_range_coefficient = 0.8
 attack = 35
 speed_max = 70.0
 target_groups = Array[String](["Player"])
@@ -46,6 +50,7 @@ debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 [node name="ShieldBar" parent="." instance=ExtResource("3_gsr3w")]
 
 [node name="ProgressBar" parent="ShieldBar" index="0"]
+visible = false
 offset_top = 25.0
 offset_bottom = 28.0
 
@@ -56,6 +61,7 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthBar" parent="." instance=ExtResource("3_gsr3w")]
 
 [node name="ProgressBar" parent="HealthBar" index="0"]
+visible = false
 offset_top = 29.0
 offset_bottom = 32.0
 
@@ -71,6 +77,10 @@ remote_path = NodePath("../HealthBar")
 update_rotation = false
 
 [connection signal="health_changed" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_value_update"]
+[connection signal="on_health_become_full" from="." to="ShieldBar/ProgressBar/ProgressBar" method="_on_health_become_full"]
+[connection signal="on_health_become_full" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_health_become_full"]
+[connection signal="on_health_become_not_full" from="." to="ShieldBar/ProgressBar/ProgressBar" method="_on_health_become_not_full"]
+[connection signal="on_health_become_not_full" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_health_become_not_full"]
 [connection signal="shield_changed" from="." to="ShieldBar/ProgressBar/ProgressBar" method="_on_value_update"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

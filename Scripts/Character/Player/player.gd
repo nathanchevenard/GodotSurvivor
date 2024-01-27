@@ -8,8 +8,14 @@ class_name Player
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
 var attack_cooldown : float = 0.0
+var weapons : Array[Weapon]
 
 signal projectile_fired(projectile)
+
+func _ready():
+	super()
+	
+	init_weapons()
 
 
 func _physics_process(_delta):
@@ -24,6 +30,15 @@ func _physics_process(_delta):
 func _input(event):
 	if DeviceDetection.is_computer():
 		current_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
+
+func init_weapons():
+	if weapons != null && weapons.size() > 0:
+		return
+	
+	for child in get_children():
+		if child is Weapon:
+			weapons.append(child)
 
 
 func update_autoattack(_delta : float):

@@ -33,6 +33,7 @@ texture = ExtResource("3_apoam")
 shape = SubResource("CircleShape2D_w5q1e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 
 [node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
 damage = 10.0

@@ -11,14 +11,12 @@ class_name Level
 @onready var screen_height : float = ProjectSettings.get_setting("display/window/size/viewport_height") 
 @onready var screen_size : Vector2 = Vector2(screen_width, screen_height)
 
-@export var enemy_spawn_range_min : float = 30
-@export var enemy_spawn_range_max : float = 40
-
 @export var asteroid_scene : PackedScene
 @export var enemy_spawn_infos : Array[EnemySpawnInfo]
 @export var spawn_circle_radius : float  = 350.0
 @export_range(0.0, 180.0) var direction_random_variation : float = 40.0
 
+@export var enemy_spawn_timer : float = 0.5
 @export var enemy_incrementation_threshold : int = 10
 @export var current_enemy_incrementation : int = 0
 @export var enemy_spawn_number : int = 1
@@ -27,6 +25,7 @@ class_name Level
 var asteroids : Array[Asteroid]
 var enemies : Array[Enemy]
 
+var current_enemy_spawn_timer : float = 0.0
 var toggle_asteroids : bool = true
 var toggle_enemies : bool = true
 
@@ -44,8 +43,13 @@ func _init():
 
 
 func _process(delta):
-	print("enemies: " + str(enemies.size()))
-	print("asteroids: " + str(asteroids.size()))
+	#print("enemies: " + str(enemies.size()))
+	#print("asteroids: " + str(asteroids.size()))
+	
+	current_enemy_spawn_timer += delta
+	if current_enemy_spawn_timer >= enemy_spawn_timer:
+		current_enemy_spawn_timer = 0.0
+		spawn_enemy()
 
 
 func _on_obstacle_spawn_timer_timeout():
@@ -62,7 +66,7 @@ func spawn_asteroid_on_border() -> void:
 		spawn_scene_around_position(asteroid_scene, player.global_position)
 
 
-func _on_enemy_spawn_timer_timeout():
+func spawn_enemy():
 	if toggle_enemies == false:
 		return
 	
@@ -71,7 +75,8 @@ func _on_enemy_spawn_timer_timeout():
 	for i in range(enemy_spawn_number):
 		for player : Player in players:
 			if enemies.size() >= enemy_max_number:
-				return
+				var removed_enemy = enemies.pop_at(0)
+				removed_enemy.queue_free()
 			
 			var enemy_scene : PackedScene = get_random_enemy()
 			spawn_scene_around_position(enemy_scene, player.global_position)
@@ -103,8 +108,7 @@ func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 	enemy_handler.add_child.call_deferred((instance))
 	
 	var random_angle : float = randf_range(0.0, 2 * PI)
-	var random_range : float = randf_range(enemy_spawn_range_min, enemy_spawn_range_max)
-	var offset = Vector2.RIGHT.rotated(random_angle) * random_range
+	var offset = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
 	
 	instance.global_position = position + offset
 	#enemy.destroyed.connect(on_asteroid_destroy.bind(enemy))

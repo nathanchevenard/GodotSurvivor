@@ -6,17 +6,17 @@
 [ext_resource type="Script" path="res://Scripts/Projectile/ProjectileFactory.gd" id="2_nimkm"]
 [ext_resource type="Script" path="res://Scripts/Character/Enemy/EnemySpawnInfo.gd" id="4_2vapx"]
 [ext_resource type="PackedScene" uid="uid://bskqt7gbyvfh7" path="res://Scenes/Enemy/Ravager.tscn" id="5_65rq2"]
-[ext_resource type="Texture2D" uid="uid://dc43qctv5bvyx" path="res://Sprites/Blue_Nebula_04-1024x1024.png" id="6_3l8n2"]
 [ext_resource type="PackedScene" uid="uid://clvvt6oylh6ou" path="res://Scenes/UI/Joystick.tscn" id="6_o0aqk"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/BlackHole.png" id="7_kfec1"]
 [ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
 [ext_resource type="Script" path="res://Scripts/UI/GameStatistic.gd" id="9_pcfry"]
+[ext_resource type="Texture2D" uid="uid://kddkwqh58rdh" path="res://Sprites/Blue_Nebula_04-2048x1024.png" id="9_wyh5q"]
 [ext_resource type="Script" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("8_xwq3q")
-weight = 30.0
+weight = 50.0
 
 [sub_resource type="Resource" id="Resource_olx7e"]
 script = ExtResource("4_2vapx")
@@ -25,10 +25,9 @@ weight = 1.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lh7mg")
-enemy_spawn_range_min = 300.0
-enemy_spawn_range_max = 300.0
 asteroid_scene = ExtResource("2_byko3")
 enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_olx7e")])
+spawn_circle_radius = 400.0
 direction_random_variation = 15.0
 enemy_incrementation_threshold = 25
 enemy_spawn_number = 2
@@ -37,6 +36,7 @@ enemy_max_number = 250
 [node name="DebugOptions" type="Node" parent="."]
 script = ExtResource("10_2qfsf")
 enemies_spawn_number = 2
+enemies_spawn_timer = 0.5
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
 
@@ -46,10 +46,6 @@ script = ExtResource("2_nimkm")
 
 [node name="EnemyHandler" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="EnemySpawnTimer" type="Timer" parent="EnemyHandler"]
-wait_time = 0.5
-autostart = true
 
 [node name="ObstacleHandler" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -61,15 +57,15 @@ autostart = true
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1024, 1024)
+motion_mirroring = Vector2(2048, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("6_3l8n2")
+texture = ExtResource("9_wyh5q")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(256, 256)
 motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(1024, 1024)
+motion_mirroring = Vector2(2048, 1024)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("7_kfec1")
@@ -151,7 +147,6 @@ text = "Menu"
 
 [connection signal="game_end" from="." to="BorderLayer/Timer" method="_on_game_end"]
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
-[connection signal="timeout" from="EnemyHandler/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="ObstacleHandler/ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

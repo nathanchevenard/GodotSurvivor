@@ -22,6 +22,10 @@ signal destroyed
 signal health_changed(value : float)
 signal shield_changed(value : float)
 
+signal on_health_become_full
+signal on_health_become_not_full
+
+
 func _ready():
 	health = health_max
 	emit_health_changed()
@@ -77,6 +81,9 @@ func get_sorted_closest_entities(group_names : Array[String]) -> Array[Node]:
 
 
 func take_damage(damage : int):
+	if shield == shield_max && health == health_max && damage > 0:
+		on_health_become_not_full.emit()
+	
 	if shield > 0:
 		shield -= damage
 		
@@ -95,6 +102,17 @@ func take_damage(damage : int):
 		destroy()
 
 
+func heal(amount: int):
+	if health == health_max:
+		return
+	
+	health = clampi(0, health_max, health + amount)
+	emit_health_changed()
+	
+	if health == health_max && shield == shield_max:
+		on_health_become_full.emit()
+
+
 func update_shield(delta: float):
 	if shield_regen == 0 || shield >= shield_max:
 		return
@@ -105,6 +123,9 @@ func update_shield(delta: float):
 		current_shield_regen -= shield_regen
 		shield += 1
 		emit_shield_changed()
+	
+	if shield == shield_max && health == health_max:
+		on_health_become_full.emit()
 
 
 func emit_health_changed():
