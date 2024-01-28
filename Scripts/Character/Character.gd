@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
-@export var speed_max : float = 100.0
+@export var speed_max : float = 70.0
 @export_range(0.0, 1.0) var position_acceleration : float = 0.1
 @export_range(0.0, 1.0) var rotation_acceleration : float = 0.1
 @export var target_groups : Array[String]

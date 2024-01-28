@@ -1,39 +1,39 @@
 [gd_scene load_steps=13 format=3 uid="uid://tdox552sfv6n"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile/Bomb.gd" id="1_ateem"]
-[ext_resource type="Texture2D" uid="uid://d3d0v28humsev" path="res://Sprites/Projectiles/drone death explosion-Sheet.png" id="2_doqu3"]
 [ext_resource type="PackedScene" uid="uid://3lauyq7wythy" path="res://Scenes/Projectile/Explosion.tscn" id="2_ys227"]
+[ext_resource type="Texture2D" uid="uid://d3d0v28humsev" path="res://Sprites/Projectiles/BombExplosion.png" id="3_7mhnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m57xa"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jb647"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcxy6"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckjo1"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvaji"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fphw"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhxn6"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f68ga"]
-atlas = ExtResource("2_doqu3")
+atlas = ExtResource("3_7mhnd")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_frbt0"]

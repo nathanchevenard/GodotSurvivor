@@ -9,3 +9,4 @@ target_groups = Array[String](["Enemy"])
 projectile = ExtResource("2_yr7wq")
 cooldown = 2.0
 projectile_number = 1
+projectile_lifetime = 0.5

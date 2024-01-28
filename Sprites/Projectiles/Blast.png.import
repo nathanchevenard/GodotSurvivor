@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3d0v28humsev"
-path="res://.godot/imported/drone death explosion-Sheet.png-38d61ebfab9f411a7db98d4522a4d1d4.ctex"
+uid="uid://fjxul6xubiq0"
+path="res://.godot/imported/Blast.png-45bcb372f8dcf82e7df4434386c466fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Projectiles/drone death explosion-Sheet.png"
-dest_files=["res://.godot/imported/drone death explosion-Sheet.png-38d61ebfab9f411a7db98d4522a4d1d4.ctex"]
+source_file="res://Sprites/Projectiles/Blast.png"
+dest_files=["res://.godot/imported/Blast.png-45bcb372f8dcf82e7df4434386c466fc.ctex"]
 
 [params]
 

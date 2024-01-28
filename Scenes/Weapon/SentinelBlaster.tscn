@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwc7gqdyu0gkt"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/Weapon.gd" id="1_qfmmi"]
+[ext_resource type="PackedScene" uid="uid://34ab4klw0j6d" path="res://Scenes/Projectile/SentinelBlast.tscn" id="2_5acx3"]
+
+[node name="SentinelBlaster" type="Node"]
+script = ExtResource("1_qfmmi")
+target_groups = Array[String](["Player"])
+projectile = ExtResource("2_5acx3")
+damage = 10.0
+range = 200.0
+cooldown = 3.0
+projectile_speed = 300.0
+projectile_number = 1

@@ -7,6 +7,6 @@
 script = ExtResource("1_pavr0")
 target_groups = Array[String](["Enemy"])
 projectile = ExtResource("2_g4gcm")
-projectile_speed = 200.0
 cooldown = 0.5
+projectile_speed = 200.0
 projectile_number = 1

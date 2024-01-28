@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8614jpydhhd"
-path="res://.godot/imported/projetilNew.png-e820f7746e4f881d441c22c6c405426e.ctex"
+path="res://.godot/imported/Beam.png-dbf1b6e33e2a569cf7417e91e01cff0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Projectiles/projetilNew.png"
-dest_files=["res://.godot/imported/projetilNew.png-e820f7746e4f881d441c22c6c405426e.ctex"]
+source_file="res://Sprites/Projectiles/Beam.png"
+dest_files=["res://.godot/imported/Beam.png-dbf1b6e33e2a569cf7417e91e01cff0d.ctex"]
 
 [params]
 

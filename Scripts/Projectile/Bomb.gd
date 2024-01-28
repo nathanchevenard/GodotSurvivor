@@ -7,7 +7,7 @@ class_name Bomb
 @export var explosion_scene : PackedScene
 
 var estimated_lifetime : float
-var current_lifetime : float = 0.0
+var current_bomb_lifetime : float = 0.0
 
 func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, speed : float):
 	super(weapon, starting_position, target, speed)
@@ -21,9 +21,9 @@ func _physics_process(delta):
 	super(delta)
 	
 	rotation_degrees += torque * delta
-	current_lifetime += delta
+	current_bomb_lifetime += delta
 	
-	if current_lifetime >= lifetime_max || current_lifetime >= estimated_lifetime:
+	if current_bomb_lifetime >= lifetime_max || current_bomb_lifetime >= estimated_lifetime:
 		if weapon != null:
 			var explosion : Projectile = explosion_scene.instantiate() as Projectile
 			explosion.initialize(weapon, global_position, null, 0.0)

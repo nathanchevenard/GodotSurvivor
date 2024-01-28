@@ -25,11 +25,10 @@ charge_duration = 0.7
 charge_speed = 300.0
 charge_range_coefficient = 0.8
 attack = 35
-speed_max = 70.0
 target_groups = Array[String](["Player"])
 health_max = 100
 shield_max = 30
-shield_regen = 1.0
+shield_regen = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)

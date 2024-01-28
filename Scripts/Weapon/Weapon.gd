@@ -4,14 +4,15 @@ class_name Weapon
 @export var target_groups : Array[String]
 @export var projectile : PackedScene
 @export var damage : float
-@export var range : float
-@export var projectile_speed : float
+@export var range : float = 0.0
 @export var cooldown : float
+@export var projectile_speed : float
 @export var projectile_number : int
+@export var projectile_lifetime : float = 5.0
 
 var character : Character
-
 var current_cooldown : float = 0.0
+var acquired_targets : Array[Node2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +24,7 @@ func _process(delta):
 	if current_cooldown < cooldown:
 		current_cooldown += delta
 	
-	if current_cooldown >= cooldown:
+	if current_cooldown >= cooldown && check_targets():
 		fire()
 		current_cooldown = 0
 
@@ -36,8 +37,20 @@ func acquire_targets() -> Array[Node2D]:
 	return ret
 
 
-func fire():
+func check_targets() -> bool:
+	acquired_targets.clear()
+	
 	for target in acquire_targets():
+		if range > 0 && character.global_position.distance_to(target.global_position) > range:
+			continue
+		
+		acquired_targets.append(target)
+	
+	return acquired_targets.size() > 0
+
+
+func fire():
+	for target in acquired_targets:
 		var projectile_instance : Projectile = projectile.instantiate() as Projectile
 		projectile_instance.initialize(self, character.global_position, target, projectile_speed)
 		Level.instance.projectile_handler.add_child(projectile_instance)

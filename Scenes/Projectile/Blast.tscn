@@ -1,22 +1,22 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7bn1br4k035r"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile/Blast.gd" id="1_uxrx4"]
-[ext_resource type="Texture2D" uid="uid://fjxul6xubiq0" path="res://Sprites/Projectiles/ProjectileSpriteSheet.png" id="2_0lhxk"]
+[ext_resource type="Texture2D" uid="uid://fjxul6xubiq0" path="res://Sprites/Projectiles/Blast.png" id="2_k30jc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_126i5"]
-atlas = ExtResource("2_0lhxk")
+atlas = ExtResource("2_k30jc")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0t2r"]
-atlas = ExtResource("2_0lhxk")
+atlas = ExtResource("2_k30jc")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aeekv"]
-atlas = ExtResource("2_0lhxk")
+atlas = ExtResource("2_k30jc")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvjcb"]
-atlas = ExtResource("2_0lhxk")
+atlas = ExtResource("2_k30jc")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_av4hx"]

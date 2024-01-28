@@ -41,8 +41,12 @@ func update_attack(delta: float):
 		current_attack_cooldown += delta
 	
 	if current_attack_cooldown >= attack_cooldown && characters_in_range.size() > 0:
+		trigger_attack()
 		current_attack_cooldown = 0
-		characters_in_range[0].take_damage(attack)
+
+
+func trigger_attack():
+	characters_in_range[0].take_damage(attack)
 
 
 func _on_area_2d_body_entered(body: Node2D):

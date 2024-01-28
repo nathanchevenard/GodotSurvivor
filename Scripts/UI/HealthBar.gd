@@ -6,13 +6,19 @@ class_name HealthBar
 
 var last_value : float = 0.0
 
-#func _process(delta):
-	#rotation = 0.0
+var is_init : bool = false
 
 func _on_value_update(value : float):
+	if value < self.value:
+		timer.start()
+	
 	self.value = value
-	timer.start()
 	last_value = value
+	
+	if is_init == false:
+		is_init = true
+		progress_bar_under.value = value
+
 
 func _on_timer_timeout():
 	progress_bar_under.value = last_value

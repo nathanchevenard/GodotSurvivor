@@ -1,32 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8fd3xjj47eai"]
+[gd_scene load_steps=8 format=3 uid="uid://xjrr711srctt"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Enemy/Broodling.gd" id="1_ys715"]
-[ext_resource type="Texture2D" uid="uid://mr1ai7nel24y" path="res://Sprites/Ship/BaseEnemy2.png" id="2_n2anr"]
-[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_x7eaa"]
+[ext_resource type="Script" path="res://Scripts/Character/Enemy/Sentinel.gd" id="1_w2qwd"]
+[ext_resource type="PackedScene" uid="uid://bwc7gqdyu0gkt" path="res://Scenes/Weapon/SentinelBlaster.tscn" id="2_2a38k"]
+[ext_resource type="Texture2D" uid="uid://7r8or44eh3ox" path="res://Sprites/Ship/Sentinel.png" id="2_r7cw0"]
+[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_6fcrk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nkmkb"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bg3c5"]
+radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gcmls"]
-radius = 11.5714
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrp8"]
+radius = 14.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndmkx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrfir"]
 bg_color = Color(0.74902, 0, 0, 1)
 
-[node name="Broodling" type="CharacterBody2D" groups=["Enemy"]]
-scale = Vector2(0.7, 0.7)
+[node name="Sentinel" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 11
-script = ExtResource("1_ys715")
+script = ExtResource("1_w2qwd")
 target_groups = Array[String](["Player"])
+health_max = 20
+
+[node name="SentinelBlaster" parent="." instance=ExtResource("2_2a38k")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.85714, 0)
 rotation = 1.5708
-texture = ExtResource("2_n2anr")
+texture = ExtResource("2_r7cw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, 0)
-shape = SubResource("CircleShape2D_nkmkb")
+shape = SubResource("CircleShape2D_bg3c5")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -34,23 +38,21 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2.38419e-07, 0)
-shape = SubResource("CircleShape2D_gcmls")
+shape = SubResource("CircleShape2D_onrp8")
 debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
-[node name="HealthBar" parent="." instance=ExtResource("3_x7eaa")]
-scale = Vector2(0.7, 0.7)
+[node name="HealthBar" parent="." instance=ExtResource("3_6fcrk")]
 
 [node name="ProgressBar" parent="HealthBar" index="0"]
 visible = false
-offset_left = -11.4286
-offset_top = 20.0
-offset_right = 10.5714
-offset_bottom = 22.0
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 20.0
 
 [node name="ProgressBar" parent="HealthBar/ProgressBar" index="0"]
-offset_right = 22.0
+offset_right = 24.0
 offset_bottom = 2.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_ndmkx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qrfir")
 
 [node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../HealthBar")

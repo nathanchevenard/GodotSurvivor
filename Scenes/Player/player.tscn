@@ -20,6 +20,7 @@ collision_mask = 8
 script = ExtResource("1_xm3y8")
 attack_speed = 0.5
 projectile_scene = ExtResource("2_ywvpm")
+speed_max = 100.0
 target_groups = Array[String](["Enemy"])
 health_max = 100
 shield_max = 30
