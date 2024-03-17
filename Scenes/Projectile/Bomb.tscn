@@ -1,77 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://tdox552sfv6n"]
+[gd_scene load_steps=4 format=3 uid="uid://tdox552sfv6n"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile/Bomb.gd" id="1_ateem"]
 [ext_resource type="PackedScene" uid="uid://3lauyq7wythy" path="res://Scenes/Projectile/Explosion.tscn" id="2_ys227"]
-[ext_resource type="Texture2D" uid="uid://d3d0v28humsev" path="res://Sprites/Projectiles/BombExplosion.png" id="3_7mhnd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m57xa"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jb647"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jcxy6"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckjo1"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvaji"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0fphw"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhxn6"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f68ga"]
-atlas = ExtResource("3_7mhnd")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_frbt0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m57xa")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jb647")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jcxy6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ckjo1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wvaji")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0fphw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yhxn6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f68ga")
-}],
-"loop": true,
-"name": &"explosion",
-"speed": 10.0
-}]
+[ext_resource type="Texture2D" uid="uid://chw6j1k3wh40o" path="res://Sprites/Projectiles/Bomb.png" id="3_1sglq"]
 
 [node name="Bomb" type="Node2D"]
 scale = Vector2(0.75, 0.75)
@@ -80,6 +11,7 @@ lifetime_max = 1.5
 torque = 250.0
 explosion_scene = ExtResource("2_ys227")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_frbt0")
-autoplay = "default"
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.33333)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_1sglq")

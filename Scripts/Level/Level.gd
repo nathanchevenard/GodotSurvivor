@@ -103,6 +103,7 @@ func get_random_enemy() -> PackedScene:
 	
 	return null
 
+
 func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 	var instance : Node2D = scene.instantiate() as Node2D
 	enemy_handler.add_child.call_deferred((instance))
@@ -114,13 +115,7 @@ func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 	#enemy.destroyed.connect(on_asteroid_destroy.bind(enemy))
 
 
-func _on_retry_button_pressed():
-	#get_tree().reload_current_scene()
-	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")
-
-func _on_menu_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")
-
 func _on_player_destroyed():
 	game_over.show()
+	PauseSystem.instance.start_pause()
 	game_end.emit()

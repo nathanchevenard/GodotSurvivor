@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://gckvhlh5xlb4"]
+
+[ext_resource type="Texture2D" uid="uid://bqvwnuipjy7u1" path="res://Sprites/Icons/Weapons/blaster.png" id="1_0sdop"]
+[ext_resource type="Script" path="res://Scripts/UI/UpgradeButton.gd" id="1_k8bql"]
+
+[node name="UpgradeButton" type="Button"]
+custom_minimum_size = Vector2(117, 168)
+offset_right = 117.0
+offset_bottom = 168.0
+script = ExtResource("1_k8bql")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.5
+offset_right = 33.5
+offset_bottom = 71.0
+grow_horizontal = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("1_0sdop")
+expand_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_top = 66.0
+offset_right = 117.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "TITRE"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Description fdsfdsfds fdsfds kkljlkjlkjmkljmlkj"
+horizontal_alignment = 1
+autowrap_mode = 3

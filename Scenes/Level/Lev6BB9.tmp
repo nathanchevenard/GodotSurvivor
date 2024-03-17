@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=20 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -15,9 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://p0mm6ln0fqpe" path="res://Scenes/Level/UpgradeSystem.tscn" id="9_rpw5f"]
 [ext_resource type="Texture2D" uid="uid://kddkwqh58rdh" path="res://Sprites/Blue_Nebula_04-2048x1024.png" id="9_wyh5q"]
 [ext_resource type="Script" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
-[ext_resource type="Resource" uid="uid://flnjm5wpel4g" path="res://Resources/Upgrades/WeaponUpgrades/BlasterAdditionalProjectile.tres" id="11_p6tnc"]
-[ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAdditionalProjectile.tres" id="12_ssiih"]
-[ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/LaserAdditionalProjectile.tres" id="13_x405r"]
 [ext_resource type="PackedScene" uid="uid://gckvhlh5xlb4" path="res://Scenes/UI/UpgradeButton.tscn" id="16_xe3ed"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
@@ -41,7 +38,7 @@ asteroid_scene = ExtResource("2_byko3")
 enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_olx7e"), SubResource("Resource_0qujo")])
 spawn_circle_radius = 400.0
 direction_random_variation = 15.0
-enemy_incrementation_threshold = 50
+enemy_incrementation_threshold = 25
 enemy_spawn_number = 2
 enemy_max_number = 250
 
@@ -50,11 +47,8 @@ script = ExtResource("10_2qfsf")
 
 [node name="PauseSystem" parent="." instance=ExtResource("8_smpvf")]
 
-[node name="UpgradeSystem" parent="." node_paths=PackedStringArray("container") instance=ExtResource("9_rpw5f")]
+[node name="UpgradeSystem" parent="." instance=ExtResource("9_rpw5f")]
 process_mode = 3
-container = NodePath("../UpgradeLayer/CenterContainer/HBoxContainer")
-button_scene = ExtResource("16_xe3ed")
-upgrades = Array[Resource("res://Scripts/Upgrade/Upgrade.gd")]([ExtResource("11_p6tnc"), ExtResource("12_ssiih"), ExtResource("13_x405r")])
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
 
@@ -115,21 +109,7 @@ grow_horizontal = 2
 text = "00:00"
 script = ExtResource("9_pcfry")
 
-[node name="UpgradeLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="UpgradeLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/CenterContainer"]
-layout_mode = 2
-
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
-process_mode = 3
 
 [node name="GameOver" type="Control" parent="GameOverLayer"]
 unique_name_in_owner = true
@@ -173,8 +153,23 @@ text = "Retry"
 layout_mode = 2
 text = "Menu"
 
+[node name="UpgradeLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="UpgradeButton" parent="UpgradeLayer/CenterContainer/HBoxContainer" instance=ExtResource("16_xe3ed")]
+layout_mode = 2
+
 [connection signal="game_end" from="." to="BorderLayer/Timer" method="_on_game_end"]
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
 [connection signal="timeout" from="ObstacleHandler/ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]
-[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="PauseSystem" method="_on_retry_button_pressed"]
-[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="PauseSystem" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

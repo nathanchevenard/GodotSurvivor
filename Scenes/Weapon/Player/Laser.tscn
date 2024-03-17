@@ -5,8 +5,9 @@
 
 [node name="Laser" type="Node"]
 script = ExtResource("1_brcov")
-target_groups = Array[String](["Enemy"])
+weapon_type = 1
 projectile = ExtResource("2_yr7wq")
+damage = 10.0
 cooldown = 2.0
 projectile_number = 1
 projectile_lifetime = 0.5

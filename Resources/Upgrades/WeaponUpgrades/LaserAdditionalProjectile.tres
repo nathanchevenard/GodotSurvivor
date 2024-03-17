@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://cgnma7x45fhcm"]
+
+[ext_resource type="Texture2D" uid="uid://d0838xxyvsgfk" path="res://Sprites/Icons/Weapons/laser.png" id="1_7aytu"]
+[ext_resource type="Script" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_rimml"]
+
+[resource]
+script = ExtResource("2_rimml")
+upgrade_type = 0
+impacted_weapon = 1
+value = 1.0
+name = "Laser +1 Projectile"
+description = "Laser +1 Projectile"
+icon = ExtResource("1_7aytu")

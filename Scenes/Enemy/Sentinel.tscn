@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://xjrr711srctt"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Enemy/Sentinel.gd" id="1_w2qwd"]
-[ext_resource type="PackedScene" uid="uid://bwc7gqdyu0gkt" path="res://Scenes/Weapon/SentinelBlaster.tscn" id="2_2a38k"]
+[ext_resource type="PackedScene" uid="uid://bwc7gqdyu0gkt" path="res://Scenes/Weapon/Enemy/SentinelBlaster.tscn" id="2_2a38k"]
 [ext_resource type="Texture2D" uid="uid://7r8or44eh3ox" path="res://Sprites/Ship/Sentinel.png" id="2_r7cw0"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_6fcrk"]
 

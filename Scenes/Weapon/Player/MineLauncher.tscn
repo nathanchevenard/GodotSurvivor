@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3mmhbqka7r4c"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon/MineLauncher.gd" id="1_vd7u6"]
+[ext_resource type="PackedScene" uid="uid://dk4xkjyjlmty6" path="res://Scenes/Projectile/Mine.tscn" id="2_6wgya"]
+
+[node name="MineLauncher" type="Node"]
+script = ExtResource("1_vd7u6")
+weapon_type = 3
+projectile = ExtResource("2_6wgya")
+damage = 10.0
+cooldown = 4.0
+projectile_number = 1
+projectile_coef_area_of_effect = 0.5

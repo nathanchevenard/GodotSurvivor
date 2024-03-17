@@ -9,13 +9,16 @@ class_name Player
 
 var attack_cooldown : float = 0.0
 var weapons : Array[Weapon]
+@export var upgrades : Array[Upgrade]
 
 signal projectile_fired(projectile)
+signal upgrade_added(upgrade)
 
 func _ready():
 	super()
 	
 	init_weapons()
+	init_upgrades()
 
 
 func _physics_process(_delta):
@@ -39,6 +42,16 @@ func init_weapons():
 	for child in get_children():
 		if child is Weapon:
 			weapons.append(child)
+			upgrade_added.connect(child.on_upgrade_added)
+
+
+func init_upgrades():
+	for upgrade in upgrades:
+		upgrade_added.emit(upgrade)
+
+
+func add_upgrade(upgrade : Upgrade):
+	upgrade_added.emit(upgrade)
 
 
 func update_autoattack(_delta : float):

@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgxyci6epggm8"]
+[gd_scene load_steps=11 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
 [ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Projectile/Blast.tscn" id="2_ywvpm"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
-[ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Blaster.tscn" id="4_vn0rv"]
-[ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Laser.tscn" id="5_m1bf1"]
-[ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/BombLauncher.tscn" id="6_dsrmc"]
+[ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Player/Blaster.tscn" id="4_vn0rv"]
+[ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Player/Laser.tscn" id="5_m1bf1"]
+[ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/Player/BombLauncher.tscn" id="6_dsrmc"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="7_e1xj6"]
+[ext_resource type="PackedScene" uid="uid://d3mmhbqka7r4c" path="res://Scenes/Weapon/Player/MineLauncher.tscn" id="7_srnvi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
 radius = 11.0
@@ -37,16 +38,16 @@ shape = SubResource("CircleShape2D_w5q1e")
 zoom = Vector2(0.75, 0.75)
 
 [node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
-damage = 10.0
 cooldown = 1.0
-projectile_number = 5
+projectile_number = 0
 
 [node name="Laser" parent="." instance=ExtResource("5_m1bf1")]
-damage = 10.0
-projectile_number = 2
+projectile_number = 0
 
 [node name="BombLauncher" parent="." instance=ExtResource("6_dsrmc")]
-damage = 10.0
+projectile_number = 0
+
+[node name="MineLauncher" parent="." instance=ExtResource("7_srnvi")]
 
 [node name="ShieldBar" parent="." instance=ExtResource("7_e1xj6")]
 

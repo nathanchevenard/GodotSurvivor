@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://p0mm6ln0fqpe"]
+
+[ext_resource type="Script" path="res://Scripts/Level/UpgradeSystem.gd" id="1_pexw7"]
+
+[node name="UpgradeSystem" type="Node"]
+script = ExtResource("1_pexw7")

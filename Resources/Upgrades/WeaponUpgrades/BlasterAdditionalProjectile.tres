@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://flnjm5wpel4g"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="1_4hbug"]
+[ext_resource type="Texture2D" uid="uid://bqvwnuipjy7u1" path="res://Sprites/Icons/Weapons/blaster.png" id="1_rhn7b"]
+
+[resource]
+script = ExtResource("1_4hbug")
+upgrade_type = 0
+impacted_weapon = 0
+value = 1.0
+name = "Blaster +1 Projectile"
+description = "Blaster +1 Projectile"
+icon = ExtResource("1_rhn7b")

@@ -5,8 +5,9 @@
 
 [node name="BombLauncher" type="Node"]
 script = ExtResource("1_4io7s")
-target_groups = Array[String](["Enemy"])
+weapon_type = 2
 projectile = ExtResource("2_dyhvl")
+damage = 10.0
+cooldown = 4.0
 projectile_speed = 170.0
-cooldown = 4.1
 projectile_number = 1
