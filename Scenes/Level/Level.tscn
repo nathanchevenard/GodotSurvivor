@@ -1,24 +1,22 @@
-[gd_scene load_steps=23 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=21 format=3 uid="uid://descmxrrabovg"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
+[ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
 [ext_resource type="PackedScene" uid="uid://c5y64cygox0xe" path="res://Scenes/Asteroid/Asteroid.tscn" id="2_byko3"]
-[ext_resource type="Script" path="res://Scripts/Projectile/ProjectileFactory.gd" id="2_nimkm"]
-[ext_resource type="Script" path="res://Scripts/Character/Enemy/EnemySpawnInfo.gd" id="4_2vapx"]
+[ext_resource type="Script" uid="uid://dua2ujys72ghr" path="res://Scripts/Projectile/ProjectileFactory.gd" id="2_nimkm"]
+[ext_resource type="Script" uid="uid://cyo6s7sltljf1" path="res://Scripts/Character/Enemy/EnemySpawnInfo.gd" id="4_2vapx"]
 [ext_resource type="PackedScene" uid="uid://bskqt7gbyvfh7" path="res://Scenes/Enemy/Ravager.tscn" id="5_65rq2"]
 [ext_resource type="PackedScene" uid="uid://xjrr711srctt" path="res://Scenes/Enemy/Sentinel.tscn" id="6_2ravk"]
 [ext_resource type="PackedScene" uid="uid://clvvt6oylh6ou" path="res://Scenes/UI/Joystick.tscn" id="6_o0aqk"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/BlackHole.png" id="7_kfec1"]
 [ext_resource type="PackedScene" uid="uid://bn1ubnes7fm30" path="res://Scenes/Level/PauseSystem.tscn" id="8_smpvf"]
 [ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
-[ext_resource type="Script" path="res://Scripts/UI/GameStatistic.gd" id="9_pcfry"]
+[ext_resource type="Script" uid="uid://bn41h5apa03s5" path="res://Scripts/UI/GameStatistic.gd" id="9_pcfry"]
 [ext_resource type="PackedScene" uid="uid://p0mm6ln0fqpe" path="res://Scenes/Level/UpgradeSystem.tscn" id="9_rpw5f"]
 [ext_resource type="Texture2D" uid="uid://kddkwqh58rdh" path="res://Sprites/Blue_Nebula_04-2048x1024.png" id="9_wyh5q"]
-[ext_resource type="Script" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
-[ext_resource type="Resource" uid="uid://flnjm5wpel4g" path="res://Resources/Upgrades/WeaponUpgrades/BlasterAdditionalProjectile.tres" id="11_p6tnc"]
-[ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAdditionalProjectile.tres" id="12_ssiih"]
-[ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/LaserAdditionalProjectile.tres" id="13_x405r"]
+[ext_resource type="Script" uid="uid://cw63q5f86dfq4" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
 [ext_resource type="PackedScene" uid="uid://gckvhlh5xlb4" path="res://Scenes/UI/UpgradeButton.tscn" id="16_xe3ed"]
+[ext_resource type="Script" uid="uid://wa4ephur8boo" path="res://Scripts/UI/KillsCounter.gd" id="17_jugp0"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
 script = ExtResource("4_2vapx")
@@ -54,7 +52,6 @@ script = ExtResource("10_2qfsf")
 process_mode = 3
 container = NodePath("../UpgradeLayer/CenterContainer/HBoxContainer")
 button_scene = ExtResource("16_xe3ed")
-upgrades = Array[Resource("res://Scripts/Upgrade/Upgrade.gd")]([ExtResource("11_p6tnc"), ExtResource("12_ssiih"), ExtResource("13_x405r")])
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
 
@@ -115,6 +112,19 @@ grow_horizontal = 2
 text = "00:00"
 script = ExtResource("9_pcfry")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderLayer"]
+offset_right = 84.0
+offset_bottom = 23.0
+
+[node name="KillsText" type="Label" parent="BorderLayer/HBoxContainer"]
+layout_mode = 2
+text = "Kills :"
+
+[node name="KillsValue" type="Label" parent="BorderLayer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("17_jugp0")
+
 [node name="UpgradeLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -127,6 +137,7 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 process_mode = 3

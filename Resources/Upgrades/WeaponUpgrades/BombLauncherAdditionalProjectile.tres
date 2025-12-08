@@ -1,13 +1,12 @@
 [gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://b73dusyg2ivv1"]
 
-[ext_resource type="Texture2D" uid="uid://cmkw5p5kn35ru" path="res://Sprites/Icons/Weapons/bomb.png" id="1_e0g3w"]
-[ext_resource type="Script" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_anksq"]
+[ext_resource type="Texture2D" uid="uid://dfutxyxbdyfli" path="res://Sprites/Icons/Weapons/bomb_white.png" id="1_jav0t"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_anksq"]
 
 [resource]
 script = ExtResource("2_anksq")
-upgrade_type = 0
 impacted_weapon = 2
 value = 1.0
 name = "Bomb +1 Projectile"
 description = "Bomb Launcher +1 Projectile"
-icon = ExtResource("1_e0g3w")
+icon = ExtResource("1_jav0t")

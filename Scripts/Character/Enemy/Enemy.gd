@@ -66,4 +66,5 @@ func _on_area_2d_body_exited(body: Node2D):
 
 func destroy():
 	Level.instance.enemies.erase(self)
+	SignalsManager.emit_enemy_died()
 	super()

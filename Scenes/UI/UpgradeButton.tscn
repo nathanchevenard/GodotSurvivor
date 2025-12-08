@@ -1,53 +1,89 @@
-[gd_scene load_steps=3 format=3 uid="uid://gckvhlh5xlb4"]
+[gd_scene load_steps=6 format=3 uid="uid://gckvhlh5xlb4"]
 
-[ext_resource type="Texture2D" uid="uid://bqvwnuipjy7u1" path="res://Sprites/Icons/Weapons/blaster.png" id="1_0sdop"]
-[ext_resource type="Script" path="res://Scripts/UI/UpgradeButton.gd" id="1_k8bql"]
+[ext_resource type="Script" uid="uid://cdks4sdvx0xb0" path="res://Scripts/UI/UpgradeButton.gd" id="1_k8bql"]
+[ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="2_n5eft"]
 
-[node name="UpgradeButton" type="Button"]
-custom_minimum_size = Vector2(117, 168)
-offset_right = 117.0
-offset_bottom = 168.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5eft"]
+bg_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulwj7"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iiwha"]
+bg_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="UpgradeButton" type="MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 100.0
+offset_bottom = 88.0
 script = ExtResource("1_k8bql")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.5
-offset_right = 33.5
-offset_bottom = 71.0
-grow_horizontal = 2
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5eft")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ulwj7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iiwha")
 
-[node name="Icon" type="TextureRect" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
-texture = ExtResource("1_0sdop")
+mouse_filter = 2
+texture = ExtResource("2_n5eft")
 expand_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_top = 66.0
-offset_right = 117.0
-offset_bottom = 168.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 9
 text = "TITRE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Description" type="Label" parent="VBoxContainer"]
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-text = "Description fdsfdsfds fdsfds kkljlkjlkjmkljmlkj"
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 7
+text = "Description fdsfdsfds fdsfds kkljlkjlkjmkljmlkaaa tiuytiuygghjg fjhgf jghf jh"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

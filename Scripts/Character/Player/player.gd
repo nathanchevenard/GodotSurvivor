@@ -52,6 +52,7 @@ func init_upgrades():
 
 func add_upgrade(upgrade : Upgrade):
 	upgrade_added.emit(upgrade)
+	upgrades.append(upgrade)
 
 
 func update_autoattack(_delta : float):
@@ -86,4 +87,5 @@ func destroy() -> void:
 	if is_immortal == true:
 		return
 	
-	super()
+	hide()
+	destroyed.emit()

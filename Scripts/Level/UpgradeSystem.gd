@@ -18,19 +18,23 @@ func _process(delta):
 	timer += delta
 	
 	if timer >= cooldown:
-		upgrade()
+		start_upgrade()
 		timer = 0.0
 
 
-func upgrade():
+func start_upgrade():
 	PauseSystem.instance.start_pause()
 	display_upgrades()
 
 
 func display_upgrades():
+	var available_upgrades : Array[Upgrade] = upgrades.duplicate()
+	
 	for i in upgrades_number:
 		var button = button_scene.instantiate() as UpgradeButton
-		button.init(upgrades.pick_random())
+		var upgrade : Upgrade = available_upgrades.pick_random()
+		available_upgrades.erase(upgrade)
+		button.init(upgrade)
 		button.upgrade_pressed.connect(_on_upgrade_pressed) 
 		button_instances.append(button)
 		
@@ -42,6 +46,9 @@ func _on_upgrade_pressed(upgrade : Upgrade):
 	
 	for player : Player in players:
 		player.add_upgrade(upgrade)
+		
+		if upgrade.pick_max_number > 0 && player.upgrades.count(upgrade) >= upgrade.pick_max_number:
+			upgrades.erase(upgrade)
 	
 	for button in button_instances:
 		button.queue_free()
