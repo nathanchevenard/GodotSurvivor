@@ -25,7 +25,8 @@ speed_max = 100.0
 target_groups = Array[String](["Enemy"])
 health_max = 100
 shield_max = 30
-shield_regen = 1.0
+shield_regen = 0.5
+shield_regen_delay = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -38,7 +39,6 @@ shape = SubResource("CircleShape2D_w5q1e")
 zoom = Vector2(0.75, 0.75)
 
 [node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
-cooldown = 1.0
 projectile_number = 0
 
 [node name="Laser" parent="." instance=ExtResource("5_m1bf1")]

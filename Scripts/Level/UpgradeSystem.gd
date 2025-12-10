@@ -23,12 +23,18 @@ func _process(delta):
 
 
 func start_upgrade():
-	PauseSystem.instance.start_pause()
+	PauseSystem.instance.start_pause(true)
 	display_upgrades()
 
 
 func display_upgrades():
 	var available_upgrades : Array[Upgrade] = upgrades.duplicate()
+	
+	var player : Player = get_tree().get_nodes_in_group("Player")[0] as Player
+	
+	for upgrade in upgrades:
+		if upgrade.must_have_weapon && player.has_weapon_type(upgrade.impacted_weapon) == false:
+			available_upgrades.erase(upgrade)
 	
 	for i in upgrades_number:
 		var button = button_scene.instantiate() as UpgradeButton
@@ -55,4 +61,4 @@ func _on_upgrade_pressed(upgrade : Upgrade):
 	
 	button_instances.clear()
 	
-	PauseSystem.instance.stop_pause()
+	PauseSystem.instance.stop_pause(true)

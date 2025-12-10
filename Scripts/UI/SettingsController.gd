@@ -3,12 +3,6 @@ class_name SettingsController
 
 static var is_joystick_floating : bool = true
 
-@onready var settings = $Settings
-@onready var player = $"../Player"
-@onready var projectile_factory = $"../ProjectileFactory"
-@onready var asteroid_handler = %AsteroidHandler
-@onready var joystick = $"../BorderLayer/Joystick"
-
 
 func _on_floating_joystick_toggled(toggled_on):
 	is_joystick_floating = toggled_on

@@ -1,15 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk4xkjyjlmty6"]
+[gd_scene load_steps=5 format=3 uid="uid://dk4xkjyjlmty6"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile/Mine.gd" id="1_dfucj"]
+[ext_resource type="Script" uid="uid://b10njkes8xrcf" path="res://Scripts/Projectile/Mine.gd" id="1_dfucj"]
 [ext_resource type="PackedScene" uid="uid://3lauyq7wythy" path="res://Scenes/Projectile/Explosion.tscn" id="2_5v3di"]
 [ext_resource type="Texture2D" uid="uid://c8k237lek0dlc" path="res://Sprites/Projectiles/Mine.png" id="3_a4ovd"]
 
-[node name="Mine" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmxka"]
+
+[node name="Mine" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
 script = ExtResource("1_dfucj")
-lifetime_max = 1.0
+lifetime_max = 0.0
 torque = 150.0
 explosion_scene = ExtResource("2_5v3di")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 texture = ExtResource("3_a4ovd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dmxka")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

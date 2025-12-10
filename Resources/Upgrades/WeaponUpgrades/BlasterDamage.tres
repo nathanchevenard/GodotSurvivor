@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://kwyp8fdko5ts"]
+
+[ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="1_3lldt"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_ff38j"]
+
+[resource]
+script = ExtResource("2_ff38j")
+upgrade_type = 2
+value = 0.2
+name = "Blaster Damage"
+description = "Blaster +20% Damage"
+icon = ExtResource("1_3lldt")

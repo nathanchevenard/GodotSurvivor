@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("2_oiim8")
 impacted_weapon = 3
+must_have_weapon = false
+is_percentage = false
 value = 1.0
-pick_max_number = 1.0
 name = "Mine +1 Projectile"
 description = "Mine +1 Projectile"
 icon = ExtResource("1_p8sas")

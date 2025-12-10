@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=40 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -15,8 +15,27 @@
 [ext_resource type="PackedScene" uid="uid://p0mm6ln0fqpe" path="res://Scenes/Level/UpgradeSystem.tscn" id="9_rpw5f"]
 [ext_resource type="Texture2D" uid="uid://kddkwqh58rdh" path="res://Sprites/Blue_Nebula_04-2048x1024.png" id="9_wyh5q"]
 [ext_resource type="Script" uid="uid://cw63q5f86dfq4" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
+[ext_resource type="Script" uid="uid://btob1v03sk7xy" path="res://Scripts/Upgrade/Upgrade.gd" id="11_ax57u"]
+[ext_resource type="Resource" uid="uid://flnjm5wpel4g" path="res://Resources/Upgrades/WeaponUpgrades/BlasterAdditionalProjectile.tres" id="12_w7xp7"]
+[ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAdditionalProjectile.tres" id="13_fh2l2"]
+[ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/LaserAdditionalProjectile.tres" id="14_gd6lo"]
+[ext_resource type="Resource" uid="uid://ct7nw83b7x0p6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherAdditionalProjectile.tres" id="15_ce188"]
+[ext_resource type="Resource" uid="uid://dsxvhc0tgwyoy" path="res://Resources/Upgrades/WeaponUpgrades/BlasterCooldown.tres" id="16_ahb13"]
 [ext_resource type="PackedScene" uid="uid://gckvhlh5xlb4" path="res://Scenes/UI/UpgradeButton.tscn" id="16_xe3ed"]
+[ext_resource type="Resource" uid="uid://co6a1dw2kpbeo" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherCooldown.tres" id="17_dli4q"]
 [ext_resource type="Script" uid="uid://wa4ephur8boo" path="res://Scripts/UI/KillsCounter.gd" id="17_jugp0"]
+[ext_resource type="Resource" uid="uid://blm24wxupdgkq" path="res://Resources/Upgrades/WeaponUpgrades/LaserCooldown.tres" id="18_sxrcp"]
+[ext_resource type="Resource" uid="uid://dln56rdnyxke6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherCooldown.tres" id="19_5c5q5"]
+[ext_resource type="Resource" uid="uid://kwyp8fdko5ts" path="res://Resources/Upgrades/WeaponUpgrades/BlasterDamage.tres" id="20_5c5q5"]
+[ext_resource type="Resource" uid="uid://dgg7yf2ivikln" path="res://Resources/Upgrades/WeaponUpgrades/BlasterProjectileSpeed.tres" id="21_p0w64"]
+[ext_resource type="Resource" uid="uid://bgqanb1k7k77k" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAoe.tres" id="22_ayfgb"]
+[ext_resource type="Resource" uid="uid://cgnim4mufikih" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherDamage.tres" id="23_w7md3"]
+[ext_resource type="Resource" uid="uid://dd1whwg66ldvq" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherProjectileSpeed.tres" id="24_e3o1s"]
+[ext_resource type="Resource" uid="uid://dxo5djimyedqh" path="res://Resources/Upgrades/WeaponUpgrades/LaserDamage.tres" id="25_quimk"]
+[ext_resource type="Resource" uid="uid://ghpm3645vy0t" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherAoe.tres" id="26_d7ej7"]
+[ext_resource type="Resource" uid="uid://ceafa5a41n5py" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherDamage.tres" id="27_m1kf3"]
+[ext_resource type="Resource" uid="uid://dpfsriaamt1j0" path="res://Resources/Upgrades/WeaponUpgrades/BlasterSize.tres" id="28_ayfgb"]
+[ext_resource type="Resource" uid="uid://dx51cuwfrl63g" path="res://Resources/Upgrades/WeaponUpgrades/LaserSize.tres" id="29_w7md3"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
 script = ExtResource("4_2vapx")
@@ -39,9 +58,10 @@ asteroid_scene = ExtResource("2_byko3")
 enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_olx7e"), SubResource("Resource_0qujo")])
 spawn_circle_radius = 400.0
 direction_random_variation = 15.0
-enemy_incrementation_threshold = 50
+enemy_spawn_timer = 0.8
+enemy_incrementation_threshold = 30
 enemy_spawn_number = 2
-enemy_max_number = 250
+enemy_max_number = 200
 
 [node name="DebugOptions" type="Node" parent="."]
 script = ExtResource("10_2qfsf")
@@ -52,6 +72,7 @@ script = ExtResource("10_2qfsf")
 process_mode = 3
 container = NodePath("../UpgradeLayer/CenterContainer/HBoxContainer")
 button_scene = ExtResource("16_xe3ed")
+upgrades = Array[ExtResource("11_ax57u")]([ExtResource("12_w7xp7"), ExtResource("13_fh2l2"), ExtResource("14_gd6lo"), ExtResource("15_ce188"), ExtResource("16_ahb13"), ExtResource("17_dli4q"), ExtResource("18_sxrcp"), ExtResource("19_5c5q5"), ExtResource("20_5c5q5"), ExtResource("21_p0w64"), ExtResource("22_ayfgb"), ExtResource("23_w7md3"), ExtResource("24_e3o1s"), ExtResource("25_quimk"), ExtResource("26_d7ej7"), ExtResource("27_m1kf3"), ExtResource("28_ayfgb"), ExtResource("29_w7md3")])
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
 
@@ -85,60 +106,6 @@ motion_mirroring = Vector2(2048, 1024)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("7_kfec1")
 
-[node name="BorderLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="BorderLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -20
-theme_override_constants/margin_top = -20
-theme_override_constants/margin_right = -20
-theme_override_constants/margin_bottom = -20
-
-[node name="Joystick" parent="BorderLayer" instance=ExtResource("6_o0aqk")]
-visible = false
-
-[node name="Timer" type="Label" parent="BorderLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.5
-offset_right = 20.5
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "00:00"
-script = ExtResource("9_pcfry")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BorderLayer"]
-offset_right = 84.0
-offset_bottom = 23.0
-
-[node name="KillsText" type="Label" parent="BorderLayer/HBoxContainer"]
-layout_mode = 2
-text = "Kills :"
-
-[node name="KillsValue" type="Label" parent="BorderLayer/HBoxContainer"]
-layout_mode = 2
-text = "0"
-script = ExtResource("17_jugp0")
-
-[node name="UpgradeLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="UpgradeLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
 [node name="GameOverLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -146,6 +113,14 @@ process_mode = 3
 unique_name_in_owner = true
 visible = false
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="GameOverLayer/GameOver"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -183,6 +158,64 @@ text = "Retry"
 [node name="MenuButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Menu"
+
+[node name="BorderLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="BorderLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -20
+theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = -20
+theme_override_constants/margin_bottom = -20
+
+[node name="Joystick" parent="BorderLayer" instance=ExtResource("6_o0aqk")]
+visible = false
+
+[node name="Timer" type="Label" parent="BorderLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.5
+offset_right = 20.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "00:00"
+script = ExtResource("9_pcfry")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BorderLayer"]
+offset_left = 3.0
+offset_right = 87.0
+offset_bottom = 23.0
+mouse_filter = 2
+
+[node name="KillsText" type="Label" parent="BorderLayer/HBoxContainer"]
+layout_mode = 2
+text = "Kills :"
+
+[node name="KillsValue" type="Label" parent="BorderLayer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("17_jugp0")
+
+[node name="UpgradeLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
 
 [connection signal="game_end" from="." to="BorderLayer/Timer" method="_on_game_end"]
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]

@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("2_rimml")
 impacted_weapon = 1
+must_have_weapon = false
+is_percentage = false
 value = 1.0
 name = "Laser +1 Projectile"
 description = "Laser +1 Projectile"

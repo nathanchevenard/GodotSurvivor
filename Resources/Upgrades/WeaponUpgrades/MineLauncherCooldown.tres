@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://dln56rdnyxke6"]
+
+[ext_resource type="Texture2D" uid="uid://bsefyq3mqt6ut" path="res://Sprites/Icons/Weapons/mine_white.png" id="1_ecsvj"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_rposf"]
+
+[resource]
+script = ExtResource("2_rposf")
+upgrade_type = 1
+impacted_weapon = 3
+value = -0.1
+name = "Mine Cooldown"
+description = "Mine -10% Cooldown"
+icon = ExtResource("1_ecsvj")

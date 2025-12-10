@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cue3sdqmec5dg"]
 
-[ext_resource type="Script" path="res://Scripts/Weapon/BombLauncher.gd" id="1_4io7s"]
+[ext_resource type="Script" uid="uid://nvyyi2ryrxva" path="res://Scripts/Weapon/BombLauncher.gd" id="1_4io7s"]
 [ext_resource type="PackedScene" uid="uid://tdox552sfv6n" path="res://Scenes/Projectile/Bomb.tscn" id="2_dyhvl"]
 
 [node name="BombLauncher" type="Node"]

@@ -9,7 +9,7 @@ class_name Player
 
 var attack_cooldown : float = 0.0
 var weapons : Array[Weapon]
-@export var upgrades : Array[Upgrade]
+var upgrades : Array[Upgrade]
 
 signal projectile_fired(projectile)
 signal upgrade_added(upgrade)
@@ -89,3 +89,13 @@ func destroy() -> void:
 	
 	hide()
 	destroyed.emit()
+
+
+func has_weapon_type(weapon_type) -> bool:
+	for weapon in weapons:
+		if weapon_type != weapon.weapon_type:
+			continue
+		
+		return weapon.projectile_number > 0
+	
+	return false

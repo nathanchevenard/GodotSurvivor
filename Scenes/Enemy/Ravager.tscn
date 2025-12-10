@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bskqt7gbyvfh7"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Enemy/Ravager.gd" id="1_2v341"]
+[ext_resource type="Script" uid="uid://c3v8d3ar3c503" path="res://Scripts/Character/Enemy/Ravager.gd" id="1_2v341"]
 [ext_resource type="Texture2D" uid="uid://c72f4xlseq8mr" path="res://Sprites/Ship/Ravager.png" id="2_vg34x"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_gsr3w"]
 
@@ -29,6 +29,7 @@ target_groups = Array[String](["Player"])
 health_max = 100
 shield_max = 30
 shield_regen = 0.2
+shield_regen_delay = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://dgg7yf2ivikln"]
+
+[ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="1_jl5qq"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_myudb"]
+
+[resource]
+script = ExtResource("2_myudb")
+upgrade_type = 4
+value = 0.1
+name = "Blaster Projectile Speed"
+description = "Blaster +10% Projectile Speed"
+icon = ExtResource("1_jl5qq")

@@ -19,26 +19,41 @@ enum WeaponEnum
 @export var projectile_number : int
 @export var projectile_lifetime : float = 5.0
 @export var projectile_coef_area_of_effect : float = 1.0
+@export var projectile_size : float = 1.0
+@export var is_volley : bool = false
+@export var volley_duration : float = 0.5
 
 var character : Character
-var current_cooldown : float = 0.0
+var cooldown_timer : float = 0.0
 var acquired_targets : Array[Node2D]
+
+var init_cooldown : float
+var init_damage : float
+var init_projectile_speed : float
+var init_projectile_coef_area_of_effect : float
+var init_projectile_size : float
 
 var upgrades : Array[Upgrade]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	character = get_parent() as Character
+	
+	init_cooldown = cooldown
+	init_damage = damage
+	init_projectile_speed = projectile_speed
+	init_projectile_coef_area_of_effect = projectile_coef_area_of_effect
+	init_projectile_size = projectile_size
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if current_cooldown < cooldown:
-		current_cooldown += delta
+	if cooldown_timer < cooldown:
+		cooldown_timer += delta
 	
-	if current_cooldown >= cooldown && check_targets():
+	if cooldown_timer >= cooldown && check_targets():
 		fire()
-		current_cooldown = 0
+		cooldown_timer = 0
 
 
 func acquire_targets() -> Array[Node2D]:
@@ -62,10 +77,17 @@ func check_targets() -> bool:
 
 
 func fire():
-	for target in acquired_targets:
-		var projectile_instance : Projectile = projectile.instantiate() as Projectile
-		projectile_instance.initialize(self, character.global_position, target, projectile_speed)
-		Level.instance.projectile_handler.add_child(projectile_instance)
+	if is_volley == false:
+		for target in acquired_targets:
+			var projectile_instance : Projectile = projectile.instantiate() as Projectile
+			projectile_instance.initialize(self, character.global_position, target, projectile_speed)
+			Level.instance.projectile_handler.add_child(projectile_instance)
+	else:
+		for i in projectile_number:
+			var projectile_instance : Projectile = projectile.instantiate() as Projectile
+			projectile_instance.initialize(self, character.global_position, null, projectile_speed)
+			Level.instance.projectile_handler.add_child(projectile_instance)
+			await get_tree().create_timer(volley_duration / projectile_number).timeout
 
 
 func on_upgrade_added(upgrade : WeaponUpgrade):

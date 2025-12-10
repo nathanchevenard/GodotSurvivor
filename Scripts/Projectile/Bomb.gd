@@ -23,13 +23,29 @@ func _physics_process(delta):
 	super(delta)
 	
 	rotation_degrees += torque * delta
+	
+	if lifetime_max <= 0:
+		return
+	
 	current_bomb_lifetime += delta
 	
 	if current_bomb_lifetime >= lifetime_max || current_bomb_lifetime >= estimated_lifetime:
-		if weapon != null:
-			var explosion : Explosion = explosion_scene.instantiate() as Explosion
-			explosion.initialize(weapon, global_position, null, 0.0)
-			explosion.set_coef_area_of_effect(weapon.projectile_coef_area_of_effect)
-			Level.instance.projectile_handler.add_child(explosion)
-		
-		queue_free()
+		explode()
+
+
+func on_enemy_collision(body : Node2D):
+	if lifetime_max > 0:
+		super(body)
+		return
+	
+	explode()
+
+
+func explode():
+	if weapon != null:
+		var explosion : Explosion = explosion_scene.instantiate() as Explosion
+		explosion.initialize(weapon, global_position, null, 0.0)
+		explosion.set_coef_area_of_effect(weapon.projectile_coef_area_of_effect)
+		Level.instance.projectile_handler.call_deferred("add_child", explosion)
+	
+	queue_free()

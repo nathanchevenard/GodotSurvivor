@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://dsxvhc0tgwyoy"]
+
+[ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="1_dif04"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_waa2n"]
+
+[resource]
+script = ExtResource("2_waa2n")
+upgrade_type = 1
+value = -0.1
+name = "Blaster Cooldown"
+description = "Blaster -10% Cooldown"
+icon = ExtResource("1_dif04")

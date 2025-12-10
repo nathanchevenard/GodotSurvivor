@@ -4,6 +4,7 @@ class_name PauseSystem
 static var instance : PauseSystem = null
 
 var is_paused : bool = false
+var is_pause_allowed : bool = true
 
 func _init():
 	if instance != null:
@@ -13,7 +14,7 @@ func _init():
 	instance = self
 
 func _input(event):
-	if event.is_action_pressed("toggle_pause"):
+	if event.is_action_pressed("toggle_pause") && is_pause_allowed == true:
 		toggle_pause()
 
 
@@ -24,14 +25,20 @@ func toggle_pause():
 		start_pause()
 
 
-func start_pause():
+func start_pause(disallow_pause : bool = false):
 	get_tree().paused = true
 	is_paused = true
+	
+	if disallow_pause == true:
+		is_pause_allowed = false
 
 
-func stop_pause():
+func stop_pause(reallow_pause : bool = false):
 	get_tree().paused = false
 	is_paused = false
+	
+	if reallow_pause == true:
+		is_pause_allowed = true
 
 
 func _on_retry_button_pressed():

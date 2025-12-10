@@ -9,10 +9,13 @@ class_name Character
 @export var health_max : int = 10
 @export var shield_max : int = 0
 @export var shield_regen : float = 0
+@export var shield_regen_delay : float = 0.5
 
 var health : int = 0
 var shield : int = 0
 var current_shield_regen : float = 0.0
+var is_regenerating_shield : bool = false
+var shield_regen_timer : float = 0.0
 
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
@@ -81,6 +84,9 @@ func get_sorted_closest_entities(group_names : Array[String]) -> Array[Node]:
 
 
 func take_damage(damage : int):
+	is_regenerating_shield = false
+	shield_regen_timer = 0
+	
 	if shield == shield_max && health == health_max && damage > 0:
 		on_health_become_not_full.emit()
 	
@@ -114,8 +120,19 @@ func heal(amount: int):
 
 
 func update_shield(delta: float):
+	# If no shield regen or shield already full, do nothing
 	if shield_regen == 0 || shield >= shield_max:
 		return
+	
+	# If shield is not regenerating, wait for regen start delay
+	if is_regenerating_shield == false:
+		shield_regen_timer += delta
+		if shield_regen_timer >= shield_regen_delay:
+			is_regenerating_shield = true
+			shield_regen_timer = 0
+		# If delay is not reached yet, do nothing
+		else:
+			return
 	
 	current_shield_regen += delta
 	

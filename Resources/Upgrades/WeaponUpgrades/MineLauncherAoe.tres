@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://ghpm3645vy0t"]
+
+[ext_resource type="Texture2D" uid="uid://bsefyq3mqt6ut" path="res://Sprites/Icons/Weapons/mine_white.png" id="1_hbqqh"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_djt2v"]
+
+[resource]
+script = ExtResource("2_djt2v")
+upgrade_type = 3
+impacted_weapon = 3
+value = 0.5
+name = "Mine Explosion Size"
+description = "Mine +50% Explosion Size"
+icon = ExtResource("1_hbqqh")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://3lauyq7wythy"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile/Explosion.gd" id="1_lyw2a"]
+[ext_resource type="Script" uid="uid://cvu3kyr7tqjlu" path="res://Scripts/Projectile/Explosion.gd" id="1_lyw2a"]
 [ext_resource type="Texture2D" uid="uid://chi6625dbucsu" path="res://Sprites/Projectiles/Explosion.png" id="2_inpgw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvb8l"]

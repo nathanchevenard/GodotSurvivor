@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://dxo5djimyedqh"]
+
+[ext_resource type="Texture2D" uid="uid://bmcdr70w7f7ot" path="res://Sprites/Icons/Weapons/laser_white.png" id="1_73j8e"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_q1vjv"]
+
+[resource]
+script = ExtResource("2_q1vjv")
+upgrade_type = 2
+impacted_weapon = 1
+value = 0.2
+name = "Laser Damage"
+description = "Laser +20% Damage"
+icon = ExtResource("1_73j8e")

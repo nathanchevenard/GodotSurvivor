@@ -10,6 +10,7 @@ var weapon : Weapon
 
 func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, speed : float):
 	global_position = starting_position
+	scale *= Vector2(weapon.projectile_size, weapon.projectile_size)
 	self.weapon = weapon
 	self.speed = speed
 	
@@ -37,5 +38,9 @@ func _on_body_entered(body : Node2D):
 	if weapon != null:
 		for target_group in weapon.target_groups:
 			if body.is_in_group(target_group) == true && weapon != null:
-				var character : Character = body as Character
-				character.take_damage(weapon.damage)
+				on_enemy_collision(body)
+
+
+func on_enemy_collision(body : Node2D):
+	var character : Character = body as Character
+	character.take_damage(weapon.damage)

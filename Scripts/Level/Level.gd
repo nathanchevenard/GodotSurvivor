@@ -1,7 +1,6 @@
 extends Node2D
 class_name Level
 
-@onready var border_rect : ReferenceRect = %BorderRect
 @onready var enemy_handler : Node2D = %EnemyHandler
 @onready var obstacle_handler : Node2D = %ObstacleHandler
 @onready var projectile_handler : Node2D = %ProjectileHandler
@@ -117,5 +116,5 @@ func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 
 func _on_player_destroyed():
 	game_over.show()
-	PauseSystem.instance.start_pause()
+	PauseSystem.instance.start_pause(true)
 	game_end.emit()

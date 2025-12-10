@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://co6a1dw2kpbeo"]
+
+[ext_resource type="Texture2D" uid="uid://dfutxyxbdyfli" path="res://Sprites/Icons/Weapons/bomb_white.png" id="1_tcdn4"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_j3tsr"]
+
+[resource]
+script = ExtResource("2_j3tsr")
+upgrade_type = 1
+impacted_weapon = 2
+value = -0.1
+name = "Bomb Cooldown"
+description = "Bomb Launcher -10% Cooldown"
+icon = ExtResource("1_tcdn4")
