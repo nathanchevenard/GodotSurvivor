@@ -48,10 +48,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if cooldown_timer < cooldown:
+	if cooldown_timer < cooldown * character.cooldown_mult:
 		cooldown_timer += delta
 	
-	if cooldown_timer >= cooldown && check_targets():
+	if cooldown_timer >= cooldown * character.cooldown_mult && check_targets():
 		fire()
 		cooldown_timer = 0
 
@@ -91,6 +91,9 @@ func fire():
 
 
 func on_upgrade_added(upgrade : WeaponUpgrade):
+	if upgrade == null:
+		return
+	
 	if weapon_type == upgrade.impacted_weapon:
 		upgrades.append(upgrade)
 		upgrade.apply_upgrade(self)

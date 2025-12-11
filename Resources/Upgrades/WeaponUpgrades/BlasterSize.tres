@@ -7,6 +7,6 @@
 script = ExtResource("2_v2bl7")
 upgrade_type = 5
 value = 0.2
-name = "Blater Size"
+name = "Blater Upgrade"
 description = "Blater +20% Size"
 icon = ExtResource("1_47msp")

@@ -51,21 +51,6 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 10
-
-[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-mouse_filter = 2
-texture = ExtResource("2_n5eft")
-expand_mode = 4
-
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
@@ -75,6 +60,22 @@ theme_override_font_sizes/font_size = 9
 text = "TITRE"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+texture = ExtResource("2_n5eft")
+expand_mode = 4
 
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

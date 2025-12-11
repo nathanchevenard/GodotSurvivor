@@ -53,6 +53,9 @@ func init_upgrades():
 func add_upgrade(upgrade : Upgrade):
 	upgrade_added.emit(upgrade)
 	upgrades.append(upgrade)
+	
+	if upgrade is PlayerUpgrade:
+		upgrade.apply_upgrade(self)
 
 
 func update_autoattack(_delta : float):

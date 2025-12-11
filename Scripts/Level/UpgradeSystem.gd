@@ -7,6 +7,7 @@ class_name UpgradeSystem
 
 var cooldown : float = 10
 var timer : float = 9
+var upgrades_count : int = 0
 
 var upgrades_number : int = 3
 var button_instances : Array[UpgradeButton]
@@ -33,7 +34,11 @@ func display_upgrades():
 	var player : Player = get_tree().get_nodes_in_group("Player")[0] as Player
 	
 	for upgrade in upgrades:
-		if upgrade.must_have_weapon && player.has_weapon_type(upgrade.impacted_weapon) == false:
+		if upgrade is WeaponUpgrade && upgrade.must_have_weapon && player.has_weapon_type(upgrade.impacted_weapon) == false:
+			available_upgrades.erase(upgrade)
+		
+		# TEMP: On first upgrade, have only weapon upgrades to start with one
+		if upgrades_count == 0 && upgrade is not WeaponUpgrade:
 			available_upgrades.erase(upgrade)
 	
 	for i in upgrades_number:
@@ -48,6 +53,7 @@ func display_upgrades():
 
 
 func _on_upgrade_pressed(upgrade : Upgrade):
+	upgrades_count += 1
 	var players : Array[Node] = get_tree().get_nodes_in_group("Player")
 	
 	for player : Player in players:

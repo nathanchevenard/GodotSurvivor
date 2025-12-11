@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" load_steps=3 format=3 uid="uid://dep15bewcb57x"]
+
+[ext_resource type="Texture2D" uid="uid://bc2rvrln3wuht" path="res://Sprites/Icons/Player/heart_plus.png" id="1_5uxyk"]
+[ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/PlayerUpgrade.gd" id="2_4yxq7"]
+
+[resource]
+script = ExtResource("2_4yxq7")
+upgrade_type = 1
+is_percentage = false
+value = 1.0
+name = "Life Regen Upgrade"
+description = "Gain +1 Life Regeneration per second"
+icon = ExtResource("1_5uxyk")
+metadata/_custom_type_script = "uid://bd43a7kqimpp0"

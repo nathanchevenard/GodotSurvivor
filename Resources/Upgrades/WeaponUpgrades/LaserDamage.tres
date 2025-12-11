@@ -8,6 +8,6 @@ script = ExtResource("2_q1vjv")
 upgrade_type = 2
 impacted_weapon = 1
 value = 0.2
-name = "Laser Damage"
+name = "Laser Upgrade"
 description = "Laser +20% Damage"
 icon = ExtResource("1_73j8e")

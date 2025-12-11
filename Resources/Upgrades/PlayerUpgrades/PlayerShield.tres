@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" load_steps=3 format=3 uid="uid://bda0h3g0jf7o6"]
+
+[ext_resource type="Texture2D" uid="uid://2nhfiaihbegc" path="res://Sprites/Icons/Player/shield.png" id="1_22dxo"]
+[ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/PlayerUpgrade.gd" id="2_gfiej"]
+
+[resource]
+script = ExtResource("2_gfiej")
+upgrade_type = 2
+is_percentage = false
+value = 10.0
+name = "Shield Upgrade"
+description = "Gain +10 Maximum Shield"
+icon = ExtResource("1_22dxo")
+metadata/_custom_type_script = "uid://bd43a7kqimpp0"

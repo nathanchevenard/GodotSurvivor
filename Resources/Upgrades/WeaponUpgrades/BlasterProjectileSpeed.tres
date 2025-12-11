@@ -7,6 +7,6 @@
 script = ExtResource("2_myudb")
 upgrade_type = 4
 value = 0.1
-name = "Blaster Projectile Speed"
+name = "Blaster Upgrade"
 description = "Blaster +10% Projectile Speed"
 icon = ExtResource("1_jl5qq")

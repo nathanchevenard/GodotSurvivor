@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" load_steps=3 format=3 uid="uid://cbti1c2b7jlt6"]
+
+[ext_resource type="Texture2D" uid="uid://dqiny8ts0ravw" path="res://Sprites/Icons/Player/power.png" id="1_xhwob"]
+[ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/PlayerUpgrade.gd" id="2_ri77r"]
+
+[resource]
+script = ExtResource("2_ri77r")
+upgrade_type = 3
+value = 0.1
+name = "Damage Upgrade"
+description = "Gain +10% Damage"
+icon = ExtResource("1_xhwob")
+metadata/_custom_type_script = "uid://bd43a7kqimpp0"

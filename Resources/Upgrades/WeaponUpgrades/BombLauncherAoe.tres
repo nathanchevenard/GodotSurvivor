@@ -8,6 +8,6 @@ script = ExtResource("2_co847")
 upgrade_type = 3
 impacted_weapon = 2
 value = 0.1
-name = "Bomb Explosion Size"
+name = "Bomb Upgrade"
 description = "Bomb Launcher +10% Explosion Size"
 icon = ExtResource("1_1k4eb")

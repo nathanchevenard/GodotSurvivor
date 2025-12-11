@@ -14,8 +14,6 @@ enum WeaponUpgradeEnum
 @export var upgrade_type : WeaponUpgradeEnum
 @export var impacted_weapon : Weapon.WeaponEnum
 @export var must_have_weapon : bool = true
-@export var is_percentage : bool = true
-@export var value : float
 @export var pick_max_number : float
 
 
@@ -37,10 +35,3 @@ func apply_upgrade(weapon : Weapon):
 			weapon.projectile_speed = apply_value_to_variable(weapon.projectile_speed, weapon.init_projectile_speed)
 		WeaponUpgradeEnum.ProjectileSize:
 			weapon.projectile_size = apply_value_to_variable(weapon.projectile_size, weapon.init_projectile_size)
-
-
-func apply_value_to_variable(variable : Variant, init_variable : Variant = null) -> Variant:
-	if is_percentage == false:
-		return variable + value
-	else:
-		return variable + value * init_variable

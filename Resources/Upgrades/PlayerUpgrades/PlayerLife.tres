@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerUpgrade" load_steps=3 format=3 uid="uid://bhodvqwubg3qj"]
+
+[ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/PlayerUpgrade.gd" id="1_jmtr1"]
+[ext_resource type="Texture2D" uid="uid://bq58v4ge1wvf2" path="res://Sprites/Icons/Player/heart.png" id="1_vhk16"]
+
+[resource]
+script = ExtResource("1_jmtr1")
+is_percentage = false
+value = 10.0
+name = "Life Upgrade"
+description = "Gain +10 Maximum Life"
+icon = ExtResource("1_vhk16")
+metadata/_custom_type_script = "uid://bd43a7kqimpp0"

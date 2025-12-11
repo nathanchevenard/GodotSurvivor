@@ -8,6 +8,6 @@ script = ExtResource("2_x1ai7")
 upgrade_type = 2
 impacted_weapon = 3
 value = 0.2
-name = "Mine Damage"
+name = "Mine Upgrade"
 description = "Mine +20% Damage"
 icon = ExtResource("1_mvwd3")

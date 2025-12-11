@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=46 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -36,6 +36,12 @@
 [ext_resource type="Resource" uid="uid://ceafa5a41n5py" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherDamage.tres" id="27_m1kf3"]
 [ext_resource type="Resource" uid="uid://dpfsriaamt1j0" path="res://Resources/Upgrades/WeaponUpgrades/BlasterSize.tres" id="28_ayfgb"]
 [ext_resource type="Resource" uid="uid://dx51cuwfrl63g" path="res://Resources/Upgrades/WeaponUpgrades/LaserSize.tres" id="29_w7md3"]
+[ext_resource type="Resource" uid="uid://bs7mhle7j7uc1" path="res://Resources/Upgrades/PlayerUpgrades/PlayerCooldown.tres" id="30_04ldg"]
+[ext_resource type="Resource" uid="uid://cbti1c2b7jlt6" path="res://Resources/Upgrades/PlayerUpgrades/PlayerDamage.tres" id="31_jdpru"]
+[ext_resource type="Resource" uid="uid://bhodvqwubg3qj" path="res://Resources/Upgrades/PlayerUpgrades/PlayerLife.tres" id="32_hl7j1"]
+[ext_resource type="Resource" uid="uid://dep15bewcb57x" path="res://Resources/Upgrades/PlayerUpgrades/PlayerLifeRegen.tres" id="33_silsi"]
+[ext_resource type="Resource" uid="uid://u1g4sm3cd1uh" path="res://Resources/Upgrades/PlayerUpgrades/PlayerMoveSpeed.tres" id="34_006ny"]
+[ext_resource type="Resource" uid="uid://bda0h3g0jf7o6" path="res://Resources/Upgrades/PlayerUpgrades/PlayerShield.tres" id="35_bsnq8"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
 script = ExtResource("4_2vapx")
@@ -72,7 +78,7 @@ script = ExtResource("10_2qfsf")
 process_mode = 3
 container = NodePath("../UpgradeLayer/CenterContainer/HBoxContainer")
 button_scene = ExtResource("16_xe3ed")
-upgrades = Array[ExtResource("11_ax57u")]([ExtResource("12_w7xp7"), ExtResource("13_fh2l2"), ExtResource("14_gd6lo"), ExtResource("15_ce188"), ExtResource("16_ahb13"), ExtResource("17_dli4q"), ExtResource("18_sxrcp"), ExtResource("19_5c5q5"), ExtResource("20_5c5q5"), ExtResource("21_p0w64"), ExtResource("22_ayfgb"), ExtResource("23_w7md3"), ExtResource("24_e3o1s"), ExtResource("25_quimk"), ExtResource("26_d7ej7"), ExtResource("27_m1kf3"), ExtResource("28_ayfgb"), ExtResource("29_w7md3")])
+upgrades = Array[ExtResource("11_ax57u")]([ExtResource("12_w7xp7"), ExtResource("13_fh2l2"), ExtResource("14_gd6lo"), ExtResource("15_ce188"), ExtResource("16_ahb13"), ExtResource("17_dli4q"), ExtResource("18_sxrcp"), ExtResource("19_5c5q5"), ExtResource("20_5c5q5"), ExtResource("21_p0w64"), ExtResource("22_ayfgb"), ExtResource("23_w7md3"), ExtResource("24_e3o1s"), ExtResource("25_quimk"), ExtResource("26_d7ej7"), ExtResource("27_m1kf3"), ExtResource("28_ayfgb"), ExtResource("29_w7md3"), ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8")])
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
 

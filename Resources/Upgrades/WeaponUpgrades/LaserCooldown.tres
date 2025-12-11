@@ -8,6 +8,6 @@ script = ExtResource("2_waab0")
 upgrade_type = 1
 impacted_weapon = 1
 value = -0.1
-name = "Laser Cooldown"
+name = "Laser Upgrade"
 description = "Laser -10% Cooldown"
 icon = ExtResource("1_7lm5k")

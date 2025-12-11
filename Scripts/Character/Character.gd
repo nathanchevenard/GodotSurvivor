@@ -7,15 +7,27 @@ class_name Character
 @export var target_groups : Array[String]
 
 @export var health_max : int = 10
+@export var health_regen : float = 0
+@export var health_regen_delay : float = 1
 @export var shield_max : int = 0
 @export var shield_regen : float = 0
 @export var shield_regen_delay : float = 0.5
 
 var health : int = 0
+var health_regen_timer : float = 0.0
 var shield : int = 0
 var current_shield_regen : float = 0.0
 var is_regenerating_shield : bool = false
 var shield_regen_timer : float = 0.0
+var damage_mult : float = 1
+var cooldown_mult : float = 1
+
+var init_health_max : int
+var init_health_regen : float
+var init_shield_max : int
+var init_speed_max : float
+var init_damage_mult : float = 1
+var init_cooldown_mult : float = 1
 
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
@@ -35,6 +47,11 @@ func _ready():
 	
 	shield = shield_max
 	emit_shield_changed()
+	
+	init_health_max = health_max
+	init_health_regen = health_regen
+	init_shield_max = shield_max
+	init_speed_max = speed_max
 
 
 func _physics_process(delta):
@@ -43,6 +60,7 @@ func _physics_process(delta):
 		rotate_toward_direction()
 	
 	move()
+	update_health(delta)
 	update_shield(delta)
 
 
@@ -112,11 +130,22 @@ func heal(amount: int):
 	if health == health_max:
 		return
 	
-	health = clampi(0, health_max, health + amount)
+	health = clampi(health + amount, 0, health_max)
 	emit_health_changed()
 	
 	if health == health_max && shield == shield_max:
 		on_health_become_full.emit()
+
+
+func update_health(delta: float):
+	if health_regen <= 0 || health == health_max:
+		return
+	
+	health_regen_timer += delta
+	
+	if health_regen_timer >= health_regen_delay:
+		heal(roundi(health_regen))
+		health_regen_timer = 0
 
 
 func update_shield(delta: float):

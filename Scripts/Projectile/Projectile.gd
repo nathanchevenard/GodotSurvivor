@@ -43,4 +43,4 @@ func _on_body_entered(body : Node2D):
 
 func on_enemy_collision(body : Node2D):
 	var character : Character = body as Character
-	character.take_damage(weapon.damage)
+	character.take_damage(roundi(weapon.damage * weapon.character.damage_mult))

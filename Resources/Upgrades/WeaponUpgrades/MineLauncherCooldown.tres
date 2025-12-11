@@ -8,6 +8,6 @@ script = ExtResource("2_rposf")
 upgrade_type = 1
 impacted_weapon = 3
 value = -0.1
-name = "Mine Cooldown"
+name = "Mine Upgrade"
 description = "Mine -10% Cooldown"
 icon = ExtResource("1_ecsvj")
