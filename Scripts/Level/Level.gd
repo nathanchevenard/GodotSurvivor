@@ -21,6 +21,7 @@ class_name Level
 @export var enemy_spawn_number : int = 1
 @export var enemy_max_number : int = 300
 
+
 var asteroids : Array[Asteroid]
 var enemies : Array[Enemy]
 
@@ -103,7 +104,7 @@ func get_random_enemy() -> PackedScene:
 	return null
 
 
-func spawn_scene_around_position(scene: PackedScene, position: Vector2):
+func spawn_scene_around_position(scene: PackedScene, position: Vector2) -> Node2D:
 	var instance : Node2D = scene.instantiate() as Node2D
 	enemy_handler.add_child.call_deferred((instance))
 	
@@ -111,7 +112,7 @@ func spawn_scene_around_position(scene: PackedScene, position: Vector2):
 	var offset = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
 	
 	instance.global_position = position + offset
-	#enemy.destroyed.connect(on_asteroid_destroy.bind(enemy))
+	return instance
 
 
 func _on_player_destroyed():

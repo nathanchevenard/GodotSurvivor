@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8fd3xjj47eai"]
 
-[ext_resource type="Script" path="res://Scripts/Character/Enemy/Broodling.gd" id="1_ys715"]
+[ext_resource type="Script" uid="uid://fhmtsigkp6je" path="res://Scripts/Character/Enemy/Broodling.gd" id="1_ys715"]
 [ext_resource type="Texture2D" uid="uid://mr1ai7nel24y" path="res://Sprites/Ship/BaseEnemy2.png" id="2_n2anr"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_x7eaa"]
 

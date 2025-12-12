@@ -5,14 +5,28 @@ class_name UpgradeSystem
 @export var button_scene : PackedScene
 @export var upgrades : Array[Upgrade]
 
-var cooldown : float = 10
+var cooldown : float = 0
 var timer : float = 9
 var upgrades_count : int = 0
 
 var upgrades_number : int = 3
 var button_instances : Array[UpgradeButton]
 
+var stacked_upgrade_count : int = 0
+
+
+func _init() -> void:
+	SignalsManager.player_level_up.connect(_on_player_level_up)
+
+
+func _ready() -> void:
+	start_upgrade()
+
+
 func _process(delta):
+	if cooldown <= 0:
+		return
+	
 	if PauseSystem.instance.is_paused == true:
 		return
 	
@@ -54,6 +68,8 @@ func display_upgrades():
 
 func _on_upgrade_pressed(upgrade : Upgrade):
 	upgrades_count += 1
+	stacked_upgrade_count = clampi(stacked_upgrade_count - 1, 0, 100000)
+	
 	var players : Array[Node] = get_tree().get_nodes_in_group("Player")
 	
 	for player : Player in players:
@@ -67,4 +83,12 @@ func _on_upgrade_pressed(upgrade : Upgrade):
 	
 	button_instances.clear()
 	
-	PauseSystem.instance.stop_pause(true)
+	if stacked_upgrade_count == 0:
+		PauseSystem.instance.stop_pause(true)
+	else:
+		display_upgrades()
+
+
+func _on_player_level_up(_player : Player):
+	stacked_upgrade_count += 1
+	start_upgrade()

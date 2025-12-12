@@ -7,15 +7,19 @@ var lifetime : float
 
 var current_lifetime : float = 0.0
 var weapon : Weapon
+var init_damage : float
+var target_groups : Array[String]
 
 func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, speed : float):
 	global_position = starting_position
 	scale *= Vector2(weapon.projectile_size, weapon.projectile_size)
 	self.weapon = weapon
 	self.speed = speed
+	target_groups = weapon.target_groups
 	
 	if weapon != null:
 		lifetime = weapon.projectile_lifetime
+		init_damage = weapon.damage * weapon.character.damage_mult
 	
 	if (target != null):
 		current_direction = (target.global_position - global_position).normalized()
@@ -35,12 +39,14 @@ func _process(delta):
 
 
 func _on_body_entered(body : Node2D):
-	if weapon != null:
-		for target_group in weapon.target_groups:
-			if body.is_in_group(target_group) == true && weapon != null:
-				on_enemy_collision(body)
+	for target_group in target_groups:
+		if body.is_in_group(target_group) == true:
+			on_enemy_collision(body)
 
 
 func on_enemy_collision(body : Node2D):
 	var character : Character = body as Character
-	character.take_damage(roundi(weapon.damage * weapon.character.damage_mult))
+	if weapon != null:
+		character.take_damage(roundi(weapon.damage * weapon.character.damage_mult))
+	else:
+		character.take_damage(roundi(init_damage))

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://buaoqregprbw6"]
 
-[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Background.png" id="1_miw82"]
-[ext_resource type="Script" path="res://Scripts/UI/SettingsController.gd" id="2_gfdcy"]
+[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Level/Background.png" id="1_miw82"]
+[ext_resource type="Script" uid="uid://bs6kencbym0oi" path="res://Scripts/UI/SettingsController.gd" id="2_gfdcy"]
 
 [node name="Settings" type="Node2D"]
 

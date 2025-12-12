@@ -5,11 +5,20 @@ class_name Player
 @export var attack_speed : float = 1
 
 @export var projectile_scene : PackedScene
+
+@export var level_cap_base : int = 5
+@export var level_cap_increase : int = 4
+@export var level_cap_acceleration : int = 3
+
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
 var attack_cooldown : float = 0.0
 var weapons : Array[Weapon]
 var upgrades : Array[Upgrade]
+
+var current_xp : float = 0
+var current_level : int = 1
+var current_level_cap : int = 1
 
 signal projectile_fired(projectile)
 signal upgrade_added(upgrade)
@@ -19,6 +28,8 @@ func _ready():
 	
 	init_weapons()
 	init_upgrades()
+	
+	current_level_cap = level_cap_base
 
 
 func _physics_process(_delta):
@@ -102,3 +113,16 @@ func has_weapon_type(weapon_type) -> bool:
 		return weapon.projectile_number > 0
 	
 	return false
+
+
+func add_xp(xp_value : float):
+	current_xp += xp_value
+	
+	while current_xp >= current_level_cap:
+		current_xp -= current_level_cap
+		current_level += 1
+		SignalsManager.emit_player_level_up(self)
+		
+		current_level_cap = level_cap_base + level_cap_increase * (current_level - 1) + level_cap_acceleration * (current_level - 2)
+	
+	SignalsManager.emit_player_xp_update(current_xp, current_level_cap)

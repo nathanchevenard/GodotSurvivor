@@ -10,6 +10,7 @@ projectile = ExtResource("2_6wgya")
 damage = 10.0
 cooldown = 2.0
 projectile_number = 1
+projectile_lifetime = 10.0
 projectile_coef_area_of_effect = 0.5
 is_volley = true
 volley_duration = 1.0

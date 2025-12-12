@@ -26,11 +26,13 @@ enum ASTEROID_SIZE
 @export var size_max : float = 2.5
 @export var attack : int = 10
 @export var cooldown : float = 1.0
+@export var player_distance_destroyed : float = 1000
 
 @export var asteroid_size_array : Array[AsteroidSize]
 
 var characters_in_range : Array[Character] = []
 var current_cooldown : float = 0.0
+var players : Array[Node]
 
 var speed : float
 
@@ -53,6 +55,8 @@ func _ready():
 	speed = randf_range(speed_min, speed_max)
 	
 	Level.instance.asteroids.append(self)
+	
+	players = get_tree().get_nodes_in_group("Player")
 
 
 func _physics_process(delta):
@@ -67,6 +71,15 @@ func _physics_process(delta):
 	if current_cooldown >= cooldown && characters_in_range.size() > 0:
 		current_cooldown = 0
 		characters_in_range[0].take_damage(attack)
+	
+	var is_far_from_all_players : bool = true
+	for player : Player in players:
+		if (player.global_position - global_position).length() <= player_distance_destroyed:
+			is_far_from_all_players = false
+			break
+	
+	if is_far_from_all_players == true:
+		destroy()
 
 
 func destroy() -> void:

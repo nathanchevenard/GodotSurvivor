@@ -3,6 +3,9 @@ class_name Enemy
 
 @export var attack : int = 10
 @export var attack_cooldown : float = 1.0
+@export var xp_value : int = 1
+@export var xp_modulate_color : Color = Color.WHITE
+@export var xp_scene_scale : float = 1
 
 var characters_in_range : Array[Character] = []
 var current_attack_cooldown : float = 0.0
@@ -66,5 +69,6 @@ func _on_area_2d_body_exited(body: Node2D):
 
 func destroy():
 	Level.instance.enemies.erase(self)
-	SignalsManager.emit_enemy_died()
+	SignalsManager.emit_enemy_died(self)
+	
 	super()

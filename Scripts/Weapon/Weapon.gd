@@ -90,8 +90,8 @@ func fire():
 			await get_tree().create_timer(volley_duration / projectile_number).timeout
 
 
-func on_upgrade_added(upgrade : WeaponUpgrade):
-	if upgrade == null:
+func on_upgrade_added(upgrade : Upgrade):
+	if upgrade == null || upgrade is not WeaponUpgrade:
 		return
 	
 	if weapon_type == upgrade.impacted_weapon:

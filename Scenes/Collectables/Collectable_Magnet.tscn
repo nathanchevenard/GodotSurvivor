@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgilcda5p0kwe"]
+
+[ext_resource type="Script" uid="uid://dvgp4x6ad6xde" path="res://Scripts/Collectables/MagnetCollectable.gd" id="1_g6ash"]
+[ext_resource type="Texture2D" uid="uid://beml4rkt54fyj" path="res://Sprites/Collectables/magnet.png" id="2_g6ash"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwxuw"]
+
+[node name="CollectableMagnet" type="Area2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 16
+script = ExtResource("1_g6ash")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gwxuw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_g6ash")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
