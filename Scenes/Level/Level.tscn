@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=58 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://clvvt6oylh6ou" path="res://Scenes/UI/Joystick.tscn" id="6_o0aqk"]
 [ext_resource type="PackedScene" uid="uid://dmpu6kw7kq41g" path="res://Scenes/Collectables/Collectable_Heal.tscn" id="7_jdpru"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/Level/BlackHole.png" id="7_kfec1"]
+[ext_resource type="PackedScene" uid="uid://d3iq6bwjslrd1" path="res://Scenes/Enemy/Broodlord.tscn" id="7_qxhfh"]
 [ext_resource type="PackedScene" uid="uid://b31w2c4v8wop3" path="res://Scenes/Collectables/Collectable_Xp.tscn" id="8_silsi"]
 [ext_resource type="PackedScene" uid="uid://bn1ubnes7fm30" path="res://Scenes/Level/PauseSystem.tscn" id="8_smpvf"]
 [ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
@@ -53,15 +54,32 @@ script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("8_xwq3q")
 weight = 50.0
 
-[sub_resource type="Resource" id="Resource_olx7e"]
-script = ExtResource("4_2vapx")
-enemy_scene = ExtResource("5_65rq2")
-weight = 1.0
-
 [sub_resource type="Resource" id="Resource_0qujo"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("6_2ravk")
 weight = 5.0
+spawn_timer = 30.0
+
+[sub_resource type="Resource" id="Resource_olx7e"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("5_65rq2")
+weight = 1.0
+spawn_timer = 60.0
+
+[sub_resource type="Resource" id="Resource_qxhfh"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("7_qxhfh")
+spawn_timer = 120.0
+spawn_only_on_timer = true
+metadata/_custom_type_script = "uid://cyo6s7sltljf1"
+
+[sub_resource type="Resource" id="Resource_b63oq"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("7_qxhfh")
+spawn_timer = 300.0
+spawn_only_on_timer = true
+spawn_number = 3
+metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemec"]
 bg_color = Color(0, 0, 0, 1)
@@ -81,12 +99,12 @@ bg_color = Color(0.955311, 0.79006755, 0, 1)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lh7mg")
 asteroid_scene = ExtResource("2_byko3")
-enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_olx7e"), SubResource("Resource_0qujo")])
+enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_0qujo"), SubResource("Resource_olx7e"), SubResource("Resource_qxhfh"), SubResource("Resource_b63oq")])
 spawn_circle_radius = 400.0
 direction_random_variation = 15.0
 enemy_spawn_timer = 2.0
 enemy_incrementation_threshold = 15
-enemy_spawn_number = 2
+enemy_spawn_number = 4
 enemy_max_number = 200
 
 [node name="DebugOptions" type="Node" parent="."]

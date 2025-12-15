@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cue3sdqmec5dg"]
 
 [ext_resource type="Script" uid="uid://nvyyi2ryrxva" path="res://Scripts/Weapon/BombLauncher.gd" id="1_4io7s"]
-[ext_resource type="PackedScene" uid="uid://tdox552sfv6n" path="res://Scenes/Projectile/Bomb.tscn" id="2_dyhvl"]
+[ext_resource type="PackedScene" uid="uid://tdox552sfv6n" path="res://Scenes/Weapon/Projectile/Bomb.tscn" id="2_dyhvl"]
 
 [node name="BombLauncher" type="Node"]
 script = ExtResource("1_4io7s")
 weapon_type = 2
 projectile = ExtResource("2_dyhvl")
 damage = 10.0
+range = 200.0
 cooldown = 4.0
 projectile_speed = 170.0
 projectile_number = 1

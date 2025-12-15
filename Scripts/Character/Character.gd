@@ -13,6 +13,8 @@ class_name Character
 @export var shield_regen : float = 0
 @export var shield_regen_delay : float = 0.5
 
+var is_being_destroyed : bool = false
+
 var health : int = 0
 var health_regen_timer : float = 0.0
 var shield : int = 0
@@ -59,7 +61,7 @@ func _physics_process(delta):
 		last_direction = current_direction.normalized()
 		rotate_toward_direction()
 	
-	move()
+	move(delta)
 	update_health(delta)
 	update_shield(delta)
 
@@ -69,13 +71,17 @@ func rotate_toward_direction() -> void:
 	rotation = lerp_angle(rotation, angle, rotation_acceleration)
 
 
-func move() -> void:
+func move(delta : float) -> void:
 	if current_direction == Vector2.ZERO:
 		current_speed = lerp(current_speed, 0.0, position_acceleration)
 	else:
 		current_speed = lerp(current_speed, speed_max, position_acceleration)
 	
 	velocity = last_direction * current_speed
+	call_move_and_slide(delta)
+
+
+func call_move_and_slide(delta : float):
 	move_and_slide()
 
 
@@ -189,5 +195,9 @@ func emit_shield_changed():
 
 
 func destroy() -> void:
+	if is_being_destroyed == true:
+		return
+	
+	is_being_destroyed = true
 	destroyed.emit()
 	queue_free()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" uid="uid://fko4tmku54t" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
-[ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Projectile/Blast.tscn" id="2_ywvpm"]
+[ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Weapon/Projectile/Blast.tscn" id="2_ywvpm"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
 [ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Player/Blaster.tscn" id="4_vn0rv"]
 [ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Player/Laser.tscn" id="5_m1bf1"]

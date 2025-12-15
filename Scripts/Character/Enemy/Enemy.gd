@@ -68,6 +68,9 @@ func _on_area_2d_body_exited(body: Node2D):
 
 
 func destroy():
+	if is_being_destroyed == true:
+		return
+	
 	Level.instance.enemies.erase(self)
 	SignalsManager.emit_enemy_died(self)
 	

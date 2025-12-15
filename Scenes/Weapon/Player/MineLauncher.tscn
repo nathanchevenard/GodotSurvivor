@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3mmhbqka7r4c"]
 
 [ext_resource type="Script" uid="uid://b4pxletbbkpn3" path="res://Scripts/Weapon/MineLauncher.gd" id="1_vd7u6"]
-[ext_resource type="PackedScene" uid="uid://dk4xkjyjlmty6" path="res://Scenes/Projectile/Mine.tscn" id="2_6wgya"]
+[ext_resource type="PackedScene" uid="uid://dk4xkjyjlmty6" path="res://Scenes/Weapon/Projectile/Mine.tscn" id="2_6wgya"]
 
 [node name="MineLauncher" type="Node"]
 script = ExtResource("1_vd7u6")

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3iq6bwjslrd1"]
+
+[ext_resource type="Script" uid="uid://c4e7f7t32xqdq" path="res://Scripts/Character/Enemy/Broodlord.gd" id="1_d263m"]
+[ext_resource type="Texture2D" uid="uid://dvsd2ftvbswmu" path="res://Sprites/Ship/Broodlord.png" id="2_d263m"]
+[ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="2_wsinb"]
+[ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_vlben"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsinb"]
+size = Vector2(91.42862, 64.28575)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlben"]
+size = Vector2(97.142876, 71.42859)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndmkx"]
+bg_color = Color(0.74902, 0, 0, 1)
+
+[node name="Broodlord" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(0.7, 0.7)
+collision_layer = 2
+collision_mask = 11
+collision_priority = 10.0
+script = ExtResource("1_d263m")
+spawned_enemy_scene = ExtResource("2_wsinb")
+spawn_number = 10
+spawn_delay = 5.0
+spawn_volley_delay = 0.1
+spawn_forward_distance = 20.0
+attack = 50
+xp_value = 80
+xp_modulate_color = Color(0, 1, 0, 1)
+xp_scene_scale = 3.0
+speed_max = 50.0
+target_groups = Array[String](["Player"])
+health_max = 1500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.85714, 0)
+rotation = 1.5708
+texture = ExtResource("2_d263m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.3623908e-06, -0.7142844)
+scale = Vector2(0.99999934, 0.99999934)
+shape = SubResource("RectangleShape2D_wsinb")
+debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.3841898e-07, 0)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_vlben")
+debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_vlben")]
+scale = Vector2(0.7, 0.7)
+
+[node name="ProgressBar" parent="HealthBar" index="0"]
+offset_left = -35.714287
+offset_top = 41.428574
+offset_right = 36.285713
+offset_bottom = 46.428574
+
+[node name="ProgressBar" parent="HealthBar/ProgressBar" index="0"]
+offset_right = 72.0
+offset_bottom = 5.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ndmkx")
+
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../HealthBar")
+update_rotation = false
+
+[connection signal="health_changed" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_value_update"]
+[connection signal="on_health_become_full" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_health_become_full"]
+[connection signal="on_health_become_not_full" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_health_become_not_full"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="HealthBar"]

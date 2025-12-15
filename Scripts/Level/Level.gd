@@ -28,6 +28,7 @@ var enemies : Array[Enemy]
 var current_enemy_spawn_timer : float = 0.0
 var toggle_asteroids : bool = true
 var toggle_enemies : bool = true
+var timer_seconds : float = 0
 
 static var instance : Level = null
 
@@ -40,6 +41,8 @@ func _init():
 		return
 	
 	instance = self
+	
+	SignalsManager.timer_seconds_update.connect(on_timer_seconds_update)
 
 
 func _process(delta):
@@ -89,14 +92,19 @@ func spawn_enemy():
 
 func get_random_enemy() -> PackedScene:
 	var weight_sum : float = 0.0
+	var enemies : Array[EnemySpawnInfo] = enemy_spawn_infos.duplicate()
 	
-	for enemy_spawn_info : EnemySpawnInfo in enemy_spawn_infos:
+	for enemy in enemy_spawn_infos:
+		if enemy.spawn_only_on_timer == false && timer_seconds < enemy.spawn_timer:
+			enemies.erase(enemy)
+	
+	for enemy_spawn_info : EnemySpawnInfo in enemies:
 		weight_sum += enemy_spawn_info.weight
 	
 	var random_number : float = randf_range(0.0, weight_sum)
 	var current_weight : float = 0.0
 	
-	for enemy_spawn_info : EnemySpawnInfo in enemy_spawn_infos:
+	for enemy_spawn_info : EnemySpawnInfo in enemies:
 		current_weight += enemy_spawn_info.weight
 		if random_number <= current_weight:
 			return enemy_spawn_info.enemy_scene
@@ -119,3 +127,15 @@ func _on_player_destroyed():
 	game_over.show()
 	PauseSystem.instance.start_pause(true)
 	game_end.emit()
+
+
+func on_timer_seconds_update(seconds : int):
+	timer_seconds = seconds
+	
+	for enemy in enemy_spawn_infos:
+		if enemy.spawn_only_on_timer == true && enemy.spawn_timer == seconds:
+			var players : Array[Node] = get_tree().get_nodes_in_group("Player")
+			
+			for player : Player in players:
+				for i in enemy.spawn_number:
+					spawn_scene_around_position(enemy.enemy_scene, player.global_position)

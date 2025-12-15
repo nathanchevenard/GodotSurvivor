@@ -18,3 +18,8 @@ func emit_player_xp_update(current_xp, max_xp):
 signal player_collect_all_xp(player : Player)
 func emit_player_collect_all_xp(player : Player):
 	player_collect_all_xp.emit(player)
+
+
+signal timer_seconds_update(seconds : int)
+func emit_timer_seconds_update(seconds : int):
+	timer_seconds_update.emit(seconds)
