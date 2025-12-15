@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=61 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -50,6 +50,7 @@
 [ext_resource type="Script" uid="uid://c6873gcj26kaa" path="res://Scripts/Level/Arena.gd" id="43_17s1q"]
 [ext_resource type="PackedScene" uid="uid://21wyperjy0pn" path="res://Scenes/Level/Wall.tscn" id="44_g3uom"]
 [ext_resource type="Script" uid="uid://d3sl7aqf2hocw" path="res://Scripts/UI/XpBar.gd" id="44_hl7j1"]
+[ext_resource type="Script" uid="uid://ds3dr7ki2sgdb" path="res://Scripts/UI/FocusParentOnReady.gd" id="47_g3uom"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
 script = ExtResource("4_2vapx")
@@ -111,7 +112,6 @@ enemy_max_number = 200
 
 [node name="DebugOptions" type="Node" parent="."]
 script = ExtResource("10_2qfsf")
-player_immortal = true
 
 [node name="PauseSystem" parent="." instance=ExtResource("8_smpvf")]
 
@@ -134,8 +134,6 @@ metadata/_custom_type_script = "uid://dq5w7dmv4i17b"
 
 [node name="Arena" type="Node2D" parent="."]
 unique_name_in_owner = true
-process_mode = 4
-visible = false
 script = ExtResource("43_17s1q")
 wall_scene = ExtResource("44_g3uom")
 wall_size = Vector2(2000, 100)
@@ -541,6 +539,10 @@ theme_override_constants/separation = 20
 [node name="RetryButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Retry"
+
+[node name="FocusParentOnReady" type="Node" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton"]
+script = ExtResource("47_g3uom")
+metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
 [node name="MenuButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

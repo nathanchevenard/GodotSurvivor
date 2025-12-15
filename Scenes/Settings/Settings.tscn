@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://buaoqregprbw6"]
+[gd_scene load_steps=4 format=3 uid="uid://buaoqregprbw6"]
 
 [ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Level/Background.png" id="1_miw82"]
 [ext_resource type="Script" uid="uid://bs6kencbym0oi" path="res://Scripts/UI/SettingsController.gd" id="2_gfdcy"]
+[ext_resource type="Script" uid="uid://ds3dr7ki2sgdb" path="res://Scripts/UI/FocusParentOnReady.gd" id="3_swut7"]
 
 [node name="Settings" type="Node2D"]
 
@@ -10,8 +11,10 @@ z_index = -1
 position = Vector2(241, 137)
 texture = ExtResource("1_miw82")
 
-[node name="SettingsLayer" type="CanvasLayer" parent="."]
+[node name="SettingsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("arena_mode_button", "joystick_floating_button")]
 script = ExtResource("2_gfdcy")
+arena_mode_button = NodePath("Settings/CenterContainer/VBoxContainer/Arena mode/Arena mode CheckButton")
+joystick_floating_button = NodePath("Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton")
 
 [node name="Settings" type="Control" parent="SettingsLayer"]
 layout_mode = 3
@@ -78,8 +81,11 @@ popup/item_2/id = 6
 layout_mode = 2
 text = "Play"
 
+[node name="FocusParentOnReady" type="Node" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/PlayButton"]
+script = ExtResource("3_swut7")
+metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
+
 [connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Arena mode/Arena mode CheckButton" to="SettingsLayer" method="_on_arena_mode_toggled"]
-[connection signal="ready" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_ready"]
 [connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
 [connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
 [connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/PlayButton" to="SettingsLayer" method="_on_play_button_pressed"]

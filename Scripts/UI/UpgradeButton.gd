@@ -1,6 +1,7 @@
 extends Control
 class_name UpgradeButton
 
+@export var button : Button
 var upgrade : Upgrade
 
 signal upgrade_pressed(upgrade)

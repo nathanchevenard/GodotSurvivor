@@ -64,6 +64,8 @@ func display_upgrades():
 		button_instances.append(button)
 		
 		container.add_child.call_deferred(button)
+	
+	button_instances[0].button.call_deferred("grab_focus")
 
 
 func _on_upgrade_pressed(upgrade : Upgrade):

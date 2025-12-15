@@ -4,6 +4,14 @@ class_name SettingsController
 static var is_arena_mode : bool = true
 static var is_joystick_floating : bool = true
 
+@export var arena_mode_button : CheckButton
+@export var joystick_floating_button : CheckButton
+
+
+func _ready() -> void:
+	arena_mode_button.button_pressed = is_arena_mode
+	joystick_floating_button.button_pressed = is_joystick_floating
+
 
 func _on_arena_mode_toggled(toggled_on: bool) -> void:
 	is_arena_mode = toggled_on
