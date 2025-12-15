@@ -5,6 +5,7 @@ class_name Level
 @onready var obstacle_handler : Node2D = %ObstacleHandler
 @onready var projectile_handler : Node2D = %ProjectileHandler
 @onready var game_over = %GameOver
+@onready var arena : Arena = %Arena
 
 @onready var screen_width : float = ProjectSettings.get_setting("display/window/size/viewport_width") 
 @onready var screen_height : float = ProjectSettings.get_setting("display/window/size/viewport_height") 
@@ -82,7 +83,7 @@ func spawn_enemy():
 				removed_enemy.queue_free()
 			
 			var enemy_scene : PackedScene = get_random_enemy()
-			spawn_scene_around_position(enemy_scene, player.global_position)
+			spawn_scene_around_position(enemy_scene, player.global_position, true)
 	
 	current_enemy_incrementation += 1
 	if current_enemy_incrementation >= enemy_incrementation_threshold:
@@ -112,15 +113,22 @@ func get_random_enemy() -> PackedScene:
 	return null
 
 
-func spawn_scene_around_position(scene: PackedScene, position: Vector2) -> Node2D:
-	var instance : Node2D = scene.instantiate() as Node2D
-	enemy_handler.add_child.call_deferred((instance))
+func spawn_scene_around_position(scene: PackedScene, target_position: Vector2,\
+must_be_in_arena: bool = false) -> Node2D:
+	var node : Node2D = scene.instantiate() as Node2D
+	enemy_handler.add_child.call_deferred((node))
 	
 	var random_angle : float = randf_range(0.0, 2 * PI)
-	var offset = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
+	var offset : Vector2 = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
 	
-	instance.global_position = position + offset
-	return instance
+	if must_be_in_arena == true && SettingsController.is_arena_mode == true:
+		# If object will spawn outside of arena, pick a new position
+		while (target_position + offset).length() > arena.arena_radius:
+			random_angle = randf_range(0.0, 2 * PI)
+			offset = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
+	
+	node.global_position = target_position + offset
+	return node
 
 
 func _on_player_destroyed():
@@ -138,4 +146,4 @@ func on_timer_seconds_update(seconds : int):
 			
 			for player : Player in players:
 				for i in enemy.spawn_number:
-					spawn_scene_around_position(enemy.enemy_scene, player.global_position)
+					spawn_scene_around_position(enemy.enemy_scene, player.global_position, true)

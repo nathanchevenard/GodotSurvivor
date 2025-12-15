@@ -78,10 +78,6 @@ func move(delta : float) -> void:
 		current_speed = lerp(current_speed, speed_max, position_acceleration)
 	
 	velocity = last_direction * current_speed
-	call_move_and_slide(delta)
-
-
-func call_move_and_slide(delta : float):
 	move_and_slide()
 
 

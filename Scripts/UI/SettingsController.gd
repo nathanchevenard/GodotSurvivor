@@ -1,7 +1,12 @@
 extends Node
 class_name SettingsController
 
+static var is_arena_mode : bool = true
 static var is_joystick_floating : bool = true
+
+
+func _on_arena_mode_toggled(toggled_on: bool) -> void:
+	is_arena_mode = toggled_on
 
 
 func _on_floating_joystick_toggled(toggled_on):

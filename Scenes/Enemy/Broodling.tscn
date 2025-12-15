@@ -15,7 +15,7 @@ bg_color = Color(0.74902, 0, 0, 1)
 [node name="Broodling" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
-collision_mask = 11
+collision_mask = 107
 script = ExtResource("1_ys715")
 target_groups = Array[String](["Player"])
 

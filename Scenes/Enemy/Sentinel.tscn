@@ -16,7 +16,7 @@ bg_color = Color(0.74902, 0, 0, 1)
 
 [node name="Sentinel" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 107
 script = ExtResource("1_w2qwd")
 xp_value = 3
 xp_modulate_color = Color(0.8284073, 0.50510865, 0.31733212, 1)

@@ -18,7 +18,7 @@ bg_color = Color(0.74902, 0, 0, 1)
 
 [node name="Ravager" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 11
+collision_mask = 107
 script = ExtResource("1_2v341")
 charge_channelling_duration = 0.2
 charge_duration = 0.7

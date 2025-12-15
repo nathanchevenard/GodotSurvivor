@@ -17,7 +17,7 @@ bg_color = Color(0, 0.356863, 0.709804, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-collision_mask = 8
+collision_mask = 104
 script = ExtResource("1_xm3y8")
 attack_speed = 0.5
 projectile_scene = ExtResource("2_ywvpm")

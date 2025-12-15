@@ -35,7 +35,3 @@ func spawn_enemies():
 		await get_tree().create_timer(spawn_volley_delay).timeout
 	
 	is_spawning_enemies = false
-
-
-func call_move_and_slide(delta : float):
-	global_position += delta * velocity

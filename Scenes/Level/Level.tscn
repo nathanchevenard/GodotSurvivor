@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=60 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
@@ -47,6 +47,8 @@
 [ext_resource type="Resource" uid="uid://bda0h3g0jf7o6" path="res://Resources/Upgrades/PlayerUpgrades/PlayerShield.tres" id="35_bsnq8"]
 [ext_resource type="Script" uid="uid://dq5w7dmv4i17b" path="res://Scripts/Managers/CollectablesManager.gd" id="36_bsnq8"]
 [ext_resource type="PackedScene" uid="uid://cgilcda5p0kwe" path="res://Scenes/Collectables/Collectable_Magnet.tscn" id="39_qxhfh"]
+[ext_resource type="Script" uid="uid://c6873gcj26kaa" path="res://Scripts/Level/Arena.gd" id="43_17s1q"]
+[ext_resource type="PackedScene" uid="uid://21wyperjy0pn" path="res://Scenes/Level/Wall.tscn" id="44_g3uom"]
 [ext_resource type="Script" uid="uid://d3sl7aqf2hocw" path="res://Scripts/UI/XpBar.gd" id="44_hl7j1"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
@@ -104,11 +106,12 @@ spawn_circle_radius = 400.0
 direction_random_variation = 15.0
 enemy_spawn_timer = 2.0
 enemy_incrementation_threshold = 15
-enemy_spawn_number = 4
+enemy_spawn_number = 3
 enemy_max_number = 200
 
 [node name="DebugOptions" type="Node" parent="."]
 script = ExtResource("10_2qfsf")
+player_immortal = true
 
 [node name="PauseSystem" parent="." instance=ExtResource("8_smpvf")]
 
@@ -128,6 +131,337 @@ magnet_collectable_drop_rate = 0.005
 metadata/_custom_type_script = "uid://dq5w7dmv4i17b"
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
+
+[node name="Arena" type="Node2D" parent="."]
+unique_name_in_owner = true
+process_mode = 4
+visible = false
+script = ExtResource("43_17s1q")
+wall_scene = ExtResource("44_g3uom")
+wall_size = Vector2(2000, 100)
+arena_definition = 64
+arena_radius = 500.0
+metadata/_custom_type_script = "uid://c6873gcj26kaa"
+
+[node name="Wall" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(550, 0)
+rotation = 1.5707964
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146502" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(547.3516, 53.909428)
+rotation = 1.6689711
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146503" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(539.4319, 107.299675)
+rotation = 1.7671459
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146504" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(526.3172, 159.65657)
+rotation = 1.8653207
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146505" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(508.13373, 210.47589)
+rotation = 1.9634954
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146506" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(485.0567, 259.26822)
+rotation = 2.06167
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146507" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(457.3083, 305.56363)
+rotation = 2.1598449
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146508" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(425.15573, 348.9163)
+rotation = 2.2580197
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146509" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(388.90872, 388.90872)
+rotation = 2.3561945
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146510" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(348.9163, 425.15573)
+rotation = 2.4543693
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146511" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(305.56363, 457.3083)
+rotation = 2.552544
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146512" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(259.26822, 485.0567)
+rotation = 2.6507187
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146513" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(210.47589, 508.13373)
+rotation = 2.7488935
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146514" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(159.65657, 526.3172)
+rotation = 2.8470683
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146515" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(107.299675, 539.4319)
+rotation = 2.9452431
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146516" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(53.909428, 547.3516)
+rotation = 3.043418
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146517" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(3.3676675e-14, 550)
+rotation = 3.1415927
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146518" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-53.909428, 547.3516)
+rotation = 3.2397673
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146519" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-107.299675, 539.4319)
+rotation = 3.3379421
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146520" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-159.65657, 526.3172)
+rotation = 3.436117
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146521" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-210.47589, 508.13373)
+rotation = 3.5342917
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146522" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-259.26822, 485.0567)
+rotation = 3.6324666
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146523" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-305.56363, 457.3083)
+rotation = 3.7306414
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146524" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-348.9163, 425.15573)
+rotation = 3.828816
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146525" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-388.90872, 388.90872)
+rotation = 3.9269907
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146526" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-425.15573, 348.9163)
+rotation = 4.0251656
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146527" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-457.3083, 305.56363)
+rotation = 4.12334
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146528" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-485.0567, 259.26822)
+rotation = 4.221515
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146529" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-508.13373, 210.47589)
+rotation = 4.3196898
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146530" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-526.3172, 159.65657)
+rotation = 4.417865
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146531" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-539.4319, 107.299675)
+rotation = 4.5160394
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146532" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-547.3516, 53.909428)
+rotation = 4.6142144
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146533" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-550, 6.735335e-14)
+rotation = 4.712389
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146534" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-547.3516, -53.909428)
+rotation = 4.8105636
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146535" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-539.4319, -107.299675)
+rotation = 4.9087386
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146536" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-526.3172, -159.65657)
+rotation = 5.006913
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146537" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-508.13373, -210.47589)
+rotation = 5.105088
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146538" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-485.0567, -259.26822)
+rotation = 5.203263
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146539" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-457.3083, -305.56363)
+rotation = 5.3014374
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146540" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-425.15573, -348.9163)
+rotation = 5.3996124
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146541" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-388.90872, -388.90872)
+rotation = 5.497787
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146542" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-348.9163, -425.15573)
+rotation = 5.595962
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146543" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-305.56363, -457.3083)
+rotation = 5.6941366
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146544" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-259.26822, -485.0567)
+rotation = 5.7923117
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146545" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-210.47589, -508.13373)
+rotation = 5.8904862
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146546" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-159.65657, -526.3172)
+rotation = 5.988661
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146547" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-107.299675, -539.4319)
+rotation = 6.086836
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146548" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-53.909428, -547.3516)
+rotation = 6.1850104
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146549" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(-1.01030024e-13, -550)
+rotation = 6.2831855
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146550" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(53.909428, -547.3516)
+rotation = 6.38136
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146551" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(107.299675, -539.4319)
+rotation = 6.4795346
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146552" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(159.65657, -526.3172)
+rotation = 6.5777097
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146553" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(210.47589, -508.13373)
+rotation = 6.6758842
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146554" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(259.26822, -485.0567)
+rotation = 6.7740593
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146555" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(305.56363, -457.3083)
+rotation = 6.872234
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146556" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(348.9163, -425.15573)
+rotation = 6.970409
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146557" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(388.90872, -388.90872)
+rotation = 7.0685835
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146558" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(425.15573, -348.9163)
+rotation = 7.166758
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146559" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(457.3083, -305.56363)
+rotation = 7.264933
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146560" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(485.0567, -259.26822)
+rotation = 7.3631077
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146561" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(508.13373, -210.47589)
+rotation = 7.4612827
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146562" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(526.3172, -159.65657)
+rotation = 7.5594573
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146563" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(539.4319, -107.299675)
+rotation = 7.657632
+scale = Vector2(2000, 100)
+
+[node name="@StaticBody2D@146564" parent="Arena" instance=ExtResource("44_g3uom")]
+position = Vector2(547.3516, -53.909428)
+rotation = 7.755807
+scale = Vector2(2000, 100)
 
 [node name="ProjectileHandler" type="Node2D" parent="."]
 unique_name_in_owner = true
