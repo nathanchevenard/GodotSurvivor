@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Weapon
 
 enum WeaponEnum
@@ -68,7 +68,7 @@ func check_targets() -> bool:
 	acquired_targets.clear()
 	
 	for target in acquire_targets():
-		if range > 0 && character.global_position.distance_to(target.global_position) > range:
+		if range > 0 && global_position.distance_to(target.global_position) > range:
 			continue
 		
 		acquired_targets.append(target)
@@ -80,14 +80,20 @@ func fire():
 	if is_volley == false:
 		for target in acquired_targets:
 			var projectile_instance : Projectile = projectile.instantiate() as Projectile
-			projectile_instance.initialize(self, character.global_position, target, projectile_speed)
+			projectile_instance.initialize(self, global_position, target, projectile_speed)
 			Level.instance.projectile_handler.add_child(projectile_instance)
 	else:
 		for i in projectile_number:
 			var projectile_instance : Projectile = projectile.instantiate() as Projectile
-			projectile_instance.initialize(self, character.global_position, null, projectile_speed)
+			var target : Node2D = null
+			if acquired_targets.size() > 0:
+				target = acquired_targets[0]
+			projectile_instance.initialize(self, global_position, target, projectile_speed)
 			Level.instance.projectile_handler.add_child(projectile_instance)
-			await get_tree().create_timer(volley_duration / projectile_number).timeout
+			
+			if i < projectile_number - 1:
+				await get_tree().create_timer(volley_duration / projectile_number).timeout
+				check_targets()
 
 
 func on_upgrade_added(upgrade : Upgrade):

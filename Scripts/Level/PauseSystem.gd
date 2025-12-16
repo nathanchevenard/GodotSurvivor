@@ -43,9 +43,15 @@ func stop_pause(reallow_pause : bool = false):
 
 func _on_retry_button_pressed():
 	PauseSystem.instance.stop_pause()
-	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")
+	PauseSystem.instance = null
+	Level.instance = null
+	get_tree().reload_current_scene()
 
 
 func _on_menu_button_pressed():
 	PauseSystem.instance.stop_pause()
 	get_tree().change_scene_to_file("res://Scenes/Settings/Settings.tscn")
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

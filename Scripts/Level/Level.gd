@@ -122,10 +122,16 @@ must_be_in_arena: bool = false) -> Node2D:
 	var offset : Vector2 = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
 	
 	if must_be_in_arena == true && SettingsController.is_arena_mode == true:
-		# If object will spawn outside of arena, pick a new position
-		while (target_position + offset).length() > arena.arena_radius:
-			random_angle = randf_range(0.0, 2 * PI)
-			offset = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
+		# Pick a random position around player that is in arena radius
+		# Try random a few times, and if it does not find a right spot, force one inside radius
+		if (target_position + offset).length() >= arena.arena_radius:
+			for i in range(0, 5):
+				random_angle = randf_range(0.0, 2 * PI)
+				offset = Vector2.RIGHT.rotated(random_angle) * spawn_circle_radius
+				if (target_position + offset).length() < arena.arena_radius:
+					break
+				if i == 4:
+					offset = -target_position + (arena.arena_radius / 2) * target_position.normalized()
 	
 	node.global_position = target_position + offset
 	return node

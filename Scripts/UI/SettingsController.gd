@@ -35,3 +35,7 @@ func _on_display_mode_item_selected(index):
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Level/Level.tscn")
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

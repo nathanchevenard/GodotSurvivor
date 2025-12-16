@@ -1,7 +1,7 @@
 [gd_scene load_steps=61 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
-[ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/player.tscn" id="1_tqgfm"]
+[ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
 [ext_resource type="PackedScene" uid="uid://c5y64cygox0xe" path="res://Scenes/Asteroid/Asteroid.tscn" id="2_byko3"]
 [ext_resource type="Script" uid="uid://dua2ujys72ghr" path="res://Scripts/Projectile/ProjectileFactory.gd" id="2_nimkm"]
 [ext_resource type="Script" uid="uid://cyo6s7sltljf1" path="res://Scripts/Character/Enemy/EnemySpawnInfo.gd" id="4_2vapx"]
@@ -134,6 +134,8 @@ metadata/_custom_type_script = "uid://dq5w7dmv4i17b"
 
 [node name="Arena" type="Node2D" parent="."]
 unique_name_in_owner = true
+process_mode = 4
+visible = false
 script = ExtResource("43_17s1q")
 wall_scene = ExtResource("44_g3uom")
 wall_size = Vector2(2000, 100)
@@ -548,6 +550,10 @@ metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 layout_mode = 2
 text = "Menu"
 
+[node name="QuitButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
 [node name="BorderLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="BorderLayer"]
@@ -651,4 +657,5 @@ theme_override_constants/separation = 15
 [connection signal="timeout" from="ObstacleHandler/ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="PauseSystem" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="PauseSystem" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/QuitButton" to="PauseSystem" method="_on_quit_button_pressed"]
 [connection signal="timeout" from="BorderLayer/XpContainer/ProgressBar/Timer" to="BorderLayer/XpContainer/ProgressBar/ProgressBar" method="_on_timer_timeout"]

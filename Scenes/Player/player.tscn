@@ -39,15 +39,19 @@ shape = SubResource("CircleShape2D_w5q1e")
 zoom = Vector2(0.75, 0.75)
 
 [node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
+position = Vector2(13, 0)
 projectile_number = 0
 
 [node name="Laser" parent="." instance=ExtResource("5_m1bf1")]
+position = Vector2(-4, -15)
 projectile_number = 0
 
 [node name="BombLauncher" parent="." instance=ExtResource("6_dsrmc")]
+position = Vector2(-4, 14)
 projectile_number = 0
 
 [node name="MineLauncher" parent="." instance=ExtResource("7_srnvi")]
+position = Vector2(-13, 0)
 projectile_number = 0
 
 [node name="ShieldBar" parent="." instance=ExtResource("7_e1xj6")]

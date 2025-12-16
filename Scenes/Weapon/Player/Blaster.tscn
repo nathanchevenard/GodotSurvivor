@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cd1wlca5l7bg8" path="res://Scripts/Weapon/Blaster.gd" id="1_ijdqp"]
 [ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Weapon/Projectile/Blast.tscn" id="2_e1qpf"]
 
-[node name="Blaster" type="Node"]
+[node name="Blaster" type="Node2D"]
 script = ExtResource("1_ijdqp")
 projectile = ExtResource("2_e1qpf")
-damage = 7.0
+damage = 5.0
 range = 200.0
 cooldown = 0.5
 projectile_speed = 200.0

@@ -33,3 +33,6 @@ func _ready() -> void:
 	if SettingsController.is_arena_mode == false:
 		process_mode = Node.PROCESS_MODE_DISABLED
 		hide()
+	else:
+		process_mode = Node.PROCESS_MODE_INHERIT
+		show()

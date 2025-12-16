@@ -13,8 +13,8 @@ texture = ExtResource("1_miw82")
 
 [node name="SettingsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("arena_mode_button", "joystick_floating_button")]
 script = ExtResource("2_gfdcy")
-arena_mode_button = NodePath("Settings/CenterContainer/VBoxContainer/Arena mode/Arena mode CheckButton")
-joystick_floating_button = NodePath("Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton")
+arena_mode_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Arena mode/Arena mode CheckButton")
+joystick_floating_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick/Floating Joystick CheckButton")
 
 [node name="Settings" type="Control" parent="SettingsLayer"]
 layout_mode = 3
@@ -35,38 +35,42 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsLayer/Settings/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="Settings" type="VBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Arena mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+[node name="Arena mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Arena mode"]
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Arena mode"]
 layout_mode = 2
 text = "Arena mode"
 
-[node name="Arena mode CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Arena mode"]
+[node name="Arena mode CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Arena mode"]
 layout_mode = 2
 button_pressed = true
 
-[node name="Floating Joystick" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+[node name="Floating Joystick" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick"]
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick"]
 layout_mode = 2
 text = "Floating joystick "
 
-[node name="Floating Joystick CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick"]
+[node name="Floating Joystick CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick"]
 layout_mode = 2
 button_pressed = true
 
-[node name="Display Mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+[node name="Display Mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode"]
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode"]
 layout_mode = 2
 text = "Display mode"
 
-[node name="Display Mode OptionButton" type="OptionButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode"]
+[node name="Display Mode OptionButton" type="OptionButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode"]
 layout_mode = 2
 selected = 0
 item_count = 3
@@ -77,15 +81,26 @@ popup/item_1/id = 1
 popup/item_2/text = "Dynamic"
 popup/item_2/id = 6
 
-[node name="PlayButton" type="Button" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayButton" type="Button" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Play"
 
-[node name="FocusParentOnReady" type="Node" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/PlayButton"]
+[node name="FocusParentOnReady" type="Node" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/PlayButton"]
 script = ExtResource("3_swut7")
 metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
-[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Arena mode/Arena mode CheckButton" to="SettingsLayer" method="_on_arena_mode_toggled"]
-[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
-[connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
-[connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/PlayButton" to="SettingsLayer" method="_on_play_button_pressed"]
+[node name="QuitButton" type="Button" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
+
+[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Arena mode/Arena mode CheckButton" to="SettingsLayer" method="_on_arena_mode_toggled"]
+[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
+[connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
+[connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/PlayButton" to="SettingsLayer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/QuitButton" to="SettingsLayer" method="_on_quit_button_pressed"]

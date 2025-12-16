@@ -43,7 +43,7 @@ func _physics_process(_delta):
 
 func _input(event):
 	if DeviceDetection.is_computer():
-		var x = Input.get_action_strength("move_left") - Input.get_action_strength("move_right")
+		var x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		var y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		current_direction = Vector2(x, y).normalized()
 
