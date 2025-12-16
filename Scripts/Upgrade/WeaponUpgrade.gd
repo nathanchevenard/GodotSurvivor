@@ -9,12 +9,14 @@ enum WeaponUpgradeEnum
 	AreaOfEffect,
 	ProjectileSpeed,
 	ProjectileSize,
+	AddWeapon,
 }
 
 @export var upgrade_type : WeaponUpgradeEnum
 @export var impacted_weapon : Weapon.WeaponEnum
 @export var must_have_weapon : bool = true
 @export var pick_max_number : float
+@export var weapon_scene : PackedScene
 
 
 func apply_upgrade(weapon : Weapon):

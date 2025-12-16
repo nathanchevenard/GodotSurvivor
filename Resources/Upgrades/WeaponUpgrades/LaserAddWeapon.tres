@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://c80a4801kiu5j"]
+
+[ext_resource type="Texture2D" uid="uid://bmcdr70w7f7ot" path="res://Sprites/Icons/Weapons/laser_white.png" id="1_x0x66"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_6ea5f"]
+[ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Player/Laser.tscn" id="3_6ea5f"]
+
+[resource]
+script = ExtResource("2_6ea5f")
+upgrade_type = 6
+impacted_weapon = 1
+must_have_weapon = false
+pick_max_number = 1.0
+weapon_scene = ExtResource("3_6ea5f")
+name = "Laser"
+description = "Unlocks Laser"
+icon = ExtResource("1_x0x66")
+is_percentage = false
+value = 1.0

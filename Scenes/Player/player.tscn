@@ -1,13 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgxyci6epggm8"]
+[gd_scene load_steps=6 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" uid="uid://fko4tmku54t" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
-[ext_resource type="PackedScene" uid="uid://c7bn1br4k035r" path="res://Scenes/Weapon/Projectile/Blast.tscn" id="2_ywvpm"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
-[ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Player/Blaster.tscn" id="4_vn0rv"]
-[ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Player/Laser.tscn" id="5_m1bf1"]
-[ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/Player/BombLauncher.tscn" id="6_dsrmc"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="7_e1xj6"]
-[ext_resource type="PackedScene" uid="uid://d3mmhbqka7r4c" path="res://Scenes/Weapon/Player/MineLauncher.tscn" id="7_srnvi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
 radius = 11.0
@@ -15,12 +10,11 @@ radius = 11.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qshp3"]
 bg_color = Color(0, 0.356863, 0.709804, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_pivots") groups=["Player"]]
 z_index = 1
 collision_mask = 104
 script = ExtResource("1_xm3y8")
-attack_speed = 0.5
-projectile_scene = ExtResource("2_ywvpm")
+weapon_pivots = [NodePath("WeaponPivots/WeaponPivot1"), NodePath("WeaponPivots/WeaponPivot2"), NodePath("WeaponPivots/WeaponPivot3"), NodePath("WeaponPivots/WeaponPivot4")]
 speed_max = 100.0
 target_groups = Array[String](["Enemy"])
 health_max = 100
@@ -38,21 +32,19 @@ shape = SubResource("CircleShape2D_w5q1e")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.75, 0.75)
 
-[node name="Blaster" parent="." instance=ExtResource("4_vn0rv")]
+[node name="WeaponPivots" type="Node2D" parent="."]
+
+[node name="WeaponPivot1" type="Node2D" parent="WeaponPivots"]
 position = Vector2(13, 0)
-projectile_number = 0
 
-[node name="Laser" parent="." instance=ExtResource("5_m1bf1")]
-position = Vector2(-4, -15)
-projectile_number = 0
+[node name="WeaponPivot2" type="Node2D" parent="WeaponPivots"]
+position = Vector2(-2, -12)
 
-[node name="BombLauncher" parent="." instance=ExtResource("6_dsrmc")]
-position = Vector2(-4, 14)
-projectile_number = 0
+[node name="WeaponPivot3" type="Node2D" parent="WeaponPivots"]
+position = Vector2(-2, 12)
 
-[node name="MineLauncher" parent="." instance=ExtResource("7_srnvi")]
+[node name="WeaponPivot4" type="Node2D" parent="WeaponPivots"]
 position = Vector2(-13, 0)
-projectile_number = 0
 
 [node name="ShieldBar" parent="." instance=ExtResource("7_e1xj6")]
 

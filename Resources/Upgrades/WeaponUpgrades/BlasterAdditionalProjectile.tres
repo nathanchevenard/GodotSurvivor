@@ -5,9 +5,8 @@
 
 [resource]
 script = ExtResource("1_4hbug")
-must_have_weapon = false
-is_percentage = false
-value = 1.0
 name = "Blaster Upgrade"
 description = "Blaster +1 Projectile"
 icon = ExtResource("1_kv58o")
+is_percentage = false
+value = 1.0

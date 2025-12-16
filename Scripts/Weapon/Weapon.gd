@@ -37,7 +37,8 @@ var upgrades : Array[Upgrade]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	character = get_parent() as Character
+	if character == null:
+		character = get_parent() as Character
 	
 	init_cooldown = cooldown
 	init_damage = damage

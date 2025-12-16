@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://bygqkqrp7sbli"]
+
+[ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="1_2iu1d"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_0x0l8"]
+[ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Player/Blaster.tscn" id="3_0x0l8"]
+
+[resource]
+script = ExtResource("2_0x0l8")
+upgrade_type = 6
+must_have_weapon = false
+pick_max_number = 1.0
+weapon_scene = ExtResource("3_0x0l8")
+name = "Blaster"
+description = "Unlocks Blaster"
+icon = ExtResource("1_2iu1d")
+is_percentage = false
+value = 1.0

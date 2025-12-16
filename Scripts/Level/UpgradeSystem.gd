@@ -48,8 +48,10 @@ func display_upgrades():
 	var player : Player = get_tree().get_nodes_in_group("Player")[0] as Player
 	
 	for upgrade in upgrades:
-		if upgrade is WeaponUpgrade && upgrade.must_have_weapon && player.has_weapon_type(upgrade.impacted_weapon) == false:
-			available_upgrades.erase(upgrade)
+		if upgrade is WeaponUpgrade:
+			if upgrade.must_have_weapon && player.has_weapon_type(upgrade.impacted_weapon) == false\
+			|| upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon && player.has_available_weapon_pivot() == false:
+				available_upgrades.erase(upgrade)
 		
 		# TEMP: On first upgrade, have only weapon upgrades to start with one
 		if upgrades_count == 0 && upgrade is not WeaponUpgrade:
@@ -78,6 +80,9 @@ func _on_upgrade_pressed(upgrade : Upgrade):
 		player.add_upgrade(upgrade)
 		
 		if upgrade.pick_max_number > 0 && player.upgrades.count(upgrade) >= upgrade.pick_max_number:
+			upgrades.erase(upgrade)
+		
+		if upgrade is WeaponUpgrade && upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon:
 			upgrades.erase(upgrade)
 	
 	for button in button_instances:

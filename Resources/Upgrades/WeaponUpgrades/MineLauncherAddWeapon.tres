@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://b6731crtvwfws"]
+
+[ext_resource type="Texture2D" uid="uid://bsefyq3mqt6ut" path="res://Sprites/Icons/Weapons/mine_white.png" id="1_qke2d"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_yrdc7"]
+[ext_resource type="PackedScene" uid="uid://d3mmhbqka7r4c" path="res://Scenes/Weapon/Player/MineLauncher.tscn" id="3_yrdc7"]
+
+[resource]
+script = ExtResource("2_yrdc7")
+upgrade_type = 6
+impacted_weapon = 3
+must_have_weapon = false
+pick_max_number = 1.0
+weapon_scene = ExtResource("3_yrdc7")
+name = "Mine"
+description = "Unlocks Mine"
+icon = ExtResource("1_qke2d")
+is_percentage = false
+value = 1.0

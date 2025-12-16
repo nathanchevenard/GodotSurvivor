@@ -2,13 +2,12 @@ extends Character
 class_name Player
 
 @export var is_immortal : bool = false
-@export var attack_speed : float = 1
-
-@export var projectile_scene : PackedScene
 
 @export var level_cap_base : int = 5
 @export var level_cap_increase : int = 4
 @export var level_cap_acceleration : int = 3
+
+@export var weapon_pivots : Array[Node2D]
 
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
@@ -20,13 +19,14 @@ var current_xp : float = 0
 var current_level : int = 1
 var current_level_cap : int = 1
 
-signal projectile_fired(projectile)
+var weapon_pivots_dico : Dictionary[Node2D, Weapon]
+
 signal upgrade_added(upgrade)
+
 
 func _ready():
 	super()
 	
-	init_weapons()
 	init_upgrades()
 	
 	current_level_cap = level_cap_base
@@ -48,14 +48,20 @@ func _input(event):
 		current_direction = Vector2(x, y).normalized()
 
 
-func init_weapons():
-	if weapons != null && weapons.size() > 0:
-		return
-	
-	for child in get_children():
-		if child is Weapon:
-			weapons.append(child)
-			upgrade_added.connect(child.on_upgrade_added)
+func has_available_weapon_pivot():
+	return weapon_pivots_dico.size() != weapon_pivots.size()
+
+
+func create_weapon(weapon_scene : PackedScene):
+	var weapon : Weapon = weapon_scene.instantiate() as Weapon
+	weapon.character = self
+	weapons.append(weapon)
+	upgrade_added.connect(weapon.on_upgrade_added)
+	for pivot in weapon_pivots:
+		if weapon_pivots_dico.has(pivot) == false:
+			weapon_pivots_dico[pivot] = weapon
+			pivot.add_child(weapon)
+			break
 
 
 func init_upgrades():
@@ -64,6 +70,9 @@ func init_upgrades():
 
 
 func add_upgrade(upgrade : Upgrade):
+	if upgrade is WeaponUpgrade && upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon:
+		create_weapon(upgrade.weapon_scene)
+	
 	upgrade_added.emit(upgrade)
 	upgrades.append(upgrade)
 	
@@ -71,32 +80,11 @@ func add_upgrade(upgrade : Upgrade):
 		upgrade.apply_upgrade(self)
 
 
-func update_autoattack(_delta : float):
-	attack_cooldown += _delta
-	if attack_cooldown >= attack_speed:
-		attack_cooldown = 0.0
-		var closest_target : Node2D = get_closest_entity(target_groups)
-		
-		if closest_target != null:
-			var angle : float = global_position.angle_to_point(closest_target.global_position)
-			fire(angle)
-
-
 func rotate_toward_mouse() -> void:
 	var mouse_pos : Vector2 = get_global_mouse_position()
 	var angle : float = global_position.angle_to_point(mouse_pos)
 	rotation = lerp_angle(rotation, angle, rotation_acceleration)
 	
-
-
-func fire(angle : float) -> void:
-	var projectile : Projectile = projectile_scene.instantiate() as Projectile
-	
-	projectile.global_position = global_position
-	projectile.rotation = angle
-	projectile.target_groups = target_groups
-	
-	projectile_fired.emit(projectile)
 
 
 func destroy() -> void:

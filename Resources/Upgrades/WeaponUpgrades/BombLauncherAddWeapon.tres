@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://dgvfk08521uns"]
+
+[ext_resource type="Texture2D" uid="uid://dfutxyxbdyfli" path="res://Sprites/Icons/Weapons/bomb_white.png" id="1_bkyia"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_k0x6g"]
+[ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/Player/BombLauncher.tscn" id="3_k0x6g"]
+
+[resource]
+script = ExtResource("2_k0x6g")
+upgrade_type = 6
+impacted_weapon = 2
+must_have_weapon = false
+pick_max_number = 1.0
+weapon_scene = ExtResource("3_k0x6g")
+name = "Bomb"
+description = "Unlocks bomb"
+icon = ExtResource("1_bkyia")
+is_percentage = false
+value = 1.0
