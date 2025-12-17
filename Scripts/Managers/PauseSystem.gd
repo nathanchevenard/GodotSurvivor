@@ -21,8 +21,10 @@ func _input(event):
 func toggle_pause():
 	if is_paused == true:
 		stop_pause()
+		SignalsManager.emit_game_unpaused()
 	else:
 		start_pause()
+		SignalsManager.emit_game_paused()
 
 
 func start_pause(disallow_pause : bool = false):
@@ -55,3 +57,7 @@ func _on_menu_button_pressed():
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_resume_button_pressed() -> void:
+	toggle_pause()

@@ -8,6 +8,7 @@ class_name Player
 @export var level_cap_acceleration : int = 3
 
 @export var weapon_pivots : Array[Node2D]
+@export var ship_upgrades_number : int = 4
 
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
@@ -20,6 +21,7 @@ var current_level : int = 1
 var current_level_cap : int = 1
 
 var weapon_pivots_dico : Dictionary[Node2D, Weapon]
+var ship_upgrades : Array[PlayerUpgrade]
 
 signal upgrade_added(upgrade)
 
@@ -52,16 +54,13 @@ func has_available_weapon_pivot():
 	return weapon_pivots_dico.size() != weapon_pivots.size()
 
 
-func create_weapon(weapon_scene : PackedScene):
+func create_weapon(weapon_scene : PackedScene, pivot : Node2D):
 	var weapon : Weapon = weapon_scene.instantiate() as Weapon
 	weapon.character = self
 	weapons.append(weapon)
 	upgrade_added.connect(weapon.on_upgrade_added)
-	for pivot in weapon_pivots:
-		if weapon_pivots_dico.has(pivot) == false:
-			weapon_pivots_dico[pivot] = weapon
-			pivot.add_child(weapon)
-			break
+	weapon_pivots_dico[pivot] = weapon
+	pivot.add_child(weapon)
 
 
 func init_upgrades():
@@ -69,15 +68,17 @@ func init_upgrades():
 		upgrade_added.emit(upgrade)
 
 
-func add_upgrade(upgrade : Upgrade):
+func add_upgrade(upgrade : Upgrade, pivot : Node2D):
 	if upgrade is WeaponUpgrade && upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon:
-		create_weapon(upgrade.weapon_scene)
+		create_weapon(upgrade.weapon_scene, pivot)
 	
 	upgrade_added.emit(upgrade)
 	upgrades.append(upgrade)
 	
 	if upgrade is PlayerUpgrade:
 		upgrade.apply_upgrade(self)
+		if ship_upgrades.has(upgrade) == false:
+			ship_upgrades.append(upgrade)
 
 
 func rotate_toward_mouse() -> void:

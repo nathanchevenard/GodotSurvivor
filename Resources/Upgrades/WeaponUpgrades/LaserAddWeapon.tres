@@ -9,7 +9,6 @@ script = ExtResource("2_6ea5f")
 upgrade_type = 6
 impacted_weapon = 1
 must_have_weapon = false
-pick_max_number = 1.0
 weapon_scene = ExtResource("3_6ea5f")
 name = "Laser"
 description = "Unlocks Laser"

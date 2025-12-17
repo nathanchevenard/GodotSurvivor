@@ -9,7 +9,6 @@ script = ExtResource("2_k0x6g")
 upgrade_type = 6
 impacted_weapon = 2
 must_have_weapon = false
-pick_max_number = 1.0
 weapon_scene = ExtResource("3_k0x6g")
 name = "Bomb"
 description = "Unlocks bomb"

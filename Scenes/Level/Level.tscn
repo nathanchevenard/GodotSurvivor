@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=71 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -55,6 +55,9 @@
 [ext_resource type="PackedScene" uid="uid://21wyperjy0pn" path="res://Scenes/Level/Wall.tscn" id="44_g3uom"]
 [ext_resource type="Script" uid="uid://d3sl7aqf2hocw" path="res://Scripts/UI/XpBar.gd" id="44_hl7j1"]
 [ext_resource type="Script" uid="uid://ds3dr7ki2sgdb" path="res://Scripts/UI/FocusParentOnReady.gd" id="47_g3uom"]
+[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="52_04r5f"]
+[ext_resource type="Script" uid="uid://cnk7lm4gj8s6a" path="res://Scripts/UI/WeaponPivotButton.gd" id="53_ffwt3"]
+[ext_resource type="Script" uid="uid://7782lgio5eec" path="res://Scripts/UI/PauseHandler.gd" id="54_ml0wo"]
 
 [sub_resource type="Resource" id="Resource_6u0nf"]
 script = ExtResource("4_2vapx")
@@ -88,8 +91,25 @@ spawn_only_on_timer = true
 spawn_number = 3
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12iyy"]
+bg_color = Color(0, 0, 0, 0.7058824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04r5f"]
+bg_color = Color(0.30325067, 0.56218404, 0.9817994, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffwt3"]
+bg_color = Color(0.11489678, 0.11489683, 0.11489671, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemec"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
 expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
@@ -98,7 +118,8 @@ expand_margin_bottom = 1.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywuuj"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql4a4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml0wo"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_silsi"]
 bg_color = Color(0.955311, 0.79006755, 0, 1)
@@ -119,11 +140,14 @@ script = ExtResource("10_2qfsf")
 
 [node name="PauseSystem" parent="." instance=ExtResource("8_smpvf")]
 
-[node name="UpgradeSystem" parent="." node_paths=PackedStringArray("container") instance=ExtResource("9_rpw5f")]
+[node name="UpgradeSystem" parent="." node_paths=PackedStringArray("canvas_layer", "container", "weapon_pivot_buttons", "ship_upgrade_texture_rects") instance=ExtResource("9_rpw5f")]
 process_mode = 3
-container = NodePath("../UpgradeLayer/CenterContainer/HBoxContainer")
+canvas_layer = NodePath("../UpgradeLayer")
+container = NodePath("../UpgradeLayer/ShipUpgrade/HBoxContainer2")
 button_scene = ExtResource("16_xe3ed")
 upgrades = Array[ExtResource("11_ax57u")]([ExtResource("12_w7xp7"), ExtResource("13_fh2l2"), ExtResource("14_gd6lo"), ExtResource("15_ce188"), ExtResource("16_ahb13"), ExtResource("17_dli4q"), ExtResource("18_sxrcp"), ExtResource("19_5c5q5"), ExtResource("20_5c5q5"), ExtResource("21_p0w64"), ExtResource("22_ayfgb"), ExtResource("23_w7md3"), ExtResource("24_e3o1s"), ExtResource("25_quimk"), ExtResource("26_d7ej7"), ExtResource("27_m1kf3"), ExtResource("28_ayfgb"), ExtResource("29_w7md3"), ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo")])
+weapon_pivot_buttons = [NodePath("../UpgradeLayer/ShipUpgrade/WeaponPivot/Panel2/Button"), NodePath("../UpgradeLayer/ShipUpgrade/WeaponPivot2/Panel2/Button"), NodePath("../UpgradeLayer/ShipUpgrade/WeaponPivot3/Panel2/Button"), NodePath("../UpgradeLayer/ShipUpgrade/WeaponPivot4/Panel2/Button")]
+ship_upgrade_texture_rects = [NodePath("../UpgradeLayer/ShipUpgrade/HBoxContainer/Panel2/Panel3/TextureButton"), NodePath("../UpgradeLayer/ShipUpgrade/HBoxContainer/Panel3/Panel3/TextureButton"), NodePath("../UpgradeLayer/ShipUpgrade/HBoxContainer/Panel4/Panel3/TextureButton"), NodePath("../UpgradeLayer/ShipUpgrade/HBoxContainer/Panel5/Panel3/TextureButton")]
 
 [node name="CollectablesManager" type="Node" parent="."]
 script = ExtResource("36_bsnq8")
@@ -558,6 +582,467 @@ text = "Menu"
 layout_mode = 2
 text = "Quit"
 
+[node name="UpgradeLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Panel" type="Panel" parent="UpgradeLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_12iyy")
+
+[node name="ShipUpgrade" type="Control" parent="UpgradeLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -18.0
+offset_right = 22.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeLayer/ShipUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 161.0
+offset_top = 87.0
+offset_right = 257.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = ExtResource("52_04r5f")
+
+[node name="WeaponPivot" type="Control" parent="UpgradeLayer/ShipUpgrade"]
+anchors_preset = 0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 60.0
+
+[node name="Line2D" type="Line2D" parent="UpgradeLayer/ShipUpgrade/WeaponPivot"]
+position = Vector2(119, 88)
+points = PackedVector2Array(7, 18, -4, -5, -27, -5)
+width = 2.0
+default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="Panel2" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 51.0
+offset_right = 94.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/WeaponPivot/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Button" type="Button" parent="UpgradeLayer/ShipUpgrade/WeaponPivot/Panel2" node_paths=PackedStringArray("weapon_pivot", "weapon_texture")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffwt3")
+script = ExtResource("53_ffwt3")
+weapon_pivot = NodePath("../../../../../Player/WeaponPivots/WeaponPivot2")
+weapon_texture = NodePath("../Panel3/TextureRect")
+
+[node name="WeaponPivot2" type="Control" parent="UpgradeLayer/ShipUpgrade"]
+anchors_preset = 0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 60.0
+
+[node name="Line2D" type="Line2D" parent="UpgradeLayer/ShipUpgrade/WeaponPivot2"]
+position = Vector2(119, 182)
+scale = Vector2(1, -1)
+points = PackedVector2Array(7, 18, -4, -5, -27, -5)
+width = 2.0
+default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="Panel2" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot2"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 185.0
+offset_right = 93.0
+offset_bottom = 219.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot2/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/WeaponPivot2/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Button" type="Button" parent="UpgradeLayer/ShipUpgrade/WeaponPivot2/Panel2" node_paths=PackedStringArray("weapon_pivot", "weapon_texture")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffwt3")
+script = ExtResource("53_ffwt3")
+weapon_pivot = NodePath("../../../../../Player/WeaponPivots/WeaponPivot3")
+weapon_texture = NodePath("../Panel3/TextureRect")
+
+[node name="WeaponPivot3" type="Control" parent="UpgradeLayer/ShipUpgrade"]
+anchors_preset = 0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 60.0
+
+[node name="Line2D" type="Line2D" parent="UpgradeLayer/ShipUpgrade/WeaponPivot3"]
+position = Vector2(119, 154)
+scale = Vector2(1, -1)
+points = PackedVector2Array(-14, 19, -59, 19)
+width = 2.0
+default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="Panel2" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot3"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 118.0
+offset_right = 71.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot3/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/WeaponPivot3/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Button" type="Button" parent="UpgradeLayer/ShipUpgrade/WeaponPivot3/Panel2" node_paths=PackedStringArray("weapon_pivot", "weapon_texture")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffwt3")
+script = ExtResource("53_ffwt3")
+weapon_pivot = NodePath("../../../../../Player/WeaponPivots/WeaponPivot4")
+weapon_texture = NodePath("../Panel3/TextureRect")
+
+[node name="WeaponPivot4" type="Control" parent="UpgradeLayer/ShipUpgrade"]
+anchors_preset = 0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 60.0
+
+[node name="Line2D" type="Line2D" parent="UpgradeLayer/ShipUpgrade/WeaponPivot4"]
+position = Vector2(221, 154)
+scale = Vector2(1, -1)
+points = PackedVector2Array(-33, 19, -59, 19)
+width = 2.0
+default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="Panel2" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot4"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 118.0
+offset_right = 215.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/WeaponPivot4/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/WeaponPivot4/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Button" type="Button" parent="UpgradeLayer/ShipUpgrade/WeaponPivot4/Panel2" node_paths=PackedStringArray("weapon_pivot", "weapon_texture")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffwt3")
+script = ExtResource("53_ffwt3")
+weapon_pivot = NodePath("../../../../../Player/WeaponPivots/WeaponPivot1")
+weapon_texture = NodePath("../Panel3/TextureRect")
+
+[node name="Line2D" type="Line2D" parent="UpgradeLayer/ShipUpgrade"]
+position = Vector2(375, 98)
+points = PackedVector2Array(-243, 57, -177, 122, 72, 122)
+width = 2.0
+default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/ShipUpgrade"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 218.0
+offset_right = 450.0
+offset_bottom = 252.0
+theme_override_constants/separation = 10
+
+[node name="Panel2" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureButton" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureButton" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel3/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Panel4" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureButton" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel4/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="Panel5" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
+
+[node name="Panel3" type="Panel" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
+
+[node name="TextureButton" type="TextureRect" parent="UpgradeLayer/ShipUpgrade/HBoxContainer/Panel5/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UpgradeLayer/ShipUpgrade"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 63.0
+offset_right = 475.0
+offset_bottom = 175.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PauseButtons" type="VBoxContainer" parent="UpgradeLayer"]
+visible = false
+custom_minimum_size = Vector2(80, 0)
+offset_left = 309.0
+offset_top = 66.0
+offset_right = 389.0
+offset_bottom = 178.0
+script = ExtResource("54_ml0wo")
+
+[node name="ResumeButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Resume"
+
+[node name="FocusParentOnReady" type="Node" parent="UpgradeLayer/PauseButtons/ResumeButton"]
+script = ExtResource("47_g3uom")
+metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
+
+[node name="RestartButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Menu"
+
+[node name="QuitButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Quit"
+
 [node name="BorderLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="BorderLayer"]
@@ -631,7 +1116,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_ql4a4")
+theme_override_styles/background = SubResource("StyleBoxFlat_ml0wo")
 theme_override_styles/fill = SubResource("StyleBoxFlat_silsi")
 value = 40.0
 show_percentage = false
@@ -641,25 +1126,18 @@ level_label = NodePath("../../Label")
 [node name="Timer" type="Timer" parent="BorderLayer/XpContainer/ProgressBar"]
 wait_time = 0.4
 
-[node name="UpgradeLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="UpgradeLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeLayer/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
 [connection signal="game_end" from="." to="BorderLayer/Timer" method="_on_game_end"]
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
 [connection signal="timeout" from="ObstacleHandler/ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="PauseSystem" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="PauseSystem" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GameOverLayer/GameOver/CenterContainer/VBoxContainer/HBoxContainer/QuitButton" to="PauseSystem" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UpgradeLayer/PauseButtons/ResumeButton" to="PauseSystem" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UpgradeLayer/PauseButtons/RestartButton" to="PauseSystem" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="UpgradeLayer/PauseButtons/MenuButton" to="PauseSystem" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="UpgradeLayer/PauseButtons/QuitButton" to="PauseSystem" method="_on_quit_button_pressed"]
 [connection signal="timeout" from="BorderLayer/XpContainer/ProgressBar/Timer" to="BorderLayer/XpContainer/ProgressBar/ProgressBar" method="_on_timer_timeout"]
+
+[editable path="Player"]
+[editable path="Player/ShieldBar"]
+[editable path="Player/HealthBar"]
