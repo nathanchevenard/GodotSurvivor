@@ -14,9 +14,9 @@ enum WeaponUpgradeEnum
 
 @export var upgrade_type : WeaponUpgradeEnum
 @export var impacted_weapon : Weapon.WeaponEnum
-@export var must_have_weapon : bool = true
 @export var pick_max_number : float
 @export var weapon_scene : PackedScene
+@export var weapon_upgrades : Array[WeaponUpgrade]
 
 
 func apply_upgrade(weapon : Weapon):

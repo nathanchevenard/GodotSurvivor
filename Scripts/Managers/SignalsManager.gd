@@ -38,3 +38,13 @@ func emit_game_paused():
 signal game_unpause
 func emit_game_unpaused():
 	game_unpause.emit()
+
+
+signal pivot_button_hover(pivot : Node2D)
+func emit_pivot_button_hover(pivot : Node2D):
+	pivot_button_hover.emit(pivot)
+
+
+signal pivot_button_unhover(pivot : Node2D)
+func emit_pivot_button_unhover(pivot : Node2D):
+	pivot_button_unhover.emit(pivot)

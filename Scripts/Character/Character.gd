@@ -178,16 +178,16 @@ func update_shield(delta: float):
 
 func emit_health_changed():
 	if health_max != 0:
-		health_changed.emit(float(100 * health) / health_max)
+		health_changed.emit(health, health_max)
 	else:
-		health_changed.emit(0.0)
+		health_changed.emit(0.0, health_max)
 
 
 func emit_shield_changed():
 	if shield_max != 0:
-		shield_changed.emit(float(100 * shield) / shield_max)
+		shield_changed.emit(shield, shield_max)
 	else:
-		shield_changed.emit(0.0)
+		shield_changed.emit(0.0, health_max)
 
 
 func destroy() -> void:

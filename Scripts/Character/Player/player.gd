@@ -15,6 +15,7 @@ class_name Player
 var attack_cooldown : float = 0.0
 var weapons : Array[Weapon]
 var upgrades : Array[Upgrade]
+var slot_upgrades : Array[Upgrade]
 
 var current_xp : float = 0
 var current_level : int = 1
@@ -23,13 +24,11 @@ var current_level_cap : int = 1
 var weapon_pivots_dico : Dictionary[Node2D, Weapon]
 var ship_upgrades : Array[PlayerUpgrade]
 
-signal upgrade_added(upgrade)
+signal upgrade_added(upgrade, weapon)
 
 
 func _ready():
 	super()
-	
-	init_upgrades()
 	
 	current_level_cap = level_cap_base
 
@@ -63,17 +62,21 @@ func create_weapon(weapon_scene : PackedScene, pivot : Node2D):
 	pivot.add_child(weapon)
 
 
-func init_upgrades():
-	for upgrade in upgrades:
-		upgrade_added.emit(upgrade)
-
-
 func add_upgrade(upgrade : Upgrade, pivot : Node2D):
 	if upgrade is WeaponUpgrade && upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon:
 		create_weapon(upgrade.weapon_scene, pivot)
 	
-	upgrade_added.emit(upgrade)
+	var weapon : Weapon = null
+	if pivot != null:
+		weapon = weapon_pivots_dico[pivot]
+	
+	upgrade_added.emit(upgrade, weapon)
 	upgrades.append(upgrade)
+	
+	if slot_upgrades.has(upgrade) == false:
+		if upgrade is PlayerUpgrade || upgrade is WeaponUpgrade \
+		&& upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon:
+			slot_upgrades.append(upgrade)
 	
 	if upgrade is PlayerUpgrade:
 		upgrade.apply_upgrade(self)

@@ -17,7 +17,7 @@ var upgrades_number : int = 3
 var button_instances : Array[UpgradeButton]
 var selected_upgrade : Upgrade
 var selected_upgrade_button : UpgradeButton
-
+var new_upgrade_probability : float = 0.5
 var stacked_upgrade_count : int = 0
 
 
@@ -54,37 +54,123 @@ func start_upgrade():
 
 
 func display_upgrades():
-	var available_upgrades : Array[Upgrade] = upgrades.duplicate()
-	
 	var player : Player = get_tree().get_nodes_in_group("Player")[0] as Player
+	# Stores the upgrades the player does not have yet and that they can unlock
+	var available_new_upgrades : Array[Upgrade] = get_available_new_upgrades(player)
+	# Stores the upgrades the player already has and that have not been picked yet
+	var slot_upgrades : Array[Upgrade] = player.slot_upgrades.duplicate()
 	
-	for upgrade in upgrades:
-		if upgrade is WeaponUpgrade:
-			if upgrade.must_have_weapon && player.has_weapon_type(upgrade.impacted_weapon) == false\
-			|| upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon && player.has_available_weapon_pivot() == false:
-				available_upgrades.erase(upgrade)
-		
-		if upgrade is PlayerUpgrade:
-			if player.ship_upgrades.size() >= player.ship_upgrades_number && player.ship_upgrades.has(upgrade) == false:
-				available_upgrades.erase(upgrade)
-		
-		# TEMP: On first upgrade, have only weapon upgrades to start with one
-		if upgrades_count == 0 && upgrade is not WeaponUpgrade:
-			available_upgrades.erase(upgrade)
-	
-	for i in upgrades_number:
-		var button = button_scene.instantiate() as UpgradeButton
-		var upgrade : Upgrade = available_upgrades.pick_random()
-		available_upgrades.erase(upgrade)
-		button.init(upgrade)
-		button.upgrade_pressed.connect(_on_upgrade_pressed) 
-		button_instances.append(button)
-		
-		container.add_child.call_deferred(button)
+	# TEMP: On first upgrade, have only weapon upgrades to start with one
+	if upgrades_count == 0:
+		var weapon_upgrades : Array[Upgrade] = upgrades.duplicate()
+		for upgrade in upgrades:
+			if upgrade is not WeaponUpgrade:
+				weapon_upgrades.erase(upgrade)
+		for i in upgrades_number:
+			var upgrade : Upgrade = weapon_upgrades.pick_random()
+			create_upgrade_button(upgrade)
+			weapon_upgrades.erase(upgrade)
+	else:
+		for i in upgrades_number:
+			var upgrade_data : Array = pick_random_upgrade(i, player, available_new_upgrades, slot_upgrades)
+			var upgrade : Upgrade = upgrade_data[0]
+			var weapon_pivot : Node2D = upgrade_data[1]
+			create_upgrade_button(upgrade, weapon_pivot)
+			available_new_upgrades.erase(upgrade)
+			
+			# If upgrade is not a new one, prevent next choices from having the chosen upgrade
+			if upgrade_data[2] == false:
+				if weapon_pivot != null:
+					slot_upgrades.erase(player.weapon_pivots_dico[weapon_pivot].upgrades[0])
+				else:
+					slot_upgrades.erase(upgrade)
 	
 	set_weapon_pivot_buttons_visible(false)
 	canvas_layer.show()
 	button_instances[0].button.call_deferred("grab_focus")
+
+
+func get_available_new_upgrades(player : Player) -> Array[Upgrade]:
+	var available_new_upgrades : Array[Upgrade] = upgrades.duplicate()
+	
+	for upgrade in upgrades:
+		# Remove add weapon upgrades if ship does not have remaining slots
+		if upgrade is WeaponUpgrade:
+			if upgrade.upgrade_type == WeaponUpgrade.WeaponUpgradeEnum.AddWeapon && player.has_available_weapon_pivot() == false:
+				available_new_upgrades.erase(upgrade)
+		
+		# Remove ship upgrades if ship does not have remaining slots, or if ship already has the upgrade
+		if upgrade is PlayerUpgrade:
+			if player.ship_upgrades.size() >= player.ship_upgrades_number || player.ship_upgrades.has(upgrade) == true:
+				available_new_upgrades.erase(upgrade)
+	
+	return available_new_upgrades
+
+
+func pick_random_upgrade(i : int, player : Player, possible_upgrades : Array[Upgrade], \
+slot_upgrades : Array[Upgrade]) -> Array:
+	var upgrade : Upgrade = null
+	var weapon_pivot : Node2D = null
+	var is_new_upgrade : bool = false
+	var possible_weapons : Array[Weapon] = player.weapons.duplicate()
+	var data : Array
+	
+	# First choice is always a new upgrade (if ship can have one)
+	if i == 0:
+		if possible_upgrades.size() > 0:
+			upgrade = possible_upgrades.pick_random()
+			possible_upgrades.erase(upgrade)
+			is_new_upgrade = true
+		else:
+			data = pick_random_possessed_upgrade(player, slot_upgrades, possible_weapons)
+			possible_weapons = data[2]
+	# Other choices that are not the last one can be either new upgrades or upgrade improvements
+	elif i < upgrades_number - 1:
+		if i < upgrades_number - player.slot_upgrades.size() \
+		|| possible_upgrades.size() > 0 && randf_range(0, 1) > 1:
+			upgrade = possible_upgrades.pick_random()
+			possible_upgrades.erase(upgrade)
+			is_new_upgrade = true
+		else:
+			data = pick_random_possessed_upgrade(player, slot_upgrades, possible_weapons)
+			possible_weapons = data[2]
+	# Last choice is always a possessed upgrade improvement
+	else:
+		data = pick_random_possessed_upgrade(player, slot_upgrades, possible_weapons)
+		possible_weapons = data[2]
+	
+	if data.size() > 0:
+		upgrade = data[0]
+		weapon_pivot = data[1]
+	
+	if upgrade == null:
+		print("aled")
+	
+	return [upgrade, weapon_pivot, is_new_upgrade]
+
+
+func pick_random_possessed_upgrade(player : Player, slot_upgrades : Array[Upgrade], \
+possible_weapons : Array[Weapon]) -> Array:
+	var upgrade : Upgrade = slot_upgrades.pick_random()
+	var weapon_pivot : Node2D
+	
+	while upgrade is WeaponUpgrade && possible_weapons.size() == 0:
+		upgrade = slot_upgrades.pick_random()
+	if upgrade is WeaponUpgrade:
+		var weapon : Weapon = possible_weapons.pick_random()
+		possible_weapons.erase(weapon)
+		upgrade = weapon.upgrades[0].weapon_upgrades.pick_random()
+		weapon_pivot = player.weapon_pivots_dico.find_key(weapon)
+	
+	return [upgrade, weapon_pivot, possible_weapons]
+
+
+func create_upgrade_button(upgrade : Upgrade, weapon_pivot : Node2D = null):
+	var button = button_scene.instantiate() as UpgradeButton
+	button.init(upgrade, weapon_pivot)
+	button.upgrade_pressed.connect(_on_upgrade_pressed) 
+	button_instances.append(button)
+	container.add_child.call_deferred(button)
 
 
 func _on_upgrade_pressed(upgrade_button : UpgradeButton):
@@ -102,7 +188,7 @@ func _on_upgrade_pressed(upgrade_button : UpgradeButton):
 		
 		return
 	
-	apply_upgrade(upgrade)
+	apply_upgrade(upgrade, upgrade_button.weapon_pivot)
 
 
 func apply_upgrade(upgrade : Upgrade, pivot : Node2D = null):

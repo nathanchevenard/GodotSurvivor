@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhmg6xqpe6j5m"]
+[gd_scene load_steps=8 format=3 uid="uid://dhmg6xqpe6j5m"]
 
 [ext_resource type="Script" uid="uid://by8owyd3y4apc" path="res://Scripts/Weapon/Laser.gd" id="1_brcov"]
 [ext_resource type="PackedScene" uid="uid://bfy2tbwc7oh76" path="res://Scenes/Weapon/Projectile/Beam.tscn" id="2_yr7wq"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="3_23lm2"]
+[ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/LaserAdditionalProjectile.tres" id="4_1g2hl"]
+[ext_resource type="Resource" uid="uid://blm24wxupdgkq" path="res://Resources/Upgrades/WeaponUpgrades/LaserCooldown.tres" id="5_7rgo3"]
+[ext_resource type="Resource" uid="uid://dxo5djimyedqh" path="res://Resources/Upgrades/WeaponUpgrades/LaserDamage.tres" id="6_pwwun"]
+[ext_resource type="Resource" uid="uid://dx51cuwfrl63g" path="res://Resources/Upgrades/WeaponUpgrades/LaserSize.tres" id="7_6r33f"]
 
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_brcov")
@@ -12,3 +17,4 @@ range = 200.0
 cooldown = 2.0
 projectile_number = 1
 projectile_lifetime = 0.5
+wepaon_upgrades = Array[ExtResource("3_23lm2")]([ExtResource("4_1g2hl"), ExtResource("5_7rgo3"), ExtResource("6_pwwun"), ExtResource("7_6r33f")])

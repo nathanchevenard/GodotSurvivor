@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cue3sdqmec5dg"]
+[gd_scene load_steps=9 format=3 uid="uid://cue3sdqmec5dg"]
 
 [ext_resource type="Script" uid="uid://nvyyi2ryrxva" path="res://Scripts/Weapon/BombLauncher.gd" id="1_4io7s"]
 [ext_resource type="PackedScene" uid="uid://tdox552sfv6n" path="res://Scenes/Weapon/Projectile/Bomb.tscn" id="2_dyhvl"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="3_0wnrj"]
+[ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAdditionalProjectile.tres" id="4_leexp"]
+[ext_resource type="Resource" uid="uid://bgqanb1k7k77k" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAoe.tres" id="5_byxht"]
+[ext_resource type="Resource" uid="uid://co6a1dw2kpbeo" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherCooldown.tres" id="6_lw8p8"]
+[ext_resource type="Resource" uid="uid://cgnim4mufikih" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherDamage.tres" id="7_8g6xs"]
+[ext_resource type="Resource" uid="uid://dd1whwg66ldvq" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherProjectileSpeed.tres" id="8_tx4bu"]
 
 [node name="BombLauncher" type="Node2D"]
 script = ExtResource("1_4io7s")
@@ -12,3 +18,4 @@ range = 200.0
 cooldown = 4.0
 projectile_speed = 170.0
 projectile_number = 1
+wepaon_upgrades = Array[ExtResource("3_0wnrj")]([ExtResource("4_leexp"), ExtResource("5_byxht"), ExtResource("6_lw8p8"), ExtResource("7_8g6xs"), ExtResource("8_tx4bu")])

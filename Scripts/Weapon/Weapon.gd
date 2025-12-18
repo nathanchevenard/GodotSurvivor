@@ -97,10 +97,9 @@ func fire():
 				check_targets()
 
 
-func on_upgrade_added(upgrade : Upgrade):
-	if upgrade == null || upgrade is not WeaponUpgrade:
+func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
+	if upgrade == null || upgrade is not WeaponUpgrade || weapon == null || weapon != self:
 		return
 	
-	if weapon_type == upgrade.impacted_weapon:
-		upgrades.append(upgrade)
-		upgrade.apply_upgrade(self)
+	upgrades.append(upgrade)
+	upgrade.apply_upgrade(self)

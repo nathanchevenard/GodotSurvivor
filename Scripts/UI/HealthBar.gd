@@ -3,21 +3,27 @@ class_name HealthBar
 
 @export var progress_bar_under : ProgressBar = null
 @export var timer : Timer = null
+@export var value_label : Label
 
 var last_value : float = 0.0
 
 var is_init : bool = false
 
-func _on_value_update(value : float):
-	if value < self.value:
+func _on_value_update(new_value : float, new_max_value : float):
+	var percentage : float = float(100 * new_value) / new_max_value
+	
+	if percentage < value:
 		timer.start()
 	
-	self.value = value
+	value = percentage
 	last_value = value
 	
 	if is_init == false:
 		is_init = true
 		progress_bar_under.value = value
+	
+	if value_label != null:
+		value_label.text = str(roundi(new_value)) + " / " + str(roundi(new_max_value))
 
 
 func _on_timer_timeout():

@@ -1,6 +1,7 @@
 extends Node
 class_name DebugOptions
 
+@export var toggle_debug_inputs : bool = false
 @export var player_immortal : bool = false
 @export var player_toggle_weapons : bool = true
 @export var toggle_asteroids : bool = true
@@ -43,3 +44,12 @@ func _ready():
 func _process(delta):
 	#print("FPS: " + str(Engine.get_frames_per_second()))
 	pass
+
+
+func _input(event):
+	if toggle_debug_inputs == false:
+		return
+	
+	if event.is_action_pressed("debug_level_up"):
+		for player : Player in players:
+			player.add_xp(player.current_level_cap)
