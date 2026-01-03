@@ -3,6 +3,7 @@ class_name SettingsController
 
 static var is_arena_mode : bool = true
 static var is_joystick_floating : bool = true
+static var selected_ship_data : ShipData
 
 @export var arena_mode_button : CheckButton
 @export var joystick_floating_button : CheckButton
@@ -33,8 +34,8 @@ func _on_display_mode_item_selected(index):
 	DisplayServer.screen_set_orientation(index)
 
 
-func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Level/Level.tscn")
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Settings/ShipSelectionMenu.tscn")
 
 
 func _on_quit_button_pressed() -> void:

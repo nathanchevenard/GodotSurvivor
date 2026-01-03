@@ -48,3 +48,13 @@ func emit_pivot_button_hover(pivot : Node2D):
 signal pivot_button_unhover(pivot : Node2D)
 func emit_pivot_button_unhover(pivot : Node2D):
 	pivot_button_unhover.emit(pivot)
+
+
+signal player_ready(player : Player)
+func emit_player_ready(player : Player):
+	player_ready.emit(player)
+
+
+signal ship_select(ship_data : ShipData)
+func emit_ship_select(ship_data : ShipData):
+	ship_select.emit(ship_data)

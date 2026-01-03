@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PlayerUpgrade" load_steps=3 format=3 uid="uid://u1g4sm3cd1uh"]
 
 [ext_resource type="Texture2D" uid="uid://h5h4wy0h2tm" path="res://Sprites/Icons/Player/speed.png" id="1_vpthr"]
-[ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/PlayerUpgrade.gd" id="2_lket5"]
+[ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/ShipUpgrade.gd" id="2_lket5"]
 
 [resource]
 script = ExtResource("2_lket5")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://dvfqm8paoh6lt"]
+
+[ext_resource type="Script" uid="uid://duflb2yo25aot" path="res://Scripts/Character/Player/ShipData.gd" id="1_tshyy"]
+[ext_resource type="PackedScene" uid="uid://cx458hce2u6x0" path="res://Scenes/UI/Upgrade/Layouts/ShipUpgradeLayout_1.tscn" id="2_hssep"]
+[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="2_tshyy"]
+
+[resource]
+script = ExtResource("1_tshyy")
+name = "Ship 1"
+sprite = ExtResource("2_tshyy")
+description = "Basic ship je sais pas quoi dire de plus la team"
+weapon_pivot_positions = Array[Vector2]([Vector2(13, 0), Vector2(-2, -12), Vector2(-2, 12), Vector2(-13, 0)])
+ship_upgrades_number = 3
+ship_upgrade_layout_scene = ExtResource("2_hssep")
+metadata/_custom_type_script = "uid://duflb2yo25aot"

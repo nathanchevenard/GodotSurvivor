@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq3pqa33juo6h"]
+
+[ext_resource type="Script" uid="uid://g08d4ni511wd" path="res://Scripts/UI/Upgrade/ShipUpgradeLayout.gd" id="1_vdfcm"]
+[ext_resource type="Texture2D" uid="uid://cinf538ek3sjy" path="res://Sprites/Ship/player_ship_red.png" id="2_vdfcm"]
+[ext_resource type="PackedScene" uid="uid://dde05t1378h7c" path="res://Scenes/UI/Upgrade/WeaponPivotButton.tscn" id="3_kxlsr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdfcm"]
+bg_color = Color(0.30325067, 0.56218404, 0.9817994, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="ShipUpgradeLayout_2" type="Control" node_paths=PackedStringArray("weapon_pivot_buttons")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vdfcm")
+weapon_pivot_buttons = [NodePath("WeaponPivot7/Panel2/Button"), NodePath("WeaponPivot6/Panel2/Button")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.0
+offset_top = 83.0
+offset_right = 245.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = ExtResource("2_vdfcm")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(362, 96)
+points = PackedVector2Array(-243, 57, -177, 122, 72, 122)
+width = 2.0
+default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="WeaponPivot7" parent="." instance=ExtResource("3_kxlsr")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" parent="WeaponPivot7" index="0"]
+position = Vector2(221, 154)
+scale = Vector2(1, -1)
+points = PackedVector2Array(-33, 19, -59, 19)
+
+[node name="Panel2" parent="WeaponPivot7" index="1"]
+offset_left = 181.0
+offset_top = 118.0
+offset_right = 215.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vdfcm")
+
+[node name="WeaponPivot6" parent="." instance=ExtResource("3_kxlsr")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" parent="WeaponPivot6" index="0"]
+position = Vector2(119, 154)
+scale = Vector2(1, -1)
+points = PackedVector2Array(-14, 19, -59, 19)
+
+[node name="Panel2" parent="WeaponPivot6" index="1"]
+offset_left = 37.0
+offset_top = 118.0
+offset_right = 71.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vdfcm")
+
+[editable path="WeaponPivot7"]
+[editable path="WeaponPivot6"]

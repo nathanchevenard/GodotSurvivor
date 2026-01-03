@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dde05t1378h7c"]
 
-[ext_resource type="Script" uid="uid://cnk7lm4gj8s6a" path="res://Scripts/UI/WeaponPivotButton.gd" id="1_nmuc3"]
+[ext_resource type="Script" uid="uid://cnk7lm4gj8s6a" path="res://Scripts/UI/Upgrade/WeaponPivotButton.gd" id="1_nmuc3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04r5f"]
 bg_color = Color(0.30325067, 0.56218404, 0.9817994, 1)

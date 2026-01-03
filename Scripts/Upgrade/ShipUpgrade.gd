@@ -1,5 +1,5 @@
 extends Upgrade
-class_name PlayerUpgrade
+class_name ShipUpgrade
 
 enum PlayerUpgradeEnum
 {

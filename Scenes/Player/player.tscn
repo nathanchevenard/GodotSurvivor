@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgxyci6epggm8"]
+[gd_scene load_steps=7 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" uid="uid://fko4tmku54t" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
+[ext_resource type="Resource" uid="uid://dvfqm8paoh6lt" path="res://Resources/PlayerDatas/PlayerData_1.tres" id="2_ude3g"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="7_e1xj6"]
 
@@ -10,11 +11,13 @@ radius = 11.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qshp3"]
 bg_color = Color(0, 0.356863, 0.709804, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_pivots") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "wepaon_pivots_node") groups=["Player"]]
 z_index = 1
 collision_mask = 104
 script = ExtResource("1_xm3y8")
-weapon_pivots = [NodePath("WeaponPivots/WeaponPivot1"), NodePath("WeaponPivots/WeaponPivot2"), NodePath("WeaponPivots/WeaponPivot3"), NodePath("WeaponPivots/WeaponPivot4")]
+player_data = ExtResource("2_ude3g")
+sprite_2d = NodePath("Sprite2D")
+wepaon_pivots_node = NodePath("WeaponPivots")
 speed_max = 100.0
 target_groups = Array[String](["Enemy"])
 health_max = 100
@@ -33,18 +36,6 @@ shape = SubResource("CircleShape2D_w5q1e")
 zoom = Vector2(0.75, 0.75)
 
 [node name="WeaponPivots" type="Node2D" parent="."]
-
-[node name="WeaponPivot1" type="Node2D" parent="WeaponPivots"]
-position = Vector2(13, 0)
-
-[node name="WeaponPivot2" type="Node2D" parent="WeaponPivots"]
-position = Vector2(-2, -12)
-
-[node name="WeaponPivot3" type="Node2D" parent="WeaponPivots"]
-position = Vector2(-2, 12)
-
-[node name="WeaponPivot4" type="Node2D" parent="WeaponPivots"]
-position = Vector2(-13, 0)
 
 [node name="ShieldBar" parent="." instance=ExtResource("7_e1xj6")]
 

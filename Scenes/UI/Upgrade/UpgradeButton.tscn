@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://gckvhlh5xlb4"]
 
-[ext_resource type="Script" uid="uid://cdks4sdvx0xb0" path="res://Scripts/UI/UpgradeButton.gd" id="1_k8bql"]
+[ext_resource type="Script" uid="uid://cdks4sdvx0xb0" path="res://Scripts/UI/Upgrade/UpgradeButton.gd" id="1_k8bql"]
 [ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="2_n5eft"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2glp"]

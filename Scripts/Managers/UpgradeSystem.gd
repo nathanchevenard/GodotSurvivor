@@ -6,8 +6,9 @@ class_name UpgradeSystem
 @export var button_scene : PackedScene
 @export var upgrades : Array[Upgrade]
 
-@export var weapon_pivot_buttons : Array[WeaponPivotButton]
-@export var ship_upgrade_texture_rects : Array[TextureRect]
+@export var ship_upgrade_layout_pivot : Control
+@export var ship_upgrades_pivot : Control
+@export var ship_upgrade_slot_scene : PackedScene
 
 var cooldown : float = 0
 var timer : float = 9
@@ -15,6 +16,8 @@ var upgrades_count : int = 0
 
 var upgrades_number : int = 3
 var button_instances : Array[UpgradeButton]
+var weapon_pivot_buttons : Array[WeaponPivotButton]
+var ship_upgrade_slots : Array[ShipUpgradeSlot]
 var selected_upgrade : Upgrade
 var selected_upgrade_button : UpgradeButton
 var new_upgrade_probability : float = 0.5
@@ -26,12 +29,7 @@ func _init() -> void:
 	SignalsManager.weapon_pivot_button_pressed.connect(_on_weapon_pivot_button_pressed)
 	SignalsManager.game_pause.connect(_on_game_paused)
 	SignalsManager.game_unpause.connect(_on_game_unpaused)
-
-
-func _ready() -> void:
-	start_upgrade()
-	
-	set_weapon_pivot_buttons_visible(false)
+	SignalsManager.player_ready.connect(_on_player_ready)
 
 
 func _process(delta):
@@ -46,6 +44,27 @@ func _process(delta):
 	if timer >= cooldown:
 		start_upgrade()
 		timer = 0.0
+
+
+func _on_player_ready(player : Player):
+	init_buttons(player)
+	set_weapon_pivot_buttons_visible(false)
+	start_upgrade()
+
+
+func init_buttons(player : Player):
+	var upgrade_layout : ShipUpgradeLayout = player.ship_data.ship_upgrade_layout_scene.instantiate() as ShipUpgradeLayout
+	ship_upgrade_layout_pivot.add_child(upgrade_layout)
+	ship_upgrade_layout_pivot.move_child(upgrade_layout, 0)
+	weapon_pivot_buttons = upgrade_layout.weapon_pivot_buttons
+	
+	for i in player.weapon_pivots.size():
+		weapon_pivot_buttons[i].weapon_pivot = player.weapon_pivots[i]
+	
+	for i in player.ship_data.ship_upgrades_number:
+		var ship_upgrade_slot : ShipUpgradeSlot = ship_upgrade_slot_scene.instantiate() as ShipUpgradeSlot
+		ship_upgrades_pivot.add_child(ship_upgrade_slot)
+		ship_upgrade_slots.append(ship_upgrade_slot)
 
 
 func start_upgrade():
@@ -100,8 +119,8 @@ func get_available_new_upgrades(player : Player) -> Array[Upgrade]:
 				available_new_upgrades.erase(upgrade)
 		
 		# Remove ship upgrades if ship does not have remaining slots, or if ship already has the upgrade
-		if upgrade is PlayerUpgrade:
-			if player.ship_upgrades.size() >= player.ship_upgrades_number || player.ship_upgrades.has(upgrade) == true:
+		if upgrade is ShipUpgrade:
+			if player.ship_upgrades.size() >= player.ship_data.ship_upgrades_number || player.ship_upgrades.has(upgrade) == true:
 				available_new_upgrades.erase(upgrade)
 	
 	return available_new_upgrades
@@ -142,9 +161,6 @@ slot_upgrades : Array[Upgrade]) -> Array:
 	if data.size() > 0:
 		upgrade = data[0]
 		weapon_pivot = data[1]
-	
-	if upgrade == null:
-		print("aled")
 	
 	return [upgrade, weapon_pivot, is_new_upgrade]
 
@@ -198,8 +214,8 @@ func apply_upgrade(upgrade : Upgrade, pivot : Node2D = null):
 	var players : Array[Node] = get_tree().get_nodes_in_group("Player")
 	
 	for player : Player in players:
-		if upgrade is PlayerUpgrade && player.ship_upgrades.has(upgrade) == false:
-			ship_upgrade_texture_rects[player.ship_upgrades.size()].texture = upgrade.icon
+		if upgrade is ShipUpgrade && player.ship_upgrades.has(upgrade) == false:
+			ship_upgrade_slots[player.ship_upgrades.size()].icon.texture = upgrade.icon
 		
 		player.add_upgrade(upgrade, pivot)
 		
