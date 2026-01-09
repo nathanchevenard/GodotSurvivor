@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://cj1c1j77y7n5y"]
+
+[ext_resource type="Texture2D" uid="uid://breh4s20q70qo" path="res://Sprites/Icons/Weapons/drone_white.png" id="1_1qj4p"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_531ue"]
+
+[resource]
+script = ExtResource("2_531ue")
+upgrade_type = 4
+impacted_weapon = 5
+name = "Drone Upgrade"
+description = "Drone Launcher +20% Speed"
+icon = ExtResource("1_1qj4p")
+value = 0.2

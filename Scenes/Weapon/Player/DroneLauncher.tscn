@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxw75obdfyi8h"]
+
+[ext_resource type="Script" uid="uid://c6oi0k1i3vyjn" path="res://Scripts/Weapon/DroneLauncher.gd" id="1_ikrq0"]
+[ext_resource type="PackedScene" uid="uid://b14saps6gjb5a" path="res://Scenes/Weapon/Projectile/Drone.tscn" id="2_jroo8"]
+
+[node name="DroneLauncher" type="Node2D"]
+script = ExtResource("1_ikrq0")
+position_radius = 50.0
+weapon_type = 5
+projectile = ExtResource("2_jroo8")
+damage = 5.0
+projectile_speed = 1.0
+projectile_number = 1
+projectile_lifetime = 0.0

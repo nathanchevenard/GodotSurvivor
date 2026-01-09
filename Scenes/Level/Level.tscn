@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=55 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://gckvhlh5xlb4" path="res://Scenes/UI/Upgrade/UpgradeButton.tscn" id="16_xe3ed"]
 [ext_resource type="Script" uid="uid://wa4ephur8boo" path="res://Scripts/UI/KillsCounter.gd" id="17_jugp0"]
 [ext_resource type="Resource" uid="uid://b0mco3gxorh4c" path="res://Resources/Upgrades/WeaponUpgrades/Flamethrower/FlamethrowerAddWeapon.tres" id="23_m1kf3"]
+[ext_resource type="Resource" uid="uid://jtsfv6c3ra2q" path="res://Resources/Upgrades/WeaponUpgrades/DroneLauncher/DroneLauncherAddWeapon.tres" id="24_04ldg"]
 [ext_resource type="Resource" uid="uid://bs7mhle7j7uc1" path="res://Resources/Upgrades/PlayerUpgrades/PlayerCooldown.tres" id="30_04ldg"]
 [ext_resource type="Resource" uid="uid://cbti1c2b7jlt6" path="res://Resources/Upgrades/PlayerUpgrades/PlayerDamage.tres" id="31_jdpru"]
 [ext_resource type="Resource" uid="uid://bhodvqwubg3qj" path="res://Resources/Upgrades/PlayerUpgrades/PlayerLife.tres" id="32_hl7j1"]
@@ -62,7 +63,7 @@ spawn_timer = 60.0
 [sub_resource type="Resource" id="Resource_qxhfh"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("7_qxhfh")
-spawn_timer = 1.0
+spawn_timer = 120.0
 spawn_only_on_timer = true
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
@@ -113,7 +114,6 @@ enemy_max_number = 200
 [node name="DebugOptions" type="Node" parent="."]
 script = ExtResource("10_2qfsf")
 toggle_debug_inputs = true
-player_immortal = true
 
 [node name="PauseSystem" parent="." instance=ExtResource("8_smpvf")]
 
@@ -122,7 +122,7 @@ process_mode = 3
 canvas_layer = NodePath("../UpgradeLayer")
 container = NodePath("../UpgradeLayer/ShipUpgrade/UpgradesChoices")
 button_scene = ExtResource("16_xe3ed")
-upgrades = Array[ExtResource("11_ax57u")]([ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo"), ExtResource("23_m1kf3")])
+upgrades = Array[ExtResource("11_ax57u")]([ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo"), ExtResource("23_m1kf3"), ExtResource("24_04ldg")])
 ship_upgrade_layout_pivot = NodePath("../UpgradeLayer/ShipUpgrade")
 ship_upgrades_pivot = NodePath("../UpgradeLayer/ShipUpgrade/ShipUpgrades")
 ship_upgrade_slot_scene = ExtResource("36_04ldg")

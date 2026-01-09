@@ -8,6 +8,7 @@ enum WeaponEnum
 	BombLauncher,
 	MineLauncher,
 	Flamethrower,
+	DroneLauncher,
 }
 
 @export var weapon_type : WeaponEnum
