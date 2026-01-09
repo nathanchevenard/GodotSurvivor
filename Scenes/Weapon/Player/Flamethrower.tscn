@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://djlqhobxfiqjg"]
+
+[ext_resource type="Script" uid="uid://m7tvutug1vnp" path="res://Scripts/Weapon/Flamethrower.gd" id="1_j5ppf"]
+[ext_resource type="PackedScene" uid="uid://dffv1bbjc0b77" path="res://Scenes/Weapon/Projectile/Flame.tscn" id="2_rk6ps"]
+
+[node name="Flamethrower" type="Node2D" node_paths=PackedStringArray("projectile_instance")]
+script = ExtResource("1_j5ppf")
+rotation_speed = 0.03
+projectile_instance = NodePath("Flame")
+weapon_type = 4
+projectile = ExtResource("2_rk6ps")
+damage = 5.0
+range = 70.0
+cooldown = 0.4
+projectile_lifetime = 0.0
+is_volley = true
+volley_duration = 0.2
+damage_delay = 1.0
+
+[node name="Flame" parent="." instance=ExtResource("2_rk6ps")]

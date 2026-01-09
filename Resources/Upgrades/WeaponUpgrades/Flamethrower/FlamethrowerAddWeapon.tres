@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=6 format=3 uid="uid://b0mco3gxorh4c"]
+
+[ext_resource type="Texture2D" uid="uid://b4ui11qyl0nl0" path="res://Sprites/Icons/Weapons/fire_white.png" id="1_tx2fa"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_mmlp2"]
+[ext_resource type="PackedScene" uid="uid://djlqhobxfiqjg" path="res://Scenes/Weapon/Player/Flamethrower.tscn" id="3_dn5kx"]
+[ext_resource type="Resource" uid="uid://bgauc50y55wgy" path="res://Resources/Upgrades/WeaponUpgrades/Flamethrower/FlamethrowerSize.tres" id="4_dby2v"]
+[ext_resource type="Resource" uid="uid://bunbhxqm05uk4" path="res://Resources/Upgrades/WeaponUpgrades/Flamethrower/FlamethrowerDamage.tres" id="5_rnpf2"]
+
+[resource]
+script = ExtResource("2_mmlp2")
+upgrade_type = 6
+impacted_weapon = 4
+weapon_scene = ExtResource("3_dn5kx")
+weapon_upgrades = Array[ExtResource("2_mmlp2")]([ExtResource("4_dby2v"), ExtResource("5_rnpf2")])
+name = "Flamethrower Size"
+description = "Unlocks Flamethrower"
+icon = ExtResource("1_tx2fa")
+is_percentage = false
+value = 1.0

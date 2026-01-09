@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://34ab4klw0j6d"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile/Blast.gd" id="1_iwr0t"]
+[ext_resource type="Script" uid="uid://c51fwsberlt5d" path="res://Scripts/Weapon/Projectile/Blast.gd" id="1_iwr0t"]
 [ext_resource type="Texture2D" uid="uid://cebnskx3e8kii" path="res://Sprites/Projectiles/SentinelBlast.png" id="2_r4qsx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ax8qp"]

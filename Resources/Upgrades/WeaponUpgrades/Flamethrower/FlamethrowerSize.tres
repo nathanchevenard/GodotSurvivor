@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://bgauc50y55wgy"]
+
+[ext_resource type="Texture2D" uid="uid://b4ui11qyl0nl0" path="res://Sprites/Icons/Weapons/fire_white.png" id="1_qq6ak"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_qg1au"]
+
+[resource]
+script = ExtResource("2_qg1au")
+upgrade_type = 5
+impacted_weapon = 4
+name = "Flamethrower Upgrade"
+description = "Flamethrower +20% Size"
+icon = ExtResource("1_qq6ak")
+value = 0.2

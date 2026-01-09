@@ -1,0 +1,108 @@
+[gd_scene load_steps=18 format=3 uid="uid://dffv1bbjc0b77"]
+
+[ext_resource type="Script" uid="uid://dlm5pli60484r" path="res://Scripts/Weapon/Projectile/Flame.gd" id="1_8dfw8"]
+[ext_resource type="Texture2D" uid="uid://dymdci0y5eqgn" path="res://Sprites/Projectiles/Fire/fire_column_medium_4.png" id="2_w6m7c"]
+[ext_resource type="Texture2D" uid="uid://do6s670lgl51w" path="res://Sprites/Projectiles/Fire/fire_column_medium_5.png" id="3_b85xk"]
+[ext_resource type="Texture2D" uid="uid://bgpso58itpit7" path="res://Sprites/Projectiles/Fire/fire_column_medium_6.png" id="4_k7kpa"]
+[ext_resource type="Texture2D" uid="uid://d1cvg5jocyy5k" path="res://Sprites/Projectiles/Fire/fire_column_medium_7.png" id="5_t5tx1"]
+[ext_resource type="Texture2D" uid="uid://dpnlgff2vv686" path="res://Sprites/Projectiles/Fire/fire_column_medium_9.png" id="6_5hfjo"]
+[ext_resource type="Texture2D" uid="uid://cmrm3yjkpf51n" path="res://Sprites/Projectiles/Fire/fire_column_medium_8.png" id="6_wx7w5"]
+[ext_resource type="Texture2D" uid="uid://bm1xxh36gouyv" path="res://Sprites/Projectiles/Fire/fire_column_medium_1.png" id="7_cgurm"]
+[ext_resource type="Texture2D" uid="uid://c7m8fxjr2e5wb" path="res://Sprites/Projectiles/Fire/fire_column_medium_2.png" id="8_5hfjo"]
+[ext_resource type="Texture2D" uid="uid://dgxgdcwtndf3j" path="res://Sprites/Projectiles/Fire/fire_column_medium_3.png" id="9_uo1g4"]
+[ext_resource type="Texture2D" uid="uid://m0t7yi5utui3" path="res://Sprites/Projectiles/Fire/fire_column_medium_10.png" id="11_uo1g4"]
+[ext_resource type="Texture2D" uid="uid://d2iam6ai8sn6s" path="res://Sprites/Projectiles/Fire/fire_column_medium_11.png" id="12_5v8xx"]
+[ext_resource type="Texture2D" uid="uid://djcdcjj4lqeeg" path="res://Sprites/Projectiles/Fire/fire_column_medium_12.png" id="13_advwe"]
+[ext_resource type="Texture2D" uid="uid://dtqv1tkh50h2a" path="res://Sprites/Projectiles/Fire/fire_column_medium_13.png" id="14_fnddf"]
+[ext_resource type="Texture2D" uid="uid://eenoqabhxm6" path="res://Sprites/Projectiles/Fire/fire_column_medium_14.png" id="15_7niu3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_av4hx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"hidden",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_b85xk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k7kpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t5tx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wx7w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5hfjo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_cgurm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5hfjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uo1g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w6m7c")
+}],
+"loop": false,
+"name": &"start",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_uo1g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5v8xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_advwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fnddf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7niu3")
+}],
+"loop": false,
+"name": &"stop",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dfw8"]
+size = Vector2(51.4, 20)
+
+[node name="Flame" type="Area2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 4
+collision_mask = 74
+script = ExtResource("1_8dfw8")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(34.599995, -1.9999999)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_av4hx")
+animation = &"hidden"
+autoplay = "hidden"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25.3, -2)
+shape = SubResource("RectangleShape2D_8dfw8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

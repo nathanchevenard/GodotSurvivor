@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dfutxyxbdyfli" path="res://Sprites/Icons/Weapons/bomb_white.png" id="1_bkyia"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_k0x6g"]
 [ext_resource type="PackedScene" uid="uid://cue3sdqmec5dg" path="res://Scenes/Weapon/Player/BombLauncher.tscn" id="3_k0x6g"]
-[ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAdditionalProjectile.tres" id="4_3vv7r"]
-[ext_resource type="Resource" uid="uid://bgqanb1k7k77k" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherAoe.tres" id="5_nuqvp"]
-[ext_resource type="Resource" uid="uid://co6a1dw2kpbeo" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherCooldown.tres" id="6_l6mrq"]
-[ext_resource type="Resource" uid="uid://cgnim4mufikih" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherDamage.tres" id="7_3ahb3"]
-[ext_resource type="Resource" uid="uid://dd1whwg66ldvq" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncherProjectileSpeed.tres" id="8_ptnvi"]
+[ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncher/BombLauncherAdditionalProjectile.tres" id="4_3vv7r"]
+[ext_resource type="Resource" uid="uid://bgqanb1k7k77k" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncher/BombLauncherAoe.tres" id="5_nuqvp"]
+[ext_resource type="Resource" uid="uid://co6a1dw2kpbeo" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncher/BombLauncherCooldown.tres" id="6_l6mrq"]
+[ext_resource type="Resource" uid="uid://cgnim4mufikih" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncher/BombLauncherDamage.tres" id="7_3ahb3"]
+[ext_resource type="Resource" uid="uid://dd1whwg66ldvq" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncher/BombLauncherProjectileSpeed.tres" id="8_ptnvi"]
 
 [resource]
 script = ExtResource("2_k0x6g")

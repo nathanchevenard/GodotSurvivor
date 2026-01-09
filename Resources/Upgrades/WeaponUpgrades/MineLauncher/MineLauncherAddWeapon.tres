@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://bsefyq3mqt6ut" path="res://Sprites/Icons/Weapons/mine_white.png" id="1_qke2d"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_yrdc7"]
 [ext_resource type="PackedScene" uid="uid://d3mmhbqka7r4c" path="res://Scenes/Weapon/Player/MineLauncher.tscn" id="3_yrdc7"]
-[ext_resource type="Resource" uid="uid://ct7nw83b7x0p6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherAdditionalProjectile.tres" id="4_kj0sy"]
-[ext_resource type="Resource" uid="uid://ghpm3645vy0t" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherAoe.tres" id="5_je4cg"]
-[ext_resource type="Resource" uid="uid://dln56rdnyxke6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherCooldown.tres" id="6_q550t"]
-[ext_resource type="Resource" uid="uid://ceafa5a41n5py" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherDamage.tres" id="7_ca2fd"]
-[ext_resource type="Resource" uid="uid://bvt5vvav6fl26" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncherSize.tres" id="8_y8313"]
+[ext_resource type="Resource" uid="uid://ct7nw83b7x0p6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncher/MineLauncherAdditionalProjectile.tres" id="4_kj0sy"]
+[ext_resource type="Resource" uid="uid://ghpm3645vy0t" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncher/MineLauncherAoe.tres" id="5_je4cg"]
+[ext_resource type="Resource" uid="uid://dln56rdnyxke6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncher/MineLauncherCooldown.tres" id="6_q550t"]
+[ext_resource type="Resource" uid="uid://ceafa5a41n5py" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncher/MineLauncherDamage.tres" id="7_ca2fd"]
+[ext_resource type="Resource" uid="uid://bvt5vvav6fl26" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncher/MineLauncherSize.tres" id="8_y8313"]
 
 [resource]
 script = ExtResource("2_yrdc7")

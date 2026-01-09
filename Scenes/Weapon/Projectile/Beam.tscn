@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bfy2tbwc7oh76"]
 
-[ext_resource type="Script" uid="uid://djgu5jrm2mwee" path="res://Scripts/Projectile/Beam.gd" id="1_7m6fc"]
+[ext_resource type="Script" uid="uid://djgu5jrm2mwee" path="res://Scripts/Weapon/Projectile/Beam.gd" id="1_7m6fc"]
 [ext_resource type="Texture2D" uid="uid://8614jpydhhd" path="res://Sprites/Projectiles/Beam.png" id="2_u8wg5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvyyh"]

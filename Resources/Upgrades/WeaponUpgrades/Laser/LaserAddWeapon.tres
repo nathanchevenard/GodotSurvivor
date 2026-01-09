@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bmcdr70w7f7ot" path="res://Sprites/Icons/Weapons/laser_white.png" id="1_x0x66"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_6ea5f"]
 [ext_resource type="PackedScene" uid="uid://dhmg6xqpe6j5m" path="res://Scenes/Weapon/Player/Laser.tscn" id="3_6ea5f"]
-[ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/LaserAdditionalProjectile.tres" id="4_tso2m"]
-[ext_resource type="Resource" uid="uid://blm24wxupdgkq" path="res://Resources/Upgrades/WeaponUpgrades/LaserCooldown.tres" id="5_f2fyl"]
-[ext_resource type="Resource" uid="uid://dxo5djimyedqh" path="res://Resources/Upgrades/WeaponUpgrades/LaserDamage.tres" id="6_hpr2r"]
-[ext_resource type="Resource" uid="uid://dx51cuwfrl63g" path="res://Resources/Upgrades/WeaponUpgrades/LaserSize.tres" id="7_voet3"]
+[ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/Laser/LaserAdditionalProjectile.tres" id="4_tso2m"]
+[ext_resource type="Resource" uid="uid://blm24wxupdgkq" path="res://Resources/Upgrades/WeaponUpgrades/Laser/LaserCooldown.tres" id="5_f2fyl"]
+[ext_resource type="Resource" uid="uid://dxo5djimyedqh" path="res://Resources/Upgrades/WeaponUpgrades/Laser/LaserDamage.tres" id="6_hpr2r"]
+[ext_resource type="Resource" uid="uid://dx51cuwfrl63g" path="res://Resources/Upgrades/WeaponUpgrades/Laser/LaserSize.tres" id="7_voet3"]
 
 [resource]
 script = ExtResource("2_6ea5f")

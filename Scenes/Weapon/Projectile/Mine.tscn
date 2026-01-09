@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk4xkjyjlmty6"]
 
-[ext_resource type="Script" uid="uid://b10njkes8xrcf" path="res://Scripts/Projectile/Mine.gd" id="1_dfucj"]
+[ext_resource type="Script" uid="uid://b10njkes8xrcf" path="res://Scripts/Weapon/Projectile/Mine.gd" id="1_dfucj"]
 [ext_resource type="PackedScene" uid="uid://3lauyq7wythy" path="res://Scenes/Weapon/Projectile/Explosion.tscn" id="2_5v3di"]
 [ext_resource type="Texture2D" uid="uid://c8k237lek0dlc" path="res://Sprites/Projectiles/Mine.png" id="3_a4ovd"]
 

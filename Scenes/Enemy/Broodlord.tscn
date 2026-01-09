@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4e7f7t32xqdq" path="res://Scripts/Character/Enemy/Broodlord.gd" id="1_d263m"]
 [ext_resource type="Texture2D" uid="uid://dvsd2ftvbswmu" path="res://Sprites/Ship/Broodlord.png" id="2_d263m"]
-[ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="2_wsinb"]
+[ext_resource type="PackedScene" uid="uid://cf8hlkxpckrf1" path="res://Scenes/Enemy/Speedling.tscn" id="2_wsinb"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_vlben"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsinb"]

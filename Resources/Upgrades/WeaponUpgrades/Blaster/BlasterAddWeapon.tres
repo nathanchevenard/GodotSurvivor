@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="1_2iu1d"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_0x0l8"]
 [ext_resource type="PackedScene" uid="uid://p6by0sq0m6aj" path="res://Scenes/Weapon/Player/Blaster.tscn" id="3_0x0l8"]
-[ext_resource type="Resource" uid="uid://flnjm5wpel4g" path="res://Resources/Upgrades/WeaponUpgrades/BlasterAdditionalProjectile.tres" id="4_4aipu"]
-[ext_resource type="Resource" uid="uid://dsxvhc0tgwyoy" path="res://Resources/Upgrades/WeaponUpgrades/BlasterCooldown.tres" id="5_33wv1"]
-[ext_resource type="Resource" uid="uid://kwyp8fdko5ts" path="res://Resources/Upgrades/WeaponUpgrades/BlasterDamage.tres" id="6_tscln"]
-[ext_resource type="Resource" uid="uid://dgg7yf2ivikln" path="res://Resources/Upgrades/WeaponUpgrades/BlasterProjectileSpeed.tres" id="7_v6nmm"]
-[ext_resource type="Resource" uid="uid://dpfsriaamt1j0" path="res://Resources/Upgrades/WeaponUpgrades/BlasterSize.tres" id="8_bj1q3"]
+[ext_resource type="Resource" uid="uid://flnjm5wpel4g" path="res://Resources/Upgrades/WeaponUpgrades/Blaster/BlasterAdditionalProjectile.tres" id="4_4aipu"]
+[ext_resource type="Resource" uid="uid://dsxvhc0tgwyoy" path="res://Resources/Upgrades/WeaponUpgrades/Blaster/BlasterCooldown.tres" id="5_33wv1"]
+[ext_resource type="Resource" uid="uid://kwyp8fdko5ts" path="res://Resources/Upgrades/WeaponUpgrades/Blaster/BlasterDamage.tres" id="6_tscln"]
+[ext_resource type="Resource" uid="uid://dgg7yf2ivikln" path="res://Resources/Upgrades/WeaponUpgrades/Blaster/BlasterProjectileSpeed.tres" id="7_v6nmm"]
+[ext_resource type="Resource" uid="uid://dpfsriaamt1j0" path="res://Resources/Upgrades/WeaponUpgrades/Blaster/BlasterSize.tres" id="8_bj1q3"]
 
 [resource]
 script = ExtResource("2_0x0l8")

@@ -16,15 +16,16 @@ func _init() -> void:
 
 
 func _on_enemy_die(enemy : Enemy):
-	var xp : XpCollectable = xp_collectable_scene.instantiate()
-	xp.xp_value = enemy.xp_value
-	Level.instance.obstacle_handler.call_deferred("add_child", xp)
-	xp.global_position = enemy.global_position
-	xp.rotation_degrees = randf_range(-180, 180)
-	xp.sprite.scale *= enemy.xp_scene_scale
-	xp.modulate = enemy.xp_modulate_color
-	xp_collectables.append(xp)
-	xp.destroy.connect(on_xp_destroyed)
+	if enemy.xp_value > 0:
+		var xp : XpCollectable = xp_collectable_scene.instantiate()
+		xp.xp_value = enemy.xp_value
+		Level.instance.obstacle_handler.call_deferred("add_child", xp)
+		xp.global_position = enemy.global_position
+		xp.rotation_degrees = randf_range(-180, 180)
+		xp.sprite.scale *= enemy.xp_scene_scale
+		xp.modulate = enemy.xp_modulate_color
+		xp_collectables.append(xp)
+		xp.destroy.connect(on_xp_destroyed)
 	
 	var drop : Node2D = null
 	

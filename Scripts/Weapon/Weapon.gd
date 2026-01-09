@@ -7,6 +7,7 @@ enum WeaponEnum
 	Laser,
 	BombLauncher,
 	MineLauncher,
+	Flamethrower,
 }
 
 @export var weapon_type : WeaponEnum
@@ -22,6 +23,7 @@ enum WeaponEnum
 @export var projectile_size : float = 1.0
 @export var is_volley : bool = false
 @export var volley_duration : float = 0.5
+@export var damage_delay : float = 0.0
 
 var character : Character
 var cooldown_timer : float = 0.0
@@ -32,6 +34,7 @@ var init_damage : float
 var init_projectile_speed : float
 var init_projectile_coef_area_of_effect : float
 var init_projectile_size : float
+var init_range : float
 
 var upgrades : Array[Upgrade]
 
@@ -45,6 +48,7 @@ func _ready():
 	init_projectile_speed = projectile_speed
 	init_projectile_coef_area_of_effect = projectile_coef_area_of_effect
 	init_projectile_size = projectile_size
+	init_range = range
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,10 +61,10 @@ func _process(delta):
 		cooldown_timer = 0
 
 
-func acquire_targets() -> Array[Node2D]:
+func acquire_targets(target_number : int) -> Array[Node2D]:
 	var targets : Array[Node] = character.get_sorted_closest_entities(target_groups)
 	var ret : Array[Node2D] = []
-	ret.assign(targets.slice(0, projectile_number))
+	ret.assign(targets.slice(0, target_number))
 	
 	return ret
 
@@ -68,7 +72,7 @@ func acquire_targets() -> Array[Node2D]:
 func check_targets() -> bool:
 	acquired_targets.clear()
 	
-	for target in acquire_targets():
+	for target in acquire_targets(projectile_number):
 		if range > 0 && global_position.distance_to(target.global_position) > range:
 			continue
 		

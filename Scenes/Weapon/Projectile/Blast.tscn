@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7bn1br4k035r"]
 
-[ext_resource type="Script" uid="uid://c51fwsberlt5d" path="res://Scripts/Projectile/Blast.gd" id="1_uxrx4"]
+[ext_resource type="Script" uid="uid://c51fwsberlt5d" path="res://Scripts/Weapon/Projectile/Blast.gd" id="1_uxrx4"]
 [ext_resource type="Texture2D" uid="uid://fjxul6xubiq0" path="res://Sprites/Projectiles/Blast.png" id="2_k30jc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_126i5"]
