@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://clvvt6oylh6ou"]
 
-[ext_resource type="Script" path="res://Scripts/UI/JoystickController.gd" id="1_erh4w"]
+[ext_resource type="Script" uid="uid://7aitishddkn7" path="res://Scripts/UI/JoystickController.gd" id="1_erh4w"]
 [ext_resource type="Texture2D" uid="uid://rw703mvdsvow" path="res://Sprites/UI/joyring.png" id="2_ay3vg"]
 [ext_resource type="Texture2D" uid="uid://wwo7j4g7te42" path="res://Sprites/UI/joyknobpng.png" id="3_8a1yo"]
-[ext_resource type="Script" path="res://Scripts/UI/JoystickKnob.gd" id="4_61piu"]
+[ext_resource type="Script" uid="uid://brsxa36bsugsp" path="res://Scripts/UI/JoystickKnob.gd" id="4_61piu"]
 
 [node name="Joystick" type="Node2D"]
+process_mode = 3
 position = Vector2(39, 233)
 scale = Vector2(0.03, 0.03)
 script = ExtResource("1_erh4w")

@@ -229,7 +229,7 @@ func apply_upgrade(upgrade : Upgrade, pivot : Node2D = null):
 	canvas_layer.hide()
 	
 	if stacked_upgrade_count == 0:
-		PauseSystem.instance.stop_pause(true)
+		PauseSystem.instance.stop_pause_with_delay(PauseSystem.instance.pause_delay)
 	else:
 		display_upgrades()
 

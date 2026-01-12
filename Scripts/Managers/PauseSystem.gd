@@ -3,8 +3,16 @@ class_name PauseSystem
 
 static var instance : PauseSystem = null
 
+@export var pause_delay : float = 1.0
+@export var pause_end_layer : CanvasLayer
+@export var delay_progress_bar : ProgressBar
+
 var is_paused : bool = false
 var is_pause_allowed : bool = true
+
+var is_waiting_delay : bool = false
+var delay_timer : float = 0
+
 
 func _init():
 	if instance != null:
@@ -13,6 +21,19 @@ func _init():
 	
 	instance = self
 
+
+func _process(delta: float) -> void:
+	if is_waiting_delay == true:
+		delay_timer += delta
+		delay_progress_bar.value = delay_timer
+		
+		if delay_progress_bar.value == delay_progress_bar.max_value:
+			pause_end_layer.hide()
+			is_waiting_delay = false
+			stop_pause(true)
+			SignalsManager.emit_game_unpaused()
+
+
 func _input(event):
 	if event.is_action_pressed("toggle_pause") && is_pause_allowed == true:
 		toggle_pause()
@@ -20,8 +41,7 @@ func _input(event):
 
 func toggle_pause():
 	if is_paused == true:
-		stop_pause()
-		SignalsManager.emit_game_unpaused()
+		stop_pause_with_delay(pause_delay)
 	else:
 		start_pause()
 		SignalsManager.emit_game_paused()
@@ -33,6 +53,8 @@ func start_pause(disallow_pause : bool = false):
 	
 	if disallow_pause == true:
 		is_pause_allowed = false
+	
+	SignalsManager.emit_game_freeze()
 
 
 func stop_pause(reallow_pause : bool = false):
@@ -41,6 +63,22 @@ func stop_pause(reallow_pause : bool = false):
 	
 	if reallow_pause == true:
 		is_pause_allowed = true
+	
+	SignalsManager.emit_game_unfreeze()
+
+
+func stop_pause_with_delay(delay : float):
+	if SettingsController.is_delaying_pause == false:
+		stop_pause(true)
+		SignalsManager.emit_game_unpaused()
+		return
+	
+	pause_end_layer.show()
+	delay_progress_bar.max_value = delay
+	delay_timer = 0
+	delay_progress_bar.value = delay_timer
+	is_waiting_delay = true
+	SignalsManager.emit_game_unpause_delay_start()
 
 
 func _on_retry_button_pressed():

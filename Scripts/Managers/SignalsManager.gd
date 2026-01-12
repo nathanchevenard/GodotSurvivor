@@ -40,6 +40,21 @@ func emit_game_unpaused():
 	game_unpause.emit()
 
 
+signal game_freeze
+func emit_game_freeze():
+	game_freeze.emit()
+
+
+signal game_unfreeze
+func emit_game_unfreeze():
+	game_unfreeze.emit()
+
+
+signal game_unpause_delay_start
+func emit_game_unpause_delay_start():
+	game_unpause_delay_start.emit()
+
+
 signal pivot_button_hover(pivot : Node2D)
 func emit_pivot_button_hover(pivot : Node2D):
 	pivot_button_hover.emit(pivot)

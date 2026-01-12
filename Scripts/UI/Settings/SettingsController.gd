@@ -3,6 +3,7 @@ class_name SettingsController
 
 static var is_arena_mode : bool = true
 static var is_joystick_floating : bool = true
+static var is_delaying_pause : bool = true
 static var selected_ship_data : ShipData
 
 @export var arena_mode_button : CheckButton
@@ -20,6 +21,10 @@ func _on_arena_mode_toggled(toggled_on: bool) -> void:
 
 func _on_floating_joystick_toggled(toggled_on):
 	is_joystick_floating = toggled_on
+
+
+func _on_pause_delay_toggled(toggled_on):
+	is_delaying_pause = toggled_on
 
 
 func _on_display_mode_item_selected(index):

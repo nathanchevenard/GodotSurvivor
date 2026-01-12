@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=57 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -63,20 +63,34 @@ spawn_timer = 60.0
 [sub_resource type="Resource" id="Resource_qxhfh"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("7_qxhfh")
-spawn_timer = 120.0
+spawn_timer = 180.0
 spawn_only_on_timer = true
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
 [sub_resource type="Resource" id="Resource_b63oq"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("7_qxhfh")
-spawn_timer = 300.0
+spawn_timer = 360.0
 spawn_only_on_timer = true
 spawn_number = 3
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12iyy"]
 bg_color = Color(0, 0, 0, 0.7058824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04ldg"]
+bg_color = Color(0, 0, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdpru"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemec"]
 bg_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
@@ -115,7 +129,9 @@ enemy_max_number = 200
 script = ExtResource("10_2qfsf")
 toggle_debug_inputs = true
 
-[node name="PauseSystem" parent="." instance=ExtResource("8_smpvf")]
+[node name="PauseSystem" parent="." node_paths=PackedStringArray("pause_end_layer", "delay_progress_bar") instance=ExtResource("8_smpvf")]
+pause_end_layer = NodePath("../PauseEndLayer")
+delay_progress_bar = NodePath("../PauseEndLayer/ProgressBar")
 
 [node name="UpgradeSystem" parent="." node_paths=PackedStringArray("canvas_layer", "container", "ship_upgrade_layout_pivot", "ship_upgrades_pivot") instance=ExtResource("9_rpw5f")]
 process_mode = 3
@@ -635,6 +651,35 @@ text = "Menu"
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Quit"
+
+[node name="PauseEndLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Panel" type="Panel" parent="PauseEndLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_12iyy")
+
+[node name="ProgressBar" type="ProgressBar" parent="PauseEndLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -5.0
+offset_right = 25.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_04ldg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jdpru")
+value = 38.34
+show_percentage = false
 
 [node name="BorderLayer" type="CanvasLayer" parent="."]
 

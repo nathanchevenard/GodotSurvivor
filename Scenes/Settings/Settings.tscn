@@ -63,6 +63,17 @@ text = "Floating joystick "
 layout_mode = 2
 button_pressed = true
 
+[node name="Pause Delay" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Pause Delay"]
+layout_mode = 2
+text = "Delay on unpause"
+
+[node name="PauseDelayCheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Pause Delay"]
+layout_mode = 2
+button_pressed = true
+
 [node name="Display Mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings"]
 layout_mode = 2
 
@@ -101,6 +112,7 @@ text = "Quit"
 
 [connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Arena mode/Arena mode CheckButton" to="SettingsLayer" method="_on_arena_mode_toggled"]
 [connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
+[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Pause Delay/PauseDelayCheckButton" to="SettingsLayer" method="_on_pause_delay_toggled"]
 [connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
 [connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/NextButton" to="SettingsLayer" method="_on_next_button_pressed"]
 [connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/QuitButton" to="SettingsLayer" method="_on_quit_button_pressed"]
