@@ -215,7 +215,7 @@ func apply_upgrade(upgrade : Upgrade, pivot : Node2D = null):
 	
 	for player : Player in players:
 		if upgrade is ShipUpgrade && player.ship_upgrades.has(upgrade) == false:
-			ship_upgrade_slots[player.ship_upgrades.size()].icon.texture = upgrade.icon
+			ship_upgrade_slots[player.ship_upgrades.size()].set_upgrade(upgrade)
 		
 		player.add_upgrade(upgrade, pivot)
 		
@@ -224,6 +224,8 @@ func apply_upgrade(upgrade : Upgrade, pivot : Node2D = null):
 	
 	for button in button_instances:
 		button.queue_free()
+	
+	SignalsManager.emit_upgrade_add(upgrade, pivot)
 	
 	button_instances.clear()
 	canvas_layer.hide()
@@ -246,7 +248,7 @@ func set_weapon_pivot_buttons_visible(value : bool):
 
 func _on_weapon_pivot_button_pressed(button : WeaponPivotButton):
 	apply_upgrade(selected_upgrade, button.weapon_pivot)
-	button.weapon_texture.texture = selected_upgrade.icon
+	button.set_weapon(selected_upgrade)
 	set_weapon_pivot_buttons_visible(false)
 	selected_upgrade = null
 

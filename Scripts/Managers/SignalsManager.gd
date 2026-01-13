@@ -73,3 +73,8 @@ func emit_player_ready(player : Player):
 signal ship_select(ship_data : ShipData)
 func emit_ship_select(ship_data : ShipData):
 	ship_select.emit(ship_data)
+
+
+signal upgrade_add(upgrade : Upgrade, weapon_pivot : Node2D)
+func emit_upgrade_add(upgrade : Upgrade, weapon_pivot : Node2D):
+	upgrade_add.emit(upgrade, weapon_pivot)

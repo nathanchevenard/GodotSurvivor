@@ -16,11 +16,12 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ShipUpgradeSlot" type="Panel" node_paths=PackedStringArray("icon")]
+[node name="ShipUpgradeSlot" type="Panel" node_paths=PackedStringArray("icon", "number_label")]
 custom_minimum_size = Vector2(34, 34)
 theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
 script = ExtResource("1_li52c")
 icon = NodePath("Panel3/TextureButton")
+number_label = NodePath("NumberLabel")
 
 [node name="Panel3" type="Panel" parent="."]
 layout_mode = 1
@@ -45,3 +46,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
+
+[node name="NumberLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 31.0
+offset_bottom = 31.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
