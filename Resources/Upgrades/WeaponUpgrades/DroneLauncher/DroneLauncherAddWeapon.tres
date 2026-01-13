@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=6 format=3 uid="uid://jtsfv6c3ra2q"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=8 format=3 uid="uid://jtsfv6c3ra2q"]
 
 [ext_resource type="Texture2D" uid="uid://breh4s20q70qo" path="res://Sprites/Icons/Weapons/drone_white.png" id="1_43ia8"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_qlamk"]
 [ext_resource type="PackedScene" uid="uid://bxw75obdfyi8h" path="res://Scenes/Weapon/Player/DroneLauncher.tscn" id="3_43ia8"]
 [ext_resource type="Resource" uid="uid://cwlfeoc0v73u8" path="res://Resources/Upgrades/WeaponUpgrades/DroneLauncher/DroneLauncherAdditionalProjectile.tres" id="4_xyb2e"]
 [ext_resource type="Resource" uid="uid://cj1c1j77y7n5y" path="res://Resources/Upgrades/WeaponUpgrades/DroneLauncher/DroneLauncherProjectileSpeed.tres" id="5_43ia8"]
+[ext_resource type="Resource" uid="uid://bvl64aau085vo" path="res://Resources/Upgrades/WeaponUpgrades/DroneLauncher/DroneLauncherDamage.tres" id="6_48jp6"]
+[ext_resource type="Resource" uid="uid://ct46l07rqhmr7" path="res://Resources/Upgrades/WeaponUpgrades/DroneLauncher/DroneLauncherSize.tres" id="7_gnk1e"]
 
 [resource]
 script = ExtResource("2_qlamk")
 upgrade_type = 6
 impacted_weapon = 5
 weapon_scene = ExtResource("3_43ia8")
-weapon_upgrades = Array[ExtResource("2_qlamk")]([ExtResource("4_xyb2e"), ExtResource("5_43ia8")])
+weapon_upgrades = Array[ExtResource("2_qlamk")]([ExtResource("4_xyb2e"), ExtResource("5_43ia8"), ExtResource("6_48jp6"), ExtResource("7_gnk1e")])
 name = "Drone Launcher"
 description = "Unlocks Drone Launcher"
 icon = ExtResource("1_43ia8")

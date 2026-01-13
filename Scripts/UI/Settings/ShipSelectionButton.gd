@@ -6,6 +6,7 @@ class_name ShipSelectionButton
 @export var name_label : Label
 
 var ship_data : ShipData
+var focus_on_ready : bool = false
 
 
 func _ready() -> void:

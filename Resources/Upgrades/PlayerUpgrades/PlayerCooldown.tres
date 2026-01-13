@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerUpgrade" load_steps=3 format=3 uid="uid://bs7mhle7j7uc1"]
+[gd_resource type="Resource" script_class="ShipUpgrade" load_steps=3 format=3 uid="uid://bs7mhle7j7uc1"]
 
 [ext_resource type="Texture2D" uid="uid://wcyrpaenmubj" path="res://Sprites/Icons/Player/hourglass.png" id="1_ilbl3"]
 [ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/ShipUpgrade.gd" id="2_r8gl0"]
@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_r8gl0")
 upgrade_type = 4
-name = "Cooldown Upgrade"
-description = "Gain -10% to weapon cooldowns"
+name = "Attack Speed Upgrade"
+description = "Gain +10% to weapons attack speed"
 icon = ExtResource("1_ilbl3")
-value = -0.1
+value = 0.1
 metadata/_custom_type_script = "uid://bd43a7kqimpp0"

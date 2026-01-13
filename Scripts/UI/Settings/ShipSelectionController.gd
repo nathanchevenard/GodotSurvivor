@@ -22,6 +22,7 @@ func _ready() -> void:
 		
 		if i == 0:
 			select_button.button.pressed.emit()
+			select_button.button.grab_focus()
 
 
 func _on_ship_selected(ship_data : ShipData):

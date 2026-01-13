@@ -39,7 +39,7 @@ var init_range : float
 
 var upgrades : Array[Upgrade]
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	if character == null:
 		character = get_parent() as Character
@@ -52,14 +52,13 @@ func _ready():
 	init_range = range
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if cooldown_timer < cooldown * character.cooldown_mult:
+	if cooldown_timer < 1 / (cooldown * character.cooldown_mult):
 		cooldown_timer += delta
 	
-	if cooldown_timer >= cooldown * character.cooldown_mult && check_targets():
+	if cooldown_timer >= 1 / (cooldown * character.cooldown_mult) && check_targets():
 		fire()
-		cooldown_timer = 0
+		cooldown_timer -= 1 / (cooldown * character.cooldown_mult)
 
 
 func acquire_targets(target_number : int) -> Array[Node2D]:

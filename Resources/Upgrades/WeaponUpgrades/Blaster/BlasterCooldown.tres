@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_waa2n")
 upgrade_type = 1
-value = -0.1
 name = "Blaster Upgrade"
-description = "Blaster -10% Cooldown"
+description = "Blaster +10% Attack Speed"
 icon = ExtResource("1_dif04")
+value = 0.1

@@ -9,6 +9,6 @@ target_groups = Array[String](["Player"])
 projectile = ExtResource("2_5acx3")
 damage = 10.0
 range = 200.0
-cooldown = 3.0
+cooldown = 0.333
 projectile_speed = 250.0
 projectile_number = 1

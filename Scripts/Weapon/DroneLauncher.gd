@@ -35,3 +35,6 @@ func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 	
 	while projectile_number > drones.size():
 		spawn_drone()
+	
+	for drone in drones:
+		drone.scale = projectile_size * Vector2.ONE

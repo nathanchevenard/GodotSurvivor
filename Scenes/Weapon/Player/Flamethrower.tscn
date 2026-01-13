@@ -11,7 +11,6 @@ weapon_type = 4
 projectile = ExtResource("2_rk6ps")
 damage = 5.0
 range = 70.0
-cooldown = 0.4
 projectile_lifetime = 0.0
 is_volley = true
 volley_duration = 0.2
