@@ -53,3 +53,5 @@ func _input(event):
 	if event.is_action_pressed("debug_level_up"):
 		for player : Player in players:
 			player.add_xp(player.current_level_cap)
+	if event.is_action_pressed("debug_restart"):
+		PauseSystem.instance._on_retry_button_pressed()

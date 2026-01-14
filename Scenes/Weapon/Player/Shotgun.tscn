@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://biwccbmjgo7tc"]
+
+[ext_resource type="Script" uid="uid://bosrbnwrx2655" path="res://Scripts/Weapon/Shotgun.gd" id="1_re0r6"]
+[ext_resource type="PackedScene" uid="uid://bxfm8ql1orav" path="res://Scenes/Weapon/Projectile/Bullet.tscn" id="2_re0r6"]
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_re0r6")
+dispersion_angle = 25.0
+weapon_type = 6
+projectile = ExtResource("2_re0r6")
+damage = 3.0
+range = 100.0
+cooldown = 1.0
+projectile_speed = 400.0
+projectile_number = 5
+projectile_lifetime = 0.22

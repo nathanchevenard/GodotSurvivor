@@ -9,6 +9,6 @@ weapon_type = 1
 projectile = ExtResource("2_yr7wq")
 damage = 10.0
 range = 200.0
-cooldown = 0.5
+cooldown = 0.4
 projectile_number = 1
 projectile_lifetime = 0.5

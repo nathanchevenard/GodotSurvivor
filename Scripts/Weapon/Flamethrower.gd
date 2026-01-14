@@ -19,11 +19,16 @@ func _process(delta):
 	super(delta)
 	
 	var new_rot = previous_rotation
-	
 	var targets : Array[Node2D] = acquire_targets(1)
+	
 	if targets.size() > 0:
 		var target : Node2D = targets[0]
-		new_rot += clampf(get_angle_to(target.global_position), -1.0, 1.0) * rotation_speed
+		var angle = get_angle_to(target.global_position)
+		if angle > 0:
+			angle = 1
+		else:
+			angle = -1
+		new_rot += angle * rotation_speed
 		
 		if (target.global_position - global_position).length() < range:
 			fire_start()

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=9 format=3 uid="uid://fc8sw03qf26y"]
+
+[ext_resource type="Texture2D" uid="uid://c5rsvci8vw2hx" path="res://Sprites/Icons/Weapons/shotgun_white.png" id="1_0mcwt"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_0jp2e"]
+[ext_resource type="PackedScene" uid="uid://biwccbmjgo7tc" path="res://Scenes/Weapon/Player/Shotgun.tscn" id="3_vuald"]
+[ext_resource type="Resource" uid="uid://b1qo18uhyvb4c" path="res://Resources/Upgrades/WeaponUpgrades/Shotgun/ShotgunDamage.tres" id="4_ol8yt"]
+[ext_resource type="Resource" uid="uid://dafitkhurm656" path="res://Resources/Upgrades/WeaponUpgrades/Shotgun/ShotgunAdditionalProjectile.tres" id="5_aft5v"]
+[ext_resource type="Resource" uid="uid://lakjmktodish" path="res://Resources/Upgrades/WeaponUpgrades/Shotgun/ShotgunCooldown.tres" id="6_0mcwt"]
+[ext_resource type="Resource" uid="uid://dko8kjxp73mma" path="res://Resources/Upgrades/WeaponUpgrades/Shotgun/ShotgunSize.tres" id="7_0mcwt"]
+[ext_resource type="Resource" uid="uid://cp7wd4fx5nsm6" path="res://Resources/Upgrades/WeaponUpgrades/Shotgun/ShotgunRange.tres" id="8_vuald"]
+
+[resource]
+script = ExtResource("2_0jp2e")
+upgrade_type = 6
+impacted_weapon = 6
+pick_max_number = 1.0
+weapon_scene = ExtResource("3_vuald")
+weapon_upgrades = Array[ExtResource("2_0jp2e")]([ExtResource("4_ol8yt"), ExtResource("5_aft5v"), ExtResource("6_0mcwt"), ExtResource("7_0mcwt"), ExtResource("8_vuald")])
+name = "Shotgun"
+description = "Unlocks Shotgun"
+icon = ExtResource("1_0mcwt")
+is_percentage = false
+value = 1.0

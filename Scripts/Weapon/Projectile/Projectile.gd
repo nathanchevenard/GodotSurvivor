@@ -16,6 +16,9 @@ var damage_delay : float
 var current_damage_timer : float = 0
 var colliding_characters : Array[Character]
 
+var has_damaged_character : bool = false
+var damaged_characters : Array[Character]
+
 
 func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, speed : float):
 	global_position = starting_position
@@ -29,9 +32,13 @@ func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, sp
 		lifetime = weapon.projectile_lifetime
 		init_damage = weapon.damage * weapon.character.damage_mult
 	
-	if (target != null):
-		current_direction = (target.global_position - global_position).normalized()
-		rotation = global_position.angle_to_point(target.global_position)	
+	if target != null:
+		set_target_pos(target.global_position)
+
+
+func set_target_pos(pos : Vector2):
+	current_direction = (pos - global_position).normalized()
+	rotation = global_position.angle_to_point(pos)
 
 
 func _physics_process(delta):
@@ -58,6 +65,13 @@ func damage_colliding_characters():
 
 
 func damage_character(character : Character):
+	if character.health <= 0:
+		return
+	
+	if damaged_characters.has(character) == false:
+		damaged_characters.append(character)
+	has_damaged_character = true
+	
 	if weapon != null:
 		character.take_damage(roundi(weapon.damage * weapon.character.damage_mult))
 	else:

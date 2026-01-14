@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=9 format=3 uid="uid://b7u2pq218ij30"]
+
+[ext_resource type="Texture2D" uid="uid://chwkuh0yqyjti" path="res://Sprites/Icons/Weapons/lightning_white.png" id="1_0xety"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_wic3c"]
+[ext_resource type="PackedScene" uid="uid://dwmdmnu6yc5cr" path="res://Scenes/Weapon/Player/LightningChain.tscn" id="3_avemb"]
+[ext_resource type="Resource" uid="uid://1dydebptae44" path="res://Resources/Upgrades/WeaponUpgrades/LightningChain/LightningChainAdditionalProjectile.tres" id="4_uccb6"]
+[ext_resource type="Resource" uid="uid://cck71uiernis" path="res://Resources/Upgrades/WeaponUpgrades/LightningChain/LightningChainCooldown.tres" id="5_shhkt"]
+[ext_resource type="Resource" uid="uid://c7wln5c4u1v4y" path="res://Resources/Upgrades/WeaponUpgrades/LightningChain/LightningChainDamage.tres" id="6_0xety"]
+[ext_resource type="Resource" uid="uid://bd7yt01lqpjec" path="res://Resources/Upgrades/WeaponUpgrades/LightningChain/LightningChainReboundNumber.tres" id="7_0xety"]
+[ext_resource type="Resource" uid="uid://c5qggf1kx4rt0" path="res://Resources/Upgrades/WeaponUpgrades/LightningChain/LightningChainReboundRange.tres" id="8_20e6s"]
+
+[resource]
+script = ExtResource("2_wic3c")
+upgrade_type = 6
+impacted_weapon = 8
+pick_max_number = 1.0
+weapon_scene = ExtResource("3_avemb")
+weapon_upgrades = Array[ExtResource("2_wic3c")]([ExtResource("4_uccb6"), ExtResource("5_shhkt"), ExtResource("6_0xety"), ExtResource("7_0xety"), ExtResource("8_20e6s")])
+name = "Lightning Chain"
+description = "Unlocks Lightning Chain"
+icon = ExtResource("1_0xety")
+is_percentage = false
+value = 1.0

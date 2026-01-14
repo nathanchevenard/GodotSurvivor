@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b14saps6gjb5a"]
 
 [ext_resource type="Script" uid="uid://bknqkwfr6useo" path="res://Scripts/Weapon/Projectile/Drone.gd" id="1_7qilx"]
-[ext_resource type="Texture2D" uid="uid://c8k237lek0dlc" path="res://Sprites/Projectiles/Mine.png" id="2_7qilx"]
+[ext_resource type="Texture2D" uid="uid://b4h23surbqujs" path="res://Sprites/Projectiles/Drone.png" id="2_7qilx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_41pb5"]
 radius = 7.071068

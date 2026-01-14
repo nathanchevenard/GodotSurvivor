@@ -10,6 +10,9 @@ enum WeaponUpgradeEnum
 	ProjectileSpeed,
 	ProjectileSize,
 	AddWeapon,
+	ReboundNumber,
+	ReboundRange,
+	WeaponRange,
 }
 
 @export var upgrade_type : WeaponUpgradeEnum
@@ -37,3 +40,10 @@ func apply_upgrade(weapon : Weapon):
 			weapon.projectile_speed = apply_value_to_variable(weapon.projectile_speed, weapon.init_projectile_speed)
 		WeaponUpgradeEnum.ProjectileSize:
 			weapon.projectile_size = apply_value_to_variable(weapon.projectile_size, weapon.init_projectile_size)
+		WeaponUpgradeEnum.ReboundNumber:
+			weapon.rebound_number = apply_value_to_variable(weapon.rebound_number, weapon.init_rebound_number)
+		WeaponUpgradeEnum.ReboundRange:
+			weapon.rebound_range = apply_value_to_variable(weapon.rebound_range, weapon.init_rebound_range)
+		WeaponUpgradeEnum.WeaponRange:
+			weapon.range = apply_value_to_variable(weapon.range, weapon.init_range)
+			weapon.projectile_lifetime = apply_value_to_variable(weapon.projectile_lifetime, weapon.init_projectile_lifetime)

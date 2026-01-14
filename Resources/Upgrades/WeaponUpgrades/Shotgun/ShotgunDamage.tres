@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://b1qo18uhyvb4c"]
+
+[ext_resource type="Texture2D" uid="uid://c5rsvci8vw2hx" path="res://Sprites/Icons/Weapons/shotgun_white.png" id="1_5tmf0"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_m3xp8"]
+
+[resource]
+script = ExtResource("2_m3xp8")
+upgrade_type = 2
+impacted_weapon = 6
+name = "Shotgun Upgrade"
+description = "Shotgun +20% Damage"
+icon = ExtResource("1_5tmf0")
+value = 0.2

@@ -9,6 +9,9 @@ enum WeaponEnum
 	MineLauncher,
 	Flamethrower,
 	DroneLauncher,
+	Shotgun,
+	Boomerang,
+	LightningChain,
 }
 
 @export var weapon_type : WeaponEnum
@@ -36,6 +39,7 @@ var init_projectile_speed : float
 var init_projectile_coef_area_of_effect : float
 var init_projectile_size : float
 var init_range : float
+var init_projectile_lifetime : float
 
 var upgrades : Array[Upgrade]
 
@@ -50,6 +54,7 @@ func _ready():
 	init_projectile_coef_area_of_effect = projectile_coef_area_of_effect
 	init_projectile_size = projectile_size
 	init_range = range
+	init_projectile_lifetime = projectile_lifetime
 
 
 func _process(delta):
@@ -85,7 +90,7 @@ func fire():
 	if is_volley == false:
 		for target in acquired_targets:
 			var projectile_instance : Projectile = projectile.instantiate() as Projectile
-			projectile_instance.initialize(self, global_position, target, projectile_speed)
+			initialize_projectile(projectile_instance, target)
 			Level.instance.projectile_handler.add_child(projectile_instance)
 	else:
 		for i in projectile_number:
@@ -93,12 +98,16 @@ func fire():
 			var target : Node2D = null
 			if acquired_targets.size() > 0:
 				target = acquired_targets[0]
-			projectile_instance.initialize(self, global_position, target, projectile_speed)
+			initialize_projectile(projectile_instance, target)
 			Level.instance.projectile_handler.add_child(projectile_instance)
 			
 			if i < projectile_number - 1:
 				await get_tree().create_timer(volley_duration / projectile_number).timeout
 				check_targets()
+
+
+func initialize_projectile(projectile_instance : Projectile, target : Node2D):
+	projectile_instance.initialize(self, global_position, target, projectile_speed)
 
 
 func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
