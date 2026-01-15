@@ -10,6 +10,7 @@ class_name Player
 @export var ship_data : ShipData
 
 @export var sprite_2d : Sprite2D
+@export var explosion_sprites : Array[AnimatedSprite2D]
 @export var wepaon_pivots_node : Node2D
 
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
@@ -111,6 +112,12 @@ func rotate_toward_mouse() -> void:
 func destroy() -> void:
 	if is_immortal == true:
 		return
+	
+	get_tree().paused = true
+	
+	for explosion in explosion_sprites:
+		explosion.play("explode")
+		await get_tree().create_timer(0.5).timeout
 	
 	hide()
 	destroyed.emit()

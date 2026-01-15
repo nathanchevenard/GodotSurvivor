@@ -1,8 +1,84 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgxyci6epggm8"]
+[gd_scene load_steps=16 format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" uid="uid://fko4tmku54t" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
+[ext_resource type="Texture2D" uid="uid://chi6625dbucsu" path="res://Sprites/Projectiles/Explosion.png" id="2_ude3g"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_apoam"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="7_e1xj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmcll"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wape"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t26db"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk5o5"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_825xp"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji083"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kmp4"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5acl"]
+atlas = ExtResource("2_ude3g")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epg6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmcll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wape")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t26db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk5o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_825xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji083")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kmp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5acl")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5q1e"]
 radius = 11.0
@@ -10,11 +86,12 @@ radius = 11.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qshp3"]
 bg_color = Color(0, 0.356863, 0.709804, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "wepaon_pivots_node") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "explosion_sprites", "wepaon_pivots_node") groups=["Player"]]
 z_index = 1
 collision_mask = 104
 script = ExtResource("1_xm3y8")
 sprite_2d = NodePath("Sprite2D")
+explosion_sprites = [NodePath("ExplosionSprites/AnimatedSprite2D"), NodePath("ExplosionSprites/AnimatedSprite2D2"), NodePath("ExplosionSprites/AnimatedSprite2D3"), NodePath("ExplosionSprites/AnimatedSprite2D4")]
 wepaon_pivots_node = NodePath("WeaponPivots")
 speed_max = 100.0
 target_groups = Array[String](["Enemy"])
@@ -27,6 +104,34 @@ shield_regen_delay = 2.0
 z_index = 1
 rotation = 1.5708
 texture = ExtResource("3_apoam")
+
+[node name="ExplosionSprites" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExplosionSprites"]
+process_mode = 3
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_epg6k")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ExplosionSprites"]
+process_mode = 3
+z_index = 2
+position = Vector2(-8, -6)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_epg6k")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ExplosionSprites"]
+process_mode = 3
+z_index = 2
+position = Vector2(-5, 13)
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_epg6k")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ExplosionSprites"]
+process_mode = 3
+z_index = 2
+position = Vector2(11, -7)
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_epg6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w5q1e")
