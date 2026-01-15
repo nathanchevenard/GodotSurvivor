@@ -138,7 +138,7 @@ must_be_in_arena: bool = false) -> Node2D:
 
 
 func _on_player_destroyed():
-	game_over.show()
+	SignalsManager.emit_game_over()
 	PauseSystem.instance.start_pause(true)
 	game_end.emit()
 

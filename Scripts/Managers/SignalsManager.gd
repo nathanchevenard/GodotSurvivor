@@ -55,6 +55,11 @@ func emit_game_unpause_delay_start():
 	game_unpause_delay_start.emit()
 
 
+signal game_over
+func emit_game_over():
+	game_over.emit()
+
+
 signal pivot_button_hover(pivot : Node2D)
 func emit_pivot_button_hover(pivot : Node2D):
 	pivot_button_hover.emit(pivot)

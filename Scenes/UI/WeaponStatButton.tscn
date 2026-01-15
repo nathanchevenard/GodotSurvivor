@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcakculbnioi"]
+
+[ext_resource type="Texture2D" uid="uid://dfutxyxbdyfli" path="res://Sprites/Icons/Weapons/bomb_white.png" id="1_lg8sm"]
+[ext_resource type="Script" uid="uid://c68toe5uv2dja" path="res://Scripts/UI/WeaponStatButton.gd" id="1_xdvnf"]
+
+[node name="WeaponStatButton" type="HBoxContainer" node_paths=PackedStringArray("icon", "weapon_name_label", "weapon_name_level", "weapon_name_damage")]
+script = ExtResource("1_xdvnf")
+icon = NodePath("TextureRect")
+weapon_name_label = NodePath("WeaponNameLabel")
+weapon_name_level = NodePath("WeaponLevelLabel")
+weapon_name_damage = NodePath("WeaponDamageLabel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_lg8sm")
+expand_mode = 2
+
+[node name="WeaponNameLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Bomb Launcher"
+
+[node name="WeaponLevelLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Lv2"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = ":"
+
+[node name="WeaponDamageLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "3543"

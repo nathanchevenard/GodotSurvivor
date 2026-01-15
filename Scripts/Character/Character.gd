@@ -103,7 +103,8 @@ func get_sorted_closest_entities(group_names : Array[String]) -> Array[Node]:
 	return entities
 
 
-func take_damage(damage : int):
+func take_damage(damage : int) -> float:
+	var damage_dealt : int = damage
 	is_regenerating_shield = false
 	shield_regen_timer = 0
 	
@@ -122,10 +123,17 @@ func take_damage(damage : int):
 		emit_shield_changed()
 	
 	health -= damage
+	
+	if health < 0:
+		damage_dealt += health
+		health = 0
+	
 	emit_health_changed()
 	
 	if health <= 0:
 		destroy()
+	
+	return damage_dealt
 
 
 func heal(amount: int):

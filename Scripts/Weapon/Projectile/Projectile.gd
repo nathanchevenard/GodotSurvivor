@@ -73,7 +73,7 @@ func damage_character(character : Character):
 	has_damaged_character = true
 	
 	if weapon != null:
-		character.take_damage(roundi(weapon.damage * weapon.character.damage_mult))
+		weapon.damage_dealt += character.take_damage(roundi(weapon.damage * weapon.character.damage_mult))
 	else:
 		character.take_damage(roundi(init_damage))
 

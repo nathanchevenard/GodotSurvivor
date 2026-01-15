@@ -42,6 +42,7 @@ var init_range : float
 var init_projectile_lifetime : float
 
 var upgrades : Array[Upgrade]
+var damage_dealt : float = 0
 
 
 func _ready():

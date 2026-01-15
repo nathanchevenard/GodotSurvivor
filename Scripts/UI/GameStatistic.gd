@@ -1,12 +1,16 @@
 extends Label
 class_name GameStatistic
 
-var timer : float
+static var timer : float
 var game_ended : bool = false
 
-var seconds : int = 0
-var minutes : int = 0
-var hours : int = 0
+static var seconds : int = 0
+static var minutes : int = 0
+static var hours : int = 0
+
+
+func _ready() -> void:
+	timer = 0
 
 
 func _process(delta):
@@ -17,7 +21,7 @@ func _process(delta):
 	text = time_convert(floori(timer))
 
 
-func time_convert(time: int) -> String:
+static func time_convert(time: int) -> String:
 	var previous_seconds = seconds
 	
 	seconds = time%60
