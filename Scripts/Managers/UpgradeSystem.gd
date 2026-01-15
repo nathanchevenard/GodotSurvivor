@@ -78,6 +78,8 @@ func display_upgrades():
 	var available_new_upgrades : Array[Upgrade] = get_available_new_upgrades(player)
 	# Stores the upgrades the player already has and that have not been picked yet
 	var slot_upgrades : Array[Upgrade] = player.slot_upgrades.duplicate()
+	# Stores the weapons that have already been chosen in previous choices
+	var possible_weapons : Array[Weapon] = player.weapons.duplicate()
 	
 	# TEMP: On first upgrade, have only weapon upgrades to start with one
 	if upgrades_count == 0:
@@ -91,7 +93,8 @@ func display_upgrades():
 			weapon_upgrades.erase(upgrade)
 	else:
 		for i in upgrades_number:
-			var upgrade_data : Array = pick_random_upgrade(i, player, available_new_upgrades, slot_upgrades)
+			var upgrade_data : Array = pick_random_upgrade(i, player, available_new_upgrades, \
+			slot_upgrades, possible_weapons)
 			var upgrade : Upgrade = upgrade_data[0]
 			var weapon_pivot : Node2D = upgrade_data[1]
 			create_upgrade_button(upgrade, weapon_pivot)
@@ -101,6 +104,7 @@ func display_upgrades():
 			if upgrade_data[2] == false:
 				if weapon_pivot != null:
 					slot_upgrades.erase(player.weapon_pivots_dico[weapon_pivot].upgrades[0])
+					possible_weapons.erase(player.weapon_pivots_dico[weapon_pivot])
 				else:
 					slot_upgrades.erase(upgrade)
 	
@@ -127,11 +131,10 @@ func get_available_new_upgrades(player : Player) -> Array[Upgrade]:
 
 
 func pick_random_upgrade(i : int, player : Player, possible_upgrades : Array[Upgrade], \
-slot_upgrades : Array[Upgrade]) -> Array:
+slot_upgrades : Array[Upgrade], possible_weapons : Array[Weapon]) -> Array:
 	var upgrade : Upgrade = null
 	var weapon_pivot : Node2D = null
 	var is_new_upgrade : bool = false
-	var possible_weapons : Array[Weapon] = player.weapons.duplicate()
 	var data : Array
 	
 	# First choice is always a new upgrade (if ship can have one)
