@@ -7,7 +7,7 @@
 script = ExtResource("2_rimml")
 impacted_weapon = 1
 name = "Laser Upgrade"
-description = "Laser +1 Projectile"
+description = "Laser +50% Additional Projectile"
 icon = ExtResource("1_7q8d6")
 is_percentage = false
-value = 1.0
+value = 0.5

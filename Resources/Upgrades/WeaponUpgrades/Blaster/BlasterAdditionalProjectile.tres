@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_4hbug")
 name = "Blaster Upgrade"
-description = "Blaster +1 Projectile"
+description = "Blaster +50% Additional Projectile"
 icon = ExtResource("1_kv58o")
 is_percentage = false
-value = 1.0
+value = 0.5

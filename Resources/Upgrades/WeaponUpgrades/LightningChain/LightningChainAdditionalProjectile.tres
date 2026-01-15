@@ -7,7 +7,7 @@
 script = ExtResource("2_2v1m7")
 impacted_weapon = 8
 name = "Lightning Chain Upgrade"
-description = "Lightning Chain +1 Projectile"
+description = "Lightning Chain +50% Additional Projectile"
 icon = ExtResource("1_nxprl")
 is_percentage = false
-value = 1.0
+value = 0.5

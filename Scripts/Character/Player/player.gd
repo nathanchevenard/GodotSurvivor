@@ -128,7 +128,7 @@ func has_weapon_type(weapon_type) -> bool:
 		if weapon_type != weapon.weapon_type:
 			continue
 		
-		return weapon.projectile_number > 0
+		return true
 	
 	return false
 

@@ -9,7 +9,9 @@ func fire():
 		var target : Node2D = null
 		target = acquired_targets[0]
 		
-		for i in projectile_number:
+		var current_projectile_nb = get_projectile_number()
+		
+		for i in current_projectile_nb:
 			var projectile_instance : Projectile = projectile.instantiate() as Projectile
 			projectile_instance.initialize(self, global_position, target, projectile_speed)
 			Level.instance.projectile_handler.add_child(projectile_instance)

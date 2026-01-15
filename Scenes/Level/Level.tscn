@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=63 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -79,6 +79,9 @@ spawn_timer = 360.0
 spawn_only_on_timer = true
 spawn_number = 3
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsnq8"]
+bg_color = Color(0, 0, 0, 0.8117647)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12iyy"]
 bg_color = Color(0, 0, 0, 0.7058824)
@@ -547,6 +550,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsnq8")
 
 [node name="CenterContainer" type="CenterContainer" parent="GameOverLayer/GameOver"]
 layout_mode = 1
@@ -632,6 +636,7 @@ theme_override_constants/separation = 20
 
 [node name="RetryButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Retry"
 
 [node name="FocusParentOnReady" type="Node" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons/RetryButton"]
@@ -640,10 +645,12 @@ metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
 [node name="MenuButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Menu"
 
 [node name="QuitButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "Quit"
 
 [node name="UpgradeLayer" type="CanvasLayer" parent="."]

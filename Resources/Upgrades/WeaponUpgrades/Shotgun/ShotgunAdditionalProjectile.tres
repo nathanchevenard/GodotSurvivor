@@ -7,7 +7,7 @@
 script = ExtResource("2_pxs2s")
 impacted_weapon = 6
 name = "Shotgun Upgrade"
-description = "Shotgun +1 Projectile"
+description = "Shotgun +100% Additional Projectile"
 icon = ExtResource("1_cqy4x")
 is_percentage = false
 value = 1.0

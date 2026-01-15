@@ -21,7 +21,7 @@ enum WeaponEnum
 @export var range : float = 0.0
 @export var cooldown : float
 @export var projectile_speed : float
-@export var projectile_number : int
+@export var projectile_number : float
 @export var projectile_lifetime : float = 5.0
 @export var projectile_coef_area_of_effect : float = 1.0
 @export var projectile_size : float = 1.0
@@ -78,13 +78,21 @@ func acquire_targets(target_number : int) -> Array[Node2D]:
 func check_targets() -> bool:
 	acquired_targets.clear()
 	
-	for target in acquire_targets(projectile_number):
+	for target in acquire_targets(get_projectile_number()):
 		if range > 0 && global_position.distance_to(target.global_position) > range:
 			continue
 		
 		acquired_targets.append(target)
 	
 	return acquired_targets.size() > 0
+
+
+func get_projectile_number() -> int:
+	var additional_chance : float = fmod(projectile_number, 1)
+	if randf_range(0, 1) < additional_chance:
+		return floori(projectile_number) + 1
+	else:
+		return floori(projectile_number)
 
 
 func fire():
@@ -94,7 +102,8 @@ func fire():
 			initialize_projectile(projectile_instance, target)
 			Level.instance.projectile_handler.add_child(projectile_instance)
 	else:
-		for i in projectile_number:
+		var current_projectile_nb = get_projectile_number()
+		for i in current_projectile_nb:
 			var projectile_instance : Projectile = projectile.instantiate() as Projectile
 			var target : Node2D = null
 			if acquired_targets.size() > 0:
@@ -102,8 +111,8 @@ func fire():
 			initialize_projectile(projectile_instance, target)
 			Level.instance.projectile_handler.add_child(projectile_instance)
 			
-			if i < projectile_number - 1:
-				await get_tree().create_timer(volley_duration / projectile_number).timeout
+			if i < current_projectile_nb - 1:
+				await get_tree().create_timer(volley_duration / current_projectile_nb).timeout
 				check_targets()
 
 

@@ -33,7 +33,7 @@ func spawn_drone():
 func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 	super(upgrade, weapon)
 	
-	while projectile_number > drones.size():
+	while floori(projectile_number) > drones.size():
 		spawn_drone()
 	
 	for drone in drones:

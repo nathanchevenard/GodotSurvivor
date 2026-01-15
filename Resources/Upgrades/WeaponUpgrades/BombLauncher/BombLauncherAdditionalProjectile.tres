@@ -7,7 +7,7 @@
 script = ExtResource("2_anksq")
 impacted_weapon = 2
 name = "Bomb Upgrade"
-description = "Bomb Launcher +1 Projectile"
+description = "Bomb Launcher +50% Additional Projectile"
 icon = ExtResource("1_jav0t")
 is_percentage = false
-value = 1.0
+value = 0.5
