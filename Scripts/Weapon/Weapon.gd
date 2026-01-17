@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name Weapon
 
@@ -16,6 +17,7 @@ enum WeaponEnum
 
 @export var weapon_type : WeaponEnum
 @export var target_groups : Array[String] = ["Enemy"]
+@export var is_enemy_weapon : bool = false
 @export var projectile : PackedScene
 @export var damage : float
 @export var range : float = 0.0
@@ -28,6 +30,13 @@ enum WeaponEnum
 @export var is_volley : bool = false
 @export var volley_duration : float = 0.5
 @export var damage_delay : float = 0.0
+@export var always_fire : bool = false
+
+@export_category("Hitbox")
+@export var hitbox_collision : CollisionPolygon2D
+@export var hitbox_polygon : Polygon2D
+@export var hitbox_points_number : int = 16
+@export var hitbox_angle : float = 90
 
 var character : Character
 var cooldown_timer : float = 0.0
@@ -44,6 +53,31 @@ var init_projectile_lifetime : float
 var upgrades : Array[Upgrade]
 var damage_dealt : float = 0
 
+var colliding_bodies : Array[Node2D]
+
+#region Generate Hitbox
+@export_tool_button("Generate Hitbox") var generate_hitbox_action = generate_hitbox
+
+func generate_hitbox():
+	if hitbox_collision == null:
+		return
+	
+	var points : PackedVector2Array
+	points.append(Vector2(0,0))
+	
+	for i in hitbox_points_number + 1:
+		var angle = -deg_to_rad(hitbox_angle) / 2 + i * (deg_to_rad(hitbox_angle) / hitbox_points_number)
+		var pos : Vector2 = range * Vector2(1, 0).rotated(angle)
+		points.append(pos)
+		print(pos)
+	
+	hitbox_collision.polygon = points
+	
+	if hitbox_polygon != null:
+		hitbox_polygon.polygon = points
+
+#endregion
+
 
 func _ready():
 	if character == null:
@@ -56,9 +90,14 @@ func _ready():
 	init_projectile_size = projectile_size
 	init_range = range
 	init_projectile_lifetime = projectile_lifetime
+	
+	generate_hitbox()
 
 
 func _process(delta):
+	if Engine.is_editor_hint():
+		return
+	
 	if cooldown_timer < 1 / (cooldown * character.cooldown_mult):
 		cooldown_timer += delta
 	
@@ -68,14 +107,36 @@ func _process(delta):
 
 
 func acquire_targets(target_number : int) -> Array[Node2D]:
-	var targets : Array[Node] = character.get_sorted_closest_entities(target_groups)
-	var ret : Array[Node2D] = []
-	ret.assign(targets.slice(0, target_number))
+	if is_enemy_weapon == true:
+		return [get_tree().get_nodes_in_group("Player")[0] as Node2D]
 	
-	return ret
+	var targets : Array[Node2D] = colliding_bodies.duplicate()
+	targets.sort_custom(func(a, b): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
+	var valid_targets : Array[Node2D] = []
+	
+	for target in targets:
+		var is_valid : bool = false
+		
+		# Target is valid if in at least one of the target_groups
+		for group in target_groups:
+			if target.is_in_group(group):
+				is_valid = true
+				break
+		
+		if is_valid == true:
+			valid_targets.append(target)
+			
+			# Stop checking when we reached desired target number
+			if valid_targets.size() >= target_number:
+				break
+	
+	return valid_targets
 
 
 func check_targets() -> bool:
+	if always_fire == true:
+		return true
+	
 	acquired_targets.clear()
 	
 	for target in acquire_targets(get_projectile_number()):
@@ -126,3 +187,14 @@ func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 	
 	upgrades.append(upgrade)
 	upgrade.apply_upgrade(self)
+
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if colliding_bodies.has(body) == false:
+		colliding_bodies.append(body)
+
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if colliding_bodies.has(body) == true:
+		colliding_bodies.erase(body)

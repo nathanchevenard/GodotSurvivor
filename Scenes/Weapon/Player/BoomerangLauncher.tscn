@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://sdaujcn73s2t" path="res://Scripts/Weapon/BoomerangLauncher.gd" id="1_wj0di"]
 [ext_resource type="PackedScene" uid="uid://derxi1h5eyqk0" path="res://Scenes/Weapon/Projectile/Boomerang.tscn" id="2_wj0di"]
 
-[node name="BoomerangLauncher" type="Node2D"]
+[node name="BoomerangLauncher" type="Node2D" node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
 script = ExtResource("1_wj0di")
 weapon_type = 7
 projectile = ExtResource("2_wj0di")
@@ -11,5 +11,21 @@ damage = 5.0
 range = 200.0
 cooldown = 0.33
 projectile_speed = 300.0
-projectile_number = 1
+projectile_number = 1.0
 projectile_lifetime = 0.0
+hitbox_collision = NodePath("Area2D/CollisionPolygon2D")
+hitbox_polygon = NodePath("Polygon2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 74
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, 0, 141.42136, -141.42136, 154.6021, -126.878654, 166.29391, -111.11405, 176.38426, -94.27934, 184.7759, -76.53669, 191.38808, -58.056934, 196.15704, -39.018066, 199.03694, -19.603428, 200, 0, 199.03694, 19.603428, 196.15704, 39.018066, 191.38808, 58.056934, 184.7759, 76.53669, 176.38426, 94.27934, 166.29391, 111.11405, 154.6021, 126.878654, 141.42136, 141.42136)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0, 0, 0.17254902)
+polygon = PackedVector2Array(0, 0, 141.42136, -141.42136, 154.6021, -126.878654, 166.29391, -111.11405, 176.38426, -94.27934, 184.7759, -76.53669, 191.38808, -58.056934, 196.15704, -39.018066, 199.03694, -19.603428, 200, 0, 199.03694, 19.603428, 196.15704, 39.018066, 191.38808, 58.056934, 184.7759, 76.53669, 176.38426, 94.27934, 166.29391, 111.11405, 154.6021, 126.878654, 141.42136, 141.42136)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_hitbox_body_exited"]

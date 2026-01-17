@@ -5,5 +5,6 @@ class_name ShipData
 @export var sprite : Texture2D
 @export_multiline var description : String
 @export var weapon_pivot_positions : Array[Vector2]
+@export var weapon_pivot_rotations : Array[float]
 @export var ship_upgrades_number : int
 @export var ship_upgrade_layout_scene : PackedScene

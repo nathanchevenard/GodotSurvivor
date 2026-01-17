@@ -47,3 +47,4 @@ func apply_upgrade(weapon : Weapon):
 		WeaponUpgradeEnum.WeaponRange:
 			weapon.range = apply_value_to_variable(weapon.range, weapon.init_range)
 			weapon.projectile_lifetime = apply_value_to_variable(weapon.projectile_lifetime, weapon.init_projectile_lifetime)
+			weapon.generate_hitbox()

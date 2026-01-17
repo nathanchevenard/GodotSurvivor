@@ -1,3 +1,4 @@
+@tool
 extends Weapon
 class_name Flamethrower
 
@@ -16,6 +17,9 @@ func _ready():
 
 
 func _process(delta):
+	if Engine.is_editor_hint():
+		return
+	
 	super(delta)
 	
 	var new_rot = previous_rotation
@@ -23,7 +27,7 @@ func _process(delta):
 	
 	if targets.size() > 0:
 		var target : Node2D = targets[0]
-		var angle = get_angle_to(target.global_position)
+		var angle = projectile_instance.get_angle_to(target.global_position)
 		if angle > 0:
 			angle = 1
 		else:
@@ -34,12 +38,12 @@ func _process(delta):
 			fire_start()
 		else:
 			fire_stop()
-			
 	else:
 		fire_stop()
+		new_rot = get_parent().global_rotation
 	
-	global_rotation = new_rot
-	previous_rotation = global_rotation
+	projectile_instance.global_rotation = new_rot
+	previous_rotation = projectile_instance.global_rotation
 
 
 func fire_start():
@@ -81,3 +85,4 @@ func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 	
 	projectile_instance.scale = Vector2(projectile_size, projectile_size)
 	range = init_range * projectile_size
+	generate_hitbox()

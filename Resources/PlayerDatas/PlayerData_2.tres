@@ -10,6 +10,7 @@ name = "Ship 2"
 sprite = ExtResource("2_bpgx2")
 description = "Ship with lot of ship upgrades slots but less weapons"
 weapon_pivot_positions = Array[Vector2]([Vector2(13, 0), Vector2(-13, 0)])
+weapon_pivot_rotations = Array[float]([0.0, 180.0])
 ship_upgrades_number = 5
 ship_upgrade_layout_scene = ExtResource("2_deydp")
 metadata/_custom_type_script = "uid://duflb2yo25aot"

@@ -60,10 +60,11 @@ func _input(event):
 
 
 func init_weapon_pivots():
-	for pos in ship_data.weapon_pivot_positions:
+	for i in ship_data.weapon_pivot_positions.size():
 		var pivot : Node2D = Node2D.new()
 		wepaon_pivots_node.add_child(pivot)
-		pivot.position = pos
+		pivot.position = ship_data.weapon_pivot_positions[i]
+		pivot.rotation_degrees = ship_data.weapon_pivot_rotations[i]
 		weapon_pivots.append(pivot)
 
 
