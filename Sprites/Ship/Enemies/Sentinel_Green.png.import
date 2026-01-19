@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvsd2ftvbswmu"
-path="res://.godot/imported/Broodlord.png-1dc762565c6688da8587b415b17a496a.ctex"
+uid="uid://b6o0oq3yj2cij"
+path="res://.godot/imported/Sentinel_Green.png-3ac9baca28cade6f67f99d1ba189a9da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ship/Broodlord.png"
-dest_files=["res://.godot/imported/Broodlord.png-1dc762565c6688da8587b415b17a496a.ctex"]
+source_file="res://Sprites/Ship/Enemies/Sentinel_Green.png"
+dest_files=["res://.godot/imported/Sentinel_Green.png-3ac9baca28cade6f67f99d1ba189a9da.ctex"]
 
 [params]
 

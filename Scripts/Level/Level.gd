@@ -22,10 +22,10 @@ class_name Level
 @export var enemy_spawn_number : int = 1
 @export var enemy_max_number : int = 300
 
-
 var asteroids : Array[Asteroid]
 var enemies : Array[Enemy]
 
+var init_enemy_spawn_number : int
 var current_enemy_spawn_timer : float = 0.0
 var toggle_asteroids : bool = true
 var toggle_enemies : bool = true
@@ -56,6 +56,13 @@ func _process(delta):
 		spawn_enemy()
 
 
+func _ready() -> void:
+	for enemy in enemy_spawn_infos:
+		enemy.already_spawned = 0
+	
+	init_enemy_spawn_number = enemy_spawn_number
+
+
 func _on_obstacle_spawn_timer_timeout():
 	if toggle_asteroids == false:
 		return
@@ -83,6 +90,11 @@ func spawn_enemy():
 				removed_enemy.queue_free()
 			
 			var enemy_scene : PackedScene = get_random_enemy()
+			
+			# If no enemy found, there are none available now so we return
+			if enemy_scene == null:
+				return
+			
 			spawn_scene_around_position(enemy_scene, player.global_position, true)
 	
 	current_enemy_incrementation += 1
@@ -96,7 +108,9 @@ func get_random_enemy() -> PackedScene:
 	var enemies : Array[EnemySpawnInfo] = enemy_spawn_infos.duplicate()
 	
 	for enemy in enemy_spawn_infos:
-		if enemy.spawn_only_on_timer == false && timer_seconds < enemy.spawn_timer:
+		# Enemies with spawn_only_on_timer as true are spawned by function on_timer_seconds_update
+		if enemy.spawn_only_on_timer == true || timer_seconds < enemy.spawn_timer \
+		|| (enemy.spawn_timer_stop > 0 && timer_seconds > enemy.spawn_timer_stop):
 			enemies.erase(enemy)
 	
 	for enemy_spawn_info : EnemySpawnInfo in enemies:
@@ -108,6 +122,7 @@ func get_random_enemy() -> PackedScene:
 	for enemy_spawn_info : EnemySpawnInfo in enemies:
 		current_weight += enemy_spawn_info.weight
 		if random_number <= current_weight:
+			enemy_spawn_info.already_spawned += 1
 			return enemy_spawn_info.enemy_scene
 	
 	return null
@@ -153,3 +168,8 @@ func on_timer_seconds_update(seconds : int):
 			for player : Player in players:
 				for i in enemy.spawn_number:
 					spawn_scene_around_position(enemy.enemy_scene, player.global_position, true)
+					enemy.already_spawned += 1
+			
+			if enemy.reset_enemy_spawn_number == true:
+				enemy_spawn_number = init_enemy_spawn_number
+				current_enemy_incrementation = 0

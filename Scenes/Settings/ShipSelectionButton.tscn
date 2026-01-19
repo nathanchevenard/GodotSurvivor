@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfhikkpsot868"]
 
 [ext_resource type="Script" uid="uid://cb7wj22mll6bs" path="res://Scripts/UI/Settings/ShipSelectionButton.gd" id="1_2agps"]
-[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="1_he5jq"]
+[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="1_he5jq"]
 
 [node name="ShipSelectionButton" type="MarginContainer" node_paths=PackedStringArray("button", "icon", "name_label")]
 script = ExtResource("1_2agps")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cf8hlkxpckrf1"]
 
 [ext_resource type="Script" uid="uid://fhmtsigkp6je" path="res://Scripts/Character/Enemy/Broodling.gd" id="1_fndrr"]
-[ext_resource type="Texture2D" uid="uid://bfdnyptdag7nh" path="res://Sprites/Ship/Speedling.png" id="2_fndrr"]
+[ext_resource type="Texture2D" uid="uid://bfdnyptdag7nh" path="res://Sprites/Ship/Enemies/Speedling.png" id="2_fndrr"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_wmdib"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nkmkb"]
@@ -21,6 +21,7 @@ attack = 5
 xp_value = 0
 speed_max = 120.0
 target_groups = Array[String](["Player"])
+health_max = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.4285716, -6.4963903e-13)

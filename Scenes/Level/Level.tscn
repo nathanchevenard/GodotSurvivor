@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=70 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -11,14 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://dmpu6kw7kq41g" path="res://Scenes/Collectables/Collectable_Heal.tscn" id="7_jdpru"]
 [ext_resource type="Texture2D" uid="uid://o3f1c781hx7w" path="res://Sprites/Level/BlackHole.png" id="7_kfec1"]
 [ext_resource type="PackedScene" uid="uid://d3iq6bwjslrd1" path="res://Scenes/Enemy/Broodlord.tscn" id="7_qxhfh"]
+[ext_resource type="PackedScene" uid="uid://b5cpspj6fy4xq" path="res://Scenes/Enemy/Broodlord_Green.tscn" id="8_qxhfh"]
 [ext_resource type="PackedScene" uid="uid://b31w2c4v8wop3" path="res://Scenes/Collectables/Collectable_Xp.tscn" id="8_silsi"]
 [ext_resource type="PackedScene" uid="uid://bn1ubnes7fm30" path="res://Scenes/Level/PauseSystem.tscn" id="8_smpvf"]
 [ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="8_xwq3q"]
+[ext_resource type="PackedScene" uid="uid://ipnns3ul687l" path="res://Scenes/Enemy/Broodling_Green.tscn" id="9_b63oq"]
 [ext_resource type="Script" uid="uid://bn41h5apa03s5" path="res://Scripts/UI/GameStatistic.gd" id="9_pcfry"]
 [ext_resource type="PackedScene" uid="uid://p0mm6ln0fqpe" path="res://Scenes/Level/UpgradeSystem.tscn" id="9_rpw5f"]
 [ext_resource type="Texture2D" uid="uid://kddkwqh58rdh" path="res://Sprites/Level/Blue_Nebula_04-2048x1024.png" id="9_wyh5q"]
 [ext_resource type="Script" uid="uid://cw63q5f86dfq4" path="res://Scripts/Utility/DebugOptions.gd" id="10_2qfsf"]
+[ext_resource type="PackedScene" uid="uid://b64nlx2j2f7id" path="res://Scenes/Enemy/Sentinel_Green.tscn" id="10_17s1q"]
 [ext_resource type="Script" uid="uid://btob1v03sk7xy" path="res://Scripts/Upgrade/Upgrade.gd" id="11_ax57u"]
+[ext_resource type="PackedScene" uid="uid://dlu7ht8brxupw" path="res://Scenes/Enemy/Ravager_Green.tscn" id="11_g3uom"]
 [ext_resource type="PackedScene" uid="uid://gckvhlh5xlb4" path="res://Scenes/UI/Upgrade/UpgradeButton.tscn" id="16_xe3ed"]
 [ext_resource type="Script" uid="uid://wa4ephur8boo" path="res://Scripts/UI/KillsCounter.gd" id="17_jugp0"]
 [ext_resource type="Resource" uid="uid://b0mco3gxorh4c" path="res://Resources/Upgrades/WeaponUpgrades/Flamethrower/FlamethrowerAddWeapon.tres" id="23_m1kf3"]
@@ -52,32 +56,56 @@
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("8_xwq3q")
 weight = 50.0
+spawn_timer_stop = 180.0
 
 [sub_resource type="Resource" id="Resource_0qujo"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("6_2ravk")
 weight = 5.0
 spawn_timer = 30.0
+spawn_timer_stop = 180.0
 
 [sub_resource type="Resource" id="Resource_olx7e"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("5_65rq2")
 weight = 1.0
 spawn_timer = 60.0
+spawn_timer_stop = 180.0
 
 [sub_resource type="Resource" id="Resource_qxhfh"]
 script = ExtResource("4_2vapx")
 enemy_scene = ExtResource("7_qxhfh")
 spawn_timer = 180.0
 spawn_only_on_timer = true
+reset_enemy_spawn_number = true
+metadata/_custom_type_script = "uid://cyo6s7sltljf1"
+
+[sub_resource type="Resource" id="Resource_17s1q"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("9_b63oq")
+weight = 50.0
+spawn_timer = 210.0
+metadata/_custom_type_script = "uid://cyo6s7sltljf1"
+
+[sub_resource type="Resource" id="Resource_g3uom"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("10_17s1q")
+weight = 5.0
+spawn_timer = 240.0
+metadata/_custom_type_script = "uid://cyo6s7sltljf1"
+
+[sub_resource type="Resource" id="Resource_vkpka"]
+script = ExtResource("4_2vapx")
+enemy_scene = ExtResource("11_g3uom")
+weight = 1.0
+spawn_timer = 270.0
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
 [sub_resource type="Resource" id="Resource_b63oq"]
 script = ExtResource("4_2vapx")
-enemy_scene = ExtResource("7_qxhfh")
+enemy_scene = ExtResource("8_qxhfh")
 spawn_timer = 360.0
 spawn_only_on_timer = true
-spawn_number = 3
 metadata/_custom_type_script = "uid://cyo6s7sltljf1"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsnq8"]
@@ -125,18 +153,19 @@ bg_color = Color(0.955311, 0.79006755, 0, 1)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lh7mg")
 asteroid_scene = ExtResource("2_byko3")
-enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_0qujo"), SubResource("Resource_olx7e"), SubResource("Resource_qxhfh"), SubResource("Resource_b63oq")])
+enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_0qujo"), SubResource("Resource_olx7e"), SubResource("Resource_qxhfh"), SubResource("Resource_17s1q"), SubResource("Resource_g3uom"), SubResource("Resource_vkpka"), SubResource("Resource_b63oq")])
 spawn_circle_radius = 400.0
 direction_random_variation = 15.0
-enemy_spawn_timer = 2.5
-enemy_incrementation_threshold = 15
-enemy_spawn_number = 3
+enemy_spawn_timer = 5.0
+enemy_incrementation_threshold = 12
+enemy_spawn_number = 5
 enemy_max_number = 200
 
 [node name="DebugOptions" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("10_2qfsf")
 toggle_debug_inputs = true
+player_immortal = true
 
 [node name="PauseSystem" parent="." node_paths=PackedStringArray("pause_end_layer", "delay_progress_bar") instance=ExtResource("8_smpvf")]
 pause_end_layer = NodePath("../PauseEndLayer")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlu7ht8brxupw"]
+
+[ext_resource type="PackedScene" uid="uid://bskqt7gbyvfh7" path="res://Scenes/Enemy/Ravager.tscn" id="1_pbgdi"]
+[ext_resource type="Texture2D" uid="uid://cajfcbgmlm3su" path="res://Sprites/Ship/Enemies/Ravager_Green.png" id="2_jopye"]
+
+[node name="Ravager_Green" instance=ExtResource("1_pbgdi")]
+charge_speed = 400.0
+attack = 50
+xp_value = 20
+xp_modulate_color = Color(0.3583611, 0.56145555, 0.6978604, 1)
+xp_scene_scale = 2.7
+speed_max = 80.0
+health_max = 200
+shield_max = 50
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jopye")
+
+[editable path="ShieldBar"]
+[editable path="HealthBar"]

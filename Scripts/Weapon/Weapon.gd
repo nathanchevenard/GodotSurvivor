@@ -69,7 +69,6 @@ func generate_hitbox():
 		var angle = -deg_to_rad(hitbox_angle) / 2 + i * (deg_to_rad(hitbox_angle) / hitbox_points_number)
 		var pos : Vector2 = range * Vector2(1, 0).rotated(angle)
 		points.append(pos)
-		print(pos)
 	
 	hitbox_collision.polygon = points
 	
@@ -92,6 +91,9 @@ func _ready():
 	init_projectile_lifetime = projectile_lifetime
 	
 	generate_hitbox()
+	
+	if hitbox_polygon != null:
+		hitbox_polygon.hide()
 
 
 func _process(delta):
@@ -101,7 +103,7 @@ func _process(delta):
 	if cooldown_timer < 1 / (cooldown * character.cooldown_mult):
 		cooldown_timer += delta
 	
-	if cooldown_timer >= 1 / (cooldown * character.cooldown_mult) && check_targets():
+	while cooldown_timer >= 1 / (cooldown * character.cooldown_mult) && check_targets():
 		fire()
 		cooldown_timer -= 1 / (cooldown * character.cooldown_mult)
 

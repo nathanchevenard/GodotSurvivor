@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://clx0da5xhiltf"]
+
+[ext_resource type="PackedScene" uid="uid://34ab4klw0j6d" path="res://Scenes/Weapon/Projectile/SentinelBlast.tscn" id="1_htfbo"]
+[ext_resource type="Texture2D" uid="uid://bfath6i5k1l4k" path="res://Sprites/Projectiles/SentinelBlast_Green.png" id="2_35u6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xnhh"]
+atlas = ExtResource("2_35u6h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wppf0"]
+atlas = ExtResource("2_35u6h")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaxfc"]
+atlas = ExtResource("2_35u6h")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xql3x"]
+atlas = ExtResource("2_35u6h")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5taa6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xnhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaxfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xql3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SentinelBlast_Green" instance=ExtResource("1_htfbo")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_5taa6")

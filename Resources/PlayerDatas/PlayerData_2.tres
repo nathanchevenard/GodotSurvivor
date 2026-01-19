@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://f8glrurevp5l"]
 
 [ext_resource type="Script" uid="uid://duflb2yo25aot" path="res://Scripts/Character/Player/ShipData.gd" id="1_sis2p"]
-[ext_resource type="Texture2D" uid="uid://cinf538ek3sjy" path="res://Sprites/Ship/player_ship_red.png" id="2_bpgx2"]
+[ext_resource type="Texture2D" uid="uid://cinf538ek3sjy" path="res://Sprites/Ship/Players/PlayerShip_Red.png" id="2_bpgx2"]
 [ext_resource type="PackedScene" uid="uid://dq3pqa33juo6h" path="res://Scenes/UI/Upgrade/Layouts/ShipUpgradeLayout_2.tscn" id="2_deydp"]
 
 [resource]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3iq6bwjslrd1"]
 
 [ext_resource type="Script" uid="uid://c4e7f7t32xqdq" path="res://Scripts/Character/Enemy/Broodlord.gd" id="1_d263m"]
-[ext_resource type="Texture2D" uid="uid://dvsd2ftvbswmu" path="res://Sprites/Ship/Broodlord.png" id="2_d263m"]
+[ext_resource type="Texture2D" uid="uid://dvsd2ftvbswmu" path="res://Sprites/Ship/Enemies/Broodlord.png" id="2_d263m"]
 [ext_resource type="PackedScene" uid="uid://cf8hlkxpckrf1" path="res://Scenes/Enemy/Speedling.tscn" id="2_wsinb"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_vlben"]
 
@@ -25,13 +25,14 @@ spawn_number = 10
 spawn_delay = 5.0
 spawn_volley_delay = 0.1
 spawn_forward_distance = 20.0
+spawn_side_distance = 20.0
 attack = 50
 xp_value = 80
 xp_modulate_color = Color(0, 1, 0, 1)
 xp_scene_scale = 3.0
 speed_max = 50.0
 target_groups = Array[String](["Player"])
-health_max = 1500
+health_max = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.85714, 0)

@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_41pb5"]
-radius = 6.0
+radius = 2.0
 
 [node name="Blast" type="Area2D"]
 collision_layer = 4
@@ -49,12 +49,12 @@ script = ExtResource("1_uxrx4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5, 0)
+scale = Vector2(1, 0.2)
 sprite_frames = SubResource("SpriteFrames_av4hx")
 autoplay = "default"
 frame_progress = 0.297137
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_41pb5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfdnyptdag7nh"
-path="res://.godot/imported/Speedling.png-3ac6d542fa18fc122d1e2117b62bd374.ctex"
+uid="uid://dvsd2ftvbswmu"
+path="res://.godot/imported/Broodlord.png-2638920d9204c0c810940764a47746a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ship/Speedling.png"
-dest_files=["res://.godot/imported/Speedling.png-3ac6d542fa18fc122d1e2117b62bd374.ctex"]
+source_file="res://Sprites/Ship/Enemies/Broodlord.png"
+dest_files=["res://.godot/imported/Broodlord.png-2638920d9204c0c810940764a47746a1.ctex"]
 
 [params]
 

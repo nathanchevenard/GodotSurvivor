@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Level/Background.png" id="1_b7g4b"]
 [ext_resource type="Script" uid="uid://bwp1ryc7tju4f" path="res://Scripts/UI/Settings/ShipSelectionController.gd" id="2_tnqb0"]
-[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="3_rl434"]
+[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="3_rl434"]
 [ext_resource type="Script" uid="uid://duflb2yo25aot" path="res://Scripts/Character/Player/ShipData.gd" id="3_t87wf"]
 [ext_resource type="PackedScene" uid="uid://dfhikkpsot868" path="res://Scenes/Settings/ShipSelectionButton.tscn" id="3_tnqb0"]
 [ext_resource type="Resource" uid="uid://dvfqm8paoh6lt" path="res://Resources/PlayerDatas/PlayerData_1.tres" id="4_aohvp"]

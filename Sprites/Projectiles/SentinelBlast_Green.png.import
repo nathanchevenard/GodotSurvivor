@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8puuypein0q5"
-path="res://.godot/imported/ship midjourney 1.png-c0d6bf125a43f060f1093ab5c42ff6e7.ctex"
+uid="uid://bfath6i5k1l4k"
+path="res://.godot/imported/SentinelBlast_Green.png-bf9f2ef013d42be9815b4d69a701be1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ship/ship midjourney 1.png"
-dest_files=["res://.godot/imported/ship midjourney 1.png-c0d6bf125a43f060f1093ab5c42ff6e7.ctex"]
+source_file="res://Sprites/Projectiles/SentinelBlast_Green.png"
+dest_files=["res://.godot/imported/SentinelBlast_Green.png-bf9f2ef013d42be9815b4d69a701be1f.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

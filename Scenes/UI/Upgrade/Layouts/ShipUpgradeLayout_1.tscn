@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx458hce2u6x0"]
 
 [ext_resource type="Script" uid="uid://g08d4ni511wd" path="res://Scripts/UI/Upgrade/ShipUpgradeLayout.gd" id="1_m4r6v"]
-[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/player_ship.png" id="1_o0bla"]
+[ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="1_o0bla"]
 [ext_resource type="PackedScene" uid="uid://dde05t1378h7c" path="res://Scenes/UI/Upgrade/WeaponPivotButton.tscn" id="2_m4r6v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04r5f"]

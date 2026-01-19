@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bskqt7gbyvfh7"]
 
 [ext_resource type="Script" uid="uid://c3v8d3ar3c503" path="res://Scripts/Character/Enemy/Ravager.gd" id="1_2v341"]
-[ext_resource type="Texture2D" uid="uid://c72f4xlseq8mr" path="res://Sprites/Ship/Ravager.png" id="2_vg34x"]
+[ext_resource type="Texture2D" uid="uid://c72f4xlseq8mr" path="res://Sprites/Ship/Enemies/Ravager.png" id="2_vg34x"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_gsr3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3cbx"]

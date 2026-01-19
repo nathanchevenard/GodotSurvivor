@@ -8,6 +8,7 @@ class_name DebugOptions
 @export var toggle_enemies : bool = true
 @export var enemies_spawn_number : int = -1
 @export var enemies_spawn_timer : float = -1
+@export var debug_speed_scale : float = 5
 
 var players : Array[Player]
 
@@ -55,3 +56,7 @@ func _input(event):
 			player.add_xp(player.current_level_cap)
 	if event.is_action_pressed("debug_restart"):
 		PauseSystem.instance._on_retry_button_pressed()
+	if event.is_action_pressed("debug_speed_1"):
+		Engine.time_scale = 1.0
+	if event.is_action_pressed("debug_speed_2"):
+		Engine.time_scale = debug_speed_scale

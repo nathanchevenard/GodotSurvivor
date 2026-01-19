@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cinf538ek3sjy"
-path="res://.godot/imported/player_ship_red.png-5a29c5c0b7e96c2b7675ba17b0e0d3ab.ctex"
+uid="uid://b18y5po7gadf4"
+path="res://.godot/imported/Speedling_Green.png-58e2638d34c559d38feeb646d63266f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ship/player_ship_red.png"
-dest_files=["res://.godot/imported/player_ship_red.png-5a29c5c0b7e96c2b7675ba17b0e0d3ab.ctex"]
+source_file="res://Sprites/Ship/Enemies/Speedling_Green.png"
+dest_files=["res://.godot/imported/Speedling_Green.png-58e2638d34c559d38feeb646d63266f3.ctex"]
 
 [params]
 
