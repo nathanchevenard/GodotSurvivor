@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		if delay_progress_bar.value == delay_progress_bar.max_value:
 			pause_end_layer.hide()
 			is_waiting_delay = false
-			stop_pause(true)
+			stop_pause()
 			SignalsManager.emit_game_unpaused()
 
 
@@ -51,25 +51,23 @@ func start_pause(disallow_pause : bool = false):
 	get_tree().paused = true
 	is_paused = true
 	
-	if disallow_pause == true:
-		is_pause_allowed = false
+	is_pause_allowed = !disallow_pause
 	
 	SignalsManager.emit_game_freeze()
 
 
-func stop_pause(reallow_pause : bool = false):
+func stop_pause(reallow_pause : bool = true):
 	get_tree().paused = false
 	is_paused = false
 	
-	if reallow_pause == true:
-		is_pause_allowed = true
+	is_pause_allowed = reallow_pause
 	
 	SignalsManager.emit_game_unfreeze()
 
 
 func stop_pause_with_delay(delay : float):
 	if SettingsController.is_delaying_pause == false:
-		stop_pause(true)
+		stop_pause()
 		SignalsManager.emit_game_unpaused()
 		return
 	

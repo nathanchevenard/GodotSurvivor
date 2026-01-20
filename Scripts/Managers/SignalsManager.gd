@@ -83,3 +83,18 @@ func emit_ship_select(ship_data : ShipData):
 signal upgrade_add(upgrade : Upgrade, weapon_pivot : Node2D)
 func emit_upgrade_add(upgrade : Upgrade, weapon_pivot : Node2D):
 	upgrade_add.emit(upgrade, weapon_pivot)
+
+
+signal dialogue_start(type : DialogueManager.DialogueType, data : DialogueData, planet : Planet, quest : Quest)
+func emit_dialogue_start(type : DialogueManager.DialogueType, data : DialogueData, planet : Planet, quest : Quest):
+	dialogue_start.emit(type, data, planet, quest)
+
+
+signal quest_accept(quest : Quest)
+func emit_quest_accept(quest : Quest):
+	quest_accept.emit(quest)
+
+
+signal quest_end(quest : Quest)
+func emit_quest_end(quest : Quest):
+	quest_end.emit(quest)

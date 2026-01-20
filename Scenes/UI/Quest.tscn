@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://qbuifotpb80f"]
+
+[node name="Quest" type="RichTextLabel"]
+offset_right = 87.0
+offset_bottom = 9.0
+theme_override_font_sizes/normal_font_size = 5
+theme_override_font_sizes/bold_font_size = 5
+theme_override_font_sizes/bold_italics_font_size = 5
+theme_override_font_sizes/italics_font_size = 5
+theme_override_font_sizes/mono_font_size = 5
+bbcode_enabled = true
+text = "Livrez ruepoizau à ruapezoiur"
+fit_content = true

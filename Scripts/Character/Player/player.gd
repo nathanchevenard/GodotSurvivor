@@ -1,6 +1,8 @@
 extends Character
 class_name Player
 
+static var instance : Player = null
+
 @export var is_immortal : bool = false
 
 @export var level_cap_base : int = 5
@@ -11,7 +13,8 @@ class_name Player
 
 @export var sprite_2d : Sprite2D
 @export var explosion_sprites : Array[AnimatedSprite2D]
-@export var wepaon_pivots_node : Node2D
+@export var weapon_pivots_node : Node2D
+@export var interact_label : Label
 
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
@@ -29,6 +32,10 @@ var weapon_pivots_dico : Dictionary[Node2D, Weapon]
 var ship_upgrades : Array[ShipUpgrade]
 
 signal upgrade_added(upgrade, weapon)
+
+
+func _init():
+	instance = self
 
 
 func _ready():
@@ -62,7 +69,7 @@ func _input(event):
 func init_weapon_pivots():
 	for i in ship_data.weapon_pivot_positions.size():
 		var pivot : Node2D = Node2D.new()
-		wepaon_pivots_node.add_child(pivot)
+		weapon_pivots_node.add_child(pivot)
 		pivot.position = ship_data.weapon_pivot_positions[i]
 		pivot.rotation_degrees = ship_data.weapon_pivot_rotations[i]
 		weapon_pivots.append(pivot)

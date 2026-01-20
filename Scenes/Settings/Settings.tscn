@@ -11,10 +11,11 @@ z_index = -1
 position = Vector2(241, 137)
 texture = ExtResource("1_miw82")
 
-[node name="SettingsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("arena_mode_button", "joystick_floating_button")]
+[node name="SettingsLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("arena_mode_button", "joystick_floating_button", "delay_pause_button")]
 script = ExtResource("2_gfdcy")
 arena_mode_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Arena mode/Arena mode CheckButton")
 joystick_floating_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick/Floating Joystick CheckButton")
+delay_pause_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Pause Delay/PauseDelayCheckButton")
 
 [node name="Settings" type="Control" parent="SettingsLayer"]
 layout_mode = 3

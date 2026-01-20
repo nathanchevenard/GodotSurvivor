@@ -191,7 +191,6 @@ func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 	upgrade.apply_upgrade(self)
 
 
-
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if colliding_bodies.has(body) == false:
 		colliding_bodies.append(body)

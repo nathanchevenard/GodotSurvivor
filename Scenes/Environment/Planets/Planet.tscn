@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=3 uid="uid://c705qluycds4y"]
+
+[ext_resource type="Script" uid="uid://i6xib1f6ch35" path="res://Scripts/Environment/Planets/Planet.gd" id="1_6gajy"]
+[ext_resource type="Resource" uid="uid://51le5coa5hop" path="res://Resources/Dialogues/Quests/Quest_Delivery.tres" id="2_g5olb"]
+[ext_resource type="Texture2D" uid="uid://cwecua4w0mwrt" path="res://Sprites/Environment/PlanetHighlight.png" id="2_loxdm"]
+[ext_resource type="Texture2D" uid="uid://cm0iufmu0knt3" path="res://Sprites/UI/Exclamation.png" id="2_s0nqy"]
+[ext_resource type="Texture2D" uid="uid://rmoj3pwgjhoo" path="res://Sprites/UI/Interrogation.png" id="6_iabpa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_loxdm"]
+radius = 36.0
+
+[sub_resource type="Animation" id="Animation_loxdm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exclamation/Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6gajy"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exclamation/Sprite2D:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-5.0, 5.0, -5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5olb"]
+_data = {
+&"RESET": SubResource("Animation_loxdm"),
+&"move": SubResource("Animation_6gajy")
+}
+
+[sub_resource type="Animation" id="Animation_iabpa"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-5.0, 5.0, -5.0]
+}
+
+[sub_resource type="Animation" id="Animation_nme2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nme2f"]
+_data = {
+&"RESET": SubResource("Animation_nme2f"),
+&"move": SubResource("Animation_iabpa")
+}
+
+[node name="Planet" type="Node2D" node_paths=PackedStringArray("quest_sprite", "quest_target_sprite", "animated_sprite", "highlight_sprite")]
+script = ExtResource("1_6gajy")
+quest_delay_min = 1.0
+quest_data = ExtResource("2_g5olb")
+quest_sprite = NodePath("Exclamation")
+quest_target_sprite = NodePath("Interrogation")
+animated_sprite = NodePath("AnimatedSprite2D")
+highlight_sprite = NodePath("Highlight")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_loxdm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_loxdm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+autoplay = "default"
+
+[node name="Exclamation" type="Node2D" parent="."]
+visible = false
+
+[node name="Animation" type="AnimationPlayer" parent="Exclamation"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_g5olb")
+}
+autoplay = "move"
+
+[node name="Sprite2D" type="Sprite2D" parent="Exclamation"]
+texture = ExtResource("2_s0nqy")
+
+[node name="Interrogation" type="Node2D" parent="."]
+visible = false
+
+[node name="Animation" type="AnimationPlayer" parent="Interrogation"]
+libraries = {
+&"": SubResource("AnimationLibrary_nme2f")
+}
+autoplay = "move"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interrogation"]
+texture = ExtResource("6_iabpa")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

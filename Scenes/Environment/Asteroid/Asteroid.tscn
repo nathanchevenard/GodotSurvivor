@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c5y64cygox0xe"]
 
-[ext_resource type="Script" uid="uid://ch442rtpbxapq" path="res://Scripts/Asteroid/Asteroid.gd" id="1_1nkik"]
+[ext_resource type="Script" uid="uid://ch442rtpbxapq" path="res://Scripts/Environment/Asteroid/Asteroid.gd" id="1_1nkik"]
 [ext_resource type="Texture2D" uid="uid://2tgmrkbbvvqb" path="res://Sprites/Level/AsteroidBig.png" id="1_imrid"]
 [ext_resource type="Script" uid="uid://bjkrhc12gc0oy" path="res://Resources/AsteroidSize/AsteroidSize.gd" id="2_papve"]
 [ext_resource type="Texture2D" uid="uid://hsmurdqcpfwo" path="res://Sprites/Level/AsteroidSmall.png" id="3_vnfm7"]

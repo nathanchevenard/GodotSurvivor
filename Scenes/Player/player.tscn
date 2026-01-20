@@ -86,7 +86,7 @@ radius = 11.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qshp3"]
 bg_color = Color(0, 0.356863, 0.709804, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "explosion_sprites", "wepaon_pivots_node") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite_2d", "explosion_sprites", "weapon_pivots_node", "interact_label") groups=["Player"]]
 z_index = 1
 collision_mask = 104
 script = ExtResource("1_xm3y8")
@@ -95,7 +95,8 @@ level_cap_increase = 3
 level_cap_acceleration = 2
 sprite_2d = NodePath("Sprite2D")
 explosion_sprites = [NodePath("ExplosionSprites/AnimatedSprite2D"), NodePath("ExplosionSprites/AnimatedSprite2D2"), NodePath("ExplosionSprites/AnimatedSprite2D3"), NodePath("ExplosionSprites/AnimatedSprite2D4")]
-wepaon_pivots_node = NodePath("WeaponPivots")
+weapon_pivots_node = NodePath("WeaponPivots")
+interact_label = NodePath("Control/InteractLabel")
 speed_max = 100.0
 target_groups = Array[String](["Enemy"])
 health_max = 100
@@ -161,6 +162,32 @@ update_rotation = false
 
 [node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../HealthBar")
+update_rotation = false
+
+[node name="Control" type="Node2D" parent="."]
+top_level = true
+
+[node name="InteractLabel" type="Label" parent="Control"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -51.0
+offset_right = 70.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 13
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemoteTransformControl" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Control")
 update_rotation = false
 
 [connection signal="health_changed" from="." to="HealthBar/ProgressBar/ProgressBar" method="_on_value_update"]
