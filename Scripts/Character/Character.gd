@@ -35,7 +35,7 @@ var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
 var current_speed : float = 0.0
 
-signal destroyed
+signal destroyed(character : Character)
 signal health_changed(value : float)
 signal shield_changed(value : float)
 
@@ -203,5 +203,5 @@ func destroy() -> void:
 		return
 	
 	is_being_destroyed = true
-	destroyed.emit()
+	destroyed.emit(self)
 	queue_free()

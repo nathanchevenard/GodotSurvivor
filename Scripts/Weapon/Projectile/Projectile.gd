@@ -94,5 +94,5 @@ func on_enemy_collision(body : Node2D):
 	
 	if damage_delay > 0:
 		colliding_characters.append(character)
-	
-	damage_character(character)
+	else:
+		damage_character(character)

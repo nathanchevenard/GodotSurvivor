@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://coc56mug28xno"]
+
+[ext_resource type="Texture2D" uid="uid://bqpxo24ve2n3e" path="res://Sprites/Icons/Weapons/force_field_white.png" id="1_pk757"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_poawj"]
+
+[resource]
+script = ExtResource("2_poawj")
+upgrade_type = 2
+impacted_weapon = 9
+name = "Force Field Upgrade"
+description = "Force Field +20% Damage"
+icon = ExtResource("1_pk757")
+value = 0.2

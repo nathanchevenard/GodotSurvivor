@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=6 format=3 uid="uid://cqdvb4b78q52w"]
+
+[ext_resource type="Texture2D" uid="uid://bqpxo24ve2n3e" path="res://Sprites/Icons/Weapons/force_field_white.png" id="1_d7x5c"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_igohw"]
+[ext_resource type="PackedScene" uid="uid://dblnhywjhlbx3" path="res://Scenes/Weapon/Player/ForceField.tscn" id="3_d7x5c"]
+[ext_resource type="Resource" uid="uid://doh8tbma6tytv" path="res://Resources/Upgrades/WeaponUpgrades/ForceField/ForceFieldDamage.tres" id="4_5l3wg"]
+[ext_resource type="Resource" uid="uid://coc56mug28xno" path="res://Resources/Upgrades/WeaponUpgrades/ForceField/ForceFieldSize.tres" id="5_s10ux"]
+
+[resource]
+script = ExtResource("2_igohw")
+upgrade_type = 6
+impacted_weapon = 9
+weapon_scene = ExtResource("3_d7x5c")
+weapon_upgrades = Array[ExtResource("2_igohw")]([ExtResource("4_5l3wg"), ExtResource("5_s10ux")])
+name = "Force Field"
+description = "Unlocks Force Field"
+icon = ExtResource("1_d7x5c")
+is_percentage = false
+value = 1.0

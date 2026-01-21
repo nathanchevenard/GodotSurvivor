@@ -152,7 +152,7 @@ must_be_in_arena: bool = false) -> Node2D:
 	return node
 
 
-func _on_player_destroyed():
+func _on_player_destroyed(_character : Character):
 	SignalsManager.emit_game_over()
 	PauseSystem.instance.start_pause(true)
 	game_end.emit()

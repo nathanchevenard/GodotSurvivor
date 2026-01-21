@@ -128,7 +128,7 @@ func destroy() -> void:
 		await get_tree().create_timer(0.5).timeout
 	
 	hide()
-	destroyed.emit()
+	destroyed.emit(self)
 
 
 func has_weapon_type(weapon_type) -> bool:

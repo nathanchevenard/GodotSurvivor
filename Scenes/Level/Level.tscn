@@ -1,4 +1,4 @@
-[gd_scene load_steps=636 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=637 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://b7u2pq218ij30" path="res://Resources/Upgrades/WeaponUpgrades/LightningChain/LightningChainAddWeapon.tres" id="27_silsi"]
 [ext_resource type="Resource" uid="uid://bs7mhle7j7uc1" path="res://Resources/Upgrades/PlayerUpgrades/PlayerCooldown.tres" id="30_04ldg"]
 [ext_resource type="Resource" uid="uid://cbti1c2b7jlt6" path="res://Resources/Upgrades/PlayerUpgrades/PlayerDamage.tres" id="31_jdpru"]
+[ext_resource type="Resource" uid="uid://cqdvb4b78q52w" path="res://Resources/Upgrades/WeaponUpgrades/ForceField/ForceFieldAddWeapon.tres" id="32_f4lrx"]
 [ext_resource type="Resource" uid="uid://bhodvqwubg3qj" path="res://Resources/Upgrades/PlayerUpgrades/PlayerLife.tres" id="32_hl7j1"]
 [ext_resource type="Resource" uid="uid://dep15bewcb57x" path="res://Resources/Upgrades/PlayerUpgrades/PlayerLifeRegen.tres" id="33_silsi"]
 [ext_resource type="Resource" uid="uid://u1g4sm3cd1uh" path="res://Resources/Upgrades/PlayerUpgrades/PlayerMoveSpeed.tres" id="34_006ny"]
@@ -4029,7 +4030,7 @@ process_mode = 3
 canvas_layer = NodePath("../UpgradeLayer")
 container = NodePath("../UpgradeLayer/ShipUpgrade/UpgradesChoices")
 button_scene = ExtResource("16_xe3ed")
-upgrades = Array[ExtResource("11_ax57u")]([ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo"), ExtResource("23_m1kf3"), ExtResource("24_04ldg"), ExtResource("25_jdpru"), ExtResource("26_hl7j1"), ExtResource("27_silsi")])
+upgrades = Array[ExtResource("11_ax57u")]([ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo"), ExtResource("23_m1kf3"), ExtResource("24_04ldg"), ExtResource("25_jdpru"), ExtResource("26_hl7j1"), ExtResource("27_silsi"), ExtResource("32_f4lrx")])
 ship_upgrade_layout_pivot = NodePath("../UpgradeLayer/ShipUpgrade")
 ship_upgrades_pivot = NodePath("../UpgradeLayer/ShipUpgrade/ShipUpgrades")
 ship_upgrade_slot_scene = ExtResource("36_04ldg")

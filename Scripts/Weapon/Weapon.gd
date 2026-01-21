@@ -13,6 +13,7 @@ enum WeaponEnum
 	Shotgun,
 	Boomerang,
 	LightningChain,
+	ForceField,
 }
 
 @export var weapon_type : WeaponEnum
