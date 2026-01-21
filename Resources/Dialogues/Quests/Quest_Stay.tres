@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=5 format=3 uid="uid://2cqowimheo0v"]
+
+[ext_resource type="Script" uid="uid://n2nn4mwnh355" path="res://Scripts/Dialogue/DialogueData.gd" id="1_48neb"]
+[ext_resource type="Script" uid="uid://0qjbccldreqo" path="res://Scripts/Dialogue/QuestData.gd" id="1_qki46"]
+
+[sub_resource type="Resource" id="Resource_wjyrf"]
+script = ExtResource("1_48neb")
+event_text = "Ah ouais c'est bien ce que je pensais, comme quoi..."
+metadata/_custom_type_script = "uid://n2nn4mwnh355"
+
+[sub_resource type="Resource" id="Resource_enr34"]
+script = ExtResource("1_48neb")
+event_text = "Reste dans le coin vite fait poto faut que je vois un truc, genre {TARGET_VALUE} secondes ?"
+metadata/_custom_type_script = "uid://n2nn4mwnh355"
+
+[resource]
+script = ExtResource("1_qki46")
+quest_type = 2
+quest_desc = "Stay around {PLANET} for {TARGET_VALUE} seconds"
+dialogue_start_data = SubResource("Resource_enr34")
+dialogue_end_data = SubResource("Resource_wjyrf")
+target_value = 30.0
+metadata/_custom_type_script = "uid://0qjbccldreqo"

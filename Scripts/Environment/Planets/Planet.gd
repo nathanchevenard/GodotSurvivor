@@ -4,13 +4,15 @@ class_name Planet
 @export_group("Quests")
 @export var quest_delay_min : float = 5
 @export var quest_delay_max : float = 10
-@export var quest_data : QuestData
+@export var quest_datas : Array[QuestData]
 @export var quest_sprite : Node2D
 @export var quest_target_sprite : Node2D
 
 @export_group("References")
 @export var animated_sprite : AnimatedSprite2D
 @export var highlight_sprite : Node2D
+@export var quest_stay_area : Area2D
+@export var stay_progress_bar : ProgressBar
 
 var planet_name : String
 var planet_desc : String
@@ -28,6 +30,8 @@ var is_quest_target : bool:
 	get:
 		return targetted_quests.size() > 0
 
+var is_player_in_quest_stay : bool = false
+
 
 func _init() -> void:
 	SignalsManager.quest_accept.connect(_on_quest_accepted)
@@ -36,14 +40,25 @@ func _init() -> void:
 	quest_delay = randf_range(quest_delay_min, quest_delay_max)
 
 
+func _ready() -> void:
+	quest_stay_area.hide()
+	stay_progress_bar.hide()
+
+
 func _process(delta: float) -> void:
 	if has_quest == false && current_quest == null:
 		quest_timer += delta
 	
 	if quest_timer >= quest_delay:
-		start_quest()
+		init_quest()
 		quest_timer = 0
 		quest_delay = randf_range(quest_delay_min, quest_delay_max)
+	
+	if is_player_in_quest_stay == true && current_quest != null\
+	&& current_quest.quest_data.quest_type == QuestData.QuestType.Stay\
+	&& current_quest.is_accepted == true && current_quest.is_finished == false:
+		current_quest.add_value(delta)
+		stay_progress_bar.value = current_quest.current_value
 
 
 func _input(event: InputEvent) -> void:
@@ -62,13 +77,13 @@ func end_quest_dialogue():
 	SignalsManager.emit_dialogue_start(DialogueManager.DialogueType.QuestEnd, targetted_quests[0].quest_data.dialogue_end_data, self, targetted_quests[0])
 
 
-func start_quest():
+func init_quest():
 	has_quest = true
 	
 	current_quest = Quest.new()
-	current_quest.quest_data = quest_data
+	current_quest.quest_data = quest_datas.pick_random()
 	current_quest.planet = self
-	current_quest.start_quest()
+	current_quest.init_quest()
 	
 	if is_quest_target == false:
 		quest_sprite.show()
@@ -107,7 +122,7 @@ func unhighlight():
 
 func _on_quest_accepted(quest : Quest):
 	if quest.planet == self:
-		quest.is_accepted = true
+		quest.accept_quest()
 		quest_sprite.hide()
 		has_quest = false
 		unhighlight()
@@ -139,3 +154,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_player_colliding = false
 		unhighlight()
+
+
+func _on_quest_stay_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		is_player_in_quest_stay = true
+
+
+func _on_quest_stay_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		is_player_in_quest_stay = false

@@ -15,6 +15,7 @@ enum DialogueType {
 
 static var object_text_color : Color = Color.CORNFLOWER_BLUE
 static var planet_text_color : Color = Color.LIGHT_SALMON
+static var value_text_color : Color = Color.AQUAMARINE
 
 var current_dialogue : DialogueData = null
 var current_quest : Quest = null
@@ -57,7 +58,9 @@ static func replace_text_words(text : String, quest : Quest) -> String:
 	
 	text = text.replace("{OBJECT}", "[color=" + object_text_color.to_html() + "]" + quest.object_name + "[/color]")
 	text = text.replace("{PLANET}", "[color=" + planet_text_color.to_html() + "]" + quest.planet.planet_name + "[/color]")
-	text = text.replace("{TARGET_PLANET}", "[color=" + planet_text_color.to_html() + "]" + quest.target_planet.planet_name + "[/color]")
+	if quest.target_planet != null:
+		text = text.replace("{TARGET_PLANET}", "[color=" + planet_text_color.to_html() + "]" + quest.target_planet.planet_name + "[/color]")
+	text = text.replace("{TARGET_VALUE}", "[color=" + value_text_color.to_html() + "]" + str(quest.quest_data.target_value) + "[/color]")
 	return text
 
 
