@@ -15,4 +15,5 @@ func _ready() -> void:
 
 
 func grab_focus():
-	parent.call_deferred("grab_focus")
+	if parent.is_visible_in_tree() == true:
+		parent.call_deferred("grab_focus")

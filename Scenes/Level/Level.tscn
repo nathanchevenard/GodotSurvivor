@@ -4429,6 +4429,7 @@ process_mode = 3
 
 [node name="GameOver" type="Control" parent="GameOverLayer" node_paths=PackedStringArray("kills_label", "timer_label", "level_label", "weapon_stats_pivot", "border_layer")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -4673,6 +4674,7 @@ text = "Quests"
 layout_mode = 2
 
 [node name="DialogueLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("event_name_label", "event_icon", "event_desc_label", "event_text_label", "accept_quest_buttons", "end_quest_buttons")]
+visible = false
 script = ExtResource("48_hba8o")
 event_name_label = NodePath("MarginContainer/HBoxContainer/Planet/EventName")
 event_icon = NodePath("MarginContainer/HBoxContainer/Planet/MarginContainer/EventIcon")
@@ -4776,6 +4778,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Aider"
 
+[node name="FocusParentOnReady" type="Node" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons/AcceptButton"]
+script = ExtResource("47_g3uom")
+metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
+
 [node name="IgnoreButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons"]
 process_mode = 3
 layout_mode = 2
@@ -4792,6 +4798,10 @@ process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "De rien ;)"
+
+[node name="FocusParentOnReady" type="Node" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/EndQuestButtons/EndQuestButton"]
+script = ExtResource("47_g3uom")
+metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
 [node name="BorderLayer" type="CanvasLayer" parent="."]
 

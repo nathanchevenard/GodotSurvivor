@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=8 format=3 uid="uid://d0xyls3rcnsys"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=9 format=3 uid="uid://d0xyls3rcnsys"]
 
 [ext_resource type="Texture2D" uid="uid://b2bvhvox6hsw6" path="res://Sprites/Icons/Weapons/boomerang_white.png" id="1_4yhff"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_hg0t4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://dxtqp1010qlt8" path="res://Resources/Upgrades/WeaponUpgrades/BoomerangLauncher/BoomerangLauncherCooldown.tres" id="5_4fpqy"]
 [ext_resource type="Resource" uid="uid://cjr5h3i4c5j7q" path="res://Resources/Upgrades/WeaponUpgrades/BoomerangLauncher/BoomerangLauncherDamage.tres" id="6_kpbei"]
 [ext_resource type="Resource" uid="uid://cmf4hlk07dnnh" path="res://Resources/Upgrades/WeaponUpgrades/BoomerangLauncher/BoomerangLauncherSize.tres" id="7_v6aab"]
+[ext_resource type="Resource" uid="uid://dobgesddr57kv" path="res://Resources/Upgrades/WeaponUpgrades/BoomerangLauncher/BoomerangLauncherProjectileSpeed.tres" id="8_4fpqy"]
 
 [resource]
 script = ExtResource("2_hg0t4")
@@ -14,7 +15,7 @@ upgrade_type = 6
 impacted_weapon = 7
 pick_max_number = 1.0
 weapon_scene = ExtResource("3_vjlnm")
-weapon_upgrades = Array[ExtResource("2_hg0t4")]([ExtResource("4_4yhff"), ExtResource("5_4fpqy"), ExtResource("6_kpbei"), ExtResource("7_v6aab")])
+weapon_upgrades = Array[ExtResource("2_hg0t4")]([ExtResource("4_4yhff"), ExtResource("5_4fpqy"), ExtResource("6_kpbei"), ExtResource("7_v6aab"), ExtResource("8_4fpqy")])
 name = "Boomerang"
 description = "Unlocks Boomerang"
 icon = ExtResource("1_4yhff")

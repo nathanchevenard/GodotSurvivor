@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://dobgesddr57kv"]
+
+[ext_resource type="Texture2D" uid="uid://b2bvhvox6hsw6" path="res://Sprites/Icons/Weapons/boomerang_white.png" id="1_xequ0"]
+[ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_b7kqm"]
+
+[resource]
+script = ExtResource("2_b7kqm")
+upgrade_type = 4
+impacted_weapon = 7
+name = "Boomerang Upgrade"
+description = "Boomerang +40% Projectile Speed"
+icon = ExtResource("1_xequ0")
+value = 0.4
