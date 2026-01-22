@@ -36,13 +36,13 @@ var is_player_in_quest_stay : bool = false
 func _init() -> void:
 	SignalsManager.quest_accept.connect(_on_quest_accepted)
 	SignalsManager.quest_end.connect(_on_quest_ended)
-	
-	quest_delay = randf_range(quest_delay_min, quest_delay_max)
 
 
 func _ready() -> void:
 	quest_stay_area.hide()
 	stay_progress_bar.hide()
+	
+	quest_delay = randf_range(quest_delay_min, quest_delay_max)
 
 
 func _process(delta: float) -> void:

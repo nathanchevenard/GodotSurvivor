@@ -1,4 +1,4 @@
-[gd_scene load_steps=637 format=3 uid="uid://descmxrrabovg"]
+[gd_scene load_steps=638 format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://gckvhlh5xlb4" path="res://Scenes/UI/Upgrade/UpgradeButton.tscn" id="16_xe3ed"]
 [ext_resource type="Script" uid="uid://wa4ephur8boo" path="res://Scripts/UI/KillsCounter.gd" id="17_jugp0"]
 [ext_resource type="Resource" uid="uid://b0mco3gxorh4c" path="res://Resources/Upgrades/WeaponUpgrades/Flamethrower/FlamethrowerAddWeapon.tres" id="23_m1kf3"]
+[ext_resource type="Resource" uid="uid://mlmv21x0w8hn" path="res://Resources/Upgrades/PlayerUpgrades/PlayerProjectileSize.tres" id="23_p2j8p"]
 [ext_resource type="Resource" uid="uid://jtsfv6c3ra2q" path="res://Resources/Upgrades/WeaponUpgrades/DroneLauncher/DroneLauncherAddWeapon.tres" id="24_04ldg"]
 [ext_resource type="Resource" uid="uid://fc8sw03qf26y" path="res://Resources/Upgrades/WeaponUpgrades/Shotgun/ShotgunAddWeapon.tres" id="25_jdpru"]
 [ext_resource type="Resource" uid="uid://d0xyls3rcnsys" path="res://Resources/Upgrades/WeaponUpgrades/BoomerangLauncher/BoomerangLauncherAddWeapon.tres" id="26_hl7j1"]
@@ -4030,7 +4031,7 @@ process_mode = 3
 canvas_layer = NodePath("../UpgradeLayer")
 container = NodePath("../UpgradeLayer/ShipUpgrade/UpgradesChoices")
 button_scene = ExtResource("16_xe3ed")
-upgrades = Array[ExtResource("11_ax57u")]([ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo"), ExtResource("23_m1kf3"), ExtResource("24_04ldg"), ExtResource("25_jdpru"), ExtResource("26_hl7j1"), ExtResource("27_silsi"), ExtResource("32_f4lrx")])
+upgrades = Array[ExtResource("11_ax57u")]([ExtResource("30_04ldg"), ExtResource("31_jdpru"), ExtResource("32_hl7j1"), ExtResource("33_silsi"), ExtResource("34_006ny"), ExtResource("35_bsnq8"), ExtResource("23_p2j8p"), ExtResource("37_xv6kw"), ExtResource("38_04r5f"), ExtResource("39_ffwt3"), ExtResource("40_ml0wo"), ExtResource("23_m1kf3"), ExtResource("24_04ldg"), ExtResource("25_jdpru"), ExtResource("26_hl7j1"), ExtResource("27_silsi"), ExtResource("32_f4lrx")])
 ship_upgrade_layout_pivot = NodePath("../UpgradeLayer/ShipUpgrade")
 ship_upgrades_pivot = NodePath("../UpgradeLayer/ShipUpgrade/ShipUpgrades")
 ship_upgrade_slot_scene = ExtResource("36_04ldg")
@@ -4045,6 +4046,11 @@ magnet_collectable_drop_rate = 0.005
 metadata/_custom_type_script = "uid://dq5w7dmv4i17b"
 
 [node name="Player" parent="." instance=ExtResource("1_tqgfm")]
+is_immortal = null
+position_acceleration = null
+rotation_acceleration = null
+health_regen = null
+health_regen_delay = null
 
 [node name="Arena" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -4380,8 +4386,9 @@ scale = Vector2(2000, 100)
 [node name="PlanetManager" type="Node2D" parent="."]
 script = ExtResource("40_e4nyx")
 planet_scene = ExtResource("52_vkpka")
-spawn_radius_min = 50.0
-spawn_radius_max = 100.0
+planet_number = 4
+spawn_radius_min = 400.0
+spawn_radius_max = 600.0
 planet_names = Array[String](["Planète des cons", "Gloubiboulbox", "Michel-56b", "Planète-Sur-Ouche", "Gare du Nord", "Chipieland", "Pipopipopipolapi"])
 planet_descs = Array[String](["C'est une planète de con avec plein de cons", "Une planète régie par une espèce qui ressemble à une flaque de boue", "Très très moche cette planète", "On dirait le Cantal mais sans les vaches", "Ils se tiennent tous la main et font des farandoles toute la journée", "Ils sont 3", "Les plus gros dealos de la galaxie (ils te filent un échantillon gratuit)"])
 planet_icons = Array[Texture2D]([ExtResource("42_ffwt3"), ExtResource("43_ml0wo"), ExtResource("44_12iyy"), ExtResource("45_drssp"), ExtResource("46_xm4gi"), ExtResource("47_t4a3r"), ExtResource("48_8x2x3")])

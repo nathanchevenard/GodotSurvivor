@@ -662,7 +662,8 @@ _data = {
 
 [node name="Planet" type="Node2D" node_paths=PackedStringArray("quest_sprite", "quest_target_sprite", "animated_sprite", "highlight_sprite", "quest_stay_area", "stay_progress_bar")]
 script = ExtResource("1_6gajy")
-quest_delay_min = 1.0
+quest_delay_min = 30.0
+quest_delay_max = 120.0
 quest_datas = Array[ExtResource("2_i46ls")]([ExtResource("2_g5olb"), ExtResource("2_nme2f")])
 quest_sprite = NodePath("Exclamation")
 quest_target_sprite = NodePath("Interrogation")

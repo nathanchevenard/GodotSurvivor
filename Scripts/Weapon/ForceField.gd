@@ -15,5 +15,5 @@ func _ready():
 func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 	super(upgrade, weapon)
 	
-	projectile_instance.scale = Vector2(projectile_size, projectile_size)
+	projectile_instance.scale = projectile_size * character.projectile_size_mult * Vector2.ONE
 	range = init_range * projectile_size

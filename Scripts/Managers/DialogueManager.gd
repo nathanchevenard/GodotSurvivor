@@ -78,6 +78,6 @@ func _on_ignore_button_pressed() -> void:
 
 
 func _on_end_quest_button_pressed() -> void:
-	SignalsManager.emit_quest_end(current_quest)
 	PauseSystem.instance.stop_pause()
 	hide()
+	SignalsManager.emit_quest_end(current_quest)

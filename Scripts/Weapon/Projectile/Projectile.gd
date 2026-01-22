@@ -22,7 +22,7 @@ var damaged_characters : Array[Character]
 
 func initialize(weapon : Weapon, starting_position : Vector2, target: Node2D, speed : float):
 	global_position = starting_position
-	scale *= Vector2(weapon.projectile_size, weapon.projectile_size)
+	scale *= weapon.projectile_size * weapon.character.projectile_size_mult * Vector2.ONE
 	self.weapon = weapon
 	self.speed = speed
 	target_groups = weapon.target_groups

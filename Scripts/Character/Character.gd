@@ -23,6 +23,7 @@ var is_regenerating_shield : bool = false
 var shield_regen_timer : float = 0.0
 var damage_mult : float = 1
 var cooldown_mult : float = 1
+var projectile_size_mult : float = 1
 
 var init_health_max : int
 var init_health_regen : float
@@ -30,6 +31,7 @@ var init_shield_max : int
 var init_speed_max : float
 var init_damage_mult : float = 1
 var init_cooldown_mult : float = 1
+var init_projectile_size_mult : float = 1
 
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO

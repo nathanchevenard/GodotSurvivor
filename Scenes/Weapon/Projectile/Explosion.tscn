@@ -79,6 +79,7 @@ lifetime_duration = 0.7
 hitbox_duration = 0.2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.60784316)
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_n3y73")
 autoplay = "default"

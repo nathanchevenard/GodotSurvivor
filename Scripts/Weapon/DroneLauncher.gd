@@ -38,4 +38,4 @@ func on_upgrade_added(upgrade : Upgrade, weapon : Weapon):
 		spawn_drone()
 	
 	for drone in drones:
-		drone.scale = projectile_size * Vector2.ONE
+		drone.scale = projectile_size * character.projectile_size_mult * Vector2.ONE

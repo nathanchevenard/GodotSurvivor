@@ -8,7 +8,8 @@ enum PlayerUpgradeEnum
 	Shield,
 	Damage,
 	Cooldown,
-	MoveSpeed
+	MoveSpeed,
+	ProjectileSize,
 }
 
 @export var upgrade_type : PlayerUpgradeEnum
@@ -35,3 +36,5 @@ func apply_upgrade(player : Player):
 			player.cooldown_mult = apply_value_to_variable(player.cooldown_mult, player.init_cooldown_mult)
 		PlayerUpgradeEnum.MoveSpeed:
 			player.speed_max = apply_value_to_variable(player.speed_max, player.init_speed_max)
+		PlayerUpgradeEnum.ProjectileSize:
+			player.projectile_size_mult = apply_value_to_variable(player.projectile_size_mult, player.init_projectile_size_mult)

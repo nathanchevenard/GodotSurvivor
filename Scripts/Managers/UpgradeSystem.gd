@@ -30,6 +30,7 @@ func _init() -> void:
 	SignalsManager.game_pause.connect(_on_game_paused)
 	SignalsManager.game_unpause.connect(_on_game_unpaused)
 	SignalsManager.player_ready.connect(_on_player_ready)
+	SignalsManager.quest_end.connect(_on_quest_ended)
 
 
 func _process(delta):
@@ -259,6 +260,10 @@ func _on_weapon_pivot_button_pressed(button : WeaponPivotButton):
 func _on_player_level_up(_player : Player):
 	stacked_upgrade_count += 1
 	start_upgrade()
+
+
+func _on_quest_ended(quest : Quest):
+	_on_player_level_up(Player.instance)
 
 
 func _on_game_paused():
