@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://dgypiu8qkr6rd"]
+
+[ext_resource type="Script" uid="uid://duflb2yo25aot" path="res://Scripts/Character/Player/ShipData.gd" id="1_ifos0"]
+[ext_resource type="PackedScene" uid="uid://wg6w3h634ovj" path="res://Scenes/UI/Upgrade/Layouts/ShipUpgradeLayout_3.tscn" id="2_ifos0"]
+[ext_resource type="Texture2D" uid="uid://d1406uq5qyt4k" path="res://Sprites/Ship/Players/PlayerShip_Blue.png" id="3_ifos0"]
+
+[resource]
+script = ExtResource("1_ifos0")
+name = "JSP"
+sprite = ExtResource("3_ifos0")
+description = "2 armes à l'arrière personne peut le rattraper le boug"
+ship_upgrades_number = 4
+health_regen = 1.0
+shield = 20
+weapon_pivot_positions = Array[Vector2]([Vector2(13, 0), Vector2(-8, -8), Vector2(-8, 8)])
+weapon_pivot_rotations = Array[float]([0.0, 180.0, 180.0])
+ship_upgrade_layout_scene = ExtResource("2_ifos0")
+metadata/_custom_type_script = "uid://duflb2yo25aot"

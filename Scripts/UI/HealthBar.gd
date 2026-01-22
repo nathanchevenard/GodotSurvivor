@@ -10,6 +10,15 @@ var last_value : float = 0.0
 var is_init : bool = false
 
 func _on_value_update(new_value : float, new_max_value : float):
+	if new_max_value == 0:
+		value = 0
+		progress_bar_under.value = 0
+		
+		if value_label != null:
+			value_label.text = "0 / 0"
+		
+		return
+	
 	var percentage : float = float(100 * new_value) / new_max_value
 	
 	if percentage < value:

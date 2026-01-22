@@ -42,10 +42,10 @@ func _ready():
 	super()
 	
 	ship_data = SettingsController.selected_ship_data
+	init_data()
 	
 	current_level_cap = level_cap_base
 	init_weapon_pivots()
-	sprite_2d.texture = ship_data.sprite
 	
 	SignalsManager.emit_player_ready(self)
 
@@ -64,6 +64,24 @@ func _input(event):
 		var x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		var y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		current_direction = Vector2(x, y).normalized()
+
+
+func init_data():
+	sprite_2d.texture = ship_data.sprite
+	health_max = ship_data.health
+	health = ship_data.health
+	health_regen = ship_data.health_regen
+	shield_max = ship_data.shield
+	shield = ship_data.shield
+	speed_max = ship_data.speed
+	
+	init_health_max = health_max
+	init_health_regen = health_regen
+	init_shield_max = shield_max
+	init_speed_max = speed_max
+	
+	emit_health_changed()
+	emit_shield_changed()
 
 
 func init_weapon_pivots():

@@ -197,7 +197,7 @@ func emit_shield_changed():
 	if shield_max != 0:
 		shield_changed.emit(shield, shield_max)
 	else:
-		shield_changed.emit(0.0, health_max)
+		shield_changed.emit(0.0, shield_max)
 
 
 func destroy() -> void:

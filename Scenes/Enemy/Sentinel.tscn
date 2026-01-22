@@ -21,6 +21,7 @@ script = ExtResource("1_w2qwd")
 xp_value = 3
 xp_modulate_color = Color(0.8284073, 0.50510865, 0.31733212, 1)
 xp_scene_scale = 2.0
+speed_max = 60.0
 target_groups = Array[String](["Player"])
 health_max = 20
 

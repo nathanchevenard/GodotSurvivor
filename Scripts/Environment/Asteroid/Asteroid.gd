@@ -50,7 +50,7 @@ func _ready():
 	direction = Vector2.RIGHT.rotated(random_angle) 
 	
 	var random_size : float = randf_range(size_min, size_max)
-	global_scale = Vector2(random_size, random_size)	
+	global_scale = Vector2(random_size, random_size)
 	
 	speed = randf_range(speed_min, speed_max)
 	

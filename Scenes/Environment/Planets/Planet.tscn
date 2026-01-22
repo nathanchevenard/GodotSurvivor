@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://i6xib1f6ch35" path="res://Scripts/Environment/Planets/Planet.gd" id="1_6gajy"]
 [ext_resource type="Resource" uid="uid://51le5coa5hop" path="res://Resources/Dialogues/Quests/Quest_Delivery.tres" id="2_g5olb"]
 [ext_resource type="Script" uid="uid://0qjbccldreqo" path="res://Scripts/Dialogue/QuestData.gd" id="2_i46ls"]
-[ext_resource type="Texture2D" uid="uid://cwecua4w0mwrt" path="res://Sprites/Environment/PlanetHighlight.png" id="2_loxdm"]
+[ext_resource type="Texture2D" uid="uid://cwecua4w0mwrt" path="res://Sprites/Environment/Planets/PlanetHighlight.png" id="2_loxdm"]
 [ext_resource type="Resource" uid="uid://2cqowimheo0v" path="res://Resources/Dialogues/Quests/Quest_Stay.tres" id="2_nme2f"]
 [ext_resource type="Texture2D" uid="uid://cm0iufmu0knt3" path="res://Sprites/UI/Exclamation.png" id="2_s0nqy"]
-[ext_resource type="Texture2D" uid="uid://4yhm5nwuyt5u" path="res://Sprites/Environment/Planet.png" id="4_iabpa"]
+[ext_resource type="Texture2D" uid="uid://4yhm5nwuyt5u" path="res://Sprites/Environment/Planets/Planet.png" id="4_iabpa"]
 [ext_resource type="Texture2D" uid="uid://rmoj3pwgjhoo" path="res://Sprites/UI/Interrogation.png" id="6_iabpa"]
 [ext_resource type="Script" uid="uid://c1qasah0pcx6t" path="res://Scripts/Utility/CollisionPolygon.gd" id="7_nme2f"]
 

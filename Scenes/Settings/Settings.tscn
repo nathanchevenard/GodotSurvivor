@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://buaoqregprbw6"]
 
-[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Level/Background.png" id="1_miw82"]
+[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Environment/Backgrounds/Background.png" id="1_miw82"]
 [ext_resource type="Script" uid="uid://bs6kencbym0oi" path="res://Scripts/UI/Settings/SettingsController.gd" id="2_gfdcy"]
 [ext_resource type="Script" uid="uid://ds3dr7ki2sgdb" path="res://Scripts/UI/FocusParentOnReady.gd" id="3_swut7"]
 

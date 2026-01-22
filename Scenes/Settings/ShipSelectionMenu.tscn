@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://8nwpkntxq2h"]
+[gd_scene load_steps=12 format=3 uid="uid://8nwpkntxq2h"]
 
-[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Level/Background.png" id="1_b7g4b"]
+[ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Environment/Backgrounds/Background.png" id="1_b7g4b"]
 [ext_resource type="Script" uid="uid://bwp1ryc7tju4f" path="res://Scripts/UI/Settings/ShipSelectionController.gd" id="2_tnqb0"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="3_rl434"]
 [ext_resource type="Script" uid="uid://duflb2yo25aot" path="res://Scripts/Character/Player/ShipData.gd" id="3_t87wf"]
 [ext_resource type="PackedScene" uid="uid://dfhikkpsot868" path="res://Scenes/Settings/ShipSelectionButton.tscn" id="3_tnqb0"]
 [ext_resource type="Resource" uid="uid://dvfqm8paoh6lt" path="res://Resources/PlayerDatas/PlayerData_1.tres" id="4_aohvp"]
 [ext_resource type="Resource" uid="uid://f8glrurevp5l" path="res://Resources/PlayerDatas/PlayerData_2.tres" id="5_7pi2c"]
+[ext_resource type="Resource" uid="uid://dgypiu8qkr6rd" path="res://Resources/PlayerDatas/PlayerData_3.tres" id="6_aohvp"]
+[ext_resource type="Resource" uid="uid://cb6utip7763vo" path="res://Resources/PlayerDatas/PlayerData_4.tres" id="7_7pi2c"]
+[ext_resource type="Resource" uid="uid://dxr27onip53tl" path="res://Resources/PlayerDatas/PlayerData_5.tres" id="8_83eoe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aohvp"]
 bg_color = Color(0, 0, 0, 0.7294118)
@@ -25,7 +28,7 @@ texture = ExtResource("1_b7g4b")
 [node name="ShipSelectionLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("ships_container", "selected_ship_name", "selected_ship_icon", "selected_ship_desc")]
 script = ExtResource("2_tnqb0")
 ships_container = NodePath("Settings/CenterContainer/VBoxContainer/ShipSelection/ShipsGridContainer")
-ship_datas = Array[ExtResource("3_t87wf")]([ExtResource("4_aohvp"), ExtResource("5_7pi2c")])
+ship_datas = Array[ExtResource("3_t87wf")]([ExtResource("4_aohvp"), ExtResource("5_7pi2c"), ExtResource("6_aohvp"), ExtResource("7_7pi2c"), ExtResource("8_83eoe")])
 ship_select_button_scene = ExtResource("3_tnqb0")
 selected_ship_name = NodePath("Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/ShipNameLabel")
 selected_ship_icon = NodePath("Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/ShipIconTextureRect")
