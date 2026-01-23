@@ -11,13 +11,35 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ShipUpgradeLayout_2" type="Control" node_paths=PackedStringArray("weapon_pivot_buttons")]
+[node name="ShipUpgradeLayout_2" type="Control" node_paths=PackedStringArray("weapon_pivot_buttons", "ship_sprite", "ship_upgrades_line", "ship_selection_upgrades_pivot", "indicators", "indicators_pivot")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_vdfcm")
 weapon_pivot_buttons = [NodePath("WeaponPivot7/Panel2/Button"), NodePath("WeaponPivot6/Panel2/Button")]
+ship_data_path = "res://Resources/PlayerDatas/PlayerData_2.tres"
+ship_sprite = NodePath("TextureRect")
+ship_upgrades_line = NodePath("Line2D")
+ship_selection_upgrades_pivot = NodePath("ShipSelectionUpgradesPivot")
+indicators = [NodePath("WeaponAngleIndicators/@Polygon2D@95581"), NodePath("WeaponAngleIndicators/@Polygon2D@95582")]
+indicators_pivot = NodePath("WeaponAngleIndicators")
+indicator_angle = 45.0
+indicator_range = 50.0
+indicator_color = Color(1, 0, 0, 0.15294118)
+
+[node name="WeaponAngleIndicators" type="Node2D" parent="."]
+
+[node name="@Polygon2D@95581" type="Polygon2D" parent="WeaponAngleIndicators"]
+position = Vector2(147, 151)
+color = Color(1, 0, 0, 0.15294118)
+polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
+
+[node name="@Polygon2D@95582" type="Polygon2D" parent="WeaponAngleIndicators"]
+position = Vector2(95, 151)
+rotation = 3.1415927
+color = Color(1, 0, 0, 0.15294118)
+polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -92,6 +114,15 @@ offset_top = 118.0
 offset_right = 71.0
 offset_bottom = 152.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vdfcm")
+
+[node name="ShipSelectionUpgradesPivot" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = -4.0
+offset_top = 245.0
+offset_right = 246.0
+offset_bottom = 285.0
+alignment = 1
 
 [editable path="WeaponPivot7"]
 [editable path="WeaponPivot6"]

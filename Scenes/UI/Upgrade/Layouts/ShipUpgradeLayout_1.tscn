@@ -11,13 +11,47 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ShipUpgradeLayout_1" type="Control" node_paths=PackedStringArray("weapon_pivot_buttons")]
+[node name="ShipUpgradeLayout_1" type="Control" node_paths=PackedStringArray("weapon_pivot_buttons", "ship_sprite", "ship_upgrades_line", "ship_selection_upgrades_pivot", "indicators", "indicators_pivot")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_m4r6v")
 weapon_pivot_buttons = [NodePath("WeaponPivot7/Panel2/Button"), NodePath("WeaponPivot/Panel2/Button"), NodePath("WeaponPivot5/Panel2/Button"), NodePath("WeaponPivot6/Panel2/Button")]
+ship_data_path = "res://Resources/PlayerDatas/PlayerData_1.tres"
+ship_sprite = NodePath("TextureRect")
+ship_upgrades_line = NodePath("Line2D")
+ship_selection_upgrades_pivot = NodePath("ShipSelectionUpgradesPivot")
+indicators = [NodePath("WeaponAngleIndicators/@Polygon2D@96202"), NodePath("WeaponAngleIndicators/@Polygon2D@96203"), NodePath("WeaponAngleIndicators/@Polygon2D@96204"), NodePath("WeaponAngleIndicators/@Polygon2D@96205")]
+indicators_pivot = NodePath("WeaponAngleIndicators")
+indicator_angle = 45.0
+indicator_range = 50.0
+indicator_color = Color(1, 0, 0, 0.15294118)
+
+[node name="WeaponAngleIndicators" type="Node2D" parent="."]
+
+[node name="@Polygon2D@96202" type="Polygon2D" parent="WeaponAngleIndicators"]
+position = Vector2(147, 151)
+color = Color(1, 0, 0, 0.15294118)
+polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
+
+[node name="@Polygon2D@96203" type="Polygon2D" parent="WeaponAngleIndicators"]
+position = Vector2(117, 127)
+rotation = -1.5707964
+color = Color(1, 0, 0, 0.15294118)
+polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
+
+[node name="@Polygon2D@96204" type="Polygon2D" parent="WeaponAngleIndicators"]
+position = Vector2(117, 175)
+rotation = 1.5707964
+color = Color(1, 0, 0, 0.15294118)
+polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
+
+[node name="@Polygon2D@96205" type="Polygon2D" parent="WeaponAngleIndicators"]
+position = Vector2(95, 151)
+rotation = 3.1415927
+color = Color(1, 0, 0, 0.15294118)
+polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -131,6 +165,15 @@ position = Vector2(362, 96)
 points = PackedVector2Array(-243, 57, -177, 122, 72, 122)
 width = 2.0
 default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+
+[node name="ShipSelectionUpgradesPivot" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = -4.0
+offset_top = 245.0
+offset_right = 246.0
+offset_bottom = 285.0
+alignment = 1
 
 [editable path="WeaponPivot7"]
 [editable path="WeaponPivot"]

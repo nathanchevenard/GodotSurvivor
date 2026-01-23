@@ -18,6 +18,8 @@ corner_radius_bottom_left = 3
 
 [node name="ShipUpgradeSlot" type="Panel" node_paths=PackedStringArray("icon", "number_label")]
 custom_minimum_size = Vector2(34, 34)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
 script = ExtResource("1_li52c")
 icon = NodePath("Panel3/TextureButton")

@@ -45,7 +45,6 @@ func end_quest():
 
 func add_value(value : float):
 	current_value += value
-	print(current_value)
 	
 	if current_value >= quest_data.target_value:
 		end_quest()

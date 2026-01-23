@@ -8,10 +8,14 @@ class_name Planet
 @export var quest_sprite : Node2D
 @export var quest_target_sprite : Node2D
 
+@export var quest_stay_in_color : Color
+@export var quest_stay_out_color : Color
+
 @export_group("References")
 @export var animated_sprite : AnimatedSprite2D
 @export var highlight_sprite : Node2D
 @export var quest_stay_area : Area2D
+@export var quest_stay_polygon : Polygon2D
 @export var stay_progress_bar : ProgressBar
 
 var planet_name : String
@@ -159,8 +163,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_quest_stay_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		is_player_in_quest_stay = true
+		quest_stay_polygon.color = quest_stay_in_color
 
 
 func _on_quest_stay_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_player_in_quest_stay = false
+		quest_stay_polygon.color = quest_stay_out_color

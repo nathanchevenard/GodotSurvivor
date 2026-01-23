@@ -4386,9 +4386,8 @@ scale = Vector2(2000, 100)
 [node name="PlanetManager" type="Node2D" parent="."]
 script = ExtResource("40_e4nyx")
 planet_scene = ExtResource("52_vkpka")
-planet_number = 4
-spawn_radius_min = 400.0
-spawn_radius_max = 600.0
+spawn_radius_min = 450.0
+spawn_radius_max = 650.0
 planet_names = Array[String](["Planète des cons", "Gloubiboulbox", "Michel-56b", "Planète-Sur-Ouche", "Gare du Nord", "Chipieland", "Pipopipopipolapi"])
 planet_descs = Array[String](["C'est une planète de con avec plein de cons", "Une planète régie par une espèce qui ressemble à une flaque de boue", "Très très moche cette planète", "On dirait le Cantal mais sans les vaches", "Ils se tiennent tous la main et font des farandoles toute la journée", "Ils sont 3", "Les plus gros dealos de la galaxie (ils te filent un échantillon gratuit)"])
 planet_icons = Array[Texture2D]([ExtResource("42_ffwt3"), ExtResource("43_ml0wo"), ExtResource("44_12iyy"), ExtResource("45_drssp"), ExtResource("46_xm4gi"), ExtResource("47_t4a3r"), ExtResource("48_8x2x3")])

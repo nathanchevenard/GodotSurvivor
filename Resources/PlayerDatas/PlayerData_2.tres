@@ -15,4 +15,5 @@ shield = 20
 weapon_pivot_positions = Array[Vector2]([Vector2(13, 0), Vector2(-13, 0)])
 weapon_pivot_rotations = Array[float]([0.0, 180.0])
 ship_upgrade_layout_scene = ExtResource("2_deydp")
+ship_selection_layout_scene = ExtResource("2_deydp")
 metadata/_custom_type_script = "uid://duflb2yo25aot"
