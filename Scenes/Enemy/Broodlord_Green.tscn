@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5cpspj6fy4xq"]
+[gd_scene format=3 uid="uid://b5cpspj6fy4xq"]
 
 [ext_resource type="PackedScene" uid="uid://d3iq6bwjslrd1" path="res://Scenes/Enemy/Broodlord.tscn" id="1_38pnu"]
 [ext_resource type="PackedScene" uid="uid://br04kbuky6gys" path="res://Scenes/Enemy/Speedling_Green.tscn" id="2_1ftj8"]
 [ext_resource type="Texture2D" uid="uid://cum4ub8iftl14" path="res://Sprites/Ship/Enemies/Broodlord_Green.png" id="2_s1lbv"]
 
-[node name="Broodlord_Green" instance=ExtResource("1_38pnu")]
+[node name="Broodlord_Green" unique_id=1170970174 instance=ExtResource("1_38pnu")]
 spawned_enemy_scene = ExtResource("2_1ftj8")
 spawn_number = 16
 attack = 80
@@ -14,7 +14,7 @@ xp_scene_scale = 3.5
 speed_max = 60.0
 health_max = 2000
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0" unique_id=474468520]
 texture = ExtResource("2_s1lbv")
 
 [editable path="HealthBar"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://34ab4klw0j6d"]
+[gd_scene format=3 uid="uid://34ab4klw0j6d"]
 
 [ext_resource type="Script" uid="uid://c51fwsberlt5d" path="res://Scripts/Weapon/Projectile/Blast.gd" id="1_iwr0t"]
 [ext_resource type="Texture2D" uid="uid://cebnskx3e8kii" path="res://Sprites/Projectiles/SentinelBlast.png" id="2_r4qsx"]
@@ -42,18 +42,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_41pb5"]
 radius = 6.0
 
-[node name="SentinelBlast" type="Area2D"]
+[node name="SentinelBlast" type="Area2D" unique_id=255825584]
 z_index = 1
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_iwr0t")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1004763607]
 position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_g0s3p")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1213219500]
 position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_41pb5")
 

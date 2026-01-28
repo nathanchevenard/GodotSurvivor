@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfhikkpsot868"]
+[gd_scene format=3 uid="uid://dfhikkpsot868"]
 
 [ext_resource type="Script" uid="uid://cb7wj22mll6bs" path="res://Scripts/UI/Settings/ShipSelectionButton.gd" id="1_2agps"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="1_he5jq"]
@@ -10,27 +10,27 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ShipSelectionButton" type="MarginContainer" node_paths=PackedStringArray("button", "icon", "name_label")]
+[node name="ShipSelectionButton" type="MarginContainer" unique_id=1393183298 node_paths=PackedStringArray("button", "icon", "name_label")]
 script = ExtResource("1_2agps")
 button = NodePath("Button")
 icon = NodePath("VBoxContainer/TextureRect")
 name_label = NodePath("VBoxContainer/Label")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1279041417]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_aohvp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=458834311]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=640527340]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("1_he5jq")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1949402325]
 custom_minimum_size = Vector2(0, 17)
 layout_mode = 2
 theme_override_font_sizes/font_size = 10

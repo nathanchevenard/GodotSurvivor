@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://p0mm6ln0fqpe"]
+[gd_scene format=3 uid="uid://p0mm6ln0fqpe"]
 
 [ext_resource type="Script" uid="uid://vmv5p7qhxo1s" path="res://Scripts/Managers/UpgradeSystem.gd" id="1_pexw7"]
+[ext_resource type="Script" uid="uid://btob1v03sk7xy" path="res://Scripts/Upgrade/Upgrade.gd" id="2_paydn"]
 [ext_resource type="Resource" uid="uid://flnjm5wpel4g" path="res://Resources/Upgrades/WeaponUpgrades/Blaster/BlasterAdditionalProjectile.tres" id="2_r0dmf"]
 [ext_resource type="Resource" uid="uid://b73dusyg2ivv1" path="res://Resources/Upgrades/WeaponUpgrades/BombLauncher/BombLauncherAdditionalProjectile.tres" id="3_3as8k"]
 [ext_resource type="Resource" uid="uid://cgnma7x45fhcm" path="res://Resources/Upgrades/WeaponUpgrades/Laser/LaserAdditionalProjectile.tres" id="4_33erp"]
 [ext_resource type="Resource" uid="uid://ct7nw83b7x0p6" path="res://Resources/Upgrades/WeaponUpgrades/MineLauncher/MineLauncherAdditionalProjectile.tres" id="5_0wfbh"]
 
-[node name="UpgradeSystem" type="Node"]
+[node name="UpgradeSystem" type="Node" unique_id=1601111223]
 script = ExtResource("1_pexw7")
-upgrades = Array[Resource("res://Scripts/Upgrade/Upgrade.gd")]([ExtResource("2_r0dmf"), ExtResource("3_3as8k"), ExtResource("4_33erp"), ExtResource("5_0wfbh")])
+upgrades = Array[ExtResource("2_paydn")]([ExtResource("2_r0dmf"), ExtResource("3_3as8k"), ExtResource("4_33erp"), ExtResource("5_0wfbh")])

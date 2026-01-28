@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhmg6xqpe6j5m"]
+[gd_scene format=3 uid="uid://dhmg6xqpe6j5m"]
 
 [ext_resource type="Script" uid="uid://by8owyd3y4apc" path="res://Scripts/Weapon/Laser.gd" id="1_brcov"]
 [ext_resource type="PackedScene" uid="uid://bfy2tbwc7oh76" path="res://Scenes/Weapon/Projectile/Beam.tscn" id="2_yr7wq"]
 
-[node name="Laser" type="Node2D" node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
+[node name="Laser" type="Node2D" unique_id=1077736562 node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
 script = ExtResource("1_brcov")
 weapon_type = 1
 projectile = ExtResource("2_yr7wq")
@@ -15,14 +15,15 @@ projectile_lifetime = 0.5
 hitbox_collision = NodePath("Area2D/CollisionPolygon2D")
 hitbox_polygon = NodePath("Polygon2D")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1902370143]
 collision_layer = 4
 collision_mask = 74
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1279019319]
 polygon = PackedVector2Array(0, 0, 141.42136, -141.42136, 154.6021, -126.878654, 166.29391, -111.11405, 176.38426, -94.27934, 184.7759, -76.53669, 191.38808, -58.056934, 196.15704, -39.018066, 199.03694, -19.603428, 200, 0, 199.03694, 19.603428, 196.15704, 39.018066, 191.38808, 58.056934, 184.7759, 76.53669, 176.38426, 94.27934, 166.29391, 111.11405, 154.6021, 126.878654, 141.42136, 141.42136)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1482127093]
+visible = false
 color = Color(1, 0, 0, 0.17254902)
 polygon = PackedVector2Array(0, 0, 141.42136, -141.42136, 154.6021, -126.878654, 166.29391, -111.11405, 176.38426, -94.27934, 184.7759, -76.53669, 191.38808, -58.056934, 196.15704, -39.018066, 199.03694, -19.603428, 200, 0, 199.03694, 19.603428, 196.15704, 39.018066, 191.38808, 58.056934, 184.7759, 76.53669, 176.38426, 94.27934, 166.29391, 111.11405, 154.6021, 126.878654, 141.42136, 141.42136)
 

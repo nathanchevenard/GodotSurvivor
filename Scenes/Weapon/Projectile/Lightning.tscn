@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbgkgpi5athc4"]
+[gd_scene format=3 uid="uid://cbgkgpi5athc4"]
 
 [ext_resource type="Script" uid="uid://f784pmw17tnl" path="res://Scripts/Weapon/Projectile/Lightning.gd" id="1_3y178"]
 [ext_resource type="Texture2D" uid="uid://fjxul6xubiq0" path="res://Sprites/Projectiles/Blast.png" id="2_w7mck"]
@@ -42,12 +42,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eug47"]
 size = Vector2(18, 2)
 
-[node name="Lightning" type="Area2D"]
+[node name="Lightning" type="Area2D" unique_id=979709340]
 collision_layer = 4
 collision_mask = 74
 script = ExtResource("1_3y178")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=770336687]
 position = Vector2(-3, 0)
 scale = Vector2(1.5, 0.2)
 sprite_frames = SubResource("SpriteFrames_av4hx")
@@ -55,7 +55,7 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.83849806
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1212167078]
 shape = SubResource("RectangleShape2D_eug47")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

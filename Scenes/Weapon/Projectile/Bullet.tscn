@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxfm8ql1orav"]
+[gd_scene format=3 uid="uid://bxfm8ql1orav"]
 
 [ext_resource type="Script" uid="uid://c51fwsberlt5d" path="res://Scripts/Weapon/Projectile/Blast.gd" id="1_eug47"]
 [ext_resource type="Texture2D" uid="uid://fjxul6xubiq0" path="res://Sprites/Projectiles/Blast.png" id="2_io5ky"]
@@ -42,12 +42,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eug47"]
 size = Vector2(8, 2)
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" unique_id=541564102]
 collision_layer = 4
 collision_mask = 74
 script = ExtResource("1_eug47")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=184704011]
 modulate = Color(0.903158, 0.3558214, 0, 1)
 position = Vector2(-3, 0)
 scale = Vector2(0.8, 0.2)
@@ -56,7 +56,7 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.83849806
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688941986]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_eug47")
 

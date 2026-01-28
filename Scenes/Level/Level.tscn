@@ -1,4 +1,4 @@
-[gd_scene load_steps=638 format=3 uid="uid://descmxrrabovg"]
+[gd_scene format=3 uid="uid://descmxrrabovg"]
 
 [ext_resource type="Script" uid="uid://blbnlmuhrk5x3" path="res://Scripts/Level/Level.gd" id="1_lh7mg"]
 [ext_resource type="PackedScene" uid="uid://bgxyci6epggm8" path="res://Scenes/Player/Player.tscn" id="1_tqgfm"]
@@ -4006,7 +4006,7 @@ bg_color = Color(0, 0.356863, 0.709804, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_silsi"]
 bg_color = Color(0.955311, 0.79006755, 0, 1)
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" unique_id=718920666]
 script = ExtResource("1_lh7mg")
 asteroid_scene = ExtResource("2_byko3")
 enemy_spawn_infos = Array[ExtResource("4_2vapx")]([SubResource("Resource_6u0nf"), SubResource("Resource_0qujo"), SubResource("Resource_olx7e"), SubResource("Resource_qxhfh"), SubResource("Resource_17s1q"), SubResource("Resource_g3uom"), SubResource("Resource_vkpka"), SubResource("Resource_b63oq")])
@@ -4017,16 +4017,16 @@ enemy_incrementation_threshold = 12
 enemy_spawn_number = 5
 enemy_max_number = 200
 
-[node name="DebugOptions" type="Node" parent="."]
+[node name="DebugOptions" type="Node" parent="." unique_id=1061416219]
 process_mode = 3
 script = ExtResource("10_2qfsf")
 toggle_debug_inputs = true
 
-[node name="PauseSystem" parent="." node_paths=PackedStringArray("pause_end_layer", "delay_progress_bar") instance=ExtResource("8_smpvf")]
+[node name="PauseSystem" parent="." unique_id=1552329261 node_paths=PackedStringArray("pause_end_layer", "delay_progress_bar") instance=ExtResource("8_smpvf")]
 pause_end_layer = NodePath("../PauseEndLayer")
 delay_progress_bar = NodePath("../PauseEndLayer/ProgressBar")
 
-[node name="UpgradeSystem" parent="." node_paths=PackedStringArray("canvas_layer", "container", "ship_upgrade_layout_pivot", "ship_upgrades_pivot") instance=ExtResource("9_rpw5f")]
+[node name="UpgradeSystem" parent="." unique_id=1789110814 node_paths=PackedStringArray("canvas_layer", "container", "ship_upgrade_layout_pivot", "ship_upgrades_pivot") instance=ExtResource("9_rpw5f")]
 process_mode = 3
 canvas_layer = NodePath("../UpgradeLayer")
 container = NodePath("../UpgradeLayer/ShipUpgrade/UpgradesChoices")
@@ -4036,7 +4036,7 @@ ship_upgrade_layout_pivot = NodePath("../UpgradeLayer/ShipUpgrade")
 ship_upgrades_pivot = NodePath("../UpgradeLayer/ShipUpgrade/ShipUpgrades")
 ship_upgrade_slot_scene = ExtResource("36_04ldg")
 
-[node name="CollectablesManager" type="Node" parent="."]
+[node name="CollectablesManager" type="Node" parent="." unique_id=794185852]
 script = ExtResource("36_bsnq8")
 xp_collectable_scene = ExtResource("8_silsi")
 heal_collectable_scene = ExtResource("7_jdpru")
@@ -4045,14 +4045,14 @@ magnet_collectable_scene = ExtResource("39_qxhfh")
 magnet_collectable_drop_rate = 0.005
 metadata/_custom_type_script = "uid://dq5w7dmv4i17b"
 
-[node name="Player" parent="." instance=ExtResource("1_tqgfm")]
+[node name="Player" parent="." unique_id=1427062894 instance=ExtResource("1_tqgfm")]
 is_immortal = null
 position_acceleration = null
 rotation_acceleration = null
 health_regen = null
 health_regen_delay = null
 
-[node name="Arena" type="Node2D" parent="."]
+[node name="Arena" type="Node2D" parent="." unique_id=690490201]
 unique_name_in_owner = true
 process_mode = 4
 visible = false
@@ -4063,327 +4063,327 @@ arena_definition = 64
 arena_radius = 800.0
 metadata/_custom_type_script = "uid://c6873gcj26kaa"
 
-[node name="Wall" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="Wall" parent="Arena" unique_id=1281979560 instance=ExtResource("44_g3uom")]
 position = Vector2(850, 0)
 rotation = 1.5707964
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99831" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99831" parent="Arena" unique_id=1012038142 instance=ExtResource("44_g3uom")]
 position = Vector2(845.907, 83.31457)
 rotation = 1.6689711
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99832" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99832" parent="Arena" unique_id=323096216 instance=ExtResource("44_g3uom")]
 position = Vector2(833.6675, 165.82678)
 rotation = 1.7671459
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99833" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99833" parent="Arena" unique_id=1160219113 instance=ExtResource("44_g3uom")]
 position = Vector2(813.3993, 246.74196)
 rotation = 1.8653207
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99834" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99834" parent="Arena" unique_id=1308285318 instance=ExtResource("44_g3uom")]
 position = Vector2(785.2976, 325.2809)
 rotation = 1.9634954
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99835" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99835" parent="Arena" unique_id=436226442 instance=ExtResource("44_g3uom")]
 position = Vector2(749.6331, 400.68723)
 rotation = 2.06167
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99836" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99836" parent="Arena" unique_id=404122111 instance=ExtResource("44_g3uom")]
 position = Vector2(706.74915, 472.2347)
 rotation = 2.1598449
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99837" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99837" parent="Arena" unique_id=620948277 instance=ExtResource("44_g3uom")]
 position = Vector2(657.05884, 539.2343)
 rotation = 2.2580197
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99838" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99838" parent="Arena" unique_id=498855065 instance=ExtResource("44_g3uom")]
 position = Vector2(601.0408, 601.0408)
 rotation = 2.3561945
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99839" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99839" parent="Arena" unique_id=1860800892 instance=ExtResource("44_g3uom")]
 position = Vector2(539.2343, 657.05884)
 rotation = 2.4543693
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99840" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99840" parent="Arena" unique_id=961734811 instance=ExtResource("44_g3uom")]
 position = Vector2(472.2347, 706.74915)
 rotation = 2.552544
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99841" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99841" parent="Arena" unique_id=1496808953 instance=ExtResource("44_g3uom")]
 position = Vector2(400.68723, 749.6331)
 rotation = 2.6507187
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99842" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99842" parent="Arena" unique_id=1711047094 instance=ExtResource("44_g3uom")]
 position = Vector2(325.2809, 785.2976)
 rotation = 2.7488935
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99843" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99843" parent="Arena" unique_id=1922121062 instance=ExtResource("44_g3uom")]
 position = Vector2(246.74196, 813.3993)
 rotation = 2.8470683
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99844" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99844" parent="Arena" unique_id=342922126 instance=ExtResource("44_g3uom")]
 position = Vector2(165.82678, 833.6675)
 rotation = 2.9452431
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99845" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99845" parent="Arena" unique_id=1960642053 instance=ExtResource("44_g3uom")]
 position = Vector2(83.31457, 845.907)
 rotation = 3.043418
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99846" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99846" parent="Arena" unique_id=1385146401 instance=ExtResource("44_g3uom")]
 position = Vector2(5.204577e-14, 850)
 rotation = 3.1415927
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99847" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99847" parent="Arena" unique_id=356777902 instance=ExtResource("44_g3uom")]
 position = Vector2(-83.31457, 845.907)
 rotation = 3.2397673
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99848" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99848" parent="Arena" unique_id=439672989 instance=ExtResource("44_g3uom")]
 position = Vector2(-165.82678, 833.6675)
 rotation = 3.3379421
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99849" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99849" parent="Arena" unique_id=370889717 instance=ExtResource("44_g3uom")]
 position = Vector2(-246.74196, 813.3993)
 rotation = 3.436117
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99850" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99850" parent="Arena" unique_id=1177582822 instance=ExtResource("44_g3uom")]
 position = Vector2(-325.2809, 785.2976)
 rotation = 3.5342917
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99851" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99851" parent="Arena" unique_id=744504615 instance=ExtResource("44_g3uom")]
 position = Vector2(-400.68723, 749.6331)
 rotation = 3.6324666
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99852" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99852" parent="Arena" unique_id=931425731 instance=ExtResource("44_g3uom")]
 position = Vector2(-472.2347, 706.74915)
 rotation = 3.7306414
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99853" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99853" parent="Arena" unique_id=432429561 instance=ExtResource("44_g3uom")]
 position = Vector2(-539.2343, 657.05884)
 rotation = 3.828816
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99854" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99854" parent="Arena" unique_id=1447964052 instance=ExtResource("44_g3uom")]
 position = Vector2(-601.0408, 601.0408)
 rotation = 3.9269907
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99855" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99855" parent="Arena" unique_id=1880413504 instance=ExtResource("44_g3uom")]
 position = Vector2(-657.05884, 539.2343)
 rotation = 4.0251656
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99856" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99856" parent="Arena" unique_id=1714200985 instance=ExtResource("44_g3uom")]
 position = Vector2(-706.74915, 472.2347)
 rotation = 4.12334
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99857" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99857" parent="Arena" unique_id=171282503 instance=ExtResource("44_g3uom")]
 position = Vector2(-749.6331, 400.68723)
 rotation = 4.221515
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99858" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99858" parent="Arena" unique_id=1760793858 instance=ExtResource("44_g3uom")]
 position = Vector2(-785.2976, 325.2809)
 rotation = 4.3196898
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99859" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99859" parent="Arena" unique_id=1831276583 instance=ExtResource("44_g3uom")]
 position = Vector2(-813.3993, 246.74196)
 rotation = 4.417865
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99860" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99860" parent="Arena" unique_id=952452263 instance=ExtResource("44_g3uom")]
 position = Vector2(-833.6675, 165.82678)
 rotation = 4.5160394
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99861" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99861" parent="Arena" unique_id=2044738789 instance=ExtResource("44_g3uom")]
 position = Vector2(-845.907, 83.31457)
 rotation = 4.6142144
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99862" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99862" parent="Arena" unique_id=168895560 instance=ExtResource("44_g3uom")]
 position = Vector2(-850, 1.0409154e-13)
 rotation = 4.712389
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99863" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99863" parent="Arena" unique_id=850918128 instance=ExtResource("44_g3uom")]
 position = Vector2(-845.907, -83.31457)
 rotation = 4.8105636
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99864" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99864" parent="Arena" unique_id=1686318691 instance=ExtResource("44_g3uom")]
 position = Vector2(-833.6675, -165.82678)
 rotation = 4.9087386
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99865" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99865" parent="Arena" unique_id=799451061 instance=ExtResource("44_g3uom")]
 position = Vector2(-813.3993, -246.74196)
 rotation = 5.006913
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99866" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99866" parent="Arena" unique_id=728357082 instance=ExtResource("44_g3uom")]
 position = Vector2(-785.2976, -325.2809)
 rotation = 5.105088
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99867" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99867" parent="Arena" unique_id=1941771941 instance=ExtResource("44_g3uom")]
 position = Vector2(-749.6331, -400.68723)
 rotation = 5.203263
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99868" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99868" parent="Arena" unique_id=970552420 instance=ExtResource("44_g3uom")]
 position = Vector2(-706.74915, -472.2347)
 rotation = 5.3014374
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99869" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99869" parent="Arena" unique_id=1156237602 instance=ExtResource("44_g3uom")]
 position = Vector2(-657.05884, -539.2343)
 rotation = 5.3996124
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99870" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99870" parent="Arena" unique_id=419128924 instance=ExtResource("44_g3uom")]
 position = Vector2(-601.0408, -601.0408)
 rotation = 5.497787
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99871" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99871" parent="Arena" unique_id=704127588 instance=ExtResource("44_g3uom")]
 position = Vector2(-539.2343, -657.05884)
 rotation = 5.595962
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99872" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99872" parent="Arena" unique_id=2049732517 instance=ExtResource("44_g3uom")]
 position = Vector2(-472.2347, -706.74915)
 rotation = 5.6941366
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99873" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99873" parent="Arena" unique_id=1335002968 instance=ExtResource("44_g3uom")]
 position = Vector2(-400.68723, -749.6331)
 rotation = 5.7923117
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99874" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99874" parent="Arena" unique_id=1475743605 instance=ExtResource("44_g3uom")]
 position = Vector2(-325.2809, -785.2976)
 rotation = 5.8904862
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99875" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99875" parent="Arena" unique_id=1558755853 instance=ExtResource("44_g3uom")]
 position = Vector2(-246.74196, -813.3993)
 rotation = 5.988661
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99876" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99876" parent="Arena" unique_id=507553987 instance=ExtResource("44_g3uom")]
 position = Vector2(-165.82678, -833.6675)
 rotation = 6.086836
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99877" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99877" parent="Arena" unique_id=1903443449 instance=ExtResource("44_g3uom")]
 position = Vector2(-83.31457, -845.907)
 rotation = 6.1850104
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99878" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99878" parent="Arena" unique_id=1960765011 instance=ExtResource("44_g3uom")]
 position = Vector2(-1.5613731e-13, -850)
 rotation = 6.2831855
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99879" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99879" parent="Arena" unique_id=267470436 instance=ExtResource("44_g3uom")]
 position = Vector2(83.31457, -845.907)
 rotation = 6.38136
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99880" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99880" parent="Arena" unique_id=880510312 instance=ExtResource("44_g3uom")]
 position = Vector2(165.82678, -833.6675)
 rotation = 6.4795346
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99881" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99881" parent="Arena" unique_id=2112010143 instance=ExtResource("44_g3uom")]
 position = Vector2(246.74196, -813.3993)
 rotation = 6.5777097
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99882" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99882" parent="Arena" unique_id=192153029 instance=ExtResource("44_g3uom")]
 position = Vector2(325.2809, -785.2976)
 rotation = 6.6758842
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99883" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99883" parent="Arena" unique_id=1750378106 instance=ExtResource("44_g3uom")]
 position = Vector2(400.68723, -749.6331)
 rotation = 6.7740593
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99884" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99884" parent="Arena" unique_id=1859912377 instance=ExtResource("44_g3uom")]
 position = Vector2(472.2347, -706.74915)
 rotation = 6.872234
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99885" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99885" parent="Arena" unique_id=1262736430 instance=ExtResource("44_g3uom")]
 position = Vector2(539.2343, -657.05884)
 rotation = 6.970409
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99886" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99886" parent="Arena" unique_id=519784041 instance=ExtResource("44_g3uom")]
 position = Vector2(601.0408, -601.0408)
 rotation = 7.0685835
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99887" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99887" parent="Arena" unique_id=748328917 instance=ExtResource("44_g3uom")]
 position = Vector2(657.05884, -539.2343)
 rotation = 7.166758
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99888" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99888" parent="Arena" unique_id=534998103 instance=ExtResource("44_g3uom")]
 position = Vector2(706.74915, -472.2347)
 rotation = 7.264933
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99889" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99889" parent="Arena" unique_id=965132206 instance=ExtResource("44_g3uom")]
 position = Vector2(749.6331, -400.68723)
 rotation = 7.3631077
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99890" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99890" parent="Arena" unique_id=35835433 instance=ExtResource("44_g3uom")]
 position = Vector2(785.2976, -325.2809)
 rotation = 7.4612827
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99891" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99891" parent="Arena" unique_id=1779329049 instance=ExtResource("44_g3uom")]
 position = Vector2(813.3993, -246.74196)
 rotation = 7.5594573
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99892" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99892" parent="Arena" unique_id=649613853 instance=ExtResource("44_g3uom")]
 position = Vector2(833.6675, -165.82678)
 rotation = 7.657632
 scale = Vector2(2000, 100)
 
-[node name="@StaticBody2D@99893" parent="Arena" instance=ExtResource("44_g3uom")]
+[node name="@StaticBody2D@99893" parent="Arena" unique_id=311668391 instance=ExtResource("44_g3uom")]
 position = Vector2(845.907, -83.31457)
 rotation = 7.755807
 scale = Vector2(2000, 100)
 
-[node name="PlanetManager" type="Node2D" parent="."]
+[node name="PlanetManager" type="Node2D" parent="." unique_id=984224771]
 script = ExtResource("40_e4nyx")
 planet_scene = ExtResource("52_vkpka")
 spawn_radius_min = 450.0
@@ -4393,39 +4393,39 @@ planet_descs = Array[String](["C'est une planète de con avec plein de cons", "U
 planet_icons = Array[Texture2D]([ExtResource("42_ffwt3"), ExtResource("43_ml0wo"), ExtResource("44_12iyy"), ExtResource("45_drssp"), ExtResource("46_xm4gi"), ExtResource("47_t4a3r"), ExtResource("48_8x2x3")])
 planet_sprite_frames = Array[SpriteFrames]([SubResource("SpriteFrames_yvnh7"), SubResource("SpriteFrames_5gq56"), SubResource("SpriteFrames_jei3h"), SubResource("SpriteFrames_fuq3r"), SubResource("SpriteFrames_vh8m8"), SubResource("SpriteFrames_ms6w6"), SubResource("SpriteFrames_wwsmq")])
 
-[node name="ProjectileHandler" type="Node2D" parent="."]
+[node name="ProjectileHandler" type="Node2D" parent="." unique_id=66168305]
 unique_name_in_owner = true
 script = ExtResource("2_nimkm")
 
-[node name="EnemyHandler" type="Node2D" parent="."]
+[node name="EnemyHandler" type="Node2D" parent="." unique_id=1987130559]
 unique_name_in_owner = true
 
-[node name="ObstacleHandler" type="Node2D" parent="."]
+[node name="ObstacleHandler" type="Node2D" parent="." unique_id=984988212]
 unique_name_in_owner = true
 
-[node name="ObstacleSpawnTimer" type="Timer" parent="ObstacleHandler"]
+[node name="ObstacleSpawnTimer" type="Timer" parent="ObstacleHandler" unique_id=1283176845]
 autostart = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1424434243]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1002362897]
 motion_mirroring = Vector2(2048, 1024)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=421836786]
 texture = ExtResource("9_wyh5q")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1811581640]
 position = Vector2(256, 256)
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(2048, 1024)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1750473928]
 texture = ExtResource("7_kfec1")
 
-[node name="GameOverLayer" type="CanvasLayer" parent="."]
+[node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1200294933]
 process_mode = 3
 
-[node name="GameOver" type="Control" parent="GameOverLayer" node_paths=PackedStringArray("kills_label", "timer_label", "level_label", "weapon_stats_pivot", "border_layer")]
+[node name="GameOver" type="Control" parent="GameOverLayer" unique_id=1895346417 node_paths=PackedStringArray("kills_label", "timer_label", "level_label", "weapon_stats_pivot", "border_layer")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 3
@@ -4442,7 +4442,7 @@ weapon_stats_pivot = NodePath("CenterContainer/VBoxContainer/Stats/WeaponStats")
 weapon_stat_scene = ExtResource("40_bsnq8")
 border_layer = NodePath("../../BorderLayer")
 
-[node name="Panel" type="Panel" parent="GameOverLayer/GameOver"]
+[node name="Panel" type="Panel" parent="GameOverLayer/GameOver" unique_id=1229655735]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4451,7 +4451,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsnq8")
 
-[node name="CenterContainer" type="CenterContainer" parent="GameOverLayer/GameOver"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverLayer/GameOver" unique_id=383418278]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4459,104 +4459,104 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverLayer/GameOver/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverLayer/GameOver/CenterContainer" unique_id=139147505]
 layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="Stats" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer"]
+[node name="Stats" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer" unique_id=1008140110]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="GlobalStats" type="VBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats"]
+[node name="GlobalStats" type="VBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats" unique_id=226920440]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats"]
+[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats" unique_id=1942668371]
 layout_mode = 2
 text = "Stats"
 horizontal_alignment = 1
 
-[node name="Timer" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats"]
+[node name="Timer" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats" unique_id=630087097]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Timer"]
+[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Timer" unique_id=1771658024]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Survived "
 
-[node name="TimerLabel" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Timer"]
+[node name="TimerLabel" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Timer" unique_id=1850813607]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "00:00"
 
-[node name="Kills" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats"]
+[node name="Kills" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats" unique_id=625885372]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Kills"]
+[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Kills" unique_id=1804469305]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Killed"
 
-[node name="KillsLabel" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Kills"]
+[node name="KillsLabel" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Kills" unique_id=23530183]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "100"
 
-[node name="Label2" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Kills"]
+[node name="Label2" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Kills" unique_id=684379288]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "enemies"
 
-[node name="Level" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats"]
+[node name="Level" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats" unique_id=1432620449]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Level"]
+[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Level" unique_id=777765193]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Level"
 
-[node name="LevelLabel" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Level"]
+[node name="LevelLabel" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/GlobalStats/Level" unique_id=402942019]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "1"
 
-[node name="WeaponStats" type="VBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats"]
+[node name="WeaponStats" type="VBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats" unique_id=2144060193]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/WeaponStats"]
+[node name="Label" type="Label" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Stats/WeaponStats" unique_id=938099264]
 layout_mode = 2
 text = "Weapons"
 horizontal_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer" unique_id=1605985902]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
-[node name="RetryButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons"]
+[node name="RetryButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons" unique_id=1032846563]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Retry"
 
-[node name="FocusParentOnReady" type="Node" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons/RetryButton"]
+[node name="FocusParentOnReady" type="Node" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons/RetryButton" unique_id=1230467198]
 script = ExtResource("47_g3uom")
 metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
-[node name="MenuButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons"]
+[node name="MenuButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons" unique_id=12083026]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Menu"
 
-[node name="QuitButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons"]
+[node name="QuitButton" type="Button" parent="GameOverLayer/GameOver/CenterContainer/VBoxContainer/Buttons" unique_id=773329676]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Quit"
 
-[node name="UpgradeLayer" type="CanvasLayer" parent="."]
+[node name="UpgradeLayer" type="CanvasLayer" parent="." unique_id=1178798054]
 process_mode = 3
 visible = false
 
-[node name="Panel" type="Panel" parent="UpgradeLayer"]
+[node name="Panel" type="Panel" parent="UpgradeLayer" unique_id=175465634]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4564,13 +4564,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsnq8")
 
-[node name="ShipUpgrade" type="Control" parent="UpgradeLayer"]
+[node name="ShipUpgrade" type="Control" parent="UpgradeLayer" unique_id=423669956]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="UpgradesChoices" type="HBoxContainer" parent="UpgradeLayer/ShipUpgrade"]
+[node name="UpgradesChoices" type="HBoxContainer" parent="UpgradeLayer/ShipUpgrade" unique_id=1753197462]
 layout_mode = 0
 offset_left = 232.0
 offset_top = 63.0
@@ -4579,7 +4579,7 @@ offset_bottom = 175.0
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="ShipUpgrades" type="HBoxContainer" parent="UpgradeLayer/ShipUpgrade"]
+[node name="ShipUpgrades" type="HBoxContainer" parent="UpgradeLayer/ShipUpgrade" unique_id=1229348267]
 layout_mode = 0
 offset_left = 185.0
 offset_top = 216.0
@@ -4588,7 +4588,7 @@ offset_bottom = 250.0
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="PauseButtons" type="VBoxContainer" parent="UpgradeLayer"]
+[node name="PauseButtons" type="VBoxContainer" parent="UpgradeLayer" unique_id=441521330]
 visible = false
 custom_minimum_size = Vector2(80, 0)
 offset_left = 309.0
@@ -4597,35 +4597,35 @@ offset_right = 389.0
 offset_bottom = 178.0
 script = ExtResource("54_ml0wo")
 
-[node name="ResumeButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+[node name="ResumeButton" type="Button" parent="UpgradeLayer/PauseButtons" unique_id=1735930465]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Resume"
 
-[node name="FocusParentOnReady" type="Node" parent="UpgradeLayer/PauseButtons/ResumeButton"]
+[node name="FocusParentOnReady" type="Node" parent="UpgradeLayer/PauseButtons/ResumeButton" unique_id=1823499328]
 script = ExtResource("47_g3uom")
 metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
-[node name="RestartButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+[node name="RestartButton" type="Button" parent="UpgradeLayer/PauseButtons" unique_id=1363103207]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Restart"
 
-[node name="MenuButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+[node name="MenuButton" type="Button" parent="UpgradeLayer/PauseButtons" unique_id=1718219943]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Menu"
 
-[node name="QuitButton" type="Button" parent="UpgradeLayer/PauseButtons"]
+[node name="QuitButton" type="Button" parent="UpgradeLayer/PauseButtons" unique_id=843573012]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Quit"
 
-[node name="PauseEndLayer" type="CanvasLayer" parent="."]
+[node name="PauseEndLayer" type="CanvasLayer" parent="." unique_id=1291884529]
 process_mode = 3
 visible = false
 
-[node name="Panel" type="Panel" parent="PauseEndLayer"]
+[node name="Panel" type="Panel" parent="PauseEndLayer" unique_id=93461663]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4633,7 +4633,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsnq8")
 
-[node name="ProgressBar" type="ProgressBar" parent="PauseEndLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="PauseEndLayer" unique_id=1146296584]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -4650,9 +4650,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jdpru")
 value = 38.34
 show_percentage = false
 
-[node name="QuestsLayer" type="CanvasLayer" parent="."]
+[node name="QuestsLayer" type="CanvasLayer" parent="." unique_id=418925603]
 
-[node name="Quests" type="VBoxContainer" parent="QuestsLayer" node_paths=PackedStringArray("quest_title", "quests_container")]
+[node name="Quests" type="VBoxContainer" parent="QuestsLayer" unique_id=75164725 node_paths=PackedStringArray("quest_title", "quests_container")]
 custom_minimum_size = Vector2(100, 0)
 offset_left = 8.0
 offset_top = 34.0
@@ -4663,15 +4663,15 @@ quest_title = NodePath("Title")
 quests_container = NodePath("QuestsList")
 quest_scene = ExtResource("53_ml0wo")
 
-[node name="Title" type="Label" parent="QuestsLayer/Quests"]
+[node name="Title" type="Label" parent="QuestsLayer/Quests" unique_id=276631792]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Quests"
 
-[node name="QuestsList" type="VBoxContainer" parent="QuestsLayer/Quests"]
+[node name="QuestsList" type="VBoxContainer" parent="QuestsLayer/Quests" unique_id=538310076]
 layout_mode = 2
 
-[node name="DialogueLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("event_name_label", "event_icon", "event_desc_label", "event_text_label", "accept_quest_buttons", "end_quest_buttons")]
+[node name="DialogueLayer" type="CanvasLayer" parent="." unique_id=1319226894 node_paths=PackedStringArray("event_name_label", "event_icon", "event_desc_label", "event_text_label", "accept_quest_buttons", "end_quest_buttons")]
 visible = false
 script = ExtResource("48_hba8o")
 event_name_label = NodePath("MarginContainer/HBoxContainer/Planet/EventName")
@@ -4681,7 +4681,7 @@ event_text_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/EventTe
 accept_quest_buttons = NodePath("MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons")
 end_quest_buttons = NodePath("MarginContainer/HBoxContainer/VBoxContainer/EndQuestButtons")
 
-[node name="Panel" type="Panel" parent="DialogueLayer"]
+[node name="Panel" type="Panel" parent="DialogueLayer" unique_id=201099554]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4689,7 +4689,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bsnq8")
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogueLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueLayer" unique_id=1366993447]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -4702,22 +4702,22 @@ offset_bottom = 80.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="DialogueLayer/MarginContainer"]
+[node name="Panel" type="Panel" parent="DialogueLayer/MarginContainer" unique_id=637620557]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_12iyy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogueLayer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueLayer/MarginContainer" unique_id=900477942]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Planet" type="VBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer"]
+[node name="Planet" type="VBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer" unique_id=1561750129]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="EventName" type="Label" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet"]
+[node name="EventName" type="Label" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet" unique_id=2135806911]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
@@ -4725,19 +4725,19 @@ text = "Planète de con"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet" unique_id=1394548665]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 0
 
-[node name="EventIcon" type="TextureRect" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet/MarginContainer"]
+[node name="EventIcon" type="TextureRect" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet/MarginContainer" unique_id=358453252]
 layout_mode = 2
 texture = SubResource("NoiseTexture2D_vkpka")
 expand_mode = 4
 
-[node name="EventDesc" type="Label" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet"]
+[node name="EventDesc" type="Label" parent="DialogueLayer/MarginContainer/HBoxContainer/Planet" unique_id=2012330879]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_constants/line_spacing = -2
@@ -4746,13 +4746,13 @@ text = "C'est une planète de con avec plein de cons"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer" unique_id=1514048648]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="EventText" type="RichTextLabel" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="EventText" type="RichTextLabel" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=524518003]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
@@ -4765,48 +4765,48 @@ text = "\"Bonjour c'est nous les cons, on est très con. On a besoin de vous par
 fit_content = true
 autowrap_mode = 2
 
-[node name="AcceptQuestButtons" type="HBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="AcceptQuestButtons" type="HBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1032546850]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="AcceptButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons"]
+[node name="AcceptButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons" unique_id=1189661990]
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Aider"
 
-[node name="FocusParentOnReady" type="Node" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons/AcceptButton"]
+[node name="FocusParentOnReady" type="Node" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons/AcceptButton" unique_id=759278033]
 script = ExtResource("47_g3uom")
 metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
-[node name="IgnoreButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons"]
+[node name="IgnoreButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/AcceptQuestButtons" unique_id=1355166565]
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Ignorer"
 
-[node name="EndQuestButtons" type="HBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="EndQuestButtons" type="HBoxContainer" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2022007083]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="EndQuestButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/EndQuestButtons"]
+[node name="EndQuestButton" type="Button" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/EndQuestButtons" unique_id=605965057]
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "De rien ;)"
 
-[node name="FocusParentOnReady" type="Node" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/EndQuestButtons/EndQuestButton"]
+[node name="FocusParentOnReady" type="Node" parent="DialogueLayer/MarginContainer/HBoxContainer/VBoxContainer/EndQuestButtons/EndQuestButton" unique_id=2001577966]
 script = ExtResource("47_g3uom")
 metadata/_custom_type_script = "uid://ds3dr7ki2sgdb"
 
-[node name="BorderLayer" type="CanvasLayer" parent="."]
+[node name="BorderLayer" type="CanvasLayer" parent="." unique_id=519572799]
 
-[node name="Joystick" parent="BorderLayer" instance=ExtResource("6_o0aqk")]
+[node name="Joystick" parent="BorderLayer" unique_id=1204874143 instance=ExtResource("6_o0aqk")]
 visible = false
 
-[node name="Timer" type="Label" parent="BorderLayer"]
+[node name="Timer" type="Label" parent="BorderLayer" unique_id=1871050308]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -4818,14 +4818,14 @@ theme_override_font_sizes/font_size = 14
 text = "00:00"
 script = ExtResource("9_pcfry")
 
-[node name="HealthBarsContainer" type="VBoxContainer" parent="BorderLayer"]
+[node name="HealthBarsContainer" type="VBoxContainer" parent="BorderLayer" unique_id=2078344728]
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 105.0
 offset_bottom = 45.0
 theme_override_constants/separation = 3
 
-[node name="HealthBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer"]
+[node name="HealthBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer" unique_id=1650589553]
 custom_minimum_size = Vector2(100, 8)
 layout_mode = 2
 size_flags_vertical = 4
@@ -4833,7 +4833,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_qemec")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ywuuj")
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer/HealthBar" node_paths=PackedStringArray("progress_bar_under", "timer", "value_label")]
+[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer/HealthBar" unique_id=432314431 node_paths=PackedStringArray("progress_bar_under", "timer", "value_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4849,10 +4849,10 @@ progress_bar_under = NodePath("..")
 timer = NodePath("../Timer")
 value_label = NodePath("../Label")
 
-[node name="Timer" type="Timer" parent="BorderLayer/HealthBarsContainer/HealthBar"]
+[node name="Timer" type="Timer" parent="BorderLayer/HealthBarsContainer/HealthBar" unique_id=1159037856]
 wait_time = 0.4
 
-[node name="Label" type="Label" parent="BorderLayer/HealthBarsContainer/HealthBar"]
+[node name="Label" type="Label" parent="BorderLayer/HealthBarsContainer/HealthBar" unique_id=2092581847]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4863,7 +4863,7 @@ theme_override_font_sizes/font_size = 7
 text = "1 / 10"
 horizontal_alignment = 1
 
-[node name="ShieldBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer"]
+[node name="ShieldBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer" unique_id=1364535462]
 custom_minimum_size = Vector2(100, 8)
 layout_mode = 2
 size_flags_vertical = 4
@@ -4871,7 +4871,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_qemec")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ywuuj")
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer/ShieldBar" node_paths=PackedStringArray("progress_bar_under", "timer", "value_label")]
+[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/HealthBarsContainer/ShieldBar" unique_id=1945897986 node_paths=PackedStringArray("progress_bar_under", "timer", "value_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4887,10 +4887,10 @@ progress_bar_under = NodePath("..")
 timer = NodePath("../Timer")
 value_label = NodePath("../Label")
 
-[node name="Timer" type="Timer" parent="BorderLayer/HealthBarsContainer/ShieldBar"]
+[node name="Timer" type="Timer" parent="BorderLayer/HealthBarsContainer/ShieldBar" unique_id=2037997151]
 wait_time = 0.4
 
-[node name="Label" type="Label" parent="BorderLayer/HealthBarsContainer/ShieldBar"]
+[node name="Label" type="Label" parent="BorderLayer/HealthBarsContainer/ShieldBar" unique_id=348098609]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4901,24 +4901,24 @@ theme_override_font_sizes/font_size = 7
 text = "1 / 10"
 horizontal_alignment = 1
 
-[node name="KillsContainer" type="HBoxContainer" parent="BorderLayer"]
+[node name="KillsContainer" type="HBoxContainer" parent="BorderLayer" unique_id=1514423794]
 offset_left = 143.0
 offset_right = 227.0
 offset_bottom = 23.0
 mouse_filter = 2
 
-[node name="KillsText" type="Label" parent="BorderLayer/KillsContainer"]
+[node name="KillsText" type="Label" parent="BorderLayer/KillsContainer" unique_id=1404763427]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Kills :"
 
-[node name="KillsValue" type="Label" parent="BorderLayer/KillsContainer"]
+[node name="KillsValue" type="Label" parent="BorderLayer/KillsContainer" unique_id=926791409]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "0"
 script = ExtResource("17_jugp0")
 
-[node name="XpContainer" type="HBoxContainer" parent="BorderLayer"]
+[node name="XpContainer" type="HBoxContainer" parent="BorderLayer" unique_id=1459082185]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -4929,12 +4929,12 @@ offset_bottom = 28.0
 grow_horizontal = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="BorderLayer/XpContainer"]
+[node name="Label" type="Label" parent="BorderLayer/XpContainer" unique_id=857399770]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Lv 1"
 
-[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/XpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/XpContainer" unique_id=1137843829]
 custom_minimum_size = Vector2(100, 8)
 layout_mode = 2
 size_flags_vertical = 4
@@ -4942,7 +4942,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_qemec")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ywuuj")
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/XpContainer/ProgressBar" node_paths=PackedStringArray("level_label")]
+[node name="ProgressBar" type="ProgressBar" parent="BorderLayer/XpContainer/ProgressBar" unique_id=721748698 node_paths=PackedStringArray("level_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4956,7 +4956,7 @@ show_percentage = false
 script = ExtResource("44_hl7j1")
 level_label = NodePath("../../Label")
 
-[node name="Timer" type="Timer" parent="BorderLayer/XpContainer/ProgressBar"]
+[node name="Timer" type="Timer" parent="BorderLayer/XpContainer/ProgressBar" unique_id=831087875]
 wait_time = 0.4
 
 [connection signal="game_end" from="." to="BorderLayer/Timer" method="_on_game_end"]

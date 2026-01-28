@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dblnhywjhlbx3"]
+[gd_scene format=3 uid="uid://dblnhywjhlbx3"]
 
 [ext_resource type="Script" uid="uid://cpgt5xd2lsn7y" path="res://Scripts/Weapon/ForceField.gd" id="1_m6gnn"]
 [ext_resource type="PackedScene" uid="uid://dffv1bbjc0b77" path="res://Scenes/Weapon/Projectile/Flame.tscn" id="2_m6gnn"]
 [ext_resource type="PackedScene" uid="uid://cuqnhi1hj8qnd" path="res://Scenes/Weapon/Projectile/Field.tscn" id="3_s7cxd"]
 
-[node name="ForceField" type="Node2D" node_paths=PackedStringArray("projectile_instance")]
+[node name="ForceField" type="Node2D" unique_id=1285151609 node_paths=PackedStringArray("projectile_instance")]
 script = ExtResource("1_m6gnn")
 projectile_instance = NodePath("Field")
 weapon_type = 9
@@ -13,4 +13,4 @@ damage = 3.0
 projectile_lifetime = 0.0
 damage_delay = 1.5
 
-[node name="Field" parent="." instance=ExtResource("3_s7cxd")]
+[node name="Field" parent="." unique_id=1360493017 instance=ExtResource("3_s7cxd")]

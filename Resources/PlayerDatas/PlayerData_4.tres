@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://cb6utip7763vo"]
+[gd_resource type="Resource" script_class="ShipData" format=3 uid="uid://cb6utip7763vo"]
 
 [ext_resource type="Script" uid="uid://duflb2yo25aot" path="res://Scripts/Character/Player/ShipData.gd" id="1_e5126"]
 [ext_resource type="PackedScene" uid="uid://di6mjhwc7xhdj" path="res://Scenes/UI/Upgrade/Layouts/ShipUpgradeLayout_4.tscn" id="2_e5126"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8nwpkntxq2h"]
+[gd_scene format=3 uid="uid://8nwpkntxq2h"]
 
 [ext_resource type="Texture2D" uid="uid://bsgybucbvxu5g" path="res://Sprites/Environment/Backgrounds/Background.png" id="1_b7g4b"]
 [ext_resource type="Script" uid="uid://bwp1ryc7tju4f" path="res://Scripts/UI/Settings/ShipSelectionController.gd" id="2_tnqb0"]
@@ -41,14 +41,14 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ShipSelectionMenu" type="Node2D"]
+[node name="ShipSelectionMenu" type="Node2D" unique_id=1440801420]
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1761148202]
 z_index = -1
 position = Vector2(241, 137)
 texture = ExtResource("1_b7g4b")
 
-[node name="ShipSelectionLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("ships_container", "selected_ship_name", "selected_ship_icon", "selected_ship_desc", "selected_ship_stats", "desc", "stats", "layout", "desc_button", "stats_button", "layout_button", "layout_pivot")]
+[node name="ShipSelectionLayer" type="CanvasLayer" parent="." unique_id=1057576538 node_paths=PackedStringArray("ships_container", "selected_ship_name", "selected_ship_icon", "selected_ship_desc", "selected_ship_stats", "desc", "stats", "layout", "desc_button", "stats_button", "layout_button", "layout_pivot")]
 script = ExtResource("2_tnqb0")
 ships_container = NodePath("Settings/CenterContainer/VBoxContainer/ShipSelection/ShipsGridContainer")
 ship_datas = Array[ExtResource("3_t87wf")]([ExtResource("4_aohvp"), ExtResource("5_7pi2c"), ExtResource("6_aohvp"), ExtResource("7_7pi2c"), ExtResource("8_83eoe")])
@@ -69,7 +69,7 @@ layout_pivot = NodePath("Settings/CenterContainer/VBoxContainer/ShipSelection/Sh
 layout_offset = Vector2(7, -22)
 layout_scale = 0.45
 
-[node name="Settings" type="Control" parent="ShipSelectionLayer"]
+[node name="Settings" type="Control" parent="ShipSelectionLayer" unique_id=1342417420]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,7 +77,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="ShipSelectionLayer/Settings"]
+[node name="CenterContainer" type="CenterContainer" parent="ShipSelectionLayer/Settings" unique_id=165350338]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,59 +85,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer" unique_id=1160900797]
 layout_mode = 2
 theme_override_constants/separation = 35
 alignment = 1
 
-[node name="ShipSelection" type="HBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer"]
+[node name="ShipSelection" type="HBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer" unique_id=1991540910]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="ShipsGridContainer" type="GridContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection"]
+[node name="ShipsGridContainer" type="GridContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection" unique_id=324728838]
 layout_mode = 2
 columns = 3
 
-[node name="ShipInfos" type="MarginContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection"]
+[node name="ShipInfos" type="MarginContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection" unique_id=1382645331]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos"]
+[node name="MarginContainer" type="MarginContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos" unique_id=1738408929]
 layout_mode = 2
 theme_override_constants/margin_left = -5
 theme_override_constants/margin_top = -5
 theme_override_constants/margin_right = -5
 theme_override_constants/margin_bottom = -5
 
-[node name="Panel" type="Panel" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/MarginContainer"]
+[node name="Panel" type="Panel" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/MarginContainer" unique_id=1754836079]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aohvp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos" unique_id=1064487972]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 alignment = 1
 
-[node name="ShipNameLabel" type="Label" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer"]
+[node name="ShipNameLabel" type="Label" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer" unique_id=413793529]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Super ship 1"
 horizontal_alignment = 1
 
-[node name="Desc" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer"]
+[node name="Desc" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer" unique_id=1151220415]
 visible = false
 layout_mode = 2
 
-[node name="ShipIconTextureRect" type="TextureRect" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Desc"]
+[node name="ShipIconTextureRect" type="TextureRect" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Desc" unique_id=1486050743]
 layout_mode = 2
 texture = ExtResource("3_rl434")
 stretch_mode = 3
 
-[node name="ShipDescLabel" type="Label" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Desc"]
+[node name="ShipDescLabel" type="Label" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Desc" unique_id=1911512205]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
@@ -145,16 +145,16 @@ text = "Super ship 1 Super ship 1 Super ship 1 Super ship 1"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Stats" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer"]
+[node name="Stats" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer" unique_id=160430291]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="BlankSpace" type="Control" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Stats"]
+[node name="BlankSpace" type="Control" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Stats" unique_id=1921150943]
 layout_mode = 2
 
-[node name="ShipStatsLabel" type="Label" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Stats"]
+[node name="ShipStatsLabel" type="Label" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Stats" unique_id=831230268]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 size_flags_vertical = 3
@@ -165,48 +165,48 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Layout" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer"]
+[node name="Layout" type="VBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer" unique_id=1540196756]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Layout"]
+[node name="Control" type="Control" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Layout" unique_id=1594314201]
 layout_mode = 2
 
-[node name="Buttons" type="HBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer" unique_id=2101777138]
 layout_mode = 2
 size_flags_vertical = 10
 alignment = 1
 
-[node name="DescButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Buttons"]
+[node name="DescButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Buttons" unique_id=1055309720]
 layout_mode = 2
 focus_mode = 1
 theme_override_font_sizes/font_size = 8
 text = "Desc"
 
-[node name="StatsButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Buttons"]
+[node name="StatsButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Buttons" unique_id=348566607]
 layout_mode = 2
 focus_mode = 1
 theme_override_font_sizes/font_size = 8
 text = "Stats"
 
-[node name="LayoutButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Buttons"]
+[node name="LayoutButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/ShipSelection/ShipInfos/VBoxContainer/Buttons" unique_id=529012821]
 layout_mode = 2
 focus_mode = 1
 theme_override_font_sizes/font_size = 8
 text = "Layout"
 
-[node name="Buttons" type="HBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer" unique_id=1513759704]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 15
 
-[node name="PlayButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/Buttons"]
+[node name="PlayButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/Buttons" unique_id=1876101917]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_83eoe")
 text = "Play"
 
-[node name="BackButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/Buttons"]
+[node name="BackButton" type="Button" parent="ShipSelectionLayer/Settings/CenterContainer/VBoxContainer/Buttons" unique_id=539841775]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_83eoe")

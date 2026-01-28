@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gckvhlh5xlb4"]
+[gd_scene format=3 uid="uid://gckvhlh5xlb4"]
 
 [ext_resource type="Script" uid="uid://cdks4sdvx0xb0" path="res://Scripts/UI/Upgrade/UpgradeButton.gd" id="1_k8bql"]
 [ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="2_n5eft"]
@@ -35,7 +35,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="UpgradeButton" type="MarginContainer" node_paths=PackedStringArray("button", "selected_control")]
+[node name="UpgradeButton" type="MarginContainer" unique_id=809930457 node_paths=PackedStringArray("button", "selected_control")]
 custom_minimum_size = Vector2(70, 0)
 offset_right = 70.0
 offset_bottom = 82.0
@@ -43,7 +43,7 @@ script = ExtResource("1_k8bql")
 button = NodePath("Button")
 selected_control = NodePath("SelectedMargin")
 
-[node name="SelectedMargin" type="MarginContainer" parent="."]
+[node name="SelectedMargin" type="MarginContainer" parent="." unique_id=2036902414]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = -2
@@ -51,17 +51,17 @@ theme_override_constants/margin_top = -2
 theme_override_constants/margin_right = -2
 theme_override_constants/margin_bottom = -2
 
-[node name="SelectedPanel" type="Panel" parent="SelectedMargin"]
+[node name="SelectedPanel" type="Panel" parent="SelectedMargin" unique_id=95611919]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o2glp")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=582365555]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_n5eft")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ulwj7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iiwha")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=460070616]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
@@ -69,11 +69,11 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=778198609]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1010882520]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
@@ -83,7 +83,7 @@ text = "TITRE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=571349260]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 15
@@ -91,7 +91,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=25862498]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -99,7 +99,7 @@ mouse_filter = 2
 texture = ExtResource("2_n5eft")
 expand_mode = 4
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1125990080]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2

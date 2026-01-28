@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b64nlx2j2f7id"]
+[gd_scene format=3 uid="uid://b64nlx2j2f7id"]
 
 [ext_resource type="PackedScene" uid="uid://xjrr711srctt" path="res://Scenes/Enemy/Sentinel.tscn" id="1_jd38l"]
 [ext_resource type="PackedScene" uid="uid://clx0da5xhiltf" path="res://Scenes/Weapon/Projectile/SentinelBlast_Green.tscn" id="2_60gc8"]
 [ext_resource type="Texture2D" uid="uid://b6o0oq3yj2cij" path="res://Sprites/Ship/Enemies/Sentinel_Green.png" id="2_glwah"]
 
-[node name="Sentinel_Green" instance=ExtResource("1_jd38l")]
+[node name="Sentinel_Green" unique_id=1976817853 instance=ExtResource("1_jd38l")]
 attack = 20
 xp_value = 6
 xp_modulate_color = Color(1, 0.3529412, 0.21960784, 1)
 xp_scene_scale = 2.2
 health_max = 40
 
-[node name="SentinelBlaster" parent="." index="0"]
+[node name="SentinelBlaster" parent="." index="0" unique_id=1025075205]
 projectile = ExtResource("2_60gc8")
 damage = 20.0
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="1" unique_id=1416628702]
 texture = ExtResource("2_glwah")
 
 [editable path="HealthBar"]

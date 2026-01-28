@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://c705qluycds4y"]
+[gd_scene format=3 uid="uid://c705qluycds4y"]
 
 [ext_resource type="Script" uid="uid://i6xib1f6ch35" path="res://Scripts/Environment/Planets/Planet.gd" id="1_6gajy"]
 [ext_resource type="Resource" uid="uid://51le5coa5hop" path="res://Resources/Dialogues/Quests/Quest_Delivery.tres" id="2_g5olb"]
@@ -660,7 +660,7 @@ _data = {
 &"move": SubResource("Animation_iabpa")
 }
 
-[node name="Planet" type="Node2D" node_paths=PackedStringArray("quest_sprite", "quest_target_sprite", "animated_sprite", "highlight_sprite", "quest_stay_area", "quest_stay_polygon", "stay_progress_bar")]
+[node name="Planet" type="Node2D" unique_id=1116140614 node_paths=PackedStringArray("quest_sprite", "quest_target_sprite", "animated_sprite", "highlight_sprite", "quest_stay_area", "quest_stay_polygon", "stay_progress_bar")]
 script = ExtResource("1_6gajy")
 quest_delay_min = 45.0
 quest_delay_max = 120.0
@@ -675,34 +675,34 @@ quest_stay_area = NodePath("QuestStayArea")
 quest_stay_polygon = NodePath("QuestStayArea/Polygon2D")
 stay_progress_bar = NodePath("StayProgressBar")
 
-[node name="QuestStayArea" type="Area2D" parent="." node_paths=PackedStringArray("collision_polygon", "polygon")]
+[node name="QuestStayArea" type="Area2D" parent="." unique_id=1575447710 node_paths=PackedStringArray("collision_polygon", "polygon")]
 script = ExtResource("7_nme2f")
 collision_polygon = NodePath("CollisionPolygon2D")
 polygon = NodePath("Polygon2D")
 radius = 100.0
 color = Color(1, 0, 0, 0.12156863)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="QuestStayArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="QuestStayArea" unique_id=1150695466]
 polygon = PackedVector2Array(-100, 8.742278e-06, -99.51847, -9.80171, -98.07853, -19.509031, -95.69404, -29.028473, -92.38795, -38.26835, -88.19212, -47.139683, -83.146965, -55.55702, -77.30105, -63.439327, -70.71068, -70.71068, -63.439327, -77.30105, -55.55702, -83.146965, -47.139664, -88.19213, -38.26834, -92.387955, -29.028473, -95.69403, -19.509033, -98.07852, -9.80171, -99.51847, -4.371139e-06, -100, 9.801713, -99.51847, 19.509035, -98.07852, 29.028463, -95.69404, 38.26834, -92.38795, 47.13968, -88.19212, 55.557026, -83.14696, 63.439327, -77.30104, 70.71068, -70.71068, 77.30105, -63.439327, 83.14696, -55.557026, 88.19213, -47.13967, 92.38795, -38.268345, 95.69404, -29.028467, 98.07852, -19.509033, 99.51847, -9.801714, 100, 0, 99.51847, 9.801714, 98.07852, 19.509033, 95.69404, 29.028467, 92.38795, 38.268345, 88.19213, 47.13967, 83.14696, 55.557026, 77.30105, 63.439327, 70.71068, 70.71068, 63.439327, 77.30104, 55.557026, 83.14696, 47.13968, 88.19212, 38.26834, 92.38795, 29.028463, 95.69404, 19.509035, 98.07852, 9.801713, 99.51847, -4.371139e-06, 100, -9.80171, 99.51847, -19.509033, 98.07852, -29.028473, 95.69403, -38.26834, 92.387955, -47.139664, 88.19213, -55.55702, 83.146965, -63.439327, 77.30105, -70.71068, 70.71068, -77.30105, 63.439327, -83.146965, 55.55702, -88.19212, 47.139683, -92.38795, 38.26835, -95.69404, 29.028473, -98.07853, 19.509031, -99.51847, 9.80171)
 
-[node name="Polygon2D" type="Polygon2D" parent="QuestStayArea"]
+[node name="Polygon2D" type="Polygon2D" parent="QuestStayArea" unique_id=1867120868]
 color = Color(1, 0, 0, 0.12156863)
 polygon = PackedVector2Array(-100, 8.742278e-06, -99.51847, -9.80171, -98.07853, -19.509031, -95.69404, -29.028473, -92.38795, -38.26835, -88.19212, -47.139683, -83.146965, -55.55702, -77.30105, -63.439327, -70.71068, -70.71068, -63.439327, -77.30105, -55.55702, -83.146965, -47.139664, -88.19213, -38.26834, -92.387955, -29.028473, -95.69403, -19.509033, -98.07852, -9.80171, -99.51847, -4.371139e-06, -100, 9.801713, -99.51847, 19.509035, -98.07852, 29.028463, -95.69404, 38.26834, -92.38795, 47.13968, -88.19212, 55.557026, -83.14696, 63.439327, -77.30104, 70.71068, -70.71068, 77.30105, -63.439327, 83.14696, -55.557026, 88.19213, -47.13967, 92.38795, -38.268345, 95.69404, -29.028467, 98.07852, -19.509033, 99.51847, -9.801714, 100, 0, 99.51847, 9.801714, 98.07852, 19.509033, 95.69404, 29.028467, 92.38795, 38.268345, 88.19213, 47.13967, 83.14696, 55.557026, 77.30105, 63.439327, 70.71068, 70.71068, 63.439327, 77.30104, 55.557026, 83.14696, 47.13968, 88.19212, 38.26834, 92.38795, 29.028463, 95.69404, 19.509035, 98.07852, 9.801713, 99.51847, -4.371139e-06, 100, -9.80171, 99.51847, -19.509033, 98.07852, -29.028473, 95.69403, -38.26834, 92.387955, -47.139664, 88.19213, -55.55702, 83.146965, -63.439327, 77.30105, -70.71068, 70.71068, -77.30105, 63.439327, -83.146965, 55.55702, -88.19212, 47.139683, -92.38795, 38.26835, -95.69404, 29.028473, -98.07853, 19.509031, -99.51847, 9.80171)
 
-[node name="Highlight" type="Sprite2D" parent="."]
+[node name="Highlight" type="Sprite2D" parent="." unique_id=875063051]
 visible = false
 texture = ExtResource("2_loxdm")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=970482726]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1361831432]
 shape = SubResource("CircleShape2D_loxdm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1717544026]
 sprite_frames = SubResource("SpriteFrames_yvnh7")
 autoplay = "default"
 
-[node name="StayProgressBar" type="ProgressBar" parent="."]
+[node name="StayProgressBar" type="ProgressBar" parent="." unique_id=293875982]
 visible = false
 custom_minimum_size = Vector2(56, 0)
 anchors_preset = 8
@@ -722,29 +722,25 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_i6g0o")
 max_value = 5.0
 value = 3.61
 
-[node name="Exclamation" type="Node2D" parent="."]
+[node name="Exclamation" type="Node2D" parent="." unique_id=816692975]
 visible = false
 
-[node name="Animation" type="AnimationPlayer" parent="Exclamation"]
+[node name="Animation" type="AnimationPlayer" parent="Exclamation" unique_id=1584014550]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_g5olb")
-}
-autoplay = "move"
+libraries/ = SubResource("AnimationLibrary_g5olb")
+autoplay = &"move"
 
-[node name="Sprite2D" type="Sprite2D" parent="Exclamation"]
+[node name="Sprite2D" type="Sprite2D" parent="Exclamation" unique_id=1964328271]
 texture = ExtResource("2_s0nqy")
 
-[node name="Interrogation" type="Node2D" parent="."]
+[node name="Interrogation" type="Node2D" parent="." unique_id=1645050671]
 visible = false
 
-[node name="Animation" type="AnimationPlayer" parent="Interrogation"]
-libraries = {
-&"": SubResource("AnimationLibrary_nme2f")
-}
-autoplay = "move"
+[node name="Animation" type="AnimationPlayer" parent="Interrogation" unique_id=2142189885]
+libraries/ = SubResource("AnimationLibrary_nme2f")
+autoplay = &"move"
 
-[node name="Sprite2D" type="Sprite2D" parent="Interrogation"]
+[node name="Sprite2D" type="Sprite2D" parent="Interrogation" unique_id=1841586327]
 texture = ExtResource("6_iabpa")
 
 [connection signal="body_entered" from="QuestStayArea" to="." method="_on_quest_stay_area_body_entered"]

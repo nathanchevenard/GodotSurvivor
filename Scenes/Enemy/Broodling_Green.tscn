@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ipnns3ul687l"]
+[gd_scene format=3 uid="uid://ipnns3ul687l"]
 
 [ext_resource type="PackedScene" uid="uid://c8fd3xjj47eai" path="res://Scenes/Enemy/Broodling.tscn" id="1_4dibt"]
 [ext_resource type="Texture2D" uid="uid://cashgu14f4ndn" path="res://Sprites/Ship/Enemies/Broodling_Green.png" id="2_gta7j"]
 
-[node name="Broodling_Green" instance=ExtResource("1_4dibt")]
+[node name="Broodling_Green" unique_id=2119861272 instance=ExtResource("1_4dibt")]
 attack = 20
 xp_value = 3
 xp_modulate_color = Color(0.8284073, 0.50510865, 0.31733212, 1)
@@ -11,7 +11,7 @@ xp_scene_scale = 1.5
 speed_max = 70.0
 health_max = 20
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0" unique_id=250852697]
 texture = ExtResource("2_gta7j")
 
 [editable path="HealthBar"]

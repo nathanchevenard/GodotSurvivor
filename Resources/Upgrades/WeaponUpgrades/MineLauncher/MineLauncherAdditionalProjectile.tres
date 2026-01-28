@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=3 format=3 uid="uid://ct7nw83b7x0p6"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://ct7nw83b7x0p6"]
 
 [ext_resource type="Texture2D" uid="uid://bsefyq3mqt6ut" path="res://Sprites/Icons/Weapons/mine_white.png" id="1_p8sas"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_oiim8"]

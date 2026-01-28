@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=9 format=3 uid="uid://dgvfk08521uns"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://dgvfk08521uns"]
 
 [ext_resource type="Texture2D" uid="uid://dfutxyxbdyfli" path="res://Sprites/Icons/Weapons/bomb_white.png" id="1_bkyia"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_k0x6g"]

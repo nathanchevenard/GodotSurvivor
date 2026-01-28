@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dffv1bbjc0b77"]
+[gd_scene format=3 uid="uid://dffv1bbjc0b77"]
 
 [ext_resource type="Script" uid="uid://dlm5pli60484r" path="res://Scripts/Weapon/Projectile/Flame.gd" id="1_8dfw8"]
 [ext_resource type="Texture2D" uid="uid://dymdci0y5eqgn" path="res://Sprites/Projectiles/Fire/fire_column_medium_4.png" id="2_w6m7c"]
@@ -87,20 +87,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dfw8"]
 size = Vector2(51.4, 20)
 
-[node name="Flame" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="Flame" type="Area2D" unique_id=1539287132 node_paths=PackedStringArray("sprite")]
 collision_layer = 4
 collision_mask = 74
 script = ExtResource("1_8dfw8")
 sprite = NodePath("AnimatedSprite2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1865944357]
 position = Vector2(34.599995, -1.9999999)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_av4hx")
 animation = &"hidden"
 autoplay = "hidden"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1784113740]
 position = Vector2(25.3, -2)
 shape = SubResource("RectangleShape2D_8dfw8")
 

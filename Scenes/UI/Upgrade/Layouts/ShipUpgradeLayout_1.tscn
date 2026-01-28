@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx458hce2u6x0"]
+[gd_scene format=3 uid="uid://cx458hce2u6x0"]
 
 [ext_resource type="Script" uid="uid://g08d4ni511wd" path="res://Scripts/UI/Upgrade/ShipUpgradeLayout.gd" id="1_m4r6v"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="1_o0bla"]
@@ -11,7 +11,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ShipUpgradeLayout_1" type="Control" node_paths=PackedStringArray("weapon_pivot_buttons", "ship_sprite", "ship_upgrades_line", "ship_selection_upgrades_pivot", "indicators", "indicators_pivot")]
+[node name="ShipUpgradeLayout_1" type="Control" unique_id=2018888625 node_paths=PackedStringArray("weapon_pivot_buttons", "ship_sprite", "ship_upgrades_line", "ship_selection_upgrades_pivot", "indicators", "indicators_pivot")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -28,32 +28,32 @@ indicator_angle = 45.0
 indicator_range = 50.0
 indicator_color = Color(1, 0, 0, 0.15294118)
 
-[node name="WeaponAngleIndicators" type="Node2D" parent="."]
+[node name="WeaponAngleIndicators" type="Node2D" parent="." unique_id=125595674]
 
-[node name="@Polygon2D@96202" type="Polygon2D" parent="WeaponAngleIndicators"]
+[node name="@Polygon2D@96202" type="Polygon2D" parent="WeaponAngleIndicators" unique_id=1309315661]
 position = Vector2(147, 151)
 color = Color(1, 0, 0, 0.15294118)
 polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
 
-[node name="@Polygon2D@96203" type="Polygon2D" parent="WeaponAngleIndicators"]
+[node name="@Polygon2D@96203" type="Polygon2D" parent="WeaponAngleIndicators" unique_id=649848715]
 position = Vector2(117, 127)
 rotation = -1.5707964
 color = Color(1, 0, 0, 0.15294118)
 polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
 
-[node name="@Polygon2D@96204" type="Polygon2D" parent="WeaponAngleIndicators"]
+[node name="@Polygon2D@96204" type="Polygon2D" parent="WeaponAngleIndicators" unique_id=488101126]
 position = Vector2(117, 175)
 rotation = 1.5707964
 color = Color(1, 0, 0, 0.15294118)
 polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
 
-[node name="@Polygon2D@96205" type="Polygon2D" parent="WeaponAngleIndicators"]
+[node name="@Polygon2D@96205" type="Polygon2D" parent="WeaponAngleIndicators" unique_id=1560937255]
 position = Vector2(95, 151)
 rotation = 3.1415927
 color = Color(1, 0, 0, 0.15294118)
 polygon = PackedVector2Array(0, 0, 46.193974, -19.134172, 47.0772, -16.844492, 47.84702, -14.514234, 48.501564, -12.149009, 49.03926, -9.754517, 49.458824, -7.3365235, 49.759235, -4.900857, 49.939774, -2.453384, 50, 0, 49.939774, 2.453384, 49.759235, 4.900857, 49.458824, 7.3365235, 49.03926, 9.754517, 48.501564, 12.149009, 47.84702, 14.514234, 47.0772, 16.844492, 46.193974, 19.134172)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1418398987]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,7 +69,7 @@ grow_vertical = 2
 rotation = 1.5707964
 texture = ExtResource("1_o0bla")
 
-[node name="WeaponPivot7" parent="." instance=ExtResource("2_m4r6v")]
+[node name="WeaponPivot7" parent="." unique_id=608770703 instance=ExtResource("2_m4r6v")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,19 +83,19 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line2D" parent="WeaponPivot7" index="0"]
+[node name="Line2D" parent="WeaponPivot7" index="0" unique_id=690253691]
 position = Vector2(221, 154)
 scale = Vector2(1, -1)
 points = PackedVector2Array(-33, 19, -59, 19)
 
-[node name="Panel2" parent="WeaponPivot7" index="1"]
+[node name="Panel2" parent="WeaponPivot7" index="1" unique_id=441590104]
 offset_left = 181.0
 offset_top = 118.0
 offset_right = 215.0
 offset_bottom = 152.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
 
-[node name="WeaponPivot" parent="." instance=ExtResource("2_m4r6v")]
+[node name="WeaponPivot" parent="." unique_id=854593473 instance=ExtResource("2_m4r6v")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,7 +109,7 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WeaponPivot5" parent="." instance=ExtResource("2_m4r6v")]
+[node name="WeaponPivot5" parent="." unique_id=1893679005 instance=ExtResource("2_m4r6v")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,18 +123,18 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line2D" parent="WeaponPivot5" index="0"]
+[node name="Line2D" parent="WeaponPivot5" index="0" unique_id=690253691]
 position = Vector2(119, 182)
 scale = Vector2(1, -1)
 
-[node name="Panel2" parent="WeaponPivot5" index="1"]
+[node name="Panel2" parent="WeaponPivot5" index="1" unique_id=441590104]
 offset_left = 59.0
 offset_top = 185.0
 offset_right = 93.0
 offset_bottom = 219.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
 
-[node name="WeaponPivot6" parent="." instance=ExtResource("2_m4r6v")]
+[node name="WeaponPivot6" parent="." unique_id=596249115 instance=ExtResource("2_m4r6v")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -148,25 +148,25 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line2D" parent="WeaponPivot6" index="0"]
+[node name="Line2D" parent="WeaponPivot6" index="0" unique_id=690253691]
 position = Vector2(119, 154)
 scale = Vector2(1, -1)
 points = PackedVector2Array(-14, 19, -59, 19)
 
-[node name="Panel2" parent="WeaponPivot6" index="1"]
+[node name="Panel2" parent="WeaponPivot6" index="1" unique_id=441590104]
 offset_left = 37.0
 offset_top = 118.0
 offset_right = 71.0
 offset_bottom = 152.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." unique_id=885045096]
 position = Vector2(362, 96)
 points = PackedVector2Array(-243, 57, -177, 122, 72, 122)
 width = 2.0
 default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
 
-[node name="ShipSelectionUpgradesPivot" type="HBoxContainer" parent="."]
+[node name="ShipSelectionUpgradesPivot" type="HBoxContainer" parent="." unique_id=691912482]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
 offset_left = -4.0

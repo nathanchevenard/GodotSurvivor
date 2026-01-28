@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xjrr711srctt"]
+[gd_scene format=3 uid="uid://xjrr711srctt"]
 
 [ext_resource type="Script" uid="uid://bmqhuvbo0f8i3" path="res://Scripts/Character/Enemy/Sentinel.gd" id="1_w2qwd"]
 [ext_resource type="PackedScene" uid="uid://bwc7gqdyu0gkt" path="res://Scenes/Weapon/Enemy/SentinelBlaster.tscn" id="2_2a38k"]
@@ -14,7 +14,7 @@ radius = 14.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrfir"]
 bg_color = Color(0.74902, 0, 0, 1)
 
-[node name="Sentinel" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Sentinel" type="CharacterBody2D" unique_id=385620453 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 107
 script = ExtResource("1_w2qwd")
@@ -25,27 +25,27 @@ speed_max = 60.0
 target_groups = Array[String](["Player"])
 health_max = 20
 
-[node name="SentinelBlaster" parent="." instance=ExtResource("2_2a38k")]
+[node name="SentinelBlaster" parent="." unique_id=1025075205 instance=ExtResource("2_2a38k")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1416628702]
 position = Vector2(2.85714, 0)
 rotation = 1.5708
 texture = ExtResource("2_r7cw0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952012050]
 position = Vector2(-2.38419e-07, 0)
 shape = SubResource("CircleShape2D_bg3c5")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1537247909]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=122027205]
 position = Vector2(-2.38419e-07, 0)
 shape = SubResource("CircleShape2D_onrp8")
 debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
-[node name="HealthBar" parent="." instance=ExtResource("3_6fcrk")]
+[node name="HealthBar" parent="." unique_id=1232652320 instance=ExtResource("3_6fcrk")]
 
 [node name="ProgressBar" parent="HealthBar" index="0"]
 visible = false
@@ -58,7 +58,7 @@ offset_right = 24.0
 offset_bottom = 2.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_qrfir")
 
-[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="." unique_id=322951359]
 remote_path = NodePath("../HealthBar")
 update_rotation = false
 

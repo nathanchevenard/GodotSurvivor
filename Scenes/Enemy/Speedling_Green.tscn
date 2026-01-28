@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://br04kbuky6gys"]
+[gd_scene format=3 uid="uid://br04kbuky6gys"]
 
 [ext_resource type="PackedScene" uid="uid://cf8hlkxpckrf1" path="res://Scenes/Enemy/Speedling.tscn" id="1_otx1f"]
 [ext_resource type="Texture2D" uid="uid://b18y5po7gadf4" path="res://Sprites/Ship/Enemies/Speedling_Green.png" id="2_xqjxn"]
 
-[node name="Speedling_Green" instance=ExtResource("1_otx1f")]
+[node name="Speedling_Green" unique_id=1338686818 instance=ExtResource("1_otx1f")]
 attack = 10
 speed_max = 130.0
 health_max = 10
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0" unique_id=1115294744]
 texture = ExtResource("2_xqjxn")
 
 [editable path="HealthBar"]

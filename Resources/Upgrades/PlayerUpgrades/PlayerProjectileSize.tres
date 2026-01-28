@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShipUpgrade" load_steps=3 format=3 uid="uid://mlmv21x0w8hn"]
+[gd_resource type="Resource" script_class="ShipUpgrade" format=3 uid="uid://mlmv21x0w8hn"]
 
 [ext_resource type="Texture2D" uid="uid://cd6yhe2oy6n7p" path="res://Sprites/Icons/Player/size.png" id="1_0eeoh"]
 [ext_resource type="Script" uid="uid://bd43a7kqimpp0" path="res://Scripts/Upgrade/ShipUpgrade.gd" id="2_kgdup"]

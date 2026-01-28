@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qbuifotpb80f"]
 
-[node name="Quest" type="RichTextLabel"]
+[node name="Quest" type="RichTextLabel" unique_id=604672119]
 offset_right = 87.0
 offset_bottom = 9.0
 theme_override_font_sizes/normal_font_size = 5

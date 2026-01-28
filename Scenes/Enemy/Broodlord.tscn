@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3iq6bwjslrd1"]
+[gd_scene format=3 uid="uid://d3iq6bwjslrd1"]
 
 [ext_resource type="Script" uid="uid://c4e7f7t32xqdq" path="res://Scripts/Character/Enemy/Broodlord.gd" id="1_d263m"]
 [ext_resource type="Texture2D" uid="uid://dvsd2ftvbswmu" path="res://Sprites/Ship/Enemies/Broodlord.png" id="2_d263m"]
@@ -14,7 +14,7 @@ size = Vector2(97.142876, 71.42859)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndmkx"]
 bg_color = Color(0.74902, 0, 0, 1)
 
-[node name="Broodlord" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Broodlord" type="CharacterBody2D" unique_id=1223084027 groups=["Enemy"]]
 scale = Vector2(0.7, 0.7)
 collision_layer = 64
 collision_mask = 104
@@ -34,27 +34,27 @@ speed_max = 50.0
 target_groups = Array[String](["Player"])
 health_max = 1000
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=474468520]
 position = Vector2(2.85714, 0)
 rotation = 1.5708
 texture = ExtResource("2_d263m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1874497032]
 position = Vector2(1.3623908e-06, -0.7142844)
 scale = Vector2(0.99999934, 0.99999934)
 shape = SubResource("RectangleShape2D_wsinb")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1338836356]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=547915568]
 position = Vector2(-2.3841898e-07, 0)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_vlben")
 debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
-[node name="HealthBar" parent="." instance=ExtResource("3_vlben")]
+[node name="HealthBar" parent="." unique_id=734945296 instance=ExtResource("3_vlben")]
 scale = Vector2(0.7, 0.7)
 
 [node name="ProgressBar" parent="HealthBar" index="0"]
@@ -68,7 +68,7 @@ offset_right = 72.0
 offset_bottom = 5.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ndmkx")
 
-[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="." unique_id=1338758576]
 remote_path = NodePath("../HealthBar")
 update_rotation = false
 

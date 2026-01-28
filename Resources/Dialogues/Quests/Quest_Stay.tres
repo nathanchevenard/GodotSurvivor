@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestData" load_steps=5 format=3 uid="uid://2cqowimheo0v"]
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://2cqowimheo0v"]
 
 [ext_resource type="Script" uid="uid://n2nn4mwnh355" path="res://Scripts/Dialogue/DialogueData.gd" id="1_48neb"]
 [ext_resource type="Script" uid="uid://0qjbccldreqo" path="res://Scripts/Dialogue/QuestData.gd" id="1_qki46"]

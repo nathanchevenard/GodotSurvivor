@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dde05t1378h7c"]
+[gd_scene format=3 uid="uid://dde05t1378h7c"]
 
 [ext_resource type="Script" uid="uid://cnk7lm4gj8s6a" path="res://Scripts/UI/Upgrade/WeaponPivotButton.gd" id="1_nmuc3"]
 
@@ -23,20 +23,20 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="WeaponPivot" type="Control"]
+[node name="WeaponPivot" type="Control" unique_id=158577795]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 20.0
 offset_right = 40.0
 offset_bottom = 60.0
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." unique_id=690253691]
 position = Vector2(119, 88)
 points = PackedVector2Array(7, 18, -4, -5, -27, -5)
 width = 2.0
 default_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Panel2" type="Panel" parent="." unique_id=441590104]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 51.0
@@ -44,14 +44,14 @@ offset_right = 94.0
 offset_bottom = 85.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_04r5f")
 
-[node name="HoveredPanel" type="Panel" parent="Panel2"]
+[node name="HoveredPanel" type="Panel" parent="Panel2" unique_id=644371860]
 visible = false
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 34.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nmuc3")
 
-[node name="Panel3" type="Panel" parent="Panel2"]
+[node name="Panel3" type="Panel" parent="Panel2" unique_id=160396726]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ffwt3")
 
-[node name="TextureRect" type="TextureRect" parent="Panel2/Panel3"]
+[node name="TextureRect" type="TextureRect" parent="Panel2/Panel3" unique_id=234282313]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
 
-[node name="Button" type="Button" parent="Panel2" node_paths=PackedStringArray("weapon_texture", "hovered_panel", "number_label")]
+[node name="Button" type="Button" parent="Panel2" unique_id=1404090345 node_paths=PackedStringArray("weapon_texture", "hovered_panel", "number_label")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
 anchors_preset = 8
@@ -95,7 +95,7 @@ weapon_texture = NodePath("../Panel3/TextureRect")
 hovered_panel = NodePath("../HoveredPanel")
 number_label = NodePath("../NumberLabel")
 
-[node name="NumberLabel" type="Label" parent="Panel2"]
+[node name="NumberLabel" type="Label" parent="Panel2" unique_id=2117278141]
 visible = false
 layout_mode = 1
 anchors_preset = 8

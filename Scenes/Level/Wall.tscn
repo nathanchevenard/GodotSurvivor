@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://21wyperjy0pn"]
+[gd_scene format=3 uid="uid://21wyperjy0pn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxhfh"]
 size = Vector2(1, 1)
@@ -10,12 +10,12 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_b63oq")
 width = 1
 
-[node name="Wall" type="StaticBody2D"]
+[node name="Wall" type="StaticBody2D" unique_id=904132654]
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=652464581]
 shape = SubResource("RectangleShape2D_qxhfh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=233974346]
 texture = SubResource("GradientTexture1D_17s1q")

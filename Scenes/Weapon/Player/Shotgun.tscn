@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://biwccbmjgo7tc"]
+[gd_scene format=3 uid="uid://biwccbmjgo7tc"]
 
 [ext_resource type="Script" uid="uid://bosrbnwrx2655" path="res://Scripts/Weapon/Shotgun.gd" id="1_re0r6"]
 [ext_resource type="PackedScene" uid="uid://bxfm8ql1orav" path="res://Scenes/Weapon/Projectile/Bullet.tscn" id="2_re0r6"]
 
-[node name="Shotgun" type="Node2D" node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
+[node name="Shotgun" type="Node2D" unique_id=429691423 node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
 script = ExtResource("1_re0r6")
 dispersion_angle = 25.0
 weapon_type = 6
@@ -17,14 +17,14 @@ projectile_lifetime = 0.22
 hitbox_collision = NodePath("Area2D/CollisionPolygon2D")
 hitbox_polygon = NodePath("Polygon2D")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1712042472]
 collision_layer = 4
 collision_mask = 74
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1627843624]
 polygon = PackedVector2Array(0, 0, 70.71068, -70.71068, 77.30105, -63.439327, 83.14696, -55.557026, 88.19213, -47.13967, 92.38795, -38.268345, 95.69404, -29.028467, 98.07852, -19.509033, 99.51847, -9.801714, 100, 0, 99.51847, 9.801714, 98.07852, 19.509033, 95.69404, 29.028467, 92.38795, 38.268345, 88.19213, 47.13967, 83.14696, 55.557026, 77.30105, 63.439327, 70.71068, 70.71068)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=829913119]
 visible = false
 color = Color(1, 0, 0, 0.17254902)
 polygon = PackedVector2Array(0, 0, 70.71068, -70.71068, 77.30105, -63.439327, 83.14696, -55.557026, 88.19213, -47.13967, 92.38795, -38.268345, 95.69404, -29.028467, 98.07852, -19.509033, 99.51847, -9.801714, 100, 0, 99.51847, 9.801714, 98.07852, 19.509033, 95.69404, 29.028467, 92.38795, 38.268345, 88.19213, 47.13967, 83.14696, 55.557026, 77.30105, 63.439327, 70.71068, 70.71068)

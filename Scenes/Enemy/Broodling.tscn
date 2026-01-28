@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8fd3xjj47eai"]
+[gd_scene format=3 uid="uid://c8fd3xjj47eai"]
 
 [ext_resource type="Script" uid="uid://fhmtsigkp6je" path="res://Scripts/Character/Enemy/Broodling.gd" id="1_ys715"]
 [ext_resource type="Texture2D" uid="uid://mr1ai7nel24y" path="res://Sprites/Ship/Enemies/Broodling.png" id="2_n2anr"]
@@ -12,7 +12,7 @@ radius = 11.5714
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndmkx"]
 bg_color = Color(0.74902, 0, 0, 1)
 
-[node name="Broodling" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Broodling" type="CharacterBody2D" unique_id=643689325 groups=["Enemy"]]
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 107
@@ -20,25 +20,25 @@ script = ExtResource("1_ys715")
 speed_max = 60.0
 target_groups = Array[String](["Player"])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=250852697]
 position = Vector2(2.85714, 0)
 rotation = 1.5708
 texture = ExtResource("2_n2anr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1928185782]
 position = Vector2(-2.38419e-07, 0)
 shape = SubResource("CircleShape2D_nkmkb")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=451937702]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1685580850]
 position = Vector2(-2.38419e-07, 0)
 shape = SubResource("CircleShape2D_gcmls")
 debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
-[node name="HealthBar" parent="." instance=ExtResource("3_x7eaa")]
+[node name="HealthBar" parent="." unique_id=1494276801 instance=ExtResource("3_x7eaa")]
 scale = Vector2(0.7, 0.7)
 
 [node name="ProgressBar" parent="HealthBar" index="0"]
@@ -53,7 +53,7 @@ offset_right = 22.0
 offset_bottom = 2.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ndmkx")
 
-[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="." unique_id=869703377]
 remote_path = NodePath("../HealthBar")
 update_rotation = false
 

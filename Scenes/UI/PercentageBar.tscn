@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d23qp5ohiqepc"]
+[gd_scene format=3 uid="uid://d23qp5ohiqepc"]
 
-[ext_resource type="Script" path="res://Scripts/UI/HealthBar.gd" id="1_f8ctp"]
+[ext_resource type="Script" uid="uid://wcbswdj0mgr4" path="res://Scripts/UI/HealthBar.gd" id="1_f8ctp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemec"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,10 +17,10 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csi8c"]
 bg_color = Color(0, 0.486275, 0, 1)
 
-[node name="HealthBar" type="Node2D"]
+[node name="HealthBar" type="Node2D" unique_id=244012196]
 top_level = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1410170952]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -37,7 +37,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ywuuj")
 value = 50.0
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="ProgressBar" node_paths=PackedStringArray("progress_bar_under", "timer")]
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBar" unique_id=404895597 node_paths=PackedStringArray("progress_bar_under", "timer")]
 layout_mode = 0
 offset_right = 28.0
 offset_bottom = 3.0
@@ -49,7 +49,7 @@ script = ExtResource("1_f8ctp")
 progress_bar_under = NodePath("..")
 timer = NodePath("../Timer")
 
-[node name="Timer" type="Timer" parent="ProgressBar"]
+[node name="Timer" type="Timer" parent="ProgressBar" unique_id=384074913]
 wait_time = 0.4
 
 [connection signal="timeout" from="ProgressBar/Timer" to="ProgressBar/ProgressBar" method="_on_timer_timeout"]

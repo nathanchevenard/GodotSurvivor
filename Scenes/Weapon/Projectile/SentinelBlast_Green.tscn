@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clx0da5xhiltf"]
+[gd_scene format=3 uid="uid://clx0da5xhiltf"]
 
 [ext_resource type="PackedScene" uid="uid://34ab4klw0j6d" path="res://Scenes/Weapon/Projectile/SentinelBlast.tscn" id="1_htfbo"]
 [ext_resource type="Texture2D" uid="uid://bfath6i5k1l4k" path="res://Sprites/Projectiles/SentinelBlast_Green.png" id="2_35u6h"]
@@ -39,7 +39,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SentinelBlast_Green" instance=ExtResource("1_htfbo")]
+[node name="SentinelBlast_Green" unique_id=1494340336 instance=ExtResource("1_htfbo")]
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1004763607]
 sprite_frames = SubResource("SpriteFrames_5taa6")

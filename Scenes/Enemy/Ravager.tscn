@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bskqt7gbyvfh7"]
+[gd_scene format=3 uid="uid://bskqt7gbyvfh7"]
 
 [ext_resource type="Script" uid="uid://c3v8d3ar3c503" path="res://Scripts/Character/Enemy/Ravager.gd" id="1_2v341"]
 [ext_resource type="Texture2D" uid="uid://c72f4xlseq8mr" path="res://Sprites/Ship/Enemies/Ravager.png" id="2_vg34x"]
@@ -16,7 +16,7 @@ bg_color = Color(1, 0.462745, 0.513726, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrfir"]
 bg_color = Color(0.74902, 0, 0, 1)
 
-[node name="Ravager" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Ravager" type="CharacterBody2D" unique_id=1235001797 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 107
 script = ExtResource("1_2v341")
@@ -34,23 +34,23 @@ shield_max = 30
 shield_regen = 0.2
 shield_regen_delay = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1478576152]
 position = Vector2(-4, 0)
 rotation = 1.5708
 texture = ExtResource("2_vg34x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=448702648]
 shape = SubResource("CircleShape2D_k3cbx")
 debug_color = Color(0.913725, 0, 0.0470588, 0.419608)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=733506792]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1778948159]
 shape = SubResource("CircleShape2D_s7j13")
 debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
-[node name="ShieldBar" parent="." instance=ExtResource("3_gsr3w")]
+[node name="ShieldBar" parent="." unique_id=660041561 instance=ExtResource("3_gsr3w")]
 
 [node name="ProgressBar" parent="ShieldBar" index="0"]
 visible = false
@@ -61,7 +61,7 @@ offset_bottom = 28.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_psjqj")
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" parent="." instance=ExtResource("3_gsr3w")]
+[node name="HealthBar" parent="." unique_id=168915755 instance=ExtResource("3_gsr3w")]
 
 [node name="ProgressBar" parent="HealthBar" index="0"]
 visible = false
@@ -71,11 +71,11 @@ offset_bottom = 32.0
 [node name="ProgressBar" parent="HealthBar/ProgressBar" index="0"]
 theme_override_styles/fill = SubResource("StyleBoxFlat_qrfir")
 
-[node name="RemoteTransformShield" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransformShield" type="RemoteTransform2D" parent="." unique_id=1611293355]
 remote_path = NodePath("../ShieldBar")
 update_rotation = false
 
-[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransformHealth" type="RemoteTransform2D" parent="." unique_id=181734047]
 remote_path = NodePath("../HealthBar")
 update_rotation = false
 

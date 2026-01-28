@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cue3sdqmec5dg"]
+[gd_scene format=3 uid="uid://cue3sdqmec5dg"]
 
 [ext_resource type="Script" uid="uid://nvyyi2ryrxva" path="res://Scripts/Weapon/BombLauncher.gd" id="1_4io7s"]
 [ext_resource type="PackedScene" uid="uid://tdox552sfv6n" path="res://Scenes/Weapon/Projectile/Bomb.tscn" id="2_dyhvl"]
 
-[node name="BombLauncher" type="Node2D" node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
+[node name="BombLauncher" type="Node2D" unique_id=176921954 node_paths=PackedStringArray("hitbox_collision", "hitbox_polygon")]
 script = ExtResource("1_4io7s")
 weapon_type = 2
 projectile = ExtResource("2_dyhvl")
@@ -15,14 +15,15 @@ projectile_number = 1.0
 hitbox_collision = NodePath("Area2D/CollisionPolygon2D")
 hitbox_polygon = NodePath("Polygon2D")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1837539830]
 collision_layer = 4
 collision_mask = 74
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=34273013]
 polygon = PackedVector2Array(0, 0, 141.42136, -141.42136, 154.6021, -126.878654, 166.29391, -111.11405, 176.38426, -94.27934, 184.7759, -76.53669, 191.38808, -58.056934, 196.15704, -39.018066, 199.03694, -19.603428, 200, 0, 199.03694, 19.603428, 196.15704, 39.018066, 191.38808, 58.056934, 184.7759, 76.53669, 176.38426, 94.27934, 166.29391, 111.11405, 154.6021, 126.878654, 141.42136, 141.42136)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2021953341]
+visible = false
 color = Color(1, 0, 0, 0.17254902)
 polygon = PackedVector2Array(0, 0, 141.42136, -141.42136, 154.6021, -126.878654, 166.29391, -111.11405, 176.38426, -94.27934, 184.7759, -76.53669, 191.38808, -58.056934, 196.15704, -39.018066, 199.03694, -19.603428, 200, 0, 199.03694, 19.603428, 196.15704, 39.018066, 191.38808, 58.056934, 184.7759, 76.53669, 176.38426, 94.27934, 166.29391, 111.11405, 154.6021, 126.878654, 141.42136, 141.42136)
 

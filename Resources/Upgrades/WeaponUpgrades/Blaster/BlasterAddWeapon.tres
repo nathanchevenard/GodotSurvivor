@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=9 format=3 uid="uid://bygqkqrp7sbli"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://bygqkqrp7sbli"]
 
 [ext_resource type="Texture2D" uid="uid://ck7vt6qv6jmhn" path="res://Sprites/Icons/Weapons/blaster_white.png" id="1_2iu1d"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_0x0l8"]

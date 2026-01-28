@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=9 format=3 uid="uid://b7u2pq218ij30"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" format=3 uid="uid://b7u2pq218ij30"]
 
 [ext_resource type="Texture2D" uid="uid://chwkuh0yqyjti" path="res://Sprites/Icons/Weapons/lightning_white.png" id="1_0xety"]
 [ext_resource type="Script" uid="uid://s8y0k6lbhj5n" path="res://Scripts/Upgrade/WeaponUpgrade.gd" id="2_wic3c"]
