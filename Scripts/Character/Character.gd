@@ -13,6 +13,8 @@ class_name Character
 @export var shield_regen : float = 0
 @export var shield_regen_delay : float = 0.5
 
+@export var sprite_2d : Sprite2D
+
 var is_being_destroyed : bool = false
 
 var health : int = 0
@@ -36,6 +38,7 @@ var init_projectile_size_mult : float = 1
 var current_direction : Vector2 = Vector2.ZERO
 var last_direction : Vector2 = Vector2.ZERO
 var current_speed : float = 0.0
+var tween_damage : Tween
 
 signal destroyed(character : Character)
 signal health_changed(value : float)
@@ -131,6 +134,7 @@ func take_damage(damage : int) -> float:
 		health = 0
 	
 	emit_health_changed()
+	trigger_damage_fx()
 	
 	if health <= 0:
 		destroy()
@@ -198,6 +202,17 @@ func emit_shield_changed():
 		shield_changed.emit(shield, shield_max)
 	else:
 		shield_changed.emit(0.0, shield_max)
+
+
+func trigger_damage_fx():
+	tween_damage = create_tween()
+	tween_damage.set_ease(Tween.EASE_OUT)
+	tween_damage.tween_method(set_shader_value, 0.8, 0.0, 0.75)
+
+
+func set_shader_value(value : float):
+	var shader : ShaderMaterial = sprite_2d.material as ShaderMaterial
+	shader.set_shader_parameter("alpha_value", value)
 
 
 func destroy() -> void:

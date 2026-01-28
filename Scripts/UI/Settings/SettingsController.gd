@@ -9,7 +9,10 @@ static var selected_ship_data : ShipData
 @export var arena_mode_button : CheckButton
 @export var joystick_floating_button : CheckButton
 @export var delay_pause_button : CheckButton
+
 @export var init_delay_pause_value : bool = false
+
+@export var mobile_settings : Control
 
 
 func _init() -> void:
@@ -20,6 +23,9 @@ func _ready() -> void:
 	arena_mode_button.button_pressed = is_arena_mode
 	joystick_floating_button.button_pressed = is_joystick_floating
 	delay_pause_button.button_pressed = is_delaying_pause
+	
+	if DeviceDetection.is_mobile() == false:
+		mobile_settings.hide()
 
 
 func _on_arena_mode_toggled(toggled_on: bool) -> void:

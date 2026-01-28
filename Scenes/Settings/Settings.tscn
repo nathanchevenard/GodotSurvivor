@@ -11,11 +11,12 @@ z_index = -1
 position = Vector2(241, 137)
 texture = ExtResource("1_miw82")
 
-[node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=1277152115 node_paths=PackedStringArray("arena_mode_button", "joystick_floating_button", "delay_pause_button")]
+[node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=1277152115 node_paths=PackedStringArray("arena_mode_button", "joystick_floating_button", "delay_pause_button", "mobile_settings")]
 script = ExtResource("2_gfdcy")
 arena_mode_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Arena mode/Arena mode CheckButton")
-joystick_floating_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick/Floating Joystick CheckButton")
+joystick_floating_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Floating Joystick/Floating Joystick CheckButton")
 delay_pause_button = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Pause Delay/PauseDelayCheckButton")
+mobile_settings = NodePath("Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings")
 
 [node name="Settings" type="Control" parent="SettingsLayer" unique_id=2020430995]
 layout_mode = 3
@@ -53,17 +54,6 @@ text = "Arena mode"
 layout_mode = 2
 button_pressed = true
 
-[node name="Floating Joystick" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings" unique_id=1162877270]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick" unique_id=1254928748]
-layout_mode = 2
-text = "Floating joystick "
-
-[node name="Floating Joystick CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick" unique_id=1389702153]
-layout_mode = 2
-button_pressed = true
-
 [node name="Pause Delay" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings" unique_id=1946843552]
 layout_mode = 2
 
@@ -75,14 +65,29 @@ text = "Delay on unpause"
 layout_mode = 2
 button_pressed = true
 
-[node name="Display Mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings" unique_id=1766674988]
+[node name="Mobile Settings" type="VBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings" unique_id=489225103]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Floating Joystick" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings" unique_id=1162877270]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode" unique_id=1111714174]
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Floating Joystick" unique_id=1254928748]
+layout_mode = 2
+text = "Floating joystick "
+
+[node name="Floating Joystick CheckButton" type="CheckButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Floating Joystick" unique_id=1389702153]
+layout_mode = 2
+button_pressed = true
+
+[node name="Display Mode" type="HBoxContainer" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings" unique_id=1766674988]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Display Mode" unique_id=1111714174]
 layout_mode = 2
 text = "Display mode"
 
-[node name="Display Mode OptionButton" type="OptionButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode" unique_id=1386219620]
+[node name="Display Mode OptionButton" type="OptionButton" parent="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Display Mode" unique_id=1386219620]
 layout_mode = 2
 selected = 0
 item_count = 3
@@ -112,8 +117,8 @@ size_flags_horizontal = 3
 text = "Quit"
 
 [connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Arena mode/Arena mode CheckButton" to="SettingsLayer" method="_on_arena_mode_toggled"]
-[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
 [connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Pause Delay/PauseDelayCheckButton" to="SettingsLayer" method="_on_pause_delay_toggled"]
-[connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
+[connection signal="toggled" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Floating Joystick/Floating Joystick CheckButton" to="SettingsLayer" method="_on_floating_joystick_toggled"]
+[connection signal="item_selected" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Settings/Mobile Settings/Display Mode/Display Mode OptionButton" to="SettingsLayer" method="_on_display_mode_item_selected"]
 [connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/NextButton" to="SettingsLayer" method="_on_next_button_pressed"]
 [connection signal="pressed" from="SettingsLayer/Settings/CenterContainer/VBoxContainer/Buttons/QuitButton" to="SettingsLayer" method="_on_quit_button_pressed"]

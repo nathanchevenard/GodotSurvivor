@@ -11,10 +11,12 @@ static var instance : Player = null
 
 @export var ship_data : ShipData
 
-@export var sprite_2d : Sprite2D
 @export var explosion_sprites : Array[AnimatedSprite2D]
 @export var weapon_pivots_node : Node2D
-@export var interact_label : Label
+
+@export_group("Dialogue")
+@export var dialogue_start : Control
+@export var dialogue_start_progress_bar : ProgressBar
 
 @onready var joystick : JoystickController = $"../BorderLayer/Joystick"
 
@@ -170,3 +172,12 @@ func add_xp(xp_value : float):
 		current_level_cap = level_cap_base + level_cap_increase * (current_level - 1) + level_cap_acceleration * (current_level - 2)
 	
 	SignalsManager.emit_player_xp_update(current_xp, current_level_cap)
+
+
+func dialogue_area_enter(duration : float):
+	dialogue_start.show()
+	dialogue_start_progress_bar.max_value = duration
+
+
+func dialogue_area_exit():
+	dialogue_start.hide()

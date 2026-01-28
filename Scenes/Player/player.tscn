@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgxyci6epggm8"]
 
 [ext_resource type="Script" uid="uid://fko4tmku54t" path="res://Scripts/Character/Player/player.gd" id="1_xm3y8"]
+[ext_resource type="Material" uid="uid://bu7pvsxlimj5w" path="res://Shaders/damage_shader.tres" id="2_jmcll"]
 [ext_resource type="Texture2D" uid="uid://chi6625dbucsu" path="res://Sprites/Projectiles/Explosion.png" id="2_ude3g"]
 [ext_resource type="Texture2D" uid="uid://dt5sl0awf41hy" path="res://Sprites/Ship/Players/PlayerShip_White.png" id="3_apoam"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="7_e1xj6"]
@@ -86,26 +87,52 @@ radius = 11.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qshp3"]
 bg_color = Color(0, 0.356863, 0.709804, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=1017053810 node_paths=PackedStringArray("sprite_2d", "explosion_sprites", "weapon_pivots_node", "interact_label") groups=["Player"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmcll"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20770735, 0.37521434, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wape"]
+bg_color = Color(0, 0.25595155, 0.5202143, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20770735, 0.37521434, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Player" type="CharacterBody2D" unique_id=1017053810 node_paths=PackedStringArray("explosion_sprites", "weapon_pivots_node", "dialogue_start", "dialogue_start_progress_bar", "sprite_2d") groups=["Player"]]
 z_index = 1
 collision_mask = 104
 script = ExtResource("1_xm3y8")
 level_cap_base = 4
 level_cap_increase = 3
 level_cap_acceleration = 2
-sprite_2d = NodePath("Sprite2D")
 explosion_sprites = [NodePath("ExplosionSprites/AnimatedSprite2D"), NodePath("ExplosionSprites/AnimatedSprite2D2"), NodePath("ExplosionSprites/AnimatedSprite2D3"), NodePath("ExplosionSprites/AnimatedSprite2D4")]
 weapon_pivots_node = NodePath("WeaponPivots")
-interact_label = NodePath("Control/InteractLabel")
+dialogue_start = NodePath("Control/DialogueStart")
+dialogue_start_progress_bar = NodePath("Control/DialogueStart/DialogueStartProgressBar")
 speed_max = 100.0
 target_groups = Array[String](["Enemy"])
 health_max = 100
 shield_max = 30
 shield_regen = 0.5
 shield_regen_delay = 2.0
+sprite_2d = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1727536107]
 z_index = 1
+material = ExtResource("2_jmcll")
 rotation = 1.5708
 texture = ExtResource("3_apoam")
 
@@ -143,18 +170,47 @@ shape = SubResource("CircleShape2D_w5q1e")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=548279478]
 zoom = Vector2(0.75, 0.75)
 
-[node name="WeaponPivots" type="Node2D" parent="." unique_id=1910046963]
-
 [node name="ShieldBar" parent="." unique_id=78064218 instance=ExtResource("7_e1xj6")]
 
-[node name="ProgressBar" parent="ShieldBar/ProgressBar" index="0"]
+[node name="ProgressBar" parent="ShieldBar/ProgressBar" parent_id_path=PackedInt32Array(78064218, 1410170952) index="0" unique_id=404895597]
 theme_override_styles/fill = SubResource("StyleBoxFlat_qshp3")
 
 [node name="HealthBar" parent="." unique_id=711357772 instance=ExtResource("7_e1xj6")]
 
-[node name="ProgressBar" parent="HealthBar" index="0"]
+[node name="ProgressBar" parent="HealthBar" index="0" unique_id=1410170952]
 offset_top = 22.0
 offset_bottom = 25.0
+
+[node name="Control" type="Node2D" parent="." unique_id=440630857]
+top_level = true
+
+[node name="DialogueStart" type="VBoxContainer" parent="Control" unique_id=901928687]
+visible = false
+offset_left = -47.0
+offset_top = -60.0
+offset_right = 52.0
+offset_bottom = -20.0
+
+[node name="DialogueStartLabel" type="Label" parent="Control/DialogueStart" unique_id=609061152]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 12
+text = "Starting dialogue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogueStartProgressBar" type="ProgressBar" parent="Control/DialogueStart" unique_id=1281333756]
+custom_minimum_size = Vector2(56, 12)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_jmcll")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4wape")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="WeaponPivots" type="Node2D" parent="." unique_id=1910046963]
 
 [node name="RemoteTransformShield" type="RemoteTransform2D" parent="." unique_id=473800878]
 remote_path = NodePath("../ShieldBar")
@@ -163,28 +219,6 @@ update_rotation = false
 [node name="RemoteTransformHealth" type="RemoteTransform2D" parent="." unique_id=524346224]
 remote_path = NodePath("../HealthBar")
 update_rotation = false
-
-[node name="Control" type="Node2D" parent="." unique_id=440630857]
-top_level = true
-
-[node name="InteractLabel" type="Label" parent="Control" unique_id=609061152]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -70.0
-offset_top = -51.0
-offset_right = 70.0
-offset_bottom = -28.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 13
-text = "Press E to interact"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RemoteTransformControl" type="RemoteTransform2D" parent="." unique_id=88550669]
 remote_path = NodePath("../Control")

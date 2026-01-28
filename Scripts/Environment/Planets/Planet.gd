@@ -1,6 +1,8 @@
 extends Node2D
 class_name Planet
 
+@export var dialogue_start_duration : float = 2.0
+
 @export_group("Quests")
 @export var quest_delay_min : float = 5
 @export var quest_delay_max : float = 10
@@ -36,6 +38,8 @@ var is_quest_target : bool:
 
 var is_player_in_quest_stay : bool = false
 
+var dialogue_start_timer : float
+
 
 func _init() -> void:
 	SignalsManager.quest_accept.connect(_on_quest_accepted)
@@ -63,6 +67,16 @@ func _process(delta: float) -> void:
 	&& current_quest.is_accepted == true && current_quest.is_finished == false:
 		current_quest.add_value(delta)
 		stay_progress_bar.value = current_quest.current_value
+	
+	if is_highlighted == true:
+		dialogue_start_timer += delta
+		Player.instance.dialogue_start_progress_bar.value = dialogue_start_timer
+		
+		if dialogue_start_timer >= dialogue_start_duration:
+			if is_quest_target == true:
+				end_quest_dialogue()
+			else:
+				start_quest_dialogue()
 
 
 func _input(event: InputEvent) -> void:
@@ -75,10 +89,12 @@ func _input(event: InputEvent) -> void:
 
 func start_quest_dialogue():
 	SignalsManager.emit_dialogue_start(DialogueManager.DialogueType.QuestStart, current_quest.quest_data.dialogue_start_data, self, current_quest)
+	dialogue_start_timer = 0
 
 
 func end_quest_dialogue():
 	SignalsManager.emit_dialogue_start(DialogueManager.DialogueType.QuestEnd, targetted_quests[0].quest_data.dialogue_end_data, self, targetted_quests[0])
+	dialogue_start_timer = 0
 
 
 func init_quest():
@@ -114,14 +130,15 @@ func set_quest_target(quest : Quest):
 
 func highlight():
 	highlight_sprite.show()
-	Player.instance.interact_label.show()
+	Player.instance.dialogue_area_enter(dialogue_start_duration)
 	is_highlighted = true
 
 
 func unhighlight():
 	highlight_sprite.hide()
-	Player.instance.interact_label.hide()
+	Player.instance.dialogue_area_exit()
 	is_highlighted = false
+	dialogue_start_timer = 0.0
 
 
 func _on_quest_accepted(quest : Quest):

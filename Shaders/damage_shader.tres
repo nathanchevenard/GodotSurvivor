@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bu7pvsxlimj5w"]
+
+[ext_resource type="Shader" uid="uid://cxt86jgs83muk" path="res://Shaders/damage_shader.gdshader" id="1_7xp6k"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_7xp6k")
+shader_parameter/active = true
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/alpha_value = 0.0

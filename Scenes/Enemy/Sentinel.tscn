@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bwc7gqdyu0gkt" path="res://Scenes/Weapon/Enemy/SentinelBlaster.tscn" id="2_2a38k"]
 [ext_resource type="Texture2D" uid="uid://7r8or44eh3ox" path="res://Sprites/Ship/Enemies/Sentinel.png" id="2_r7cw0"]
 [ext_resource type="PackedScene" uid="uid://d23qp5ohiqepc" path="res://Scenes/UI/PercentageBar.tscn" id="3_6fcrk"]
+[ext_resource type="Material" uid="uid://bu7pvsxlimj5w" path="res://Shaders/damage_shader.tres" id="3_yc7wx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bg3c5"]
 radius = 12.0
@@ -14,7 +15,7 @@ radius = 14.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrfir"]
 bg_color = Color(0.74902, 0, 0, 1)
 
-[node name="Sentinel" type="CharacterBody2D" unique_id=385620453 groups=["Enemy"]]
+[node name="Sentinel" type="CharacterBody2D" unique_id=385620453 node_paths=PackedStringArray("sprite_2d") groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 107
 script = ExtResource("1_w2qwd")
@@ -24,10 +25,12 @@ xp_scene_scale = 2.0
 speed_max = 60.0
 target_groups = Array[String](["Player"])
 health_max = 20
+sprite_2d = NodePath("Sprite2D")
 
 [node name="SentinelBlaster" parent="." unique_id=1025075205 instance=ExtResource("2_2a38k")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1416628702]
+material = ExtResource("3_yc7wx")
 position = Vector2(2.85714, 0)
 rotation = 1.5708
 texture = ExtResource("2_r7cw0")
@@ -47,13 +50,13 @@ debug_color = Color(0.411765, 0.431373, 0.501961, 0.419608)
 
 [node name="HealthBar" parent="." unique_id=1232652320 instance=ExtResource("3_6fcrk")]
 
-[node name="ProgressBar" parent="HealthBar" index="0"]
+[node name="ProgressBar" parent="HealthBar" index="0" unique_id=1410170952]
 visible = false
 offset_left = -12.0
 offset_right = 12.0
 offset_bottom = 20.0
 
-[node name="ProgressBar" parent="HealthBar/ProgressBar" index="0"]
+[node name="ProgressBar" parent="HealthBar/ProgressBar" index="0" unique_id=404895597]
 offset_right = 24.0
 offset_bottom = 2.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_qrfir")

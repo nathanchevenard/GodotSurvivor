@@ -26,6 +26,8 @@ class_name ShipSelectionController
 @export var layout_scale : float
 
 var button_init_style : StyleBox
+var selected_ship_button : ShipSelectionButton
+var ship_select_buttons : Array[ShipSelectionButton]
 
 
 func _init() -> void:
@@ -37,6 +39,8 @@ func _ready() -> void:
 		var select_button : ShipSelectionButton = ship_select_button_scene.instantiate() as ShipSelectionButton
 		select_button.set_ship_data(ship_datas[i])
 		ships_container.add_child(select_button)
+		ship_select_buttons.append(select_button)
+		select_button.pressed_owner.connect(_on_ship_select_button_pressed)
 		
 		if i == 0:
 			select_button.button.pressed.emit()
@@ -91,6 +95,13 @@ func _on_ship_selected(ship_data : ShipData):
 	for i in ship_data.ship_upgrades_number:
 		var ship_upgrade : Control = ship_upgrade_scene.instantiate() as Control
 		selected_ship_layout.ship_selection_upgrades_pivot.add_child(ship_upgrade)
+
+
+func _on_ship_select_button_pressed(button : ShipSelectionButton):
+	if selected_ship_button != null:
+		selected_ship_button.on_deselect()
+	
+	selected_ship_button = button
 
 
 func _on_play_button_pressed() -> void:
